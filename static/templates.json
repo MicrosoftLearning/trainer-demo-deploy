@@ -18,7 +18,8 @@
     "author": "petender",
     "source": "https://github.com/Azure-Samples/azd-starter-ai102",
     "demoguide": "https://raw.githubusercontent.com/petender/EShopOnWeb-GHRepo/refs/heads/main/README.md",
-    "tags": ["ai-102", "msft", "new", "ai-900"]
+    "tags": ["ai-102", "msft", "new", "ai-900"],
+    "courseblueprint": "https://aka.ms/AZ-204Blueprint"
   }
   
   
