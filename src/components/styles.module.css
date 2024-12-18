@@ -1,0 +1,49 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ * PDT - 11-26-2024 defines the layout of the card items on the getting-started page
+ */
+
+ .features {
+  padding: 2rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+  gap: 24px;
+  
+}
+
+.cardContent {
+  display: flex;
+  row-gap: 10px;
+  flex-flow: column;
+  
+}
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 326px;
+  height: 280px;
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid #7160E8; /* Purple border */
+  
+  /* Other styles */
+}
+
+[data-theme="dark"] .card {
+  background-color: #292929;
+}
+
+@media screen and (max-width: 996px) {
+  .row {
+    flex-flow: column;
+  }
+}

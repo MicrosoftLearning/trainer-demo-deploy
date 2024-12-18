@@ -1,0 +1,51 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+* PDT - 11-26-2024 defines the layout of the card items on the home page
+ */
+
+.cover {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+  * Search container, showing the title, details, search box and Learn image
+  */
+
+.searchContainer {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  
+}
+
+.searchArea {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  justify-content: start; /* shows content to the left of the screen */
+}
+
+.heroBar {
+  max-width: 740px;
+  text-align: center;
+}
+
+.color {
+  color: var(--ifm-color-primary);
+}
+
+.learnMoreColor {
+  color: #007FFF !important;
+}
+
+[data-theme="dark"] .learnMoreColor {
+  color: #007FFF !important;
+}
