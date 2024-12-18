@@ -14,25 +14,23 @@ Our template gallery will be at its best when our community is involved in creat
 We welcome contributions of [requested templates](https://github.com/MicrosoftLearning/trainer-demo-deploy/issues?q=is%3Aopen+is%3Aissue+label%3Arequested-contribution) as well as any others, subject to review. 
 
 To submit a template:
-1. Add an entry to [website/static/templates.json](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/website/static/templates.json) that includes:
+1. Add an entry to [/static/templates.json](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/static/templates.json) that includes:
     - **Template title** - A short title that reflects the local application stack that someone could use to get their application on Azure (e.g. "Containerized React Web App with Java API and MongoDB")
     - **Description** - 1-2 sentence description of the architecture (e.g. Azure services) or solution that is defined by the template.
     - **Architecture Diagram or Application Screenshot** - Used as display image for gallery card. The architecture should include all services and their connections ([example](https://github.com/MicrosoftLearning-Samples/todo-csharp-sql/blob/main/assets/resources.png)). You should add the image to [website/static/templates/images](https://github.com/MicrosoftLearning/trainer-demo-deploy/tree/main/website/static/templates/images)
     - **Link to Author's GitHub or other relevant website** - Used for attribution.
     - **Author's Name** - Name to credit on the gallery card
     - **Link to template source** - Link to the template GitHub repo
-    - **Tags** - One or more [tags](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/website/src/data/tags.tsx) representing the template. Provide at least 1 tag for programming language used and at least 1 tag for Azure services integrated. Also tag the IaC provider (Bicep or Terraform). If you don't see a relevant tag for your template? Feel free to add one!
-2. If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main). 
-3. Open a PR!
-4. If possible, add a link to the PR in your repo where you made your app `azd` compatible to the PR description. This will help us provide feedback on your template and speed up the review process. 
+    - **Tags** - One or more [tags](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/src/data/tags.tsx) representing the template. Provide at least 1 tag for the related Microsoft Official Course (MOC) used and at least 1 tag for Azure services integrated. Missing a relevant tag for your template? Feel free to add one!
+    - **DemoGuide** - Link to MarkDown document with step-by-step instructions on what to demo
+    - **Course Blueprint** - ShortLink (aka.ms) to the MOC Course Blueprint assets related to this demo scenario 
+2. Open a PR!
+3. If possible, add a link to the PR in your repo where you made your app `azd` compatible to the PR description. This will help us provide feedback on your template and speed up the review process. 
 
 If you would like to contribute a template but are not sure where to start, [making an existing project azd compatible](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/make-azd-compatible) is a great first step. Doing so consists of three main steps:
 1.  Set up a new environment (with `azd init`)
 2.  Add Bicep files
 3.  Update azure.yaml 
-
-### [Submit a Resource](https://github.com/MicrosoftLearning/trainer-demo-deploy/compare)
-Did you write or find an article that helped you get started with `azd`? Or maybe you created or found a video that showed you how to create an azd template? Whatever the resource might be, we would love for you to share it with our community! Submit content you think should be included in `trainer-demo-deploy/README.md`
 
 ## Other Ways To Help 
 Other than these, we always welcome feedback through a:
