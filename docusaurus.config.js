@@ -26,10 +26,10 @@ const config = {
   // To test-site: https://petender.github.io/tdd-site/
   // For Staging:
   
-  //url: isProd ? "https://microsoftlearning.github.io" : "https://petender.github.io",
-  //baseUrl: isProd ? "/trainer-demo-deploy/" : "/tdd-site/",
-  //organizationName: isProd ? "microsoftlearning" : "petender",
-  //projectName: isProd ? "trainer-demo-deploy" : "tdd-site",
+  //url: "https://petender.github.io",
+  //baseUrl: "/trainer-demo-deploy/",
+  //organizationName: "microsoftlearning",
+  //projectName: "trainer-demo-deploy",
   //favicon: "img/favicon.ico",
 
   // CONIFIG: Used for GitHub Pages in production

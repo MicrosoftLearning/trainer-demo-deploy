@@ -7,7 +7,8 @@
     "author": "Azure Dev",
     "source": "https://github.com/petender/azdtest1213",
     "tags": ["az-104", "msft", "appinsights", "cosmosdb", "new", "hot"],
-    "demoguide": "https://raw.githubusercontent.com/petender/MyRetailBizzNizz/main/Labs/LAB01_ADO_Boards.md"
+    "demoguide": "https://raw.githubusercontent.com/petender/MyRetailBizzNizz/main/Labs/LAB01_ADO_Boards.md",
+    "courseblueprint": "https://aka.ms/AZ-104Blueprint"
   },
   {
     "title": "Starter - ai102",

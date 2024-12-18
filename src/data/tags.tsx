@@ -20,6 +20,7 @@ export type User = {
   author: string;
   source: string | null;
   demoguide: string | null;
+  courseblueprint: string | null;
   tags: TagType[];
 };
 

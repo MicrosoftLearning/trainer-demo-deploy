@@ -253,7 +253,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     flex: "1",
                   }}
                 >
-                  3-Step Deployment
+                  4-Step Deployment
                 </div>
                 <DefaultButton
                   style={{
@@ -386,7 +386,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       padding: "10px 0",
                     }}
                   >
-                    3. Last, run `azd` to initialize the deployment.
+                    3. Next, run `azd init` to initialize the deployment.
                   </div>
                   <div
                     className={styles.terminalSquareTopColor}
@@ -430,6 +430,59 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       {azdInitCommand}
                     </div>
                   </div>
+                  <div
+                    className={styles.textColor}
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      padding: "10px 0",
+                    }}
+                  >
+                    4. Last, run `azd up` to trigger an actual deployment.
+                  </div>
+                  <div
+                    className={styles.terminalSquareTopColor}
+                    style={{
+                      display: "flex",
+                      height: "32px",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div
+                      className={styles.textColor}
+                      style={{
+                        flex: "1",
+                        fontSize: "12px",
+                        paddingLeft: "11px",
+                      }}
+                    >
+                      Terminal Command
+                    </div>
+                    <CopyButton colorMode={colorMode} url={azdInitCommand} />
+                  </div>
+                  <div
+                    className={styles.terminalSquareBottomColor}
+                    style={{
+                      height: "46px",
+                      padding: "11px",
+                    }}
+                  >
+                    <div
+                      className={styles.commandColor}
+                      style={{
+                        margin: "auto",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        fontFamily: "Consolas, Courier New, Courier, monospace",
+                        fontSize: "14px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      azd up
+                    </div>
+                  </div>
+
                   <div
                     style={{
                       paddingTop: "10px",
@@ -574,6 +627,76 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             </div>
           </Label>
         </PivotItem>
+
+        <PivotItem headerText="Demo Guide">
+          <Label>
+            <div
+              className={styles.textColor}
+              style={{
+                fontSize: "14px",
+                fontWeight: "400",
+              }}
+            >
+              <div
+                style={{
+                  padding: "10px 0",
+                }}
+              >
+                <ShowcaseDemoGuide url={user.demoguide}/>
+              </div>
+            </div>
+          </Label>
+        </PivotItem>
+        <PivotItem headerText="Course Blueprint">
+          <Label>
+            <div
+              className={styles.textColor}
+              style={{
+                fontSize: "14px",
+                fontWeight: "400",
+              }}
+            >
+                <div
+                style={{
+                  padding: "10px 0",
+                }}
+                >
+                <p>The <a href="https://techcommunity.microsoft.com/discussions/azurearchitecture/azure-course-blueprints/4012399" target="_blank" className={styles.color}> Course Blueprint </a> is a comprehensive visual guide to the Azure ecosystem, integrating all the resources, tools, structures, and connections covered in the course into one inclusive diagram. </p>
+                <p>It enables students to map out and understand the elements they've studied, providing a clear picture of their place within the larger Azure ecosystem.</p>
+                <p>It serves as a 1:1 representation of all the topics officially covered in the instructor-led training.</p>
+                
+                {user.courseblueprint && ( // If courseblueprint is not empty, show the element. Otherwise don't show it.
+                  <FluentUILink
+                  href={user.courseblueprint}
+                  target="_blank"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    columnGap: "5px",
+                  }}
+                  className={styles.color}
+                  >
+                  Download Course Blueprint
+                  {colorMode != "dark" ? (
+                    <img
+                    src={useBaseUrl("/img/redirect.svg")}
+                    alt="Redirect"
+                    height={13}
+                    />
+                  ) : (
+                    <img
+                    src={useBaseUrl("/img/redirectDark.svg")}
+                    alt="Redirect"
+                    height={13}
+                    />
+                  )}
+                  </FluentUILink>
+                )}
+                
+                </div>
+            </div>
+          </Label>
+        </PivotItem>
         <PivotItem
           style={{
             color: "#424242",
@@ -626,25 +749,6 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                 The templates included in the Trainer-Demo-Deploy Catalog are not
                 supported by any Microsoft support program or service. Trainer-Demo-Deploy Catalog
                 and any Microsoft-provided templates are provided without warranty of any kind.
-              </div>
-            </div>
-          </Label>
-        </PivotItem>
-        <PivotItem headerText="Demo Guide">
-          <Label>
-            <div
-              className={styles.textColor}
-              style={{
-                fontSize: "14px",
-                fontWeight: "400",
-              }}
-            >
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
-                <ShowcaseDemoGuide url={user.demoguide}/>
               </div>
             </div>
           </Label>
