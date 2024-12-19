@@ -665,33 +665,12 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                 <p>It enables students to map out and understand the elements they've studied, providing a clear picture of their place within the larger Azure ecosystem.</p>
                 <p>It serves as a 1:1 representation of all the topics officially covered in the instructor-led training.</p>
                 
-                {user.courseblueprint && ( // If courseblueprint is not empty, show the element. Otherwise don't show it.
-                  <FluentUILink
-                  href={user.courseblueprint}
-                  target="_blank"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    columnGap: "5px",
-                  }}
-                  className={styles.color}
-                  >
-                  Download Course Blueprint
-                  {colorMode != "dark" ? (
-                    <img
-                    src={useBaseUrl("/img/redirect.svg")}
-                    alt="Redirect"
-                    height={13}
-                    />
-                  ) : (
-                    <img
-                    src={useBaseUrl("/img/redirectDark.svg")}
-                    alt="Redirect"
-                    height={13}
-                    />
-                  )}
-                  </FluentUILink>
-                )}
+                 <ShowcaseCourseBlueprintAzureTag
+                  key={"azure_tag_" + user.title}
+                  tags={user.tags}
+                  colorMode={colorMode}
+                />
+                
                 
                 </div>
             </div>
@@ -849,4 +828,58 @@ function ShowcaseCardAzureTag({
 
     ) : null;
   });
-  }
+
+  
+}
+
+function ShowcaseCourseBlueprintAzureTag({
+  tags,
+  colorMode,
+}: {
+  tags: TagType[];
+  colorMode: string;
+}) {
+  const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
+
+  // Keep same order for all tags
+  const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
+    TagList.indexOf(tagObject.tag)
+  );
+
+  return tagObjectsSorted.map((tagObject, index) => {
+    const courseBlueprint = tagObject.type === "MOC Courses";
+    
+    return courseBlueprint ? (
+      <div
+        key={index}
+        style={{
+          display: "flex",
+          padding: "5px 0",
+        }}
+      >
+        {tagObject.courseblueprint.replace("https://aka.ms/", "")}
+        <div>
+          <a
+        href={tagObject.courseblueprint}
+        target="_blank"
+        className={styles.color}
+        title={tagObject.courseblueprint} // Add description as title for hover effect
+          >
+        <img
+          src={useBaseUrl(tagObject.courseblueprintdiag)}
+          alt="Course Blueprint"
+          height={400}
+          width={500}
+          style={{ border: "2px solid purple" }} // Added border style
+        />
+          </a>
+        </div>
+      </div>
+        
+      
+
+
+    ) : null;
+  });
+
+}

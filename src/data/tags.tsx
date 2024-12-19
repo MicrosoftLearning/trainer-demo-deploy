@@ -10,6 +10,8 @@ export type Tag = {
   darkModeAzureIcon?: string;
   url?: string;
   type?: string;
+  courseblueprint?: string;
+  courseblueprintdiag?: string;
 };
 
 export type User = {
@@ -153,6 +155,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/?practice-assessment-type=certification",
+    courseblueprint: "https://aka.ms/AZ-104Blueprint",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-104.jpg?sp=r&st=2024-12-18T16:37:35Z&se=2025-07-01T23:37:35Z&spr=https&sv=2022-11-02&sr=b&sig=BvTw%2F8lvodlShflkzwtUe%2FelAQpEyY1CZ6EY6Vju95I%3D"
   },
   "az-120":{
     label: "AZ-120 Azure for SAP Workloads Specialty",
@@ -175,6 +179,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/?practice-assessment-type=certification",
+    courseblueprint: "https://aka.ms/AZ-204Blueprint",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-204.jpg?sp=r&st=2024-12-18T16:38:44Z&se=2025-07-01T23:38:44Z&spr=https&sv=2022-11-02&sr=b&sig=ySlKoSDxTAdzA5KEt5x5GiebjNbkvHARwsl6E6t9Pjk%3D"
   },
   "az-305": {
     label: "AZ-305 Azure Solutions Architect Expert",
@@ -182,6 +188,9 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/",
+    courseblueprint: "https://aka.ms/AZ-305Blueprint",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-305.jpg?sp=r&st=2024-12-18T16:39:14Z&se=2025-07-01T23:39:14Z&spr=https&sv=2022-11-02&sr=b&sig=XhagugPepjpY8FS6A%2BoqWkEXccUYY838kfVJGyU5frM%3D"
+  
   },
   "az-400": {
     label: "AZ-400 Azure DevOps Engineer Expert",
