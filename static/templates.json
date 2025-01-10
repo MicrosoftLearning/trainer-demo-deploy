@@ -6,7 +6,7 @@
     "website": "https://github.com/petender/ConferenceAPI",
     "author": "petender",
     "source": "https://github.com/petender/ConferenceAPI",
-    "tags": ["az-204", "msft", "new", "hot", "az-204"],
+    "tags": ["az-204", "msft", "new", "hot", "appservice"],
     "demoguide": "https://raw.githubusercontent.com/petender/ConferenceAPI/refs/heads/main/README.md"
     
   },
@@ -18,7 +18,7 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-apimwithconfAPI",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/demoguide/apimwithconference.md",
-    "tags": ["az-204", "msft", "new", "hot"]
+    "tags": ["az-204", "msft", "new", "hot", "appservice", "apim"]
     
   },
   {
@@ -29,7 +29,40 @@
     "author": "petender",
     "source": "https://github.com/petender/OpenAIMultiModel",
     "demoguide": "https://raw.githubusercontent.com/petender/OpenAIMultiModel/refs/heads/main/README.md",
-    "tags": ["ai-102", "msft", "new", "hot"]
+    "tags": ["ai-102", "msft", "new", "hot", "openai", "azureai"]
+    
+  },
+  {
+    "title": "Tollbooth / Automated Parking LOT event-based system using Serverless Architecture",
+    "description": "This scenario deploys the building blocks for a serverless automated parking lot / tollbooth / HOV lanes system using Azure Functions and EventGrid. It also has Azure Storage Account, CosmosDB, Azure KeyVault and Application Insights as part of the architecture.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod/TollBooth",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/TollBooth",
+    "demoguide": "",
+    "tags": ["az-204", "az-305","msft", "new", "hot", "appservice", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"]
+    
+  },
+  {
+    "title": "Blazor BadgeMaker, a Blazor front-end application for designing and generating digital badges using Azure AI Services",
+    "description": "The BadgeMaker is a Blazor front-end application that provides a user-friendly interface for designing and generating digital badges. It allows users to customize badges with various templates, colors, and text options.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod/BadgeMaker",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/BadgeMaker",
+    "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/Readme.md",
+    "tags": ["az-204", "az-305", "ai-102", "msft", "new", "hot", "appservice", "azureai"]
+    
+  },
+  {
+    "title": "Azure Machine Learning",
+    "description": "This scenario deploys AzureML Service, together with other resources such as Key Vault, Application Insights, Container Registry and the necessary RBAC permissions.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod/MachineLearningAZD",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/MachineLearningAZD",
+    "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/README.md",
+    "tags": ["az-204", "az-305", "msft", "new", "hot", "azureml", "keyvault", "appinsights"]
     
   }
   
