@@ -73,7 +73,6 @@ export type TagType =
   | "blobstorage"
   | "azuredb-postgreSQL"
   | "azuresql"
-
   | "staticwebapps"
   | "servicebus"
   | "vnets"
@@ -99,6 +98,8 @@ export type TagType =
   | "eventgrid"
   | "logicapps"
   | "speechservice"
+  | "azureml"
+
 ;
 
 // LIST OF AVAILABLE TAGS
@@ -141,14 +142,20 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  
     },
+    
   "ai-900": {
     label: "AI-900 Azure AI Fundamentals",
     description: "Demonstrate fundamental AI concepts related to the development of software and services of Microsoft Azure to create AI solutions.",
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/?practice-assessment-type=certification",
-    },  
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },  
   "az-104": {
     label: "AZ-104 Azure Administrator",
     description: "Demonstrate key skills to configure, manage, secure, and administer key professional functions in Microsoft Azure.",
@@ -164,6 +171,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-for-sap-workloads-specialty/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "az-140": {
     label: "AZ-140 Azure Virtual Desktop Specialty",
@@ -171,6 +180,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-virtual-desktop-specialty/?practice-assessment-type=certification",
+    courseblueprint: "https://aka.ms/AZ-140Blueprint",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/AZ-140Blueprint.pdf?sp=r&st=2024-12-31T20:49:49Z&se=2025-07-02T03:49:49Z&spr=https&sv=2022-11-02&sr=b&sig=frB70N5UhTxm4tWN9kIVJDA%2B9LTvlupb4Ohhp4Co72c%3D",
   },
 
   "az-204": {
@@ -198,6 +209,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "az-500": {
     label: "AZ-500 Azure Security Engineer Associate",
@@ -205,6 +218,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-security-engineer/?practice-assessment-type=certification",
+    courseblueprint: "https://aka.ms/AZ-500Blueprint",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/AZ-500_Blueprint.pdf?sp=r&st=2024-12-31T20:53:09Z&se=2025-07-02T03:53:09Z&spr=https&sv=2022-11-02&sr=b&sig=w7dBnLHMisSjomtus8Qgv7fri%2FiJrCrm5pxg1iY7yZ0%3D",
   },   
 
   "az-700": {
@@ -213,6 +228,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-network-engineer-associate/?practice-assessment-type=certification",
+    courseblueprint: "https://aka.ms/AZ-700Blueprint",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-700.jpg?sp=r&st=2024-12-18T16:39:40Z&se=2025-07-01T23:39:40Z&spr=https&sv=2022-11-02&sr=b&sig=bptBO1h5wbO%2BujYDkSdh6vuSRBV51CFSHS4FP43Pqh8%3D",
   },
   "az-800":{
     label: "AZ-800 Windows Server Hybrid Administrator Associate",
@@ -220,6 +237,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/windows-server-hybrid-administrator/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "az-801":{
     label: "AZ-801 Windows Server Hybrid Administrator Associate",
@@ -227,6 +246,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/windows-server-hybrid-administrator/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },   
   "az-900": {
     label: "AZ-900 Azure Fundamentals",
@@ -234,6 +255,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },  
   "dp-100": {
     label: "DP-100 Azure Data Scientist Associate",
@@ -241,6 +264,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "dp-203": {
     label: "DP-203 Azure Data Engineer Associate",
@@ -248,6 +273,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-engineer/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "dp-300": {
     label: "DP-300 Azure Database Administrator Associate",
@@ -255,6 +282,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-database-administrator-associate/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "dp-420": {
     label: "DP-420 Azure Cosmos DB Developer Specialty",
@@ -262,6 +291,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-cosmos-db-developer-specialty/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "dp-900": {
     label: "DP-900 AAzure Data Fundamentals",
@@ -269,6 +300,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-fundamentals/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "sc-100":{
     label: "SC-100 Cybersecurity Architect Expert",
@@ -276,6 +309,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/cybersecurity-architect-expert/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "sc-200": {
     label: "SC-200 Microsoft Security Operations Analyst Associate",
@@ -283,6 +318,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/security-operations-analyst/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "sc-300":{
     label: "SC-300 Microsoft Identity and Access Administrator Associate",
@@ -290,13 +327,17 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/identity-and-access-administrator/?practice-assessment-type=certification",
-  },
+    courseblueprint: "https://aka.ms/SC-300Blueprint",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/SC-300_Blueprint.pdf?sp=r&st=2024-10-10T16:20:37Z&se=2025-07-02T00:20:37Z&spr=https&sv=2022-11-02&sr=b&sig=Q8NZNEY0oa96Olaeyuu8Wf1DeTJ77TJbUmesb6uSjZw%3D",
+   },
   "sc-900":{
     label: "SC-900 Microsoft Security, Compliance, and Identity Fundamentals",
     description: "Demonstrate foundational knowledge of security, compliance, and identity across cloud-based and related Microsoft services.",
     type: "MOC Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/security-compliance-and-identity-fundamentals/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
 
   // ---- Database
@@ -331,6 +372,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Application Insights",
     azureIcon: "./img/Azure-Application-Insights.svg",
     url: "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+    type: "Service",
+  },
+  azureml: {
+    label: "Azure Machine Learning",
+    description: "Template architecture uses Azure Machine Learning",
+    azureIcon: "./img/Azure-Machine-Learning.svg",
+    url: "https://learn.microsoft.com/en-us/azure/machine-learning/?view=azureml-api-2",
     type: "Service",
   },
   loganalytics: {
