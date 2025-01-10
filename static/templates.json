@@ -1,24 +1,35 @@
 [
   {
-    "title": "PeterDT - AZDTest1",
-    "description": "A starter template with az104 as infrastructure provider",
+    "title": "Minimal .NET API with ConferenceAPI sample ",
+    "description": "A minimal .NET API with ConferenceAPI sample",
     "preview": "./templates/images/apptemplate-wordpress-on-ACA.png",
-    "website": "https://github.com/petender/azdtest1213",
+    "website": "https://github.com/petender/ConferenceAPI",
     "author": "petender",
-    "source": "https://github.com/petender/azdtest1213",
-    "tags": ["az-104", "msft", "appinsights", "cosmosdb", "new", "hot", "az-204"],
-    "demoguide": "https://raw.githubusercontent.com/petender/MyRetailBizzNizz/main/Labs/LAB01_ADO_Boards.md"
+    "source": "https://github.com/petender/ConferenceAPI",
+    "tags": ["az-204", "msft", "new", "hot", "az-204"],
+    "demoguide": "https://raw.githubusercontent.com/petender/ConferenceAPI/refs/heads/main/README.md"
     
   },
   {
-    "title": "Starter - ai102",
-    "description": "A starter template with ai102 as infrastructure provider",
+    "title": "API Management with ConferenceAPI",
+    "description": "This scenario deploys an Azure API Management Resource with a Standard SKU, as well as a Conference Demo API Web App, allowing for showing different API calls, as well as using API Management Policies for rate-limit and header-modification + demo Products",
     "preview": "./templates/images/test.png",
-    "website": "https://github.com/Azure/azure-dev",
+    "website": "https://github.com/petender/azd-apimwithconfAPI",
     "author": "petender",
-    "source": "https://github.com/Azure-Samples/azd-starter-ai102",
-    "demoguide": "https://raw.githubusercontent.com/petender/EShopOnWeb-GHRepo/refs/heads/main/README.md",
-    "tags": ["ai-102", "msft", "new", "ai-900"]
+    "source": "https://github.com/petender/azd-apimwithconfAPI",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/demoguide/apimwithconference.md",
+    "tags": ["az-204", "msft", "new", "hot"]
+    
+  },
+  {
+    "title": "Azure AI Services with multiple OpenAI models",
+    "description": "This scenario deploys an Azure AI Services Resource with multiple OpenAI models, allowing for showing different AI calls, as well as using AI Services for text generation, image generation and more. The deployed models are GPT-3.5-Turbo, GPT-4o, Dall-E-3",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender/OpenAIMultiModel",
+    "author": "petender",
+    "source": "https://github.com/petender/OpenAIMultiModel",
+    "demoguide": "https://raw.githubusercontent.com/petender/OpenAIMultiModel/refs/heads/main/README.md",
+    "tags": ["ai-102", "msft", "new", "hot"]
     
   }
   
