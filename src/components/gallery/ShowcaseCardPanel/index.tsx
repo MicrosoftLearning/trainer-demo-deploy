@@ -27,6 +27,7 @@ import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import ShowcaseDemoGuide from "../ShowcaseDemoGuide/index";
 import { useColorMode } from "@docusaurus/theme-common";
+import ShowcaseCard from "../ShowcaseCard";
 
 function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
@@ -35,6 +36,9 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
     useBoolean(false);
   const labelId = useId("callout-label");
   const descriptionId = useId("callout-description");
+  
+  // PDT trying custom event for Application Insights
+  const contentforAppInsights = `{\"id\":\"${url}\",\"cN\":\"Copy Button (azd init)\"}`;
   return (
     <div>
       <DefaultButton
@@ -50,6 +54,8 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
           toggleIsCalloutVisible();
           navigator.clipboard.writeText(url);
         }}
+        //PDT logging custom event for Application Insights
+        data-event-name={contentforAppInsights}
       >
         <img src={copySVG} height={20} alt="Copy" />
         <div style={{ 
@@ -450,7 +456,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       Terminal Command
                     </div>
                     <CopyButton colorMode={colorMode} url={azdInitCommand} 
-                    data-event-name={contentforAppInsights}/>
+                    />
                   </div>
                   <div
                     className={styles.terminalSquareBottomColor}
