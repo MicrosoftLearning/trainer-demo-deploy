@@ -16,6 +16,8 @@
 
 .textColor {
   color: "#dc0791";
+  display: flex;
+  align-items: center;
 }
 
 .squareColor {

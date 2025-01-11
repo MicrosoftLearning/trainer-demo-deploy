@@ -18,7 +18,10 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-apimwithconfAPI",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/demoguide/apimwithconference.md",
-    "tags": ["az-204", "msft", "new", "hot", "appservice", "apim"]
+    "tags": ["az-204", "msft", "new", "hot", "appservice", "apim"],
+    "cost": "20.99",
+    "deploytime": "120"
+
     
   },
   {

@@ -198,8 +198,10 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
               alt="Redirect"
               height={13}
             />
+            
           )}
         </FluentUILink>
+        <div className={styles.textColor}>•</div>
       </div>
       <div
         className={styles.cardTag}
@@ -237,7 +239,43 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
               }}
             >
               {user.description}
+              
+
             </div>
+            <div>-------</div>
+            <div className={styles.textColor}>
+            {colorMode != "dark" ? (
+            <img
+              src={useBaseUrl("/img/Cost.svg")}
+              alt="Cost Estimate"
+              height={25}
+            />
+          ) : (
+            <img
+              src={useBaseUrl("/img/Cost.svg")}
+              alt="Cost Estimate"
+              height={25}
+            />
+            
+          )}
+              
+              Cost Estimate (+/- per day): ${user.cost}</div>
+              <div className={styles.textColor}>
+            {colorMode != "dark" ? (
+            <img
+              src={useBaseUrl("/img/Timer.svg")}
+              alt="Time Estimate"
+              height={25}
+            />
+          ) : (
+            <img
+              src={useBaseUrl("/img/Timer.svg")}
+              alt="Time Estimate"
+              height={25}
+            />
+            
+          )}
+              Deploy Time Estimate: {user.deploytime}min </div>
             <div>
               <div
                 className={styles.borderBottomColor}

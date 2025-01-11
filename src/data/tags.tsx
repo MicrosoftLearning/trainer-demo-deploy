@@ -24,6 +24,8 @@ export type User = {
   demoguide: string | null;
   courseblueprint: string | null;
   tags: TagType[];
+  cost: string;
+  deploytime: string;
 };
 
 // NN: Updated TagType to suit Static Web Apps
