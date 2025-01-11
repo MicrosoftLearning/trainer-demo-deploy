@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+
 
 const ShowcaseDemoGuide = ({ url }) => {
   const [markdownContent, setMarkdownContent] = useState('');
@@ -14,7 +16,7 @@ const ShowcaseDemoGuide = ({ url }) => {
 
   return (
     <div>
-      <ReactMarkdown>{markdownContent}</ReactMarkdown>
+      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdownContent}</ReactMarkdown>
     </div>
   );
 };
