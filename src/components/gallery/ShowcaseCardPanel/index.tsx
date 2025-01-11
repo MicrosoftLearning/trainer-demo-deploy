@@ -110,7 +110,11 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   const mkdirCommand = "mkdir " + templateURL;
   const cddirCommand = "cd " + templateURL;  
   const azdInitCommand = "azd init -t " + templateURL;
+  const title = user.title;
   let chevronSVG = useBaseUrl("/img/leftChevron.svg");
+
+  // PDT trying custom event for Application Insights
+  const contentforAppInsights = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
 
   let pivotTextColor = "black";
   const { colorMode } = useColorMode();
@@ -445,7 +449,8 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     >
                       Terminal Command
                     </div>
-                    <CopyButton colorMode={colorMode} url={azdInitCommand} />
+                    <CopyButton colorMode={colorMode} url={azdInitCommand} 
+                    data-event-name={contentforAppInsights}/>
                   </div>
                   <div
                     className={styles.terminalSquareBottomColor}
