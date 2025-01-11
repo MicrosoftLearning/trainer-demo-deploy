@@ -39,7 +39,7 @@
     "website": "https://github.com/rob-foulkrod/TollBooth",
     "author": "rob-foulkrod",
     "source": "https://github.com/rob-foulkrod/TollBooth",
-    "demoguide": "",
+    "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/Demoguide/tollbooth.md",
     "tags": ["az-204", "az-305","msft", "new", "hot", "appservice", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"]
     
   },
@@ -75,6 +75,28 @@
     "source": "https://github.com/rob-foulkrod/IAAS2019",
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/README.md",
     "tags": ["az-104", "az-305", "msft", "new", "virtualmachine"]
+    
+  },
+  {
+    "title": "EShopOnWeb ACI Architecture",
+    "description": "This scenario is deploying Azure Container Instance, with a sample EShopOnWeb Container with .NET8.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
+    "demoguide": "https://raw.githubusercontent.com/petender/maarten-AZD-ACI-Demo/refs/heads/main/demoguide.md",
+    "tags": ["az-104", "az-204", "az-305", "msft", "new", "acr", "aci"]
+    
+  },
+  {
+    "title": "EShopOnWeb ACAPPS Architecture",
+    "description": "This scenario is deploying Azure Container Apps, with a sample EShopOnWeb Container with .NET8.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
+    "demoguide": "https://raw.githubusercontent.com/petender/maarten-AZD-ACA-Demo/refs/heads/main/demoguide.md",
+    "tags": ["az-104", "az-204", "az-305", "msft", "new", "acr", "aci"]
     
   }
   

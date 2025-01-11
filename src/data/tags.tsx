@@ -68,6 +68,8 @@ export type TagType =
   | "monitor"
   | "keyvault"
   | "azurecontainerapps"
+  | "aci"
+  | "acr"
   | "mongodb"
   | "functions"
   | "blobstorage"
@@ -415,6 +417,20 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Container Apps",
     azureIcon: "./img/Azure-Container-Apps.svg",
     url: "https://azure.microsoft.com/products/container-apps",
+    type: "Service",
+  },
+  aci: {
+    label: "Azure Container Instance",
+    description: "Template architecture uses Azure Container Instance",
+    azureIcon: "./img/Azure-Container-Instance.svg",
+    url: "https://azure.microsoft.com/en-us/products/container-instances/",
+    type: "Service",
+  },
+  acr: {
+    label: "Azure Container Registry",
+    description: "Template architecture uses Azure Container Registry",
+    azureIcon: "./img/Azure-Container-Registry.svg",
+    url: "https://azure.microsoft.com/en-us/products/container-registry/",
     type: "Service",
   },
   cosmosdb: {
