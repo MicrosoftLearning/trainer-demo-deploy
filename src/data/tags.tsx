@@ -99,6 +99,7 @@ export type TagType =
   | "logicapps"
   | "speechservice"
   | "azureml"
+  | "virtualmachine"
 
 ;
 
@@ -619,5 +620,12 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
 
+  virtualmachine: {
+    label: "Azure Virtual Machine",
+    description: "Template architecture uses Azure Virtual Machine",
+    azureIcon: "./img/Azure-Virtual-Machine.svg",
+    url: "https://azure.microsoft.com/azure/virtual-machines",
+    type: "Service",
+  }
   
 };
