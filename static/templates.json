@@ -131,7 +131,19 @@
     "cost": "12.99",
     "deploytime": "7"
     
+  },
+  {
+    "title": "Azure FrontDoor CDN with sample HTML webapp",
+    "description": "This template deploys an Azure FrontDoor CDN, with a sample HTML-based webapp. The webapp allows you to load sample images from different endpoints, one is from within the webapp storage itself, a second one loads from Azure Storage Account Blobs and the last one loads from Azure Frontdoor CDN. This demo shows how static data such as image files can optimize site loading time when using CDN caching.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender/azd-fdcdn",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-fdcdn",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-fdcdn/refs/heads/main/Demoguides/fdcdn.md",
+    "tags": ["az-204", "az-305", "msft", "new", "frontdoor"],
+    "cost": "6.99",
+    "deploytime": "4.20"
+    
   }
-  
   
 ]
