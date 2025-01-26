@@ -157,6 +157,20 @@
     "cost": "3.80",
     "deploytime": "7.35"
     
+  },
+
+  {
+    "title": "Azure Event Hub with Console App",
+    "description": "This template deploys Azure Event Hub, as well as runs a local Console app on your machine to interact with Publisher and Subscriber events.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/true-while/event-hub-azd",
+    "author": "true-while",
+    "source": "https://github.com/true-while/event-hub-azd",
+    "demoguide": "https://github.com/true-while/event-hub-azd/blob/main/demoguide/apimwithconference.md",
+    "tags": ["az-204", "az-305", "msft", "new", "eventhub"],
+    "cost": "1.15",
+    "deploytime": "1.49"
+    
   }
   
 ]
