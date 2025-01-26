@@ -153,7 +153,7 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-PaaS-Demo/refs/heads/main/demoguide.md",
-    "tags": ["az-204", "az-305", "msft", "new", "appservice", "sqlazure"],
+    "tags": ["az-204", "az-305", "msft", "new", "appservice", "azuresql"],
     "cost": "3.80",
     "deploytime": "7.35"
     
