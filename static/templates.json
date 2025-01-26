@@ -144,6 +144,19 @@
     "cost": "6.99",
     "deploytime": "4.20"
     
+  },
+  {
+    "title": "EShopOnWeb in Azure App Service and SQL Azure DB",
+    "description": "This template deploys the EShopOnWeb .NET 8 application in Azure App Services, connecting to a SQL Azure database instance.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
+    "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-PaaS-Demo/refs/heads/main/demoguide.md",
+    "tags": ["az-204", "az-305", "msft", "new", "appservice", "sqlazure"],
+    "cost": "3.80",
+    "deploytime": "7.35"
+    
   }
   
 ]
