@@ -166,7 +166,7 @@
     "website": "https://github.com/true-while/event-hub-azd",
     "author": "true-while",
     "source": "https://github.com/true-while/event-hub-azd",
-    "demoguide": "https://github.com/true-while/event-hub-azd/blob/main/demoguide/apimwithconference.md",
+    "demoguide": "https://raw.githubusercontent.com/true-while/event-hub-azd/refs/heads/main/demoguide/apimwithconference.md",
     "tags": ["az-204", "az-305", "msft", "new", "eventhub"],
     "cost": "1.15",
     "deploytime": "1.49"
