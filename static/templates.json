@@ -199,6 +199,20 @@
     "cost": "10.15",
     "deploytime": "32.38"
     
+  },
+
+  {
+    "title": "Azure Functions with Blob Trigger (Watermark text)",
+    "description": "This scenario deploys an Azure Functions App, which provides a Blob Trigger. When an image file is uploaded to the /input container, the Function gets triggered and adds a watermark text to the image file. The new image file getes saved into an /output container. Application Insights is also deployed, so you can showcase the necessary monitoring features of Azure Functions monitor, as well as more detailed in App Insights itself.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
+    "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/demoguide.md",
+    "tags": ["az-204", "az-305", "msft", "new", "functions"],
+    "cost": "2.56",
+    "deploytime": "3.49"
+    
   }
   
 ]
