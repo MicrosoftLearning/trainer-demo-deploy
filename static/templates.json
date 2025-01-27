@@ -171,6 +171,34 @@
     "cost": "1.15",
     "deploytime": "1.49"
     
+  },
+
+  {
+    "title": "Hub Spoke with VPN Gateway and JumpVM",
+    "description": "This scenario deploys an Azure VNET Hub & Spoke architecture including VNET Peering, VPN Gateway and a Windows Server 2022 JumpVM.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender/azd-hubspoke",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-hubspoke",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-hubspoke/refs/heads/main/README.md",
+    "tags": ["az-104", "az-700", "az-305", "msft", "new", "vnets"],
+    "cost": "7.25",
+    "deploytime": "34.25"
+    
+  },
+
+  {
+    "title": "Azure Site 2 Site VPN",
+    "description": "This scenario deploys 3 Azure VPN Gateways in 3 different regions (West Europe, Central US and East Asia) and establishes the connections across all 3 of them.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender/azd-site2sitevpn/",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-site2sitevpn/",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-site2sitevpn/refs/heads/main/Demoguides/s2svpn.md",
+    "tags": ["az-104", "az-700", "az-305", "msft", "new", "vnets"],
+    "cost": "10.15",
+    "deploytime": "32.38"
+    
   }
   
 ]
