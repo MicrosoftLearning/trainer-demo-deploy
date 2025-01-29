@@ -74,10 +74,10 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   let headerText = "MCT Authored";
 
   // Adobe Analytics Content
-  //const contentForAdobeAnalytics = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
+  const contentForAdobeAnalytics = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
 
   // PDT trying custom event for Application Insights
-  const contentforAppInsights = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
+  //const contentforAppInsights = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
 
   // Panel
   const { colorMode } = useColorMode();
@@ -287,7 +287,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               }}
               
               //PDT logging custom event for Application Insights
-              data-event-name={contentforAppInsights}
+              data-event-name={contentForAdobeAnalytics}
             >
               <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
             </Button>

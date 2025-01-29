@@ -38,7 +38,7 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const descriptionId = useId("callout-description");
   
   // PDT trying custom event for Application Insights
-  const contentforAppInsights = `{\"id\":\"${url}\",\"cN\":\"Copy Button (azd init)\"}`;
+  const contentForAdobeAnalytics = `{\"id\":\"${url}\",\"cN\":\"Copy Button (azd init)\"}`;
   return (
     <div>
       <DefaultButton
@@ -50,17 +50,18 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
           borderColor: "transparent",
           backgroundColor: "transparent",
         }}
+        data-event-name={contentForAdobeAnalytics}
         onClick={() => {
           toggleIsCalloutVisible();
           navigator.clipboard.writeText(url);
         }}
-        //PDT logging custom event for Application Insights
-        data-event-name={contentforAppInsights}
+
       >
         <img src={copySVG} height={20} alt="Copy" />
         <div style={{ 
           fontSize: "14px",
            }}>Copy</div>
+        
       </DefaultButton>
       {isCalloutVisible && (
         <Callout
@@ -120,7 +121,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   let chevronSVG = useBaseUrl("/img/leftChevron.svg");
 
   // PDT trying custom event for Application Insights
-  const contentforAppInsights = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
+  const contentForAdobeAnalytics = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
 
   let pivotTextColor = "black";
   const { colorMode } = useColorMode();
@@ -455,7 +456,11 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     >
                       Terminal Command
                     </div>
-                    <CopyButton colorMode={colorMode} url={azdInitCommand} 
+                    <CopyButton colorMode={colorMode} url={azdInitCommand}
+                      data-event-name={contentforAdobeAnalytics} 
+                      // add a log event to the terminal
+
+                      
                     />
                   </div>
                   <div
@@ -477,6 +482,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       }}
                     >
                       {azdInitCommand}
+                      
                     </div>
                   </div>
                   <div

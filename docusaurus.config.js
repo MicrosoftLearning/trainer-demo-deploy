@@ -227,14 +227,15 @@ const config = {
           },
         ],
       },
-    ],
-    ["@microsoft/docusaurus-plugin-application-insights", { 
-      config: {
-        instrumentationKey: "c2273884-309f-4a0b-9b9b-ca7c03305649",
-      },
-    enableClickAnalytics: true,
+    ]
+    //,
+    //["@microsoft/docusaurus-plugin-application-insights", { 
+    //  config: {
+    //    instrumentationKey: "c2273884-309f-4a0b-9b9b-ca7c03305649",
+    //  },
+    //enableClickAnalytics: true,
     
-  }],
+  //}],
     
   ],
 
