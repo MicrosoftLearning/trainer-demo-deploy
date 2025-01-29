@@ -55,7 +55,7 @@ const config = {
 
   // CONFIG: scripts
   scripts: [
-  //  "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
+    "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
     "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
   ],
 
