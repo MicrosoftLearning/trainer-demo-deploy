@@ -106,11 +106,11 @@ const adobeInit = () => {
   setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
 
   // 1DS initialization
-  /*try {
+  try {
     const analytics = new oneDS.ApplicationInsights();
     var config = {
       instrumentationKey:
-        "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
+        "61a637e8563e49b2beee734551817390-2a6e914d-3bb7-4bad-bf77-cac3d219424d-6872",
       propertyConfiguration: {
         // Properties Plugin configuration
         callback: {
@@ -148,7 +148,7 @@ const adobeInit = () => {
       throw error;
     }
   }
-    */
+    
 };
 
 export default function NavbarLayout({ children }) {
