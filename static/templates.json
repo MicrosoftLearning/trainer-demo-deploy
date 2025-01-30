@@ -100,7 +100,7 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
     "demoguide": "https://raw.githubusercontent.com/petender/maarten-AZD-ACI-Demo/refs/heads/main/demoguide.md",
-    "tags": ["az-104", "az-204", "az-305", "msft", "new", "acr", "aci"],
+    "tags": ["az-104", "az-204", "az-305", "mct", "new", "acr", "aci"],
     "cost": "3.15",
     "deploytime": "4"
     
@@ -113,7 +113,7 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
     "demoguide": "https://raw.githubusercontent.com/petender/maarten-AZD-ACA-Demo/refs/heads/main/demoguide.md",
-    "tags": ["az-104", "az-204", "az-305", "msft", "new", "acr", "aci"],
+    "tags": ["az-104", "az-204", "az-305", "mct", "new", "acr", "aci"],
     "cost": "2.54",
     "deploytime": "7"
     
@@ -127,7 +127,7 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AKS-Demo/refs/heads/main/demoguide.md",
-    "tags": ["az-104", "az-305", "msft", "new", "aks"],
+    "tags": ["az-104", "az-305","mct", "new", "aks"],
     "cost": "12.99",
     "deploytime": "7"
     
@@ -153,7 +153,7 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-PaaS-Demo/refs/heads/main/demoguide.md",
-    "tags": ["az-204", "az-305", "msft", "new", "appservice", "azuresql"],
+    "tags": ["az-204", "az-305", "mct", "new", "appservice", "azuresql"],
     "cost": "3.80",
     "deploytime": "7.35"
     
@@ -209,7 +209,7 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/demoguide.md",
-    "tags": ["az-204", "az-305", "msft", "new", "functions"],
+    "tags": ["az-204", "az-305", "mct", "new", "functions"],
     "cost": "2.56",
     "deploytime": "3.49"
     
