@@ -457,7 +457,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       Terminal Command
                     </div>
                     <CopyButton colorMode={colorMode} url={azdInitCommand}
-                      data-event-name={contentforAdobeAnalytics} 
+                      data-event-name={contentForAdobeAnalytics} 
                       // add a log event to the terminal
 
                       
