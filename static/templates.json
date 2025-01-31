@@ -42,7 +42,7 @@
   {
     "title": "Tollbooth Serverless Architecture with Azure Functions",
     "description": "This scenario deploys the building blocks for a serverless automated parking lot / tollbooth / HOV lanes system using Azure Functions and EventGrid. It also has Azure Storage Account, CosmosDB, Azure KeyVault and Application Insights as part of the architecture.",
-    "preview": "./templates/images/tollbooth.jpg",
+    "preview": "./templates/images/tollbooth.png",
     "website": "https://github.com/rob-foulkrod",
     "author": "rob-foulkrod",
     "source": "https://github.com/rob-foulkrod/TollBooth",
@@ -82,7 +82,7 @@
   {
     "title": "EShopOnWeb VM Architecture",
     "description": "This scenario is based on a WebVM and SQLVM architecture, showcasing traditional IAAS in Azure.",
-    "preview": "./templates/images/eshoponweb_vm_architecture.jpg",
+    "preview": "./templates/images/eshoponweb_vm_architecture.png",
     "website": "https://github.com/rob-foulkrod",
     "author": "rob-foulkrod",
     "source": "https://github.com/rob-foulkrod/IAAS2019",
@@ -95,7 +95,7 @@
   {
     "title": "EShopOnWeb ACI Architecture",
     "description": "This scenario is deploying Azure Container Instance, with a sample EShopOnWeb Container with .NET8.",
-    "preview": "./templates/images/eshoponweb_aci.jpg",
+    "preview": "./templates/images/eshoponweb_aci.png",
     "website": "https://github.com/maartenvandiemen",
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
@@ -108,7 +108,7 @@
   {
     "title": "EShopOnWeb ACAPPS Architecture",
     "description": "This scenario is deploying Azure Container Apps, with a sample EShopOnWeb Container with .NET8.",
-    "preview": "./templates/images/eshoponweb_aca.jpg",
+    "preview": "./templates/images/eshoponweb_aca.png",
     "website": "https://github.com/maartenvandiemen",
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
@@ -122,7 +122,7 @@
   {
     "title": "EShopOnWeb AKS Architecture",
     "description": "This scenario is based on a Kubernetes (AKS) architecture.",
-    "preview": "./templates/images/eshoponweb_aks.jpg",
+    "preview": "./templates/images/eshoponweb_aks.png",
     "website": "https://github.com/maartenvandiemen",
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
@@ -148,7 +148,7 @@
   {
     "title": "EShopOnWeb in Azure App Service and SQL Azure DB",
     "description": "This template deploys the EShopOnWeb .NET 8 application in Azure App Services, connecting to a SQL Azure database instance.",
-    "preview": "./templates/images/eshoponweb_paas.jpg",
+    "preview": "./templates/images/eshoponweb_paas.png",
     "website": "https://github.com/maartenvandiemen",
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
@@ -176,7 +176,7 @@
   {
     "title": "Hub Spoke with VPN Gateway and JumpVM",
     "description": "This scenario deploys an Azure VNET Hub & Spoke architecture including VNET Peering, VPN Gateway and a Windows Server 2022 JumpVM.",
-    "preview": "./templates/images/HubSpokewithJumpVM.jpg",
+    "preview": "./templates/images/HubSpokewithJumpVM.png",
     "website": "https://github.com/petender",
     "author": "petender",
     "source": "https://github.com/petender/azd-hubspoke",
@@ -204,7 +204,7 @@
   {
     "title": "Azure Functions with Blob Trigger (Watermark text)",
     "description": "This scenario deploys an Azure Functions App, which provides a Blob Trigger. When an image file is uploaded to the /input container, the Function gets triggered and adds a watermark text to the image file. The new image file getes saved into an /output container. Application Insights is also deployed, so you can showcase the necessary monitoring features of Azure Functions monitor, as well as more detailed in App Insights itself.",
-    "preview": "./templates/images/WaterMarkFunction.jpg",
+    "preview": "./templates/images/WaterMarkFunction.png",
     "website": "https://github.com/maartenvandiemen",
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
