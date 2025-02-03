@@ -213,6 +213,34 @@
     "cost": "2.56",
     "deploytime": "3.49"
     
+  },
+
+  {
+    "title": "Azure Sentinel with Data Connectors",
+    "description": "This scenario deploys an Azure Sentinel workspace, including a few sample data connectors (AWS, M365, Entra Id and LogicApps.",
+    "preview": "./templates/images/Sentinel.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-sentinel",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-sentinel/refs/heads/main/demoguide/demoguide.md",
+    "tags": ["az-500", "az-305", "msft", "new", "sentinel"],
+    "cost": "2.56",
+    "deploytime": "8.32"
+    
+  },
+
+  {
+    "title": "Azure Traffic Manager with WebApps",
+    "description": "This scenario deploys Azure Traffic Manager with WebApps in 3 regions.",
+    "preview": "./templates/images/trafficmgr.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-trafficmgr",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-trafficmgr/refs/heads/main/demoguide/demoguide.md",
+    "tags": ["az-204", "az-305", "msft", "new", "trafficmgr"],
+    "cost": "2.56",
+    "deploytime": "3.49"
+    
   }
   
 ]
