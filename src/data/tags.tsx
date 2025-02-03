@@ -106,6 +106,7 @@ export type TagType =
   | "virtualmachine"
   | "sentinel"
   | "trafficmgr"
+  | "purview"
 
 ;
 
