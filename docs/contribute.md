@@ -4,7 +4,7 @@ title: "Contributor Guide"
 ---
 
 ## We ♥️ Contributions!
-`trainer-demo-deploy` is a Technical Trainer community-friendly resource to help trainers and learners doing compelling demos during MOC courses deliveries. Scenarios are based on `azd` templates, which allows for easy redeployment for your next class delivery or learning journey. 
+`trainer-demo-deploy` is a Technical Trainer community-friendly resource to help trainers and learners doing compelling demos during MOC courses and other technical training deliveries and workshops. Scenarios are based on `azd` templates, which allows for easy redeployment for your next class delivery or learning journey. 
 
 ## Submit a PR
 
@@ -23,7 +23,8 @@ To submit a template:
     - **Link to template source** - Link to the template GitHub repo
     - **Tags** - One or more [tags](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/src/data/tags.tsx) representing the template. Provide at least 1 tag for the related Microsoft Official Course (MOC) used and at least 1 tag for Azure services integrated. Missing a relevant tag for your template? Feel free to add one!
     - **DemoGuide** - Link to MarkDown document with step-by-step instructions on what to demo
-    - **Course Blueprint** - ShortLink (aka.ms) to the MOC Course Blueprint assets related to this demo scenario 
+    - **DeployTime** - The estimated time for deploying the scenario
+    - **Cost** - The estimated costs in USD, to host the full Resource Group scenario for 24 hours, using Azure Cost Analysis amounts as a guideline 
 2. Open a PR!
 3. If possible, add a link to the PR in your repo where you made your app `azd` compatible to the PR description. This will help us provide feedback on your template and speed up the review process. 
 
