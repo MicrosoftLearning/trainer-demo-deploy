@@ -241,6 +241,19 @@
     "cost": "2.56",
     "deploytime": "3.49"
     
+  },
+  
+  {
+    "title": "Purview Demo Environment",
+    "description": "This deployes Purview, a storage account, Data factory, Synapse, and a SQL Database. It Adds the storage account and database to collections, creates an runs a pipeline, and reports the lineage.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/purviewEnvironment-azd",
+    "demoguide": "Demoguide/demoguide.md",
+    "tags": ["dp-203", "az-305", "msft", "new", "purview"],
+    "cost": "4.50",
+    "deploytime": "25"
   }
   
 ]
