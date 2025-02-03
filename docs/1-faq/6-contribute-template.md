@@ -9,7 +9,7 @@ You can contribute azd-templates in two contexts:
  * **For your own ideas** - provide the architecture diagram and tags.
 :::
 
-[Submit a PR + fill out the checklist](https://aka.ms/awesome-azd-contribute)
+[Submit a PR + fill out the checklist](https://aka.ms/trainer-demo-deploy/contribute)
 
 An internal team will review submissions
  - Validate that templates function as desired

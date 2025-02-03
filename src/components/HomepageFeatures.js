@@ -25,12 +25,12 @@ const FeatureList = [
     content: "View templates",
   },
   {
-    title: "Learn more about AZD",
+    title: "Check out the FAQs",
     Svg: "img/home-learn.svg",
-    link: "https://aka.ms/azd",
+    link: "https://microsoftlearning.github.io/trainer-demo-deploy/docs/faq/what-is-azd/",
     description:
-      "Read the official Microsoft documentation to learn more about azd and its features.",
-    content: "View docs",
+      "Answers to common questions, how to use the templates and prerequisites.",
+    content: "View FAQs",
   },
   {
     title: "Contribute to the Library",
