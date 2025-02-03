@@ -250,7 +250,7 @@
     "website": "https://github.com/rob-foulkrod",
     "author": "rob-foulkrod",
     "source": "https://github.com/rob-foulkrod/purviewEnvironment-azd",
-    "demoguide": "Demoguide/demoguide.md",
+    "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/purviewEnvironment-azd/main/Demoguide/demoguide.md",
     "tags": ["dp-203", "az-305", "msft", "new", "purview"],
     "cost": "4.50",
     "deploytime": "25"
