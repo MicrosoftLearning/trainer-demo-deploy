@@ -665,6 +665,14 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
 
+  purview: {
+    label: "Azure Purview",
+    description: "Template architecture uses Azure Purview",
+    azureIcon: "./img/Azure-Purview.svg",
+    url: "https://azure.microsoft.com/products/purview",
+    type: "Service",
+  },
+
 
   
 };
