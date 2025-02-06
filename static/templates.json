@@ -183,7 +183,8 @@
     "demoguide": "https://raw.githubusercontent.com/petender/azd-hubspoke/refs/heads/main/README.md",
     "tags": ["az-104", "az-700", "az-305", "msft", "new", "vnets"],
     "cost": "7.25",
-    "deploytime": "34.25"
+    "deploytime": "34.25",
+    "prereqs": "https://raw.githubusercontent.com/petender/azd-hubspoke/refs/heads/main/Prereqs.md"
     
   },
 

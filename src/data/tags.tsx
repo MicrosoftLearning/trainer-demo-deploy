@@ -26,6 +26,7 @@ export type User = {
   tags: TagType[];
   cost: string;
   deploytime: string;
+  prereqs: string;
 };
 
 // NN: Updated TagType to suit Static Web Apps
