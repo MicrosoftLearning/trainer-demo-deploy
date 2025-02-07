@@ -46,7 +46,8 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/Demoguide/tollbooth.md",
     "tags": ["az-204", "az-305","msft", "new", "hot", "appservice", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"],
     "cost": "3.20",
-    "deploytime": "12"    
+    "deploytime": "12"
+    "prereqs" : "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/prereqs.md"
   },
   {
     "title": "Blazor BadgeMaker with Azure AI Services",
@@ -58,7 +59,8 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/Readme.md",
     "tags": ["az-204", "az-305", "ai-102", "msft", "new", "hot", "appservice", "azureai", "blazor"],
     "cost": "3.24",
-    "deploytime": "7"    
+    "deploytime": "7"
+    "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/prereqs.md"
   },
   {
     "title": "Azure Machine Learning",
@@ -71,7 +73,7 @@
     "tags": ["az-204", "az-305", "dp-100", "msft", "new", "hot", "azureml", "keyvault", "appinsights"],
     "cost": "25",
     "deploytime": "16"
-    
+    "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/prereqs.md"
   },
   
   {
