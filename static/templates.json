@@ -22,9 +22,7 @@
     "demoguide": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/demoguide/apimwithconference.md",
     "tags": ["az-204", "msft", "new", "hot", "appservice", "apim"],
     "cost": "3.00",
-    "deploytime": "5"
-
-    
+    "deploytime": "5"    
   },
   {
     "title": "Azure AI Services with multiple OpenAI models",
@@ -36,8 +34,7 @@
     "demoguide": "https://raw.githubusercontent.com/petender/OpenAIMultiModel/refs/heads/main/README.md",
     "tags": ["ai-102", "msft", "new", "hot", "openai", "azureai"],
     "cost": "3.87",
-    "deploytime": "4"
-    
+    "deploytime": "4"    
   },
   {
     "title": "Tollbooth Serverless Architecture with Azure Functions",
@@ -49,8 +46,7 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/Demoguide/tollbooth.md",
     "tags": ["az-204", "az-305","msft", "new", "hot", "appservice", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"],
     "cost": "3.20",
-    "deploytime": "12"
-    
+    "deploytime": "12"    
   },
   {
     "title": "Blazor BadgeMaker with Azure AI Services",
@@ -62,8 +58,7 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/Readme.md",
     "tags": ["az-204", "az-305", "ai-102", "msft", "new", "hot", "appservice", "azureai", "blazor"],
     "cost": "3.24",
-    "deploytime": "7"
-    
+    "deploytime": "7"    
   },
   {
     "title": "Azure Machine Learning",
@@ -162,14 +157,15 @@
   {
     "title": "Azure Event Hub with Console App",
     "description": "This template deploys Azure Event Hub, as well as runs a local Console app on your machine to interact with Publisher and Subscriber events.",
-    "preview": "./templates/images/test.png",
+    "preview": "./templates/images/evhub-azd.png",
     "website": "https://github.com/true-while",
     "author": "true-while",
     "source": "https://github.com/true-while/event-hub-azd",
     "demoguide": "https://raw.githubusercontent.com/true-while/event-hub-azd/refs/heads/main/demoguide/apimwithconference.md",
     "tags": ["az-204", "az-305", "msft", "new", "eventhub"],
-    "cost": "1.15",
-    "deploytime": "1.49"
+    "cost": "2.00",
+    "deploytime": "2"
+    "prereqs": "https://raw.githubusercontent.com/true-while/event-hub-azd/refs/heads/main/prereqs.md"
     
   },
 
