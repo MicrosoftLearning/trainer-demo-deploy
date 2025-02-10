@@ -216,7 +216,7 @@
     "tags": ["az-204", "az-305", "mct", "new", "functions"],
     "cost": "2.56",
     "deploytime": "3.49"
-    
+    "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/prereqs.md"
   },
 
   {
