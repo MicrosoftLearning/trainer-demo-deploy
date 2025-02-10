@@ -254,6 +254,19 @@
     "tags": ["dp-203", "az-305", "msft", "new", "purview"],
     "cost": "4.50",
     "deploytime": "25"
+  },
+  {
+    "title": "Service endpoint, private endpoint and private link service",
+    "description": "This is a complete demo for Service endpoint, private endpoint and private link service",
+    "preview": "https://github.com/user-attachments/assets/fb691a32-37d0-4144-aa47-86bbd1ff1bb0",
+    "website": "https://github.com/sarahallali",
+    "author": "sarahallali",
+    "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
+    "tags": ["az-700", "az-305", "az-500", "az-104", "msft", "new", "hot", "vnets"],
+    "demoguide": "https://raw.githubusercontent.com/sarahallali/azd-Privatelink-Pendpoint/refs/heads/main/Demoguides/Privatelink-Pendpoint.md",
+    "cost": "2.99",
+    "deploytime": "5.02"
+    
   }
   
 ]
