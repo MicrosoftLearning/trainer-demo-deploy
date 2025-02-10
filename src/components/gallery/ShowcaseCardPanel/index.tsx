@@ -28,6 +28,7 @@ import ShowcaseCardTag from "../ShowcaseTag/index";
 import ShowcaseDemoGuide from "../ShowcaseDemoGuide/index";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCard from "../ShowcaseCard";
+import ShowcasePrereqs from "../ShowcasePrereqs/index";
 
 function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
@@ -117,6 +118,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   const mkdirCommand = "mkdir " + templateURL;
   const cddirCommand = "cd " + templateURL;  
   const azdInitCommand = "azd init -t " + templateURL;
+  const azdUpCommand = "azd up";
   const title = user.title;
   let chevronSVG = useBaseUrl("/img/leftChevron.svg");
 
@@ -270,7 +272,8 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             
           )}
               
-              Cost Estimate (+/- per day): ${user.cost}</div>
+              Cost Estimate (per 24h): +/- ${user.cost}
+              </div>
               <div className={styles.textColor}>
             {colorMode != "dark" ? (
             <img
@@ -286,24 +289,55 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             />
             
           )}
-              Deploy Time Estimate: {user.deploytime}min </div>
-            <div>
-              <div
-                className={styles.borderBottomColor}
-                style={{
-                  display: "flex",
-                  paddingTop: "30px",
-                }}
-              >
-                <div
-                  className={styles.textColor}
-                  style={{
-                    fontSize: "14px",
-                    flex: "1",
-                  }}
-                >
-                  4-Step Deployment
-                </div>
+          
+              Deploy Time Estimate (in min): +/- {user.deploytime} 
+              </div>
+              {user.prereqs && (
+                  <>
+            <div className={styles.textColor}>
+            {colorMode != "dark" ? (
+            <img
+              src={useBaseUrl("/img/info.svg")}
+              alt="Deployment Prereqs"
+              height={25}
+            />
+          ) : (
+            <img
+              src={useBaseUrl("/img/info.svg")}
+              alt="Deployment Prereqs"
+              height={25}
+            />
+            
+          )}
+          
+              
+                  
+                    Scenario-specific prereqs:
+                    </div>
+                    <div style={{ paddingTop: "10px" }}>
+                    <ShowcasePrereqs url={user.prereqs} />
+                    </div>
+                    
+                  </>
+                  
+                  )}
+                  <div>
+                  <div
+                    className={styles.borderBottomColor}
+                    style={{
+                    display: "flex",
+                    paddingTop: "30px",
+                    }}
+                  >
+                    <div
+                    className={styles.textColor}
+                    style={{
+                      fontSize: "14px",
+                      flex: "1",
+                    }}
+                    >
+                    4-Step Deployment
+                    </div>
                 <DefaultButton
                   style={{
                     backgroundColor: "transparent",
@@ -383,7 +417,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       padding: "10px 0",
                     }}
                   >
-                    2. Next, navigate to the new folder.
+                    2. Next, navigate into the new folder.
                   </div>
                   <div
                     className={styles.terminalSquareTopColor}
@@ -514,7 +548,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     >
                       Terminal Command
                     </div>
-                    <CopyButton colorMode={colorMode} url={azdInitCommand} />
+                    <CopyButton colorMode={colorMode} url={azdUpCommand} />
                   </div>
                   <div
                     className={styles.terminalSquareBottomColor}
@@ -534,7 +568,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                         fontWeight: "400",
                       }}
                     >
-                      azd up
+                      {azdUpCommand}
                     </div>
                   </div>
 
