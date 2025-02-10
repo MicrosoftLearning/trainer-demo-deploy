@@ -120,7 +120,6 @@
     "deploytime": "7"
     
   },
-
   {
     "title": "EShopOnWeb AKS Architecture",
     "description": "This scenario is based on a Kubernetes (AKS) architecture.",
@@ -132,7 +131,7 @@
     "tags": ["az-104", "az-305", "mct", "new", "aks"],
     "cost": "12.99",
     "deploytime": "7"
-    
+    "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AKS-Demo/refs/heads/main/prereqs.md"
   },
   {
     "title": "Azure FrontDoor CDN with sample HTML webapp",
