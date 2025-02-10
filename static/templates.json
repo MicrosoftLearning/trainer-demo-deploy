@@ -159,9 +159,8 @@
     "tags": ["az-204", "az-305", "mct", "new", "appservice", "azuresql"],
     "cost": "3.80",
     "deploytime": "7.35"
-    
+    "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-PaaS-Demo/refs/heads/main/prereqs.md"
   },
-
   {
     "title": "Azure Event Hub with Console App",
     "description": "This template deploys Azure Event Hub, as well as runs a local Console app on your machine to interact with Publisher and Subscriber events.",
