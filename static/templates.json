@@ -8,8 +8,9 @@
     "source": "https://github.com/petender/ConferenceAPI",
     "tags": ["az-204", "msft", "new", "hot", "appservice"],
     "demoguide": "https://raw.githubusercontent.com/petender/ConferenceAPI/refs/heads/main/README.md",
-    "cost": "2.99",
-    "deploytime": "3"
+    "cost": "3",
+    "deploytime": "3",
+    "prereqs": "https://raw.githubusercontent.com/petender/ConferenceAPI/refs/heads/main/prereqs.md"
     
   },
   {
@@ -22,7 +23,8 @@
     "demoguide": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/demoguide/apimwithconference.md",
     "tags": ["az-204", "msft", "new", "hot", "appservice", "apim"],
     "cost": "3.00",
-    "deploytime": "5"    
+    "deploytime": "5",    
+    "prereqs": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/prereqs.md
   },
   {
     "title": "Azure AI Services with multiple OpenAI models",
@@ -46,7 +48,7 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/Demoguide/tollbooth.md",
     "tags": ["az-204", "az-305","msft", "new", "hot", "appservice", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"],
     "cost": "3.20",
-    "deploytime": "12"
+    "deploytime": "12",
     "prereqs" : "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/prereqs.md"
   },
   {
@@ -59,7 +61,7 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/Readme.md",
     "tags": ["az-204", "az-305", "ai-102", "msft", "new", "hot", "appservice", "azureai", "blazor"],
     "cost": "3.24",
-    "deploytime": "7"
+    "deploytime": "7",
     "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/prereqs.md"
   },
   {
@@ -72,7 +74,7 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/README.md",
     "tags": ["az-204", "az-305", "dp-100", "msft", "new", "hot", "azureml", "keyvault", "appinsights"],
     "cost": "25",
-    "deploytime": "16"
+    "deploytime": "16",
     "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/prereqs.md"
   },
   
@@ -115,7 +117,6 @@
     "deploytime": "7"
     
   },
-
   {
     "title": "EShopOnWeb AKS Architecture",
     "description": "This scenario is based on a Kubernetes (AKS) architecture.",
@@ -127,7 +128,7 @@
     "tags": ["az-104", "az-305", "mct", "new", "aks"],
     "cost": "12.99",
     "deploytime": "7"
-    
+    "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AKS-Demo/refs/heads/main/prereqs.md"
   },
   {
     "title": "Azure FrontDoor CDN with sample HTML webapp",
@@ -138,8 +139,9 @@
     "source": "https://github.com/petender/azd-fdcdn",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-fdcdn/refs/heads/main/Demoguides/fdcdn.md",
     "tags": ["az-204", "az-305", "msft", "new", "frontdoor"],
-    "cost": "6.99",
-    "deploytime": "4.20"
+    "cost": "8.00",
+    "deploytime": "5",
+    "prereqs": "https://raw.githubusercontent.com/petender/azd-fdcdn/refs/heads/main/prereqs.md"
     
   },
   {
@@ -153,9 +155,8 @@
     "tags": ["az-204", "az-305", "mct", "new", "appservice", "azuresql"],
     "cost": "3.80",
     "deploytime": "7.35"
-    
+    "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-PaaS-Demo/refs/heads/main/prereqs.md"
   },
-
   {
     "title": "Azure Event Hub with Console App",
     "description": "This template deploys Azure Event Hub, as well as runs a local Console app on your machine to interact with Publisher and Subscriber events.",
@@ -180,9 +181,9 @@
     "source": "https://github.com/petender/azd-hubspoke",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-hubspoke/refs/heads/main/README.md",
     "tags": ["az-104", "az-700", "az-305", "msft", "new", "vnets"],
-    "cost": "7.25",
-    "deploytime": "34.25",
-    "prereqs": "https://raw.githubusercontent.com/petender/azd-hubspoke/refs/heads/main/Prereqs.md"
+    "cost": "8.00",
+    "deploytime": "35"
+   
     
   },
 
@@ -195,8 +196,8 @@
     "source": "https://github.com/petender/azd-site2sitevpn/",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-site2sitevpn/refs/heads/main/Demoguides/s2svpn.md",
     "tags": ["az-104", "az-700", "az-305", "msft", "new", "vnets"],
-    "cost": "10.15",
-    "deploytime": "32.38"
+    "cost": "12.00",
+    "deploytime": "35"
     
   },
 
@@ -211,7 +212,7 @@
     "tags": ["az-204", "az-305", "mct", "new", "functions"],
     "cost": "2.56",
     "deploytime": "3.49"
-    
+    "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/prereqs.md"
   },
 
   {
@@ -223,8 +224,8 @@
     "source": "https://github.com/petender/azd-sentinel",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-sentinel/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-500", "az-305", "msft", "new", "sentinel"],
-    "cost": "2.56",
-    "deploytime": "8.32"
+    "cost": "3.00",
+    "deploytime": "10"
     
   },
 
@@ -237,8 +238,8 @@
     "source": "https://github.com/petender/azd-trafficmgr",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-trafficmgr/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-204", "az-305", "msft", "new", "trafficmgr"],
-    "cost": "2.56",
-    "deploytime": "3.49"
+    "cost": "3.00",
+    "deploytime": "5"
     
   },
   
@@ -254,7 +255,6 @@
     "cost": "4.50",
     "deploytime": "25"
   },
-
   {
     "title": "Service endpoint, private endpoint and private link service",
     "description": "This is a complete demo for Service endpoint, private endpoint and private link service",
@@ -263,6 +263,7 @@
     "author": "sarahallali",
     "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
     "tags": ["az-700", "az-305", "az-500", "az-104", "msft", "new", "hot", "vnets"],
+    "demoguide": "https://raw.githubusercontent.com/sarahallali/azd-Privatelink-Pendpoint/refs/heads/main/Demoguides/Privatelink-Pendpoint.md",
     "demoguide": "https://github.com/sarahallali/azd-Privatelink-Pendpoint/blob/main/README.md",
     "cost": "2.99",
     "deploytime": "5.02"
