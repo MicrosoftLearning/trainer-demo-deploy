@@ -24,7 +24,7 @@
     "tags": ["az-204", "msft", "new", "hot", "appservice", "apim"],
     "cost": "3.00",
     "deploytime": "5",    
-    "prereqs": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/prereqs.md
+    "prereqs": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/prereqs.md"
   },
   {
     "title": "Azure AI Services with multiple OpenAI models",
