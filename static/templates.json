@@ -23,10 +23,8 @@
     "demoguide": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/demoguide/apimwithconference.md",
     "tags": ["az-204", "msft", "new", "hot", "appservice", "apim"],
     "cost": "3.00",
-    "deploytime": "5",
-    "prereqs": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/prereqs.md"
-
-    
+    "deploytime": "5",    
+    "prereqs": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/prereqs.md
   },
   {
     "title": "Azure AI Services with multiple OpenAI models",
@@ -38,8 +36,7 @@
     "demoguide": "https://raw.githubusercontent.com/petender/OpenAIMultiModel/refs/heads/main/README.md",
     "tags": ["ai-102", "msft", "new", "hot", "openai", "azureai"],
     "cost": "3.87",
-    "deploytime": "4"
-    
+    "deploytime": "4"    
   },
   {
     "title": "Tollbooth Serverless Architecture with Azure Functions",
@@ -163,14 +160,15 @@
   {
     "title": "Azure Event Hub with Console App",
     "description": "This template deploys Azure Event Hub, as well as runs a local Console app on your machine to interact with Publisher and Subscriber events.",
-    "preview": "./templates/images/test.png",
+    "preview": "./templates/images/evhub-azd.png",
     "website": "https://github.com/true-while",
     "author": "true-while",
     "source": "https://github.com/true-while/event-hub-azd",
     "demoguide": "https://raw.githubusercontent.com/true-while/event-hub-azd/refs/heads/main/demoguide/apimwithconference.md",
     "tags": ["az-204", "az-305", "msft", "new", "eventhub"],
-    "cost": "1.15",
-    "deploytime": "1.49"
+    "cost": "2.00",
+    "deploytime": "2"
+    "prereqs": "https://raw.githubusercontent.com/true-while/event-hub-azd/refs/heads/main/prereqs.md"
     
   },
 
