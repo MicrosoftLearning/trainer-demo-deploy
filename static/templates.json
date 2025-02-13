@@ -8,7 +8,7 @@
     "source": "https://github.com/petender/ConferenceAPI",
     "tags": ["az-204", "msft", "new", "hot", "appservice"],
     "demoguide": "https://raw.githubusercontent.com/petender/ConferenceAPI/refs/heads/main/README.md",
-    "cost": "3",
+    "cost": "3.00",
     "deploytime": "3",
     "prereqs": "https://raw.githubusercontent.com/petender/ConferenceAPI/refs/heads/main/prereqs.md"
     
@@ -35,7 +35,7 @@
     "source": "https://github.com/petender/OpenAIMultiModel",
     "demoguide": "https://raw.githubusercontent.com/petender/OpenAIMultiModel/refs/heads/main/README.md",
     "tags": ["ai-102", "msft", "new", "hot", "openai", "azureai"],
-    "cost": "3.87",
+    "cost": "5.00",
     "deploytime": "4"    
   },
   {
@@ -47,7 +47,7 @@
     "source": "https://github.com/rob-foulkrod/TollBooth",
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/Demoguide/tollbooth.md",
     "tags": ["az-204", "az-305","msft", "new", "hot", "appservice", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"],
-    "cost": "3.20",
+    "cost": "4.00",
     "deploytime": "12",
     "prereqs" : "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/prereqs.md"
   },
@@ -60,7 +60,7 @@
     "source": "https://github.com/rob-foulkrod/BadgeMaker",
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/Readme.md",
     "tags": ["az-204", "az-305", "ai-102", "msft", "new", "hot", "appservice", "azureai", "blazor"],
-    "cost": "3.24",
+    "cost": "4.00",
     "deploytime": "7",
     "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/prereqs.md"
   },
@@ -73,7 +73,7 @@
     "source": "https://github.com/rob-foulkrod/MachineLearningAZD",
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/README.md",
     "tags": ["az-204", "az-305", "dp-100", "msft", "new", "hot", "azureml", "keyvault", "appinsights"],
-    "cost": "25",
+    "cost": "25.00",
     "deploytime": "16",
     "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/prereqs.md"
   },
@@ -87,7 +87,7 @@
     "source": "https://github.com/rob-foulkrod/IAAS2019",
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/README.md",
     "tags": ["az-104", "az-305", "msft", "new", "virtualmachine"],
-    "cost": "13.25",
+    "cost": "14.00",
     "deploytime": "9"
     
   },
@@ -100,7 +100,7 @@
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
     "demoguide": "https://raw.githubusercontent.com/petender/maarten-AZD-ACI-Demo/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-104", "az-204", "az-305", "mct", "new", "acr", "aci"],
-    "cost": "3.15",
+    "cost": "4.00",
     "deploytime": "4"
     
   },
@@ -113,7 +113,7 @@
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
     "demoguide": "https://raw.githubusercontent.com/petender/maarten-AZD-ACA-Demo/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-104", "az-204", "az-305", "mct", "new", "acr", "aci"],
-    "cost": "2.54",
+    "cost": "3.50",
     "deploytime": "7"
     
   },
@@ -126,8 +126,8 @@
     "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AKS-Demo/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-104", "az-305", "mct", "new", "aks"],
-    "cost": "12.99",
-    "deploytime": "7"
+    "cost": "14.00",
+    "deploytime": "7",
     "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AKS-Demo/refs/heads/main/prereqs.md"
   },
   {
@@ -153,8 +153,8 @@
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-PaaS-Demo/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-204", "az-305", "mct", "new", "appservice", "azuresql"],
-    "cost": "3.80",
-    "deploytime": "7.35"
+    "cost": "4.00",
+    "deploytime": "8",
     "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-PaaS-Demo/refs/heads/main/prereqs.md"
   },
   {
@@ -167,7 +167,7 @@
     "demoguide": "https://raw.githubusercontent.com/true-while/event-hub-azd/refs/heads/main/demoguide/apimwithconference.md",
     "tags": ["az-204", "az-305", "msft", "new", "eventhub"],
     "cost": "2.00",
-    "deploytime": "2"
+    "deploytime": "2",
     "prereqs": "https://raw.githubusercontent.com/true-while/event-hub-azd/refs/heads/main/prereqs.md"
     
   },
@@ -210,8 +210,8 @@
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-204", "az-305", "mct", "new", "functions"],
-    "cost": "2.56",
-    "deploytime": "3.49"
+    "cost": "3.00",
+    "deploytime": "4",
     "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/prereqs.md"
   },
 
@@ -265,8 +265,8 @@
     "tags": ["az-700", "az-305", "az-500", "az-104", "msft", "new", "hot", "vnets"],
     "demoguide": "https://raw.githubusercontent.com/sarahallali/azd-Privatelink-Pendpoint/refs/heads/main/Demoguides/Privatelink-Pendpoint.md",
     "demoguide": "https://github.com/sarahallali/azd-Privatelink-Pendpoint/blob/main/README.md",
-    "cost": "2.99",
-    "deploytime": "5.02"
+    "cost": "4.00",
+    "deploytime": "5"
     
   }
   
