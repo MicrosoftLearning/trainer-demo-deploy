@@ -276,11 +276,8 @@
     "website": "https://github.com/koenraadhaedens",
     "author": "koenraadhaedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
-    "tags": ["sc-200", "az-800", "az-700", "az-801", "az-104", "sc-300","dp-300", "vnets", "gateway", "s2s vpn"],
-    "demoguide": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr/blob/main/demoguide-s2svpn/README.md",
-    "demoguide": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr/tree/main/demoguide-arc/README.md",
-    "demoguide": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr/tree/main/demoguide-dc1/README.md",
-    "demoguide": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr/blob/main/demoquide-sql/README.md", 
+    "tags": ["sc-200", "az-800", "az-801", "dp-300"],
+    "demoguide": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr/blob/main/README.md",
     "cost": "14.00",
     "deploytime": "10"
      }
