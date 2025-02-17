@@ -272,12 +272,12 @@
     {
     "title": "Azure Nested Hypervisor Demos",
     "description": "This repository showcases a collection of demos leveraging Azure's nested hypervisor capabilities, integrating powerful tools like Azure Arc, Defender for Identity, and more. These demos are designed to demonstrate hybrid cloud management, advanced security, and multi-cloud governance scenarios.",
-    "preview": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr/blob/main/media/azure-nested-vm.png",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/media/azure-nested-vm.png",
     "website": "https://github.com/koenraadhaedens",
     "author": "koenraadhaedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
-    "tags": ["sc-200", "az-800", "dp-300", "azurearc"],
-    "demoguide": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr/blob/main/README.md",
+    "tags": ["sc-200", "az-800", "dp-300", "azurearc","new","msft"],
+    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
     "cost": "14.00",
     "deploytime": "10"
      }
