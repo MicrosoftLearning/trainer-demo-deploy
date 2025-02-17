@@ -277,7 +277,7 @@
     "author": "koenraadhaedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
     "tags": ["sc-200", "az-800", "dp-300", "azurearc"],
-    "demoguide": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr/blob/main/README.md",
+    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
     "cost": "14.00",
     "deploytime": "10"
      }
