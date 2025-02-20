@@ -108,6 +108,8 @@ export type TagType =
   | "sentinel"
   | "trafficmgr"
   | "purview"
+  | "vpngw"
+  | "azurearc"
 
 ;
 
@@ -671,6 +673,22 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Purview",
     azureIcon: "./img/Azure-Purview.svg",
     url: "https://azure.microsoft.com/products/purview",
+    type: "Service",
+  },
+
+  vpngw: {
+    label: "Azure VPN Gateway",
+    description: "Template architecture uses Azure VPN Gateway",
+    azureIcon: "./img/Azure-VPN-GW.svg",
+    url: "https://azure.microsoft.com/en-us/products/vpn-gateway",
+    type: "Service",
+  },
+
+  azurearc: {
+    label: "Azure ARC",
+    description: "Template architecture for Azure ARC",
+    azureIcon: "./img/Azure-Arc-VM.svg",
+    url: "hhttps://azure.microsoft.com/en-us/products/azure-arc",
     type: "Service",
   },
 
