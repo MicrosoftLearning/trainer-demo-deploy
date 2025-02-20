@@ -280,8 +280,18 @@
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
     "cost": "14.00",
     "deploytime": "10"
+     },
+      {
+    "title": "Windows 11 Developer Pc",
+    "description": "A Windows 11 developer PC that can be used for installing demos and showcasing them during deliveries.",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/media/devpc.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "koenraadhaedens",
+    "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
+    "tags": ["ai-102", "azureai","new","msft"],
+    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/README.md",
+    "cost": "5",
+    "deploytime": "10"
      }
-
-
-  
+ 
 ]
