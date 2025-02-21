@@ -278,8 +278,8 @@
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
     "tags": ["sc-200", "az-800", "dp-300", "azurearc","new","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
-    "cost": "14.00",
-    "deploytime": "10"
+    "cost": "11.00",
+    "deploytime": "5"
      },
       {
     "title": "Windows 11 Developer Pc",
