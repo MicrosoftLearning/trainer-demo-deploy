@@ -290,7 +290,7 @@
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
     "tags": ["ai-102", "azureai","new","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/README.md",
-    "cost": "5",
+    "cost": "3",
     "deploytime": "21"
      }
  
