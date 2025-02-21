@@ -278,8 +278,8 @@
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
     "tags": ["sc-200", "az-800", "dp-300", "azurearc","new","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
-    "cost": "14.00",
-    "deploytime": "10"
+    "cost": "11.00",
+    "deploytime": "5"
      },
       {
     "title": "Windows 11 Developer Pc",
@@ -290,8 +290,20 @@
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
     "tags": ["ai-102", "azureai","new","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/README.md",
-    "cost": "5",
-    "deploytime": "10"
+    "cost": "3",
+    "deploytime": "21"
+     },
+    {
+    "title": "Azure hosted Dev Container",
+    "description": "an automated way to deploy a development environment inside a container, accessible as a web-based VS Code instance. The container includes all essential dependencies like Python, Node.js, and .NET, making it a ready-to-use development workspace.",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/media/vscodeweb.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "koenraadhaedens",
+    "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
+    "tags": ["ai-102", "azureai","new","msft","hot"],
+    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/README.md",
+    "cost": "2",
+    "deploytime": "3"
      }
  
 ]
