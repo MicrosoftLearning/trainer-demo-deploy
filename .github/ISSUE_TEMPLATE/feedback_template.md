@@ -1,40 +1,49 @@
 ---
-name: Feedback
+name: Product Feedback
 about: Use this template to provide feedback about Trainer-Demo-Deploy
 title: "[Feedback]"
 labels: feedback
 assignees: 'petender'
+body:
+-   type: dropdown
+    id: satisfaction
+    attributes:
+        label: Trainer-Demo-Deploy Satisfaction
+        description: Overall, how satisfied are you with Trainer-Demo-Deploy?
+        options:
+        - 1-Extremely Dissatisfied
+        - 2-Dissatisfied
+        - 3-Neither Satisfied nor Dissatisfied
+        - 4-Satisfied
+        - 5-Extremely Satisfied
+
+-   type: input
+    id: contact
+    attributes:
+        label: Contact Details
+        description: (OPTIONAL) How can we get in touch with you if we need more info 😉?
+        placeholder: ex. email@example.com
+    validations:
+        required: false
+
+-   type: textarea
+    id: Feedback 
+    attributes:
+        label: Describe the feedback 
+        description: What would you improve 
+        placeholder: Tell us what you see!
+        
+
+-   type: textarea
+    id: Demo-Affected 
+    attributes:
+        label: Demo Applied to 
+        description: If applicable, provide the name of the demo scenario 
+
+-   type: textarea
+    id: Screenshots
+    attributes:
+        label: Relevant screenshots
+        description: Please copy and paste any relevant screenshots 📸
+        value: paste here 😉 
 ---
-
-**Trainer-Demo-Deploy Satisfaction**
-Overall, how satisfied are you with Trainer-Demo-Deploy?
-1-Extremely Dissatisfied
-2-Dissatisfied
-3-Neither Satisfied nor Dissatisfied
-4-Satisfied
-5-Extremely Satisfied
-
-**Describe the feedback**
-A clear and concise description of what the feedback is about.
-
-**Demo Scenario this feedback applies to**
-If applicable, provide the name of the demo scenario this feedback applies to. Copy the 4 items for each Scenario. If your feedback relates to the Catalog Site itself, define the Scenario as "site":
-
-1. Scenario : 
-2. What I like about this scenario:
-3. What could be improved for this scenario:
-4. Other information you want to provide:
-
-**Trainer-Demo-Deploy Demo Guide Satisfaction**
-Overall, how satisfied are you with the provided Demo Guides for each deployment scenario?
-1-Extremely Dissatisfied
-2-Dissatisfied
-3-Neither Satisfied nor Dissatisfied
-4-Satisfied
-5-Extremely Satisfied
-
-**Screenshots**
-If applicable, add screenshots to help explain your feedback.
-
-**Contact by Project Team**
-Would you like to get contacted by the Project Team, regarding this feedback? yes/no
