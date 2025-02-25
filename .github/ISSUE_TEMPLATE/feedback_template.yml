@@ -1,5 +1,5 @@
 name: Product Feedback
-about: Use this template to provide feedback about Trainer-Demo-Deploy
+description: Use this template to provide feedback about Trainer-Demo-Deploy
 title: "[Feedback]: QUICK Description of the feedback"
 labels: ["feedback"]
 assignees: 'petender'
