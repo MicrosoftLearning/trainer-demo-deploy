@@ -304,6 +304,19 @@
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/README.md",
     "cost": "2",
     "deploytime": "3"
-     }
+     },
+    {
+    "title": "Functions E2E HTTP to Event Hubs",
+    "description": "This demo deploys a flexible, consumption-based Azure Functions app integrated with Event Hubs through private endpoints and a virtual network. It includes load testing, secure networking, and real-time monitoring via Application Insights.",
+    "preview": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/main/img/HTTP-VNET-EH.png",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
+    "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/demoguide/flexfunctions.md",
+    "tags": ["az-204", "az-400", "functions", "eventhub", "loadtesting"],
+    "cost": "30",
+    "deploytime": "10",
+    "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/prereqs.md"
+  }
  
 ]
