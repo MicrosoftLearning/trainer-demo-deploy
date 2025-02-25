@@ -1,13 +1,13 @@
 name: Product Feedback
 description: Use this template to provide feedback about Trainer-Demo-Deploy
-title: "[Feedback]: QUICK Description of the feedback"
+title: "[Feedback]: <REPLACE Description of the feedback>"
 labels: ["feedback"]
 assignees: 'petender'
 body:
   - type: dropdown
     id: satisfaction
     attributes:
-        label: satisfaction
+        label: Satisfaction
         description: Overall, how satisfied are you with Trainer-Demo-Deploy?
         options:
         - 1-Extremely Dissatisfied
@@ -37,7 +37,8 @@ body:
     id: Demo-Affected 
     attributes:
         label: Demo Applied to 
-        description: If applicable, provide the name of the demo scenario 
+        description: If applicable, provide the name of the demo scenario
+        placeholder: Demo name
 
   - type: textarea
     id: Screenshots
