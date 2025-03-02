@@ -304,9 +304,8 @@
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/README.md",
     "cost": "2",
     "deploytime": "3"
-     }
-
-      {
+     },
+    {
     "title": "Azure Security Scenarios",
     "description": "the scenarious used for demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop web site",
     "preview": "./templates/images/evhub-azd.png",
