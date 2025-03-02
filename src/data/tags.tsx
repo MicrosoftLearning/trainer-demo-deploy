@@ -110,6 +110,8 @@ export type TagType =
   | "purview"
   | "vpngw"
   | "azurearc"
+  | "loadtesting"
+
 
 ;
 
