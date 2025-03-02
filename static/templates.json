@@ -111,7 +111,7 @@
     "website": "https://github.com/maartenvandiemen",
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
-    "demoguide": "https://raw.githubusercontent.com/petender/maarten-AZD-ACA-Demo/refs/heads/main/demoguide/demoguide.md",
+    "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-ACA-Demo/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-104", "az-204", "az-305", "mct", "new", "acr", "aci"],
     "cost": "3.50",
     "deploytime": "7"
