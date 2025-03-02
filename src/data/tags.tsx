@@ -694,6 +694,14 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
 
+  loadtesting: {
+    label: "Azure Load Testing",
+    description: "Template architecture for Azure Load Testing",
+    azureIcon: "./img/Azure-Load-Testing.svg",
+    url: "https://azure.microsoft.com/en-us/products/load-testing",
+    type: "Service", 
+  },
+
 
   
 };
