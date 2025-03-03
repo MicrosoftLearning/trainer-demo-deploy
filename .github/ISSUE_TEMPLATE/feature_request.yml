@@ -1,0 +1,30 @@
+name: Feature Request
+description: for improvements to our trainer-demo-deploy site
+title: "[Feature Request]: <REPLACE Description of the feature >"
+labels: ["feature_request"]
+assignees: 'petender'
+body:
+  - type: input
+    id: contact
+    attributes:
+        label: Contact Details
+        description: (OPTIONAL) How can we get in touch with you if we need more info 😉?
+        placeholder: ex. email@example.com
+    validations:
+        required: false
+
+  - type: textarea
+    id: bug 
+    attributes:
+        label: Describe the feature  
+        description: Describe the feature 
+        placeholder: Describe the feature 
+      
+
+  - type: textarea
+    id: Screenshots
+    attributes:
+        label: Relevant screenshots
+        description: Please copy and paste any relevant screenshots 📸
+        value: paste here 😉 
+

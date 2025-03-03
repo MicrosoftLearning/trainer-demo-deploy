@@ -1,21 +1,9 @@
-name: Product Feedback
-description: for sharing your feedback regarding a demo scenario or the tool in general
-title: "[Product Feedback]: <REPLACE Description of the feedback>"
-labels: ["feedback"]
+name: Bug Report
+description: let us know if something is broken
+title: "[Bug Report]: <REPLACE Description of the bug >"
+labels: ["bug"]
 assignees: 'petender'
 body:
-  - type: dropdown
-    id: satisfaction
-    attributes:
-        label: Satisfaction
-        description: Overall, how satisfied are you with Trainer-Demo-Deploy?
-        options:
-        - 1-Extremely Dissatisfied
-        - 2-Dissatisfied
-        - 3-Neither Satisfied nor Dissatisfied
-        - 4-Satisfied
-        - 5-Extremely Satisfied
-
   - type: input
     id: contact
     attributes:
@@ -26,10 +14,10 @@ body:
         required: false
 
   - type: textarea
-    id: Feedback 
+    id: bug 
     attributes:
-        label: Describe the feedback 
-        description: What would you improve 
+        label: Describe the bug  
+        description: Describe the bug 
         placeholder: Tell us what you see!
         
 

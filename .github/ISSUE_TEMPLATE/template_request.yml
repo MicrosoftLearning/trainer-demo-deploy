@@ -1,0 +1,30 @@
+name: Template Request
+description: if you cannot find a template with architecture that works for you-- you can submit a request for that template
+title: "[Template Request]: <REPLACE Description >"
+labels: ["template_request"]
+assignees: 'petender'
+body:
+  - type: input
+    id: contact
+    attributes:
+        label: Contact Details
+        description: (OPTIONAL) How can we get in touch with you if we need more info 😉?
+        placeholder: ex. email@example.com
+    validations:
+        required: false
+
+  - type: textarea
+    id: bug 
+    attributes:
+        label: Describe the scenario you would like to see   
+        description: Describe the scenario you would like to see
+        placeholder: Describe the scenario you would like to see
+        
+
+  - type: textarea
+    id: Screenshots
+    attributes:
+        label: Relevant screenshots
+        description: Please copy and paste any relevant screenshots 📸
+        value: paste here 😉 
+
