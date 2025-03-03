@@ -322,13 +322,13 @@
   {
 
     "title": "Azure Security Scenarios",
-    "description": "the scenarious used for demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop web site",
-    "preview": "./templates/images/evhub-azd.png",
+    "description": "This scenario is used to demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop website.",
+    "preview": "./templates/images/owasp.png",
     "website": "https://github.com/true-while",
     "author": "true-while",
     "source": "https://github.com/true-while/owasp-azd/",
     "tags": ["az-500","sc-200","sc-100","new","msft"],
-    "demoguide": "https://github.com/true-while/owasp-azd/blob/main/demoguide/demoguide.md",
+    "demoguide": "https://raw.githubusercontent.com/true-while/owasp-azd/refs/heads/main/demoguide/demoguide.md",
     "cost": "67",
     "deploytime": "14"
      }
