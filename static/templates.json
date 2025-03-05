@@ -331,6 +331,8 @@
     "demoguide": "https://github.com/true-while/owasp-azd/blob/main/demoguide/demoguide.md",
     "cost": "67",
     "deploytime": "14"
-     }
+     },
+
+     {}
 
 ]
