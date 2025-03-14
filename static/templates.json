@@ -341,7 +341,7 @@
     "source": "https://github.com/ronaldbosma/azure-integration-services-quickstart",
     "demoguide": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/demos/demo-sample-application.md",
     "tags": ["az-204", "az-305", "new", "appservice", "apim", "logicapps", "servicebus", "eventhub", "keyvault", "azurestorage", "appinsights"],
-    "cost": "1.00",
+    "cost": "6.00",
     "deploytime": "5",    
     "prereqs": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/prereqs.md"
   },
