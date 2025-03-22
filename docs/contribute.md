@@ -4,7 +4,7 @@ title: "Contributor Guide"
 ---
 
 ## We ♥️ Contributions!
-`trainer-demo-deploy` is a Technical Trainer community-friendly resource to help trainers and learners doing compelling demos during MOC courses and other technical training deliveries and workshops. Scenarios are based on `azd` templates, which allows for easy redeployment for your next class delivery or learning journey. 
+`trainer-demo-deploy` is a Technical Trainer community-friendly resource to help trainers and learners doing compelling demos during ILT (Instructor-Led Training) courses and other technical training deliveries and workshops. Scenarios are based on `azd` templates, which allows for easy redeployment for your next class delivery or learning journey. 
 
 ## Submit a PR
 
@@ -21,7 +21,7 @@ To submit a template:
     - **Link to Author's GitHub or other relevant website** - Used for attribution.
     - **Author's Name** - Name to credit on the gallery card
     - **Link to template source** - Link to the template GitHub repo
-    - **Tags** - One or more [tags](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/src/data/tags.tsx) representing the template. Provide at least 1 tag for the related Microsoft Official Course (MOC) used and at least 1 tag for Azure services integrated. Missing a relevant tag for your template? Feel free to add one!
+    - **Tags** - One or more [tags](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/src/data/tags.tsx) representing the template. Provide at least 1 tag for the related Microsoft Instructor-Led Course (ILT) used and at least 1 tag for Azure services integrated. Missing a relevant tag for your template? Feel free to add one!
     - **DemoGuide** - Link to MarkDown document with step-by-step instructions on what to demo
     - **DeployTime** - The estimated time for deploying the scenario
     - **Cost** - The estimated costs in USD, to host the full Resource Group scenario for 24 hours, using Azure Cost Analysis amounts as a guideline 

@@ -199,9 +199,9 @@ export default function ShowcaseLeftFilters({
     const tagObject = Tags[tag];
     return tagObject.type === "Database";
   });
-  const MOCCourseTag = sortTagList.filter((tag) => {
+  const ILTCourseTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === "MOC Courses";
+    return tagObject.type === "ILT Courses";
   });
   const otherTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
@@ -305,12 +305,12 @@ export default function ShowcaseLeftFilters({
           }}
         >
           <div style={{ fontSize: "16px", fontWeight: "500" }}>
-            MOC Courses
+            ILT Courses
           </div>
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll
-            tags={MOCCourseTag}
+            tags={ILTCourseTag}
             number={"1"}
             activeTags={activeTags}
             selectedCheckbox={selectedCheckbox}

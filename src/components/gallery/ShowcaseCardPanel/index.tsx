@@ -787,7 +787,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                 }}
               >
                 Trainer-Demo-Deploy is an Open-Sourced Catalog of AZD-based templates, which can 
-                be used by trainers and learners of Microsoft MOC courses.
+                be used by trainers and learners of Microsoft ILT courses.
               </div>
               <div
                 style={{

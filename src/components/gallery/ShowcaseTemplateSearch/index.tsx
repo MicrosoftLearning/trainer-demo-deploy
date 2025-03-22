@@ -14,7 +14,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 
 const TITLE = "Trainer-Demo-Deploy Catalog";
 const DESCRIPTION =
-  "Open-sourced, AZD-based, available to trainers and learners of Microsoft MOC Courses.";
+  "Open-sourced, AZD-based, available to trainers and learners of Microsoft ILT Courses.";
 const ADD_URL = "https://aka.ms/azd";
 export var InputValue: string | null = null;
 

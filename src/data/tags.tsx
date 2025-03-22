@@ -38,7 +38,7 @@ export type TagType =
   | "new"
   | "hot"
 
-// MOC Courses
+// ILT Courses
   | "ai-102"
   | "ai-900"
   | "az-104"
@@ -147,12 +147,12 @@ export const Tags: { [type in TagType]: Tag } = {
   },
  
 
-  // ---- MOC Courses
+  // ---- ILT Courses
   
   "ai-102": {
     label: "AI-102 Azure AI Engineer Associate",
     description: "Design and implement an Azure AI solution using Azure AI services, Azure AI Search, and Azure Open AI.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -163,7 +163,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "ai-900": {
     label: "AI-900 Azure AI Fundamentals",
     description: "Demonstrate fundamental AI concepts related to the development of software and services of Microsoft Azure to create AI solutions.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -172,7 +172,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-104": {
     label: "AZ-104 Azure Administrator",
     description: "Demonstrate key skills to configure, manage, secure, and administer key professional functions in Microsoft Azure.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-104Blueprint",
@@ -181,7 +181,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-120":{
     label: "AZ-120 Azure for SAP Workloads Specialty",
     description: "Demonstrate planning, migration, and operation of an SAP solution on Microsoft Azure while you leverage Azure resources.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-for-sap-workloads-specialty/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -190,7 +190,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-140": {
     label: "AZ-140 Azure Virtual Desktop Specialty",
     description: "Plan, deliver, manage, and monitor virtual desktop experiences and remote apps on Microsoft Azure for any device.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-virtual-desktop-specialty/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-140Blueprint",
@@ -200,7 +200,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-204": {
     label: "AZ-204 Azure Developer Associate",
     description: "Build end-to-end solutions in Microsoft Azure to create Azure Functions, implement and manage web apps, develop solutions utilizing Azure storage, and more.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-204Blueprint",
@@ -209,7 +209,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-305": {
     label: "AZ-305 Azure Solutions Architect Expert",
     description: "Design solutions that run on Azure, including aspects like compute, network, storage, and security.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/",
     courseblueprint: "https://aka.ms/AZ-305Blueprint",
@@ -219,7 +219,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-400": {
     label: "AZ-400 Azure DevOps Engineer Expert",
     description: "Design, implement, and manage DevOps strategies for Microsoft Azure, including aspects like source control, continuous integration, continuous delivery, and more.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer/",
     courseblueprint: "",
@@ -228,7 +228,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-500": {
     label: "AZ-500 Azure Security Engineer Associate",
     description: "Demonstrate the skills needed to implement security controls, maintain an organization’s security posture, and identify and remediate security vulnerabilities.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-security-engineer/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-500Blueprint",
@@ -238,7 +238,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-700": {
     label: "AZ-700 Azure Network Engineer Associate",
     description: "Demonstrate the design, implementation, and maintenance of Azure networking infrastructure, load balancing traffic, network routing, and more.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-network-engineer-associate/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-700Blueprint",
@@ -247,7 +247,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-800":{
     label: "AZ-800 Windows Server Hybrid Administrator Associate",
     description: "Demonstrate the ability to implement, configure and manage Windows Server on-premises, hybrid, and infrastructure as a service (IaaS) platform workloads",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/windows-server-hybrid-administrator/",
     courseblueprint: "",
@@ -256,7 +256,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-801":{
     label: "AZ-801 Windows Server Hybrid Administrator Associate",
     description: "Demonstrate the ability to implement, configure and manage Windows Server on-premises, hybrid, and infrastructure as a service (IaaS) platform workloads",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/windows-server-hybrid-administrator/",
     courseblueprint: "",
@@ -265,7 +265,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "az-900": {
     label: "AZ-900 Azure Fundamentals",
     description: "Demonstrate foundational knowledge of cloud concepts, core Azure services, plus Azure management and governance features and tools.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -274,7 +274,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "dp-100": {
     label: "DP-100 Azure Data Scientist Associate",
     description: "Manage data ingestion and preparation, model training and deployment, and machine learning solution monitoring with Python, Azure Machine Learning and MLflow.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -283,7 +283,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "dp-203": {
     label: "DP-203 Azure Data Engineer Associate",
     description: "Demonstrate understanding of common data engineering tasks to implement and manage data engineering workloads on Microsoft Azure, using a number of Azure services.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-engineer/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -292,7 +292,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "dp-300": {
     label: "DP-300 Azure Database Administrator Associate",
     description: "Administer an SQL Server database infrastructure for cloud, on-premises and hybrid relational databases using the Microsoft PaaS relational database offerings.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-database-administrator-associate/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -301,7 +301,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "dp-420": {
     label: "DP-420 Azure Cosmos DB Developer Specialty",
     description: "Write efficient queries, create indexing policies, manage, and provision resources in the SQL API and SDK with Microsoft Azure Cosmos DB.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-cosmos-db-developer-specialty/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -310,7 +310,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "dp-900": {
     label: "DP-900 AAzure Data Fundamentals",
     description: "Demonstrate foundational knowledge of core data concepts related to Microsoft Azure data services.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -319,7 +319,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "sc-100":{
     label: "SC-100 Cybersecurity Architect Expert",
     description: "Demonstrate foundational knowledge of security, compliance, and identity across cloud-based and related Microsoft services.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/cybersecurity-architect-expert/",
     courseblueprint: "",
@@ -328,7 +328,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "sc-200": {
     label: "SC-200 Microsoft Security Operations Analyst Associate",
     description: "Investigate, search for, and mitigate threats using Microsoft Sentinel, Microsoft Defender for Cloud, and Microsoft 365 Defender.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/security-operations-analyst/?practice-assessment-type=certification",
     courseblueprint: "",
@@ -337,7 +337,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "sc-300":{
     label: "SC-300 Microsoft Identity and Access Administrator Associate",
     description: "Demonstrate the features of Microsoft Entra ID to modernize identity solutions, implement hybrid solutions, and implement identity governance.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/identity-and-access-administrator/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/SC-300Blueprint",
@@ -346,7 +346,7 @@ export const Tags: { [type in TagType]: Tag } = {
   "sc-900":{
     label: "SC-900 Microsoft Security, Compliance, and Identity Fundamentals",
     description: "Demonstrate foundational knowledge of security, compliance, and identity across cloud-based and related Microsoft services.",
-    type: "MOC Courses",
+    type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/en-us/credentials/certifications/security-compliance-and-identity-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
