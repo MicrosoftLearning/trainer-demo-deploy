@@ -786,8 +786,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                   padding: "10px 0",
                 }}
               >
-                Trainer-Demo-Deploy is an Open-Sourced Catalog of AZD-based templates, which can 
-                be used by trainers and learners of Microsoft ILT courses.
+                Trainer-Demo-Deploy is an Open-Sourced Catalog of AZD-based templates, which primarily targets trainers and learners of Microsoft ILT courses.
               </div>
               <div
                 style={{
@@ -936,7 +935,7 @@ function ShowcaseCourseBlueprintAzureTag({
   );
 
   return tagObjectsSorted.map((tagObject, index) => {
-    const courseBlueprint = tagObject.type === "MOC Courses";
+    const courseBlueprint = tagObject.type === "ILT Courses";
     
     return courseBlueprint ? (
       <div
