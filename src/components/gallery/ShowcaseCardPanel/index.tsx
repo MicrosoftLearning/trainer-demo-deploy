@@ -779,44 +779,31 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
               style={{
                 fontSize: "14px",
                 fontWeight: "400",
+                display: "flex",
+                flexDirection: "column",
+                width: "100%"
               }}
             >
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
+              <p style={{ padding: "10px 0", width: "100%" }}>
                 Trainer-Demo-Deploy is an Open-Sourced Catalog of AZD-based templates, which primarily targets trainers and learners of Microsoft ILT courses.
-              </div>
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
+              </p>
+              <p style={{ padding: "10px 0", width: "100%" }}>
                 Please note that each template is licensed by its respective
                 owner (which may or may not be Microsoft) under the agreement
                 which accompanies the template. It is your responsibility to
                 determine what license applies to any template you choose to
                 use.
-              </div>
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
+              </p>
+              <p style={{ padding: "10px 0", width: "100%" }}>
                 Microsoft is not responsible for any non-Microsoft code and does
                 not screen templates included in the Trainer-Demo-Deploy catalog for
                 security, privacy, compatibility, or performance issues.
-              </div>
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
+              </p>
+              <p style={{ padding: "10px 0", width: "100%" }}>
                 The templates included in the Trainer-Demo-Deploy Catalog are not
                 supported by any Microsoft support program or service. Trainer-Demo-Deploy Catalog
                 and any Microsoft-provided templates are provided without warranty of any kind.
-              </div>
+              </p>
             </div>
           </Label>
         </PivotItem>
