@@ -753,25 +753,30 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
               }}
             >
               <p style={{ padding: "10px 0", width: "100%" }}>
-                Trainer-Demo-Deploy is an Open-Sourced Catalog of AZD-based templates, which primarily targets trainers and learners of Microsoft ILT courses.
-              </p>
-              <p style={{ padding: "10px 0", width: "100%" }}>
-                Please note that each template is licensed by its respective
-                owner (which may or may not be Microsoft) under the agreement
-                which accompanies the template. It is your responsibility to
-                determine what license applies to any template you choose to
+                - Trainer-Demo-Deploy is an Open-Sourced Catalog of AZD-based templates, which primarily targets trainers and learners of Microsoft ILT courses.
+              <br />
+                - Please note that each template is licensed by its respective owner (which may or may not be Microsoft) under the agreement
+                which accompanies the template. It is your responsibility to determine what license applies to any template you choose to
                 use.
-              </p>
-              <p style={{ padding: "10px 0", width: "100%" }}>
-                Microsoft is not responsible for any non-Microsoft code and does
-                not screen templates included in the Trainer-Demo-Deploy catalog for
+              <br />
+                - Microsoft is not responsible for any non-Microsoft code and does not screen templates included in the Trainer-Demo-Deploy catalog for
                 security, privacy, compatibility, or performance issues.
-              </p>
-              <p style={{ padding: "10px 0", width: "100%" }}>
-                The templates included in the Trainer-Demo-Deploy Catalog are not
-                supported by any Microsoft support program or service. Trainer-Demo-Deploy Catalog
+              <br />
+                - The templates included in the Trainer-Demo-Deploy Catalog are not supported by any Microsoft support program or service. Trainer-Demo-Deploy Catalog
                 and any Microsoft-provided templates are provided without warranty of any kind.
-              </p>
+              <br />
+                
+                <a
+                  href="https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/CODE_OF_CONDUCT.md"
+                  target="_blank"
+                  className={styles.color}
+                >
+                  Microsoft Open Source Code of Conduct
+                </a>
+
+
+
+              </p>  
             </div>
           </Label>
         </PivotItem>
