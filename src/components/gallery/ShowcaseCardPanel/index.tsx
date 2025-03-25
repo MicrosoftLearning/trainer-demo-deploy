@@ -376,7 +376,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       padding: "10px 0",
                     }}
                   >
-                    1. Run `azd init`to initialize the deployment.
+                    1. Run `azd init` to initialize the deployment.
                   </div>
                   <div
                     className={styles.terminalSquareTopColor}
@@ -480,8 +480,11 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                   </div>
 
                   <div
+                    className={styles.textColor}
                     style={{
-                      paddingTop: "10px",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      padding: "10px 0",
                     }}
                   >
                     3. Use `azd down` to clean up your deployment.
