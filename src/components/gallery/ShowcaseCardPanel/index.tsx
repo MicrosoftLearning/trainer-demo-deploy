@@ -119,6 +119,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   const cddirCommand = "cd " + templateURL;  
   const azdInitCommand = "azd init -t " + templateURL;
   const azdUpCommand = "azd up";
+  const azdDownCommand = "azd down --purge --force";
   const title = user.title;
   let chevronSVG = useBaseUrl("/img/leftChevron.svg");
 
@@ -336,7 +337,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       flex: "1",
                     }}
                     >
-                    4-Step Deployment
+                    3-Step Deployment
                     </div>
                 <DefaultButton
                   style={{
@@ -365,49 +366,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       padding: "10px 0",
                     }}
                   >
-                    1. Create a new folder on your machine.
-                  </div>
-                  <div
-                    className={styles.terminalSquareTopColor}
-                    style={{
-                      display: "flex",
-                      height: "32px",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div
-                      className={styles.textColor}
-                      style={{
-                        flex: "1",
-                        fontSize: "12px",
-                        paddingLeft: "11px",
-                      }}
-                    >
-                      Terminal Command
-                    </div>
-                    <CopyButton colorMode={colorMode} url={mkdirCommand} />
-                  </div>
-                  <div
-                    className={styles.terminalSquareBottomColor}
-                    style={{
-                      height: "46px",
-                      padding: "11px",
-                    }}
-                  >
-                    <div
-                      className={styles.commandColor}
-                      style={{
-                        margin: "auto",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        fontFamily: "Consolas, Courier New, Courier, monospace",
-                        fontSize: "14px",
-                        fontWeight: "400",
-                      }}
-                    >
-                      {mkdirCommand}
-                    </div>
+                    From within a new empty folder on your machine, do the following:
                   </div>
                   <div
                     className={styles.textColor}
@@ -417,59 +376,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       padding: "10px 0",
                     }}
                   >
-                    2. Next, navigate into the new folder.
-                  </div>
-                  <div
-                    className={styles.terminalSquareTopColor}
-                    style={{
-                      display: "flex",
-                      height: "32px",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div
-                      className={styles.textColor}
-                      style={{
-                        flex: "1",
-                        fontSize: "12px",
-                        paddingLeft: "11px",
-                      }}
-                    >
-                      Terminal Command
-                    </div>
-                    <CopyButton colorMode={colorMode} url={cddirCommand} />
-                  </div>
-                  <div
-                    className={styles.terminalSquareBottomColor}
-                    style={{
-                      height: "46px",
-                      padding: "11px",
-                    }}
-                  >
-                    <div
-                      className={styles.commandColor}
-                      style={{
-                        margin: "auto",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        fontFamily: "Consolas, Courier New, Courier, monospace",
-                        fontSize: "14px",
-                        fontWeight: "400",
-                      }}
-                    >
-                      {cddirCommand}
-                    </div>
-                  </div>
-                  <div
-                    className={styles.textColor}
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: "400",
-                      padding: "10px 0",
-                    }}
-                  >
-                    3. Next, run `azd init` to initialize the deployment.
+                    1. Run `azd init`to initialize the deployment.
                   </div>
                   <div
                     className={styles.terminalSquareTopColor}
@@ -527,7 +434,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       padding: "10px 0",
                     }}
                   >
-                    4. Last, run `azd up` to trigger an actual deployment.
+                    2. Followed by `azd up` to trigger an actual deployment.
                   </div>
                   <div
                     className={styles.terminalSquareTopColor}
@@ -577,6 +484,64 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       paddingTop: "10px",
                     }}
                   >
+                    3. Use `azd down` to clean up your deployment.
+                  </div>
+                  <div
+                    className={styles.terminalSquareTopColor}
+                    style={{
+                      display: "flex",
+                      height: "32px",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div
+                      className={styles.textColor}
+                      style={{
+                        flex: "1",
+                        fontSize: "12px",
+                        paddingLeft: "11px",
+                      }}
+                    >
+                      Terminal Command
+                    </div>
+                    <CopyButton colorMode={colorMode} url={azdDownCommand}
+                      data-event-name={contentForAdobeAnalytics} 
+                      // add a log event to the terminal
+
+                      
+                    />
+                  </div>
+                  <div
+                    className={styles.terminalSquareBottomColor}
+                    style={{
+                      height: "46px",
+                      padding: "11px",
+                    }}
+                  >
+                    <div
+                      className={styles.commandColor}
+                      style={{
+                        margin: "auto",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        fontFamily: "Consolas, Courier New, Courier, monospace",
+                        fontSize: "14px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      {azdDownCommand}
+                      
+                    </div>
+                  </div>
+                  <div
+                    className={styles.textColor}
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      padding: "10px 0",
+                    }}
+                  >
                     <Separator alignContent="start">Or</Separator>
                   </div>
 
@@ -588,7 +553,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       padding: "10px 0",
                     }}
                   >
-                    If using the{" "}
+                    If using the {" "}
                     <a
                       href={
                         "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
