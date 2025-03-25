@@ -264,7 +264,6 @@
     "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
     "tags": ["az-700", "az-305", "az-500", "az-104", "msft", "new", "hot", "vnets"],
     "demoguide": "https://raw.githubusercontent.com/sarahallali/azd-Privatelink-Pendpoint/refs/heads/main/Demoguides/Privatelink-Pendpoint.md",
-    "demoguide": "https://github.com/sarahallali/azd-Privatelink-Pendpoint/blob/main/README.md",
     "cost": "4.00",
     "deploytime": "5"
     
