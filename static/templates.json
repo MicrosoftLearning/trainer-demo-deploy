@@ -343,5 +343,18 @@
       "cost": "5",
       "deploytime": "3",
       "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-LoadTest/refs/heads/main/prereqs.md"
+     },
+    {
+      "title": "Secure Azure Data Solutions",
+      "description": "Its a base template for demonstration of Data Solution including Azure Storage, Cosmos DB, Azure SQL and Keyvault. All provisioned services compliant with recent security requirements.",
+      "preview": "./templates/images/sds.png",
+      "website": "https://github.com/true-while",
+      "author": "Alex Ivanov",
+      "source": "https://github.com/true-while/secure-data-solutions/",
+      "tags": ["DP-203","DP-300","AZ-204","DP-420","msft"],
+      "demoguide": "https://raw.githubusercontent.com/true-while/secure-data-solutions/refs/heads/main/demoguide/sds.md",
+      "cost": "3",
+      "deploytime": "5",
+      "prereqs": "https://raw.githubusercontent.com/true-while/secure-data-solutions/refs/heads/main/prereqs.md"
      }
 ]
