@@ -308,7 +308,7 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprintdiag: "",
   },
   "dp-900": {
-    label: "DP-900 AAzure Data Fundamentals",
+    label: "DP-900 Azure Data Fundamentals",
     description: "Demonstrate foundational knowledge of core data concepts related to Microsoft Azure data services.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
