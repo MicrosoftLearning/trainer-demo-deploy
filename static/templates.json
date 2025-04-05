@@ -356,5 +356,30 @@
       "cost": "3",
       "deploytime": "5",
       "prereqs": "https://raw.githubusercontent.com/true-while/secure-data-solutions/refs/heads/main/prereqs.md"
-     }
+     },
+     {
+      "title": "Azure Integration Services Quickstart",
+      "description": "Deploys Azure Integration Services, including Azure API Management, Function App, Logic App, Service Bus and Event Hubs namespace, along with supporting resources such as Application Insights, Key Vault and Storage Account. This template is ideal for demos, testing or getting started with Azure Integration Services.",
+      "preview": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/main/images/aisquick-diagrams-infra.png",
+      "website": "https://github.com/ronaldbosma",
+      "author": "ronaldbosma",
+      "source": "https://github.com/ronaldbosma/azure-integration-services-quickstart",
+      "demoguide": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/demos/demo-sample-application.md",
+      "tags": ["az-204", "az-305", "new", "appservice", "apim", "logicapps", "servicebus", "eventhub", "keyvault", "azurestorage", "appinsights"],
+      "cost": "6.00",
+      "deploytime": "5",    
+      "prereqs": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/prereqs.md"
+    },
+    {
+      "title": "Azure Storage Account with Blobs and File Share",
+      "description": "This scenario deploys an Azure Storage Account with Blob and File Share, as well as sample data (Seattle scenery images).",
+      "preview": "./templates/images/azstorage.png",
+      "website": "https://github.com/petender",
+      "author": "Peter De Tender",
+      "source": "https://github.com/petender/azd-storaccnt",
+      "demoguide": "https://raw.githubusercontent.com/petender/azd-storaccnt/refs/heads/main/Demoguides/storaccnt.md",
+      "tags": ["az-104", "az-305", "msft", "new", "azurestorage"],
+      "cost": "2.00",
+      "deploytime": "3"
+    }
 ]

@@ -595,7 +595,7 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   azurestorage: {
-    label: "Azure Storage",
+    label: "Azure Storage Account",
     description: "Template architecture uses Azure Storage",
     azureIcon: "./img/Azure-Storage.svg",
     url: "https://azure.microsoft.com/products/storage",
