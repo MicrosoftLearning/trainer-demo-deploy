@@ -393,5 +393,17 @@
       "tags": ["ai-102", "az-305", "ai-900", "mct", "new", "azureai"],
       "cost": "6.00",
       "deploytime": "11"
+    },
+    {
+      "title": "YouTube Summarizer with OpenAI and Blazor .NET",
+      "description": "This scenario deploys a Blazor .NET FrontEnd application, together with Azure OpenAI Service, to provide a summary of YouTube videos in 5 bullet points",
+      "preview": "./templates/images/YoutubeSummarizer.png",
+      "website": "https://github.com/petender",
+      "author": "Peter De Tender",
+      "source": "https://github.com/petender/azd-youtubesummarizer-openai",
+      "demoguide": "https://raw.githubusercontent.com/petender/azd-youtubesummarizer-openai/refs/heads/main/demoguide/demoguide.md",
+      "tags": ["ai-102", "ai-900", "msft", "new", "azureai"],
+      "cost": "1.00",
+      "deploytime": "6"
     }
 ]
