@@ -56,6 +56,8 @@ export type TagType =
   | "dp-203"
   | "dp-300"
   | "dp-420"
+  | "dp-603"
+  | "dp-700"
   | "dp-900"
   | "sc-100"
   | "sc-200"
@@ -111,6 +113,7 @@ export type TagType =
   | "vpngw"
   | "azurearc"
   | "loadtesting"
+  | "fabric"
 
 
 ;
@@ -306,6 +309,24 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-cosmos-db-developer-specialty/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
+  },
+  "dp-603": {
+    label: "DP-603 Azure Data Engineering",
+    description: "Design and implement data storage solutions, data processing, and data security solutions using Microsoft Azure.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-engineering/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "dp-700": {
+  label: "DP-700 Azure Data Analyst Associate",
+    description: "Prepare data for analysis, model data, visualize data, analyze data, and deploy solutions using Microsoft Power BI.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-analyst/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: ""
   },
   "dp-900": {
     label: "DP-900 Azure Data Fundamentals",
@@ -699,6 +720,14 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Azure Load Testing",
     azureIcon: "./img/Azure-Load-Testing.svg",
     url: "https://azure.microsoft.com/en-us/products/load-testing",
+    type: "Service", 
+  },
+
+  fabric: {
+    label: "Azure Fabric",
+    description: "Template architecture for Azure Fabric",
+    azureIcon: "./img/Azure-Fabric.svg",
+    url: "https://learn.microsoft.com/en-us/azure/fabric/overview",
     type: "Service", 
   },
 

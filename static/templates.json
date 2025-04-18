@@ -405,5 +405,17 @@
       "tags": ["ai-102", "ai-900", "msft", "new", "azureai"],
       "cost": "1.00",
       "deploytime": "6"
+    },
+    {
+      "title": "International Space Station (ISS) Tracker with Fabric and Event Hubs",
+      "description": "This scenario deploys an Azure Fabric Cluster with a sample application that tracks the International Space Station (ISS) using Azure Event Hubs and Azure LogicApps.",
+      "preview": "./templates/images/test.png",
+      "website": "https://github.com/petender",
+      "author": "Peter De Tender",
+      "source": "https://github.com/petender/issdata",
+      "demoguide": "hhttps://github.com/petender/issdata/blob/main/demoguide/demoguide.md",
+      "tags": ["dp-603", "dp-700", "msft", "new", "fabric", "eventhub"],
+      "cost": "0.00",
+      "deploytime": "2" 
     }
 ]
