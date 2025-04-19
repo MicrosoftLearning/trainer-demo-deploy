@@ -56,6 +56,8 @@ export type TagType =
   | "dp-203"
   | "dp-300"
   | "dp-420"
+  | "dp-603"
+  | "dp-700"
   | "dp-900"
   | "sc-100"
   | "sc-200"
@@ -111,6 +113,7 @@ export type TagType =
   | "vpngw"
   | "azurearc"
   | "loadtesting"
+  | "fabric"
 
 
 ;
@@ -154,7 +157,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Design and implement an Azure AI solution using Azure AI services, Azure AI Search, and Azure Open AI.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   
@@ -165,7 +168,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate fundamental AI concepts related to the development of software and services of Microsoft Azure to create AI solutions.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-ai-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },  
@@ -174,7 +177,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate key skills to configure, manage, secure, and administer key professional functions in Microsoft Azure.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-administrator/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-104Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-104.jpg?sp=r&st=2024-12-18T16:37:35Z&se=2025-07-01T23:37:35Z&spr=https&sv=2022-11-02&sr=b&sig=BvTw%2F8lvodlShflkzwtUe%2FelAQpEyY1CZ6EY6Vju95I%3D"
   },
@@ -183,7 +186,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate planning, migration, and operation of an SAP solution on Microsoft Azure while you leverage Azure resources.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-for-sap-workloads-specialty/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-for-sap-workloads-specialty/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -192,7 +195,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Plan, deliver, manage, and monitor virtual desktop experiences and remote apps on Microsoft Azure for any device.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-virtual-desktop-specialty/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-virtual-desktop-specialty/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-140Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/AZ-140Blueprint.pdf?sp=r&st=2024-12-31T20:49:49Z&se=2025-07-02T03:49:49Z&spr=https&sv=2022-11-02&sr=b&sig=frB70N5UhTxm4tWN9kIVJDA%2B9LTvlupb4Ohhp4Co72c%3D",
   },
@@ -202,7 +205,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Build end-to-end solutions in Microsoft Azure to create Azure Functions, implement and manage web apps, develop solutions utilizing Azure storage, and more.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-developer/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-204Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-204.jpg?sp=r&st=2024-12-18T16:38:44Z&se=2025-07-01T23:38:44Z&spr=https&sv=2022-11-02&sr=b&sig=ySlKoSDxTAdzA5KEt5x5GiebjNbkvHARwsl6E6t9Pjk%3D"
   },
@@ -211,7 +214,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Design solutions that run on Azure, including aspects like compute, network, storage, and security.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-solutions-architect/",
     courseblueprint: "https://aka.ms/AZ-305Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-305.jpg?sp=r&st=2024-12-18T16:39:14Z&se=2025-07-01T23:39:14Z&spr=https&sv=2022-11-02&sr=b&sig=XhagugPepjpY8FS6A%2BoqWkEXccUYY838kfVJGyU5frM%3D"
   
@@ -221,7 +224,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Design, implement, and manage DevOps strategies for Microsoft Azure, including aspects like source control, continuous integration, continuous delivery, and more.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer/",
+    url: "https://learn.microsoft.com/credentials/certifications/devops-engineer/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -230,7 +233,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate the skills needed to implement security controls, maintain an organization’s security posture, and identify and remediate security vulnerabilities.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-security-engineer/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-security-engineer/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-500Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/AZ-500_Blueprint.pdf?sp=r&st=2024-12-31T20:53:09Z&se=2025-07-02T03:53:09Z&spr=https&sv=2022-11-02&sr=b&sig=w7dBnLHMisSjomtus8Qgv7fri%2FiJrCrm5pxg1iY7yZ0%3D",
   },   
@@ -240,7 +243,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate the design, implementation, and maintenance of Azure networking infrastructure, load balancing traffic, network routing, and more.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-network-engineer-associate/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-network-engineer-associate/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-700Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-700.jpg?sp=r&st=2024-12-18T16:39:40Z&se=2025-07-01T23:39:40Z&spr=https&sv=2022-11-02&sr=b&sig=bptBO1h5wbO%2BujYDkSdh6vuSRBV51CFSHS4FP43Pqh8%3D",
   },
@@ -249,7 +252,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate the ability to implement, configure and manage Windows Server on-premises, hybrid, and infrastructure as a service (IaaS) platform workloads",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/windows-server-hybrid-administrator/",
+    url: "https://learn.microsoft.com/credentials/certifications/windows-server-hybrid-administrator/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -258,7 +261,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate the ability to implement, configure and manage Windows Server on-premises, hybrid, and infrastructure as a service (IaaS) platform workloads",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/windows-server-hybrid-administrator/",
+    url: "https://learn.microsoft.com/credentials/certifications/windows-server-hybrid-administrator/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },   
@@ -267,7 +270,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate foundational knowledge of cloud concepts, core Azure services, plus Azure management and governance features and tools.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },  
@@ -276,7 +279,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Manage data ingestion and preparation, model training and deployment, and machine learning solution monitoring with Python, Azure Machine Learning and MLflow.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-data-scientist/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -285,7 +288,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate understanding of common data engineering tasks to implement and manage data engineering workloads on Microsoft Azure, using a number of Azure services.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-engineer/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-data-engineer/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -294,7 +297,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Administer an SQL Server database infrastructure for cloud, on-premises and hybrid relational databases using the Microsoft PaaS relational database offerings.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-database-administrator-associate/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-database-administrator-associate/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -303,16 +306,34 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Write efficient queries, create indexing policies, manage, and provision resources in the SQL API and SDK with Microsoft Azure Cosmos DB.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-cosmos-db-developer-specialty/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-cosmos-db-developer-specialty/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
+  },
+  "dp-603": {
+    label: "DP-603 Fabrid Data Engineer Associate",
+    description: "Design and implement data storage solutions, data processing, and data security solutions using Microsoft Azure.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/credentials/certifications/fabric-analytics-engineer-associate/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "dp-700": {
+  label: "DP-700 Fabric Data Engineer Associate",
+    description: "Prepare data for analysis, model data, visualize data, analyze data, and deploy solutions using Microsoft Power BI.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/credentials/certifications/fabric-data-engineer-associate/",
+    courseblueprint: "",
+    courseblueprintdiag: ""
   },
   "dp-900": {
     label: "DP-900 Azure Data Fundamentals",
     description: "Demonstrate foundational knowledge of core data concepts related to Microsoft Azure data services.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-fundamentals/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/azure-data-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -321,7 +342,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate foundational knowledge of security, compliance, and identity across cloud-based and related Microsoft services.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/cybersecurity-architect-expert/",
+    url: "https://learn.microsoft.com/credentials/certifications/cybersecurity-architect-expert/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -330,7 +351,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Investigate, search for, and mitigate threats using Microsoft Sentinel, Microsoft Defender for Cloud, and Microsoft 365 Defender.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/security-operations-analyst/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/security-operations-analyst/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -339,7 +360,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate the features of Microsoft Entra ID to modernize identity solutions, implement hybrid solutions, and implement identity governance.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/identity-and-access-administrator/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/identity-and-access-administrator/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/SC-300Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/SC-300_Blueprint.pdf?sp=r&st=2024-10-10T16:20:37Z&se=2025-07-02T00:20:37Z&spr=https&sv=2022-11-02&sr=b&sig=Q8NZNEY0oa96Olaeyuu8Wf1DeTJ77TJbUmesb6uSjZw%3D",
    },
@@ -348,7 +369,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Demonstrate foundational knowledge of security, compliance, and identity across cloud-based and related Microsoft services.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
-    url: "https://learn.microsoft.com/en-us/credentials/certifications/security-compliance-and-identity-fundamentals/?practice-assessment-type=certification",
+    url: "https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -391,7 +412,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Machine Learning",
     description: "Template architecture uses Azure Machine Learning",
     azureIcon: "./img/Azure-Machine-Learning.svg",
-    url: "https://learn.microsoft.com/en-us/azure/machine-learning/?view=azureml-api-2",
+    url: "https://learn.microsoft.com/azure/machine-learning/?view=azureml-api-2",
     type: "Service",
   },
   loganalytics: {
@@ -433,14 +454,14 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Container Instance",
     description: "Template architecture uses Azure Container Instance",
     azureIcon: "./img/Azure-Container-Instance.svg",
-    url: "https://azure.microsoft.com/en-us/products/container-instances/",
+    url: "https://azure.microsoft.com/products/container-instances/",
     type: "Service",
   },
   acr: {
     label: "Azure Container Registry",
     description: "Template architecture uses Azure Container Registry",
     azureIcon: "./img/Azure-Container-Registry.svg",
-    url: "https://azure.microsoft.com/en-us/products/container-registry/",
+    url: "https://azure.microsoft.com/products/container-registry/",
     type: "Service",
   },
   cosmosdb: {
@@ -532,7 +553,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Speech Services",
     description: "Template architecture uses Azure AI Speech Services",
     azureIcon: "./img/Azure-Speech-Services.svg",
-    url: "https://azure.microsoft.com/en-us/products/ai-services/ai-speech",
+    url: "https://azure.microsoft.com/products/ai-services/ai-speech",
     type: "Service",
   },
   apim: {
@@ -658,7 +679,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Sentinel",
     description: "Template architecture uses Azure Sentinel",
     azureIcon: "./img/Microsoft-Sentinel.svg",
-    url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel/",
+    url: "https://azure.microsoft.com/products/microsoft-sentinel/",
     type: "Service",
   },
 
@@ -682,7 +703,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure VPN Gateway",
     description: "Template architecture uses Azure VPN Gateway",
     azureIcon: "./img/Azure-VPN-GW.svg",
-    url: "https://azure.microsoft.com/en-us/products/vpn-gateway",
+    url: "https://azure.microsoft.com/products/vpn-gateway",
     type: "Service",
   },
 
@@ -690,7 +711,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure ARC",
     description: "Template architecture for Azure ARC",
     azureIcon: "./img/Azure-Arc-VM.svg",
-    url: "hhttps://azure.microsoft.com/en-us/products/azure-arc",
+    url: "hhttps://azure.microsoft.com/products/azure-arc",
     type: "Service",
   },
 
@@ -698,7 +719,15 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Load Testing",
     description: "Template architecture for Azure Load Testing",
     azureIcon: "./img/Azure-Load-Testing.svg",
-    url: "https://azure.microsoft.com/en-us/products/load-testing",
+    url: "https://azure.microsoft.com/products/load-testing",
+    type: "Service", 
+  },
+
+  fabric: {
+    label: "Microsoft Fabric",
+    description: "Template architecture for Azure Fabric",
+    azureIcon: "./img/Azure-Fabric.png",
+    url: "https://www.microsoft.com/microsoft-fabric",
     type: "Service", 
   },
 
