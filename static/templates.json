@@ -420,7 +420,7 @@
     },
     {
       "title": "Deploy a baseline web application",
-      "description": "This repository provides a baseline for deploying web applications.",
+      "description": "This repository provides a baseline for deploying web applications with Deployment Slots, Azure SQL Connectivity and KeyVault.",
       "preview": "./templates/images/baseline-webapp.png",
       "website": "https://github.com/daverendon",
       "author": "Dave Rendon",
