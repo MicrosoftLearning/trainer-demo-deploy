@@ -413,7 +413,7 @@
       "website": "https://github.com/petender",
       "author": "Peter De Tender",
       "source": "https://github.com/petender/issdata",
-      "demoguide": "https://github.com/petender/issdata/blob/main/demoguide/demoguide.md",
+      "demoguide": "https://raw.githubusercontent.com/petender/issdata/refs/heads/main/demoguide/demoguide.md",
       "tags": ["dp-603", "dp-700", "msft", "new", "fabric", "eventhub"],
       "cost": "12.00",
       "deploytime": "2" 
