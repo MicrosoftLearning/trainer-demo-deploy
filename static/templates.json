@@ -431,7 +431,6 @@
       "deploytime": "5"
     },
     {
-
       "title": "Plan and implement security for public access to Azure resources",
       "description": "This repository provides guidance on leveraging Azure Firewall and control inbound and outbound network access which is an important part of an overall network security plan.",
       "preview": "./templates/images/az-firewall.png",
@@ -439,7 +438,7 @@
       "author": "Dave Rendon",
       "source": "https://github.com/daverendon/azd-firewall",
       "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-firewall/refs/heads/main/readme.MD",
-      "tags": ["az-104", "az-305", "az-500", "mct", "new", "firewall"],
+      "tags": ["az-104", "az-305", "az-500", "mct", "new", "azurefirewall"],
       "cost": "15.00",
       "deploytime": "4"
     },

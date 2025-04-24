@@ -114,6 +114,7 @@ export type TagType =
   | "azurearc"
   | "loadtesting"
   | "fabric"
+  | "azurefirewall"
 
 
 ;
@@ -728,6 +729,14 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Azure Fabric",
     azureIcon: "./img/Azure-Fabric.png",
     url: "https://www.microsoft.com/microsoft-fabric",
+    type: "Service", 
+  },
+
+  azurefirewall: {
+    label: "Azure Firewall",
+    description: "Template architecture for Azure Firewall",
+    azureIcon: "./img/Azure-Firewall.svg",
+    url: "https://azure.microsoft.com/products/azure-firewall",
     type: "Service", 
   },
 
