@@ -449,7 +449,22 @@
       "website": "https://github.com/petender",
       "author": "Peter De Tender",
       "source": "https://github.com/petender/azd-vision-face",
-      "tags": ["msft", "new", "appservice", "azureai"]
+      "tags": ["msft", "new", "appservice", "azureai", "ai-102"],
+      "demoguide": "https://raw.githubusercontent.com/petender/azd-vision-face/refs/heads/main/demoguide/demoguide.md",
+      "cost": "3.00",
+      "deploytime": "2"
+    },
+    {
+      "title": "Azure VM Win2022 as ADDS Domain Controller, secured by Bastion",
+      "description": "This scenario deploys an Azure Bastion Host Service, allowing secured connectivity to a Windows Server 2022 running as Active Directory Domain Controller, deployed through DSC VM Extensions. An internal DNS domain gets created, but no other OUs or User accounts. You will get prompted for administrative credentials during the azd setup.",
+      "preview": "./templates/images/addsvm_with_bastion.png",
+      "website": "https://github.com/petender",
+      "author": "Peter De Tender",
+      "source": "https://github.com/petender/azd-addsvm",
+      "tags": ["msft", "new", "az-104", "az-800","virtualmachine", "bastion"],
+      "demoguide": "https://raw.githubusercontent.com/petender/azd-addsvm/refs/heads/main/demoguide/addsvm.md",
+      "cost": "3.00",
+      "deploytime": "15"
     }
 
 ]

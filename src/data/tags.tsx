@@ -115,6 +115,7 @@ export type TagType =
   | "loadtesting"
   | "fabric"
   | "azurefirewall"
+  | "bastion"
 
 
 ;
@@ -739,6 +740,14 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/azure-firewall",
     type: "Service", 
   },
+
+  bastion: {
+    label: "Azure Bastion",
+    description: "Template architecture for Azure Bastion",
+    azureIcon: "./img/Azure-Bastion.svg",
+    url: "https://azure.microsoft.com/products/azure-bastion",
+    type: "Service",
+  }
 
 
   
