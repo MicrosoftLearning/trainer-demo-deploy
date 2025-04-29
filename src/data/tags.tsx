@@ -116,6 +116,8 @@ export type TagType =
   | "fabric"
   | "azurefirewall"
   | "bastion"
+  | "sqlserver"
+  | "avset"
 
 
 ;
@@ -747,7 +749,22 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/Azure-Bastion.svg",
     url: "https://azure.microsoft.com/products/azure-bastion",
     type: "Service",
-  }
+  },
+
+  sqlserver: {
+    label: "SQL Server",
+    description: "Template architecture for SQL Server",
+    azureIcon: "./img/SQL-Server-Database.svg",
+    url: "https://azure.microsoft.com/products/virtual-machines/sql-server/",
+    type: "Service",
+  },
+  avset: {
+    label: "Availability Set",
+    description: "Template architecture for Availability Set",
+    azureIcon: "./img/VM-AVSets.svg",
+    url: "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+    type: "Service",
+  },
 
 
   

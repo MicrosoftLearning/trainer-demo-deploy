@@ -465,6 +465,19 @@
       "demoguide": "https://raw.githubusercontent.com/petender/azd-addsvm/refs/heads/main/demoguide/addsvm.md",
       "cost": "3.00",
       "deploytime": "15"
+    },
+    {
+      "title": "SQL Server 2019 AlwaysOn Cluster with ADDS VM and Management VM, secured by Bastion",
+      "description": "This scenario deploys a SQL Server 2019 Always On Cluster, together with the required Active Directory Domain Controller VM, a remote Management VM Host, protected by Bastion Host. You will get prompted for administrative credentials during the azd setup.",
+      "preview": "./templates/images/SQLAO_with_Bastion.png",
+      "website": "https://github.com/petender",
+      "author": "Peter De Tender",
+      "source": "https://github.com/petender/azd-sqlao",
+      "tags": ["msft", "new", "az-305", "dp-203","virtualmachine", "bastion", "sqlserver", "avset"],
+      "demoguide": "https://raw.githubusercontent.com/petender/azd-sqlao/refs/heads/main/demoguide/demoguide.md",
+      "cost": "25.00",
+      "deploytime": "45"
+
     }
 
 ]
