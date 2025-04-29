@@ -478,6 +478,18 @@
       "cost": "25.00",
       "deploytime": "45"
 
+    },
+    {
+      "title": "Implement Intersite Connectivity",
+      "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
+      "preview": "./templates/images/az-firewall.png",
+      "website": "https://github.com/daverendon",
+      "author": "Dave Rendon",
+      "source": "https://github.com/daverendon/azd-intersite-connectivity",
+      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-intersite-connectivity/refs/heads/main/demoguide/demoguide.md",
+      "tags": ["az-104", "az-305","mct", "new", "azurenetworking"],
+      "cost": "10.00",
+      "deploytime": "1"
     }
 
 ]
