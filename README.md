@@ -1,3 +1,8 @@
+# Welcome!
+
+If you are looking for the Trainer Demo Deploy site, please visit our main site: https://aka.ms/trainer-demo-deploy. You'll find all the latest deployments there.
+
+
 # Website
 
 [![Deploy to GitHub Pages](https://github.com/Azure/awesome-azd/actions/workflows/deploy-docusaurus.yml/badge.svg)](https://github.com/Azure/awesome-azd/actions/workflows/deploy-docusaurus.yml)
