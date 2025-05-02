@@ -194,7 +194,7 @@
     "website": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-site2sitevpn/",
-    "demoguide": "https://raw.githubusercontent.com/petender/azd-site2sitevpn/refs/heads/main/Demoguides/s2svpn.md",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-site2sitevpn/refs/heads/main/Demoguide/s2svpn.md",
     "tags": ["az-104", "az-700", "az-305", "msft",  "vnets"],
     "cost": "12.00",
     "deploytime": "35"
@@ -478,6 +478,14 @@
       "cost": "25.00",
       "deploytime": "45"
 
+    },
+    {
+      "title": "Windows 2019 IIS Servers with Load Balancer",
+      "description": "This scenario deploys 2 Win2019 VMs running IIS Default WebSite, behind a Load Balancer and required Network Security Group rules.",
+      "preview": "./templates/images/vmwithlb.png",
+      "website": "https://github.com/trainerkrunal",
+      "author": "Krunal Trivedi",
+      "source": "https://github.com/trainerkrunal/azd-vmwithlb",
+      "tags": ["mct", "new", "virtualmachine", "vnet", "az-104", "az-305"]
     }
-
 ]
