@@ -315,7 +315,7 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/demoguide/flexfunctions.md",
     "tags": ["az-204", "az-400", "functions", "eventhub", "loadtesting"],
     "cost": "30",
-    "deploytime": "10",
+    "deploytime": "10"
     "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/prereqs.md"
   },
   {
@@ -486,6 +486,11 @@
       "website": "https://github.com/trainerkrunal",
       "author": "Krunal Trivedi",
       "source": "https://github.com/trainerkrunal/azd-vmwithlb",
-      "tags": ["mct", "new", "virtualmachine", "vnets", "az-104", "az-305"]
+      "tags": ["mct", "new", "virtualmachine", "vnets", "az-104", "az-305"],
+      "demoguide": "https://raw.githubusercontent.com/trainerkrunal/azd-vmwithlb/refs/heads/master/demoguide/demoguide.md",
+      "cost": "11.00",
+      "deploytime": "5"
     }
+    
+
 ]
