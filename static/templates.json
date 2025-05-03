@@ -315,7 +315,7 @@
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/demoguide/flexfunctions.md",
     "tags": ["az-204", "az-400", "functions", "eventhub", "loadtesting"],
     "cost": "30",
-    "deploytime": "10"
+    "deploytime": "10",
     "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/prereqs.md"
   },
   {
@@ -473,7 +473,7 @@
       "website": "https://github.com/petender",
       "author": "Peter De Tender",
       "source": "https://github.com/petender/azd-sqlao",
-      "tags": ["msft", "new", "az-305", "dp-203","virtualmachine", "bastion", "sqlserver", "avset"],
+      "tags": ["msft", "new", "az-305", "dp-300","virtualmachine", "bastion", "sqlserver", "avset"],
       "demoguide": "https://raw.githubusercontent.com/petender/azd-sqlao/refs/heads/main/demoguide/demoguide.md",
       "cost": "25.00",
       "deploytime": "45"
