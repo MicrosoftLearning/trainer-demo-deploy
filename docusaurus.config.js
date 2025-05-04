@@ -127,7 +127,7 @@ const config = {
           // CONFIG:
           // Make sure you have class defined in src/css/custom.css
           {
-            to: "https://github.com/MicrosoftLearning/trainer-demo-deploy/issues/new?assignees=petender&labels=feedback&projects=&template=feedback_template.md&title=%5BFeedback%5D",
+            to: "https://github.com/MicrosoftLearning/trainer-demo-deploy/issues/new/choose",
             label: "Share your feedback!",
             position: "right",
             className: "button",
