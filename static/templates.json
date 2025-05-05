@@ -447,7 +447,7 @@
       "description": "This sample scenario deploys Microsoft.CognitiveServices (Face API, Speech, Vision, OpenAI) with a sample Python app. It also showcases a secure setup, where connectivity to the Cognitive Services is only allowed from a Client IP or the webapp Service Endpoint, not public network.",
       "preview": "./templates/images/azd-vision-face-diagram.png",
       "website": "https://github.com/vincentk16",
-      "author": "Peter De Tender",
+      "author": "Vincent Kok",
       "source": "https://github.com/vincentk16/azd-vision-face",
       "tags": ["msft", "new", "appservice", "azureai", "ai-102"],
       "demoguide": "https://raw.githubusercontent.com/vincentk16/azd-vision-face/refs/heads/main/demoguide/demoguide.md",
