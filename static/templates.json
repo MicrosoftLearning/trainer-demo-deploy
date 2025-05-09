@@ -490,6 +490,18 @@
       "tags": ["az-104", "az-305","mct", "new", "azurenetworking"],
       "cost": "10.00",
       "deploytime": "1"
+    },
+    {
+      "title": "Service Endpoints and Securing Storage",
+      "description": "This demo guides you through a hands-on exercise to build and secure a networked environment in Azure. You will start by creating a virtual network and adding a subnet with a configured storage endpoint. Next, you will implement network security groups. Following this, you will create a storage account with a file share and deploy virtual machines into their respective subnets. Finally, you will test the storage connection from both the private and public subnets to verify that access is correctly allowed from the private subnet and denied from the public subnet.",
+      "preview": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
+      "website": "https://github.com/daverendon",
+      "author": "Dave Rendon",
+      "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
+      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-service-endpoints-and-securing-storage/refs/heads/main/demoguide/demoguide.md",
+      "tags": ["az-104", "az-500","mct", "new", "azurestorage"],
+      "cost": "10.00",
+      "deploytime": "1"
     }
 
 ]
