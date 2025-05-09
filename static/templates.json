@@ -512,9 +512,8 @@
       "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
       "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-service-endpoints-and-securing-storage/refs/heads/main/demoguide/demoguide.md",
       "tags": ["az-104", "az-500","mct", "new", "azurestorage"],
-      "cost": "10.00",
-      "deploytime": "1"
+      "cost": "11.00",
+      "deploytime": "3"
     }
-    
 
 ]
