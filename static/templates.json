@@ -499,7 +499,7 @@
       "author": "Michel Agah",
       "source": "https://github.com/michelmsft/GoodFood/",
       "tags": ["mtt", "new", "semantic-kernel", "openai", "az-2005"],
-      "demoguide": "https://raw.githubusercontent.com/trainerkrunal/azd-vmwithlb/refs/heads/master/demoguide/demoguide.md",
+      "demoguide": "https://raw.githubusercontent.com/michelmsft/GoodFood/refs/heads/master/demoguide/demoguide.md",
       "cost": "2",
       "deploytime": "5"
     }    
