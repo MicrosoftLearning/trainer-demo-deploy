@@ -58,7 +58,7 @@
     "website": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/BadgeMaker",
-    "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/Readme.md",
+    "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/demoguide/demoguide.md",
     "tags": ["az-204", "az-305", "ai-102", "msft",   "appservice", "azureai", "blazor"],
     "cost": "4.00",
     "deploytime": "7",
@@ -194,7 +194,7 @@
     "website": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-site2sitevpn/",
-    "demoguide": "https://raw.githubusercontent.com/petender/azd-site2sitevpn/refs/heads/main/Demoguides/s2svpn.md",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-site2sitevpn/refs/heads/main/Demoguide/s2svpn.md",
     "tags": ["az-104", "az-700", "az-305", "msft",  "vnets"],
     "cost": "12.00",
     "deploytime": "35"
@@ -446,11 +446,11 @@
       "title": "Cognitive Services Python App with ServiceEndpoint",
       "description": "This sample scenario deploys Microsoft.CognitiveServices (Face API, Speech, Vision, OpenAI) with a sample Python app. It also showcases a secure setup, where connectivity to the Cognitive Services is only allowed from a Client IP or the webapp Service Endpoint, not public network.",
       "preview": "./templates/images/azd-vision-face-diagram.png",
-      "website": "https://github.com/petender",
-      "author": "Peter De Tender",
-      "source": "https://github.com/petender/azd-vision-face",
+      "website": "https://github.com/vincentk16",
+      "author": "Vincent Kok",
+      "source": "https://github.com/vincentk16/azd-vision-face",
       "tags": ["msft", "new", "appservice", "azureai", "ai-102"],
-      "demoguide": "https://raw.githubusercontent.com/petender/azd-vision-face/refs/heads/main/demoguide/demoguide.md",
+      "demoguide": "https://raw.githubusercontent.com/vincentk16/azd-vision-face/refs/heads/main/demoguide/demoguide.md",
       "cost": "3.00",
       "deploytime": "2"
     },
@@ -473,7 +473,7 @@
       "website": "https://github.com/petender",
       "author": "Peter De Tender",
       "source": "https://github.com/petender/azd-sqlao",
-      "tags": ["msft", "new", "az-305", "dp-203","virtualmachine", "bastion", "sqlserver", "avset"],
+      "tags": ["msft", "new", "az-305", "dp-300","virtualmachine", "bastion", "vmsqlserver", "avset"],
       "demoguide": "https://raw.githubusercontent.com/petender/azd-sqlao/refs/heads/main/demoguide/demoguide.md",
       "cost": "25.00",
       "deploytime": "45"
@@ -515,4 +515,6 @@
       "cost": "11.00",
       "deploytime": "3"
     }
+
+    
 ]
