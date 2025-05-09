@@ -498,7 +498,7 @@
       "website": "https://github.com/michelmsft",
       "author": "Michel Agah",
       "source": "https://github.com/michelmsft/GoodFood/",
-      "tags": ["mtt", "new", "semantic kernel", "azure openai", "az-2005"],
+      "tags": ["mtt", "new", "semantic-kernel", "openai", "az-2005"],
       "demoguide": "https://raw.githubusercontent.com/trainerkrunal/azd-vmwithlb/refs/heads/master/demoguide/demoguide.md",
       "cost": "2",
       "deploytime": "5"
