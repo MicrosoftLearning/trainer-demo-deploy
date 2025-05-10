@@ -490,7 +490,7 @@
       "demoguide": "https://raw.githubusercontent.com/trainerkrunal/azd-vmwithlb/refs/heads/master/demoguide/demoguide.md",
       "cost": "11.00",
       "deploytime": "5"
-    }
+    },
     {
       "title": "Fast Food Drive thru Operator Ai Agent with Semantic Kernel and GPT 3.5 Turbo",
       "description": "This AI-powered Fast Food Drive-Thru Operator leverages Semantic Kernel and Azure OpenAI GPT-3.5 turbo to streamline customer interactions, improve efficiency, and automate order processing.",
@@ -498,8 +498,8 @@
       "website": "https://github.com/michelmsft",
       "author": "Michel Agah",
       "source": "https://github.com/michelmsft/GoodFood/",
-      "tags": ["mtt", "new", "semantic-kernel", "openai", "az-2005"],
-      "demoguide": "https://raw.githubusercontent.com/michelmsft/GoodFood/refs/heads/master/demoguide/demoguide.md",
+      "tags": ["msft", "new", "semantic-kernel", "openai", "azureai", "ai-102"],
+      "demoguide": "https://raw.githubusercontent.com/michelmsft/GoodFood/refs/heads/master/README.md",
       "cost": "2",
       "deploytime": "5"
     }    

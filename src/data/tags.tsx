@@ -45,7 +45,6 @@ export type TagType =
   | "az-120"
   | "az-140"
   | "az-204"
-  | "az-2005"
   | "az-305"
   | "az-400"
   | "az-500"
@@ -64,6 +63,13 @@ export type TagType =
   | "sc-200"
   | "sc-300"
   | "sc-900"
+
+  // Frameworks
+  | "dotnet"
+  | "nodejs"
+  | "python"
+  | "semantic-kernel"
+  | "blazor"
 
 
 // Azure Services
@@ -96,7 +102,6 @@ export type TagType =
   | "rediscache"
   | "agw"
   | "azurebot"
-  | "blazor"
   | "azuredb-mySQL"
   | "eventhub"
   | "azurestorage"
@@ -119,7 +124,7 @@ export type TagType =
   | "bastion"
   | "vmsqlserver"
   | "avset"
-  | "semantic-kernel"
+
 
 
 ;
@@ -387,11 +392,34 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Database",
   },
   
-
+  // ---- Framework
+  "semantic-kernel": {
+    label: "Semantic Kernel",
+    description: "Template architecture uses Semantic Kernel",
+    type: "Framework",
+  },
  
   blazor: {
     label: "Blazor",
     description: "Template architecture uses Blazor",
+    type: "Framework",
+  },
+
+  python: {
+    label: "Python",
+    description: "Template architecture uses Python",
+    type: "Framework",
+  },
+
+  nodejs: {
+    label: "Node.js",
+    description: "Template architecture uses Node.js",
+    type: "Framework",
+  },
+
+  dotnet: {
+    label: ".NET",
+    description: "Template architecture uses .NET",
     type: "Framework",
   },
   
