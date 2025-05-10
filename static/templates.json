@@ -492,6 +492,30 @@
       "deploytime": "5"
     },
     {
+      "title": "Service Endpoints and Securing Storage",
+      "description": "This demo guides you through a hands-on exercise to build and secure a networked environment in Azure. You will start by creating a virtual network and adding a subnet with a configured storage endpoint. Next, you will implement network security groups. Following this, you will create a storage account with a file share and deploy virtual machines into their respective subnets. Finally, you will test the storage connection from both the private and public subnets to verify that access is correctly allowed from the private subnet and denied from the public subnet.",
+      "preview": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
+      "website": "https://github.com/daverendon",
+      "author": "Dave Rendon",
+      "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
+      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-service-endpoints-and-securing-storage/refs/heads/main/demoguide/demoguide.md",
+      "tags": ["az-104", "az-500","mct", "new", "azurestorage"],
+      "cost": "10.00",
+      "deploytime": "1"
+    },
+    {
+       "title": "Implement Intersite Connectivity with Azure VMs",
+       "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
+      "preview": "./templates/images/az-firewall.png",
+      "website": "https://github.com/daverendon",
+      "author": "Dave Rendon",
+      "source": "https://github.com/daverendon/azd-intersite-connectivity",
+      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-intersite-connectivity/refs/heads/main/demoguide/demoguide.md",
+      "tags": ["az-700", "az-305","mct", "new", "vnets"],
+      "cost": "10.00",
+      "deploytime": "1"
+    },
+    {
       "title": "Fast Food Drive thru Operator Ai Agent with Semantic Kernel and GPT 3.5 Turbo",
       "description": "This AI-powered Fast Food Drive-Thru Operator leverages Semantic Kernel and Azure OpenAI GPT-3.5 turbo to streamline customer interactions, improve efficiency, and automate order processing.",
       "preview": "https://private-user-images.githubusercontent.com/188291745/429761182-e61f1162-93d1-4847-a57a-bbb6de614d34.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY4MDMwMDIsIm5iZiI6MTc0NjgwMjcwMiwicGF0aCI6Ii8xODgyOTE3NDUvNDI5NzYxMTgyLWU2MWYxMTYyLTkzZDEtNDg0Ny1hNTdhLWJiYjZkZTYxNGQzNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwOVQxNDU4MjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mNTFhMThkNTA5YTEwOGUwZWMxODA3MTA2N2ZjYWYyYjk2OTdjZTA4NzQ1OWZmOTc3OGY1YTY3N2U1YTcxOWIzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0YTxyQQOgo4qjQjNsPGh4G6APvB7dPBp-iVrnM_9zvg",
