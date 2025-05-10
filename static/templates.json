@@ -536,6 +536,7 @@
       "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
       "tags": ["az-400", "az-204", "mct", "functions", "dotnet", "azureappconfig"],
       "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AppConfiguration/refs/heads/main/demoguide/demoguide.md",
+      "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AppConfiguration/refs/heads/main/prereqs.md",
       "cost": "1",
       "deploytime": "2"
     }
