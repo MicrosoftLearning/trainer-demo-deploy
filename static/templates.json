@@ -534,7 +534,7 @@
       "website": "https://github.com/maartenvandiemen",
       "author": "Maarten van Diemen",
       "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
-      "tags": ["az-400", "mct",  "functions", "dotnet"],
+      "tags": ["az-400", "az-204", "mct", "functions", "dotnet", "azureappconfig"],
       "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AppConfiguration/refs/heads/main/demoguide/demoguide.md",
       "cost": "1",
       "deploytime": "2"
