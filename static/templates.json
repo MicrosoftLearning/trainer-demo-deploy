@@ -527,7 +527,7 @@
       "cost": "2",
       "deploytime": "5"
     },
-      {
+    {
       "title": "Azure App Configuration",
       "description": "Demo to show possibilities of Azure App Configuration",
       "preview": "./templates/images/AppConfiguration.png",
