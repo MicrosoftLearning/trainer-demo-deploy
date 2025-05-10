@@ -322,7 +322,31 @@ export default function ShowcaseLeftFilters({
         </AccordionPanel>
       </AccordionItem>
 
-      
+      <AccordionItem value="2">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
+        >
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>
+            Frameworks
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll
+            tags={frameworkTag}
+            number={"2"}
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
+        </AccordionPanel>
+      </AccordionItem>
 
 
       
