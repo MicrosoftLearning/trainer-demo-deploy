@@ -106,7 +106,7 @@ export type TagType =
   | "eventhub"
   | "azurestorage"
   | "azureappconfig"
-  | "aistudio"
+  | "aifoundry"
   | "apicenter"
   | "eventgrid"
   | "logicapps"
@@ -663,11 +663,11 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/app-configuration",
     type: "Service",
   },
-  aistudio: {
-    label: "Azure AI Studio",
-    description: "Template architecture uses Azure AI Studio",
+  aifoundry: {
+    label: "Azure AI Foundry",
+    description: "Template architecture uses Azure AI Foundry",
     azureIcon: "./img/Azure-AI-Studio.svg",
-    url: "https://azure.microsoft.com/products/ai-studio",
+    url: "https://azure.microsoft.com/products/ai-foundry",
     type: "Service",
   },
   apicenter: {
