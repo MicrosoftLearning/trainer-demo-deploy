@@ -45,6 +45,7 @@ export type TagType =
   | "az-120"
   | "az-140"
   | "az-204"
+  | "az-2005"
   | "az-305"
   | "az-400"
   | "az-500"
@@ -118,6 +119,7 @@ export type TagType =
   | "bastion"
   | "vmsqlserver"
   | "avset"
+  | "semantic-kernel"
 
 
 ;
