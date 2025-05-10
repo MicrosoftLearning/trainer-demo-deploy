@@ -530,7 +530,7 @@
       {
       "title": "Azure App Configuration",
       "description": "Demo to show possibilities of Azure App Configuration",
-      "preview": "./templates/images/appConfiguration.png",
+      "preview": "./templates/images/AppConfiguration.png",
       "website": "https://github.com/maartenvandiemen",
       "author": "Maarten van Diemen",
       "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
