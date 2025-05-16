@@ -539,5 +539,18 @@
       "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AppConfiguration/refs/heads/main/prereqs.md",
       "cost": "1",
       "deploytime": "2"
+    },
+    {
+      "title": "Utilize Private Link for accessing apps on networks with overlapping addresses",
+      "description": "This scenario is aligned with the Az-104 and Az-700 path and provides a demo solution for managing overlapping IP address spaces with Azure Private Link.",
+      "preview": "./templates/images/diagram-private-link.png",
+      "website": "https://github.com/daverendon",
+      "author": "Dave Rendon",
+      "source": "https://github.com/daverendon/azd-private-link",
+      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-private-link/refs/heads/main/demoguide/demoguide.md",
+      "tags": ["az-104", "az-700","mct", "new", "azurenetworking"],
+      "cost": "5.00",
+      "deploytime": "1"
     }
+
 ]
