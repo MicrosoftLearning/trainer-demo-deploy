@@ -34,7 +34,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/OpenAIMultiModel",
     "demoguide": "https://raw.githubusercontent.com/petender/OpenAIMultiModel/refs/heads/main/README.md",
-    "tags": ["ai-102", "msft",  "hot", "openai", "azureai"],
+    "tags": ["ai-102", "msft",  "openai", "azureai"],
     "cost": "5.00",
     "deploytime": "4"    
   },
@@ -275,7 +275,7 @@
     "website": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
-    "tags": ["sc-200", "az-800", "dp-300", "azurearc","new","msft"],
+    "tags": ["sc-200", "az-800", "dp-300", "azurearc","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
     "cost": "11.00",
     "deploytime": "5"
@@ -287,7 +287,7 @@
     "website": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
-    "tags": ["ai-102", "azureai","new","msft"],
+    "tags": ["ai-102", "azureai","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/README.md",
     "cost": "3",
     "deploytime": "21"
@@ -299,7 +299,7 @@
     "website": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
-    "tags": ["ai-102", "azureai","new","msft","hot"],
+    "tags": ["ai-102", "azureai","msft","hot"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/README.md",
     "cost": "2",
     "deploytime": "3"
@@ -326,7 +326,7 @@
     "website": "https://github.com/true-while",
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/owasp-azd/",
-    "tags": ["az-500","sc-200","sc-100","new","msft"],
+    "tags": ["az-500","sc-200","sc-100","msft"],
     "demoguide": "https://raw.githubusercontent.com/true-while/owasp-azd/refs/heads/main/demoguide/demoguide.md",
     "cost": "67",
     "deploytime": "14"
@@ -338,7 +338,7 @@
       "website": "https://github.com/maartenvandiemen",
       "author": "Maarten van Diemen",
       "source": "https://github.com/maartenvandiemen/azd-loadtest/",
-      "tags": ["az-400","az-305","new","mct","loadtesting"],
+      "tags": ["az-400","az-305","mct","loadtesting"],
       "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-LoadTest/refs/heads/main/demoguide/demoguide.md",
       "cost": "5",
       "deploytime": "3",
@@ -365,7 +365,7 @@
       "author": "ronaldbosma",
       "source": "https://github.com/ronaldbosma/azure-integration-services-quickstart",
       "demoguide": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/demos/demo-sample-application.md",
-      "tags": ["az-204", "az-305", "new", "hot", "appservice", "apim", "logicapps", "servicebus", "eventhub", "keyvault", "azurestorage", "appinsights"],
+      "tags": ["az-204", "az-305", "hot", "appservice", "apim", "logicapps", "servicebus", "eventhub", "keyvault", "azurestorage", "appinsights"],
       "cost": "6.00",
       "deploytime": "5",    
       "prereqs": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/prereqs.md"
@@ -378,7 +378,7 @@
       "author": "Peter De Tender",
       "source": "https://github.com/petender/azd-storaccnt",
       "demoguide": "https://raw.githubusercontent.com/petender/azd-storaccnt/refs/heads/main/Demoguides/storaccnt.md",
-      "tags": ["az-104", "az-305", "msft", "new", "azurestorage"],
+      "tags": ["az-104", "az-305", "msft",  "azurestorage"],
       "cost": "2.00",
       "deploytime": "3"
     },
@@ -390,7 +390,7 @@
       "author": "Dave Rendon",
       "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
       "demoguide": "https://github.com/daveRendon/azd-deepseek-r1-on-azure-container-apps/blob/main/readme.MD",
-      "tags": ["ai-102", "az-305", "ai-900", "mct", "new", "azureai"],
+      "tags": ["ai-102", "az-305", "ai-900", "mct", "azureai"],
       "cost": "6.00",
       "deploytime": "11"
     },
@@ -402,7 +402,7 @@
       "author": "Peter De Tender",
       "source": "https://github.com/petender/azd-youtubesummarizer-openai",
       "demoguide": "https://raw.githubusercontent.com/petender/azd-youtubesummarizer-openai/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["ai-102", "ai-900", "msft", "new", "azureai", "dotnet"],
+      "tags": ["ai-102", "ai-900", "msft", "azureai", "dotnet"],
       "cost": "1.00",
       "deploytime": "6"
     },
