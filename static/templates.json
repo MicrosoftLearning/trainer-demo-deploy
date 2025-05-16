@@ -548,7 +548,7 @@
       "author": "Dave Rendon",
       "source": "https://github.com/daverendon/azd-private-link",
       "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-private-link/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["az-104", "az-700","mct", "new", "azurenetworking"],
+      "tags": ["az-104", "az-700","mct", "new", "vnets"],
       "cost": "5.00",
       "deploytime": "1"
     }
