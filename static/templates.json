@@ -551,6 +551,17 @@
       "tags": ["az-104", "az-700","mct", "new", "vnets"],
       "cost": "5.00",
       "deploytime": "1"
-    }
-
+    },
+    {
+    "title": "Azure SQL Workload Simulator Demo",
+    "description": "This project sets up an Azure environment with a SQL workload simulator, After 24 hrs you will be able to demo Azure SQL Database Performance Recommendations.",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-sqlworloadsim/main/media/resourcesdeployed.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
+    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-sqlworloadsim/refs/heads/main/README.md",
+    "tags": ["dp-300", "az-700","mct", "new", "azuresql","keyvault"],
+    "cost": "5.00",
+    "deploytime": "6"
+  }
 ]
