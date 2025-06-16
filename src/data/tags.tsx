@@ -128,6 +128,7 @@ export type TagType =
   | "privateendpoint"
   | "privatelink"
   | "loadbalancer"
+ 
 
 
 
@@ -827,6 +828,7 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/load-balancer",
     type: "Service",
   },
+  
 
 
   
