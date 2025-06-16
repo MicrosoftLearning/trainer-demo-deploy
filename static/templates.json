@@ -99,7 +99,7 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-ACI-Demo/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-104", "az-204", "az-305", "hot","mct",  "acr", "aci", "dotnet"],
+    "tags": ["az-104", "az-204", "az-305", "mct",  "acr", "aci", "dotnet"],
     "cost": "4.00",
     "deploytime": "4"
     
@@ -112,7 +112,7 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-ACA-Demo/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-104", "az-204", "az-305", "mct", "hot", "acr", "aci", "dotnet"],
+    "tags": ["az-104", "az-204", "az-305", "mct", "acr", "aci", "dotnet"],
     "cost": "3.50",
     "deploytime": "7"
     
@@ -138,7 +138,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-fdcdn",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-fdcdn/refs/heads/main/Demoguides/fdcdn.md",
-    "tags": ["az-204", "az-305", "msft", "hot", "frontdoor"],
+    "tags": ["az-204", "az-305", "msft", "frontdoor"],
     "cost": "8.00",
     "deploytime": "5",
     "prereqs": "https://raw.githubusercontent.com/petender/azd-fdcdn/refs/heads/main/prereqs.md"
@@ -180,7 +180,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-hubspoke",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-hubspoke/refs/heads/main/README.md",
-    "tags": ["az-104", "az-700", "az-305", "msft",  "vnets"],
+    "tags": ["az-104", "az-700", "az-305", "msft", "hot",  "vnets"],
     "cost": "8.00",
     "deploytime": "35"
    
@@ -275,7 +275,7 @@
     "website": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
-    "tags": ["sc-200", "az-800", "dp-300", "azurearc","msft"],
+    "tags": ["sc-200", "az-800", "dp-300", "hot","azurearc","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
     "cost": "11.00",
     "deploytime": "5"
@@ -584,7 +584,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-ai-agent-service",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-ai-agent-service/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["ai-102", "msft", "azureai", "aifoundry"],
+    "tags": ["ai-102", "msft", "azureai", "aifoundry", "new"],
     "cost": "1.00",
     "deploytime": "3"
   }
