@@ -563,5 +563,17 @@
     "tags": ["dp-300", "az-700","mct", "new", "azuresql","keyvault"],
     "cost": "5.00",
     "deploytime": "6"
+    },
+    {
+    "title": "AZ-104 All-in-one demo",
+    "description": "This project sets up an Azure environment for AZ-104 course demo purposes.",
+    "preview": "https://github.com/SQLtattoo/azd-az104-all-in-one/blob/master/demoguide/images/az104allinone-diagram.png",
+    "website": "https://github.com/SQLtattoo",
+    "author": "Vassilis Ioannidis",
+    "source": "https://github.com/SQLtattoo/azd-az104-all-in-one",
+    "demoguide": "https://raw.githubusercontent.com/SQLtattoo/azd-az104-all-in-one/refs/heads/master/README.md",
+    "tags": ["az-104","msft", "new", "virtualmachine", "appgateway", "loadbalancer", "vnets", "privatelink", "keyvault"],
+    "cost": "20.00",
+    "deploytime": "25"
   }
 ]

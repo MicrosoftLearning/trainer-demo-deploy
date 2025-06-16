@@ -124,6 +124,10 @@ export type TagType =
   | "bastion"
   | "vmsqlserver"
   | "avset"
+  | "appgateway"
+  | "privateendpoint"
+  | "privatelink"
+  | "loadbalancer"
 
 
 
@@ -793,6 +797,34 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Availability Set",
     azureIcon: "./img/VM-AVSets.svg",
     url: "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+    type: "Service",
+  },
+  appgateway: {
+    label: "Azure Application Gateway",
+    description: "Template architecture for Azure Application Gateway",
+    azureIcon: "./img/Azure-Application-Gateway.svg",
+    url: "https://azure.microsoft.com/products/application-gateway",
+    type: "Service",
+  },
+  privateendpoint: {
+    label: "Azure Private Endpoint",
+    description: "Template architecture for Azure Private Endpoint",
+    azureIcon: "./img/Azure-Private-Endpoint.svg",
+    url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+    type: "Service",
+  },
+  privatelink: {
+    label: "Azure Private Link",
+    description: "Template architecture for Azure Private Link",
+    azureIcon: "./img/Azure-Private-Link.svg",
+    url: "https://azure.microsoft.com/products/private-link",
+    type: "Service",
+  },
+  loadbalancer: {
+    label: "Azure Load Balancer",
+    description: "Template architecture for Azure Load Balancer",
+    azureIcon: "./img/Azure-Load-Balancer.svg",
+    url: "https://azure.microsoft.com/products/load-balancer",
     type: "Service",
   },
 
