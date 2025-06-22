@@ -579,13 +579,25 @@
   {
     "title": "Azure AI Foundry Agent Service",
     "description": "This scenario deploys an Azure AI Foundry Hub and Project, as well as an AI Services Agent. You still need to add an Agent description, knowledge and actions to build something useful with it",
-    "preview": "./templates/images/AzureOpenAIFunction.png",
+    "preview": "./templates/images/AIFoundrywithAgent.png",
     "website": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-ai-agent-service",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-ai-agent-service/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["ai-102", "msft", "azureai", "aifoundry", "new"],
+    "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai"],
     "cost": "1.00",
+    "deploytime": "3"
+  },
+    {
+    "title": "Azure AI Foundry with Sora Video Generation Model",
+    "description": "This scenario deploys an Azure AI Foundry Hub and Project, with the Sora Video Generation Model. The demo scenario relies on the Video Playground, but you could also use it in your own application.",
+    "preview": "./templates/images/AIFoundrywithSora.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-foundrysora",
+    "demoguide": "https://raw.githubusercontent.com/petender/azd-foundrysora/refs/heads/main/demoguide/demoguide.md",
+    "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai"],
+    "cost": "2.00",
     "deploytime": "3"
   }
 ]
