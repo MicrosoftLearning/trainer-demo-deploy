@@ -100,7 +100,6 @@ export type TagType =
   | "azurecdn"
   | "frontdoor"
   | "rediscache"
-  | "agw"
   | "azurebot"
   | "azuredb-mySQL"
   | "eventhub"
@@ -630,13 +629,6 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Cache for Redis",
     azureIcon: "./img/Azure-Cache-for-Redis.svg",
     url: "https://azure.microsoft.com/products/cache",
-    type: "Service",
-  },
-  agw: {
-    label: "Azure Application Gateway",
-    description: "Template architecture uses Azure Application Gateway",
-    azureIcon: "./img/Azure-Application-Gateway.svg",
-    url: "https://azure.microsoft.com/products/application-gateway",
     type: "Service",
   },
   azurebot: {
