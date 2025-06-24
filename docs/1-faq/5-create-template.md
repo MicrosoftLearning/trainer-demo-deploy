@@ -28,6 +28,7 @@ Once your scenario is complete, and the necessary artifacts are available in a P
 
 3. Add your scenario description to the `\src\static\templates\templates.json`, at the end of the JSON file, using the following data structure:
 
+```
 {
   "**title**": "Short descriptive title for your scenario; check other templates for examples",
   "**description**": "Longer description of what the demo scenario is about, what gets deployed, etc...",
@@ -40,6 +41,7 @@ Once your scenario is complete, and the necessary artifacts are available in a P
   "**cost**": "cost estimate for 24 hours running the scenario",
   "**deploytime**": "estimate in minutes to run the actual deployment from azd up"
 }
+```
 
 :::Note TAG Guidelines
 if you are an **MTT**, add "msft" to the tags array, if you are an **MCT**, use "mct"
