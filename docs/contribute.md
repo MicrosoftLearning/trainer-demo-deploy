@@ -6,14 +6,13 @@ title: "Contributor Guide"
 ## We ♥️ Contributions!
 `trainer-demo-deploy` is a Technical Trainer community-friendly resource to help trainers and learners doing compelling demos during ILT (Instructor-Led Training) courses and other technical training deliveries and workshops. Scenarios are based on `azd` templates, which allows for easy redeployment for your next class delivery or learning journey. 
 
-## Submit a PR
+## See our [Contribute FAQ](https://microsoftlearning.github.io/trainer-demo-deploy/docs/faq/contribute-template) for more details
 
-### [Contribute a New Template](https://github.com/MicrosoftLearning/trainer-demo-deploy/compare)
 Our template gallery will be at its best when our community is involved in creating and contributing new templates. 
 
 We welcome contributions of [requested templates](https://github.com/MicrosoftLearning/trainer-demo-deploy/issues?q=is%3Aopen+is%3Aissue+label%3Arequested-contribution) as well as any others, subject to review. 
 
-To submit a template:
+Before you submit a template:
 1. Add an entry to [/static/templates.json](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/static/templates.json) that includes:
     - **Template title** - A short title that reflects the local application stack that someone could use to get their application on Azure (e.g. "Containerized React Web App with Java API and MongoDB")
     - **Description** - 1-2 sentence description of the architecture (e.g. Azure services) or solution that is defined by the template.
@@ -28,10 +27,11 @@ To submit a template:
 2. Open a PR!
 3. If possible, add a link to the PR in your repo where you made your app `azd` compatible to the PR description. This will help us provide feedback on your template and speed up the review process. 
 
-If you would like to contribute a template but are not sure where to start, [making an existing project azd compatible](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/make-azd-compatible) is a great first step. Doing so consists of three main steps:
-1.  Set up a new environment (with `azd init`)
-2.  Add Bicep files
-3.  Update azure.yaml 
+If you would like to contribute a template but are not sure where to start, [check the create template FAQ](https://microsoftlearning.github.io/trainer-demo-deploy/docs/faq/create-template) for more context. Doing so consists of three main steps:
+1.  Set up a new environment (with `azd init`) or use our "Trainer-Demo-Deploy Starter" template
+2.  Update with your Bicep files in the \infra folder
+3. (Optional) add your application sample to the \src folder
+3.  Update azure.yaml with name and metadata information
 
 ## Other Ways To Help 
 Other than these, we always welcome feedback through a:
