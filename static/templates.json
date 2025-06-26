@@ -599,5 +599,17 @@
   "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai"],
   "cost": "2.00",
   "deploytime": "3"
+},
+{
+"title": "Azure Monitor custom logs, and external telemetry",
+"description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
+"preview": "./templates/images/monitor-diagram.png",
+"website": "https://github.com/kareldewinter",
+"author": "Karel De Winter",
+"source": "https://github.com/kareldewinter/tdd-azd-monitor",
+"demoguide": "https://raw.githubusercontent.com/kareldewinter/tdd-azd-monitor/refs/heads/main/demoguide/demoguide.md",
+"tags": ["az-104", "az-305", "msft", "monitor", "appinsights", "new", "loganalytics"],
+"cost": "2.00",
+"deploytime": "2"
 }
 ]
