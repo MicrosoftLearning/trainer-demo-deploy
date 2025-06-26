@@ -16,7 +16,7 @@ Before you submit a template:
 1. Add an entry to [/static/templates.json](https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/static/templates.json) that includes:
     - **Template title** - A short title that reflects the local application stack that someone could use to get their application on Azure (e.g. "Containerized React Web App with Java API and MongoDB")
     - **Description** - 1-2 sentence description of the architecture (e.g. Azure services) or solution that is defined by the template.
-    - **Architecture Diagram or Application Screenshot** - Used as display image for gallery card. The architecture should include all services and their connections ([example](https://github.com/MicrosoftLearning-Samples/todo-csharp-sql/blob/main/assets/resources.png)). You should add the image to [website/static/templates/images](https://github.com/MicrosoftLearning/trainer-demo-deploy/tree/main/website/static/templates/images)
+    - **Architecture Diagram or Application Screenshot** - Used as display image for gallery card. The architecture should include all services and their connections ([example](https://raw.githubusercontent.com/MicrosoftLearning/trainer-demo-deploy/refs/heads/main/static/templates/images/AIFoundrywithSora.png). You should add the image to [website/static/templates/images](https://github.com/MicrosoftLearning/trainer-demo-deploy/tree/main/static/templates/images)
     - **Link to Author's GitHub or other relevant website** - Used for attribution.
     - **Author's Name** - Name to credit on the gallery card
     - **Link to template source** - Link to the template GitHub repo
