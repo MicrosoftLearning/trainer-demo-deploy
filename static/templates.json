@@ -611,5 +611,18 @@
 "tags": ["az-104", "az-305", "msft", "monitor", "appinsights", "new", "loganalytics"],
 "cost": "2.00",
 "deploytime": "2"
+},
+{
+"title": "API Management with ConferenceAPI and OAuth",
+"description": "Deploy Azure API Management with OAuth2-Protected Conference API and Entra ID Integration Using AZD",
+"preview": "./templates/images/test.png",
+"website": "https://github.com/rob-foulkrod",
+"author": "Rob Foulkrod",
+"source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
+"demoguide": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/demoguide/apimwithconference.md",
+"tags": ["az-204", "msft",  "hot", "appservice", "apim", "dotnet", "new"],
+"cost": "3.00",
+"deploytime": "5",    
+"prereqs": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/prereqs.md"
 }
 ]
