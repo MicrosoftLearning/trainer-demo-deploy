@@ -624,5 +624,17 @@
 "cost": "3.00",
 "deploytime": "5",    
 "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/prereqs.md"
+},
+{
+"title": "Microsoft Sentinel-based threat detection and response",
+"description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for a proof of concept of Microsoft Sentinel-based threat detection and response.",
+"preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
+"website": "https://github.com/daverendon",
+"author": "Dave Rendon",
+"source": "https://github.com/daverendon/azd-microsoft.sentinel",
+"demoguide": "https://raw.githubusercontent.com/daveRendon/azd-microsoft-sentinel/refs/heads/main/demoguide/demoguide.md",
+"tags": ["az-104", "az-500","mct", "new", "security"],
+"cost": "10.00",
+"deploytime": "3"
 }
 ]
