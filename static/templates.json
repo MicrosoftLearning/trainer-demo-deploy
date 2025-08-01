@@ -645,7 +645,7 @@
 "author": "Alex Ivanov",
 "source": "https://github.com/true-while/pg-ai-azd",
 "demoguide": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/Demoguides/demogide.md",
-"tags": ["ai-3019", "dp-3021", "msft", "postgresql", "ai", "vector search", "translation", "new"],
+"tags": ["azureai", "msft", "postgresql", "new"],
 "cost": "9.00",
 "deploytime": "15",    
 "prereqs": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/prereqs.md"
