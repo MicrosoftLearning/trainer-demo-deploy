@@ -626,16 +626,15 @@
 "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/prereqs.md"
 },
 {
-"title": "Introduction to Azure PostgreSQL and AI",
-"description": "Azure PostgreSQL & AI Demo offers step-by-step guidance for connecting, configuring, and integrating AI with PostgreSQL in Azure using modern tools.",
-"preview": "./templates/images/pgdemo.png",
-"website": "https://github.com/true-while",
-"author": "Alex Ivanov",
-"source": "https://github.com/true-while/pg-ai-azd",
-"demoguide": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/Demoguides/demogide.md",
-"tags": ["ai-3019", "dp-3021", "msft", "postgresql", "ai", "vector search", "translation", "new"],
-"cost": "9.00",
-"deploytime": "15",    
-"prereqs": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/prereqs.md"
+"title": "Microsoft Sentinel-based threat detection and response",
+"description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for a proof of concept of Microsoft Sentinel-based threat detection and response.",
+"preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
+"website": "https://github.com/daverendon",
+"author": "Dave Rendon",
+"source": "https://github.com/daverendon/azd-microsoft.sentinel",
+"demoguide": "https://raw.githubusercontent.com/daveRendon/azd-microsoft-sentinel/refs/heads/main/demoguide/demoguide.md",
+"tags": ["az-104", "az-500","mct", "new", "security"],
+"cost": "10.00",
+"deploytime": "3"
 }
 ]
