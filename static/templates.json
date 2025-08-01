@@ -636,5 +636,18 @@
 "tags": ["az-104", "az-500","mct", "new", "security"],
 "cost": "10.00",
 "deploytime": "3"
+},
+{
+"title": "Introduction to Azure PostgreSQL and AI",
+"description": "Azure PostgreSQL & AI Demo offers step-by-step guidance for connecting, configuring, and integrating AI with PostgreSQL in Azure using modern tools.",
+"preview": "./templates/images/pgdemo.png",
+"website": "https://github.com/true-while",
+"author": "Alex Ivanov",
+"source": "https://github.com/true-while/pg-ai-azd",
+"demoguide": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/Demoguides/demogide.md",
+"tags": ["ai-3019", "dp-3021", "msft", "postgresql", "ai", "vector search", "translation", "new"],
+"cost": "9.00",
+"deploytime": "15",    
+"prereqs": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/prereqs.md"
 }
 ]
