@@ -633,7 +633,7 @@
 "author": "Dave Rendon",
 "source": "https://github.com/daverendon/azd-microsoft.sentinel",
 "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-microsoft-sentinel/refs/heads/main/demoguide/demoguide.md",
-"tags": ["az-104", "az-500","mct", "new", "security"],
+"tags": ["az-104", "az-500","mct", "new", "sentinel"],
 "cost": "10.00",
 "deploytime": "3"
 },
