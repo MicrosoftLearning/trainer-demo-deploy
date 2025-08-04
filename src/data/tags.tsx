@@ -194,7 +194,7 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-administrator/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-104Blueprint",
-    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-104.jpg?sp=r&st=2024-12-18T16:37:35Z&se=2025-07-01T23:37:35Z&spr=https&sv=2022-11-02&sr=b&sig=BvTw%2F8lvodlShflkzwtUe%2FelAQpEyY1CZ6EY6Vju95I%3D"
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-104.jpg"
   },
   "az-120":{
     label: "AZ-120 Azure for SAP Workloads Specialty",
@@ -212,7 +212,7 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/microsoft-certified-specialty-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-virtual-desktop-specialty/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-140Blueprint",
-    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/AZ-140Blueprint.pdf?sp=r&st=2024-12-31T20:49:49Z&se=2025-07-02T03:49:49Z&spr=https&sv=2022-11-02&sr=b&sig=frB70N5UhTxm4tWN9kIVJDA%2B9LTvlupb4Ohhp4Co72c%3D",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-140.jpg",
   },
 
   "az-204": {
@@ -222,7 +222,7 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-developer/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-204Blueprint",
-    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-204.jpg?sp=r&st=2024-12-18T16:38:44Z&se=2025-07-01T23:38:44Z&spr=https&sv=2022-11-02&sr=b&sig=ySlKoSDxTAdzA5KEt5x5GiebjNbkvHARwsl6E6t9Pjk%3D"
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-204.jpg"
   },
   "az-305": {
     label: "AZ-305 Azure Solutions Architect Expert",
@@ -231,7 +231,7 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/microsoft-certified-expert-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-solutions-architect/",
     courseblueprint: "https://aka.ms/AZ-305Blueprint",
-    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-305.jpg?sp=r&st=2024-12-18T16:39:14Z&se=2025-07-01T23:39:14Z&spr=https&sv=2022-11-02&sr=b&sig=XhagugPepjpY8FS6A%2BoqWkEXccUYY838kfVJGyU5frM%3D"
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-305.jpg"
   
   },
   "az-400": {
@@ -250,7 +250,7 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-security-engineer/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-500Blueprint",
-    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/AZ-500_Blueprint.pdf?sp=r&st=2024-12-31T20:53:09Z&se=2025-07-02T03:53:09Z&spr=https&sv=2022-11-02&sr=b&sig=w7dBnLHMisSjomtus8Qgv7fri%2FiJrCrm5pxg1iY7yZ0%3D",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-500.jpg",
   },   
 
   "az-700": {
@@ -260,7 +260,7 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-network-engineer-associate/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-700Blueprint",
-    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-700.jpg?sp=r&st=2024-12-18T16:39:40Z&se=2025-07-01T23:39:40Z&spr=https&sv=2022-11-02&sr=b&sig=bptBO1h5wbO%2BujYDkSdh6vuSRBV51CFSHS4FP43Pqh8%3D",
+    courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-700.jpg",
   },
   "az-800":{
     label: "AZ-800 Windows Server Hybrid Administrator Associate",
