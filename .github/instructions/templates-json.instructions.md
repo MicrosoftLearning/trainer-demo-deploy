@@ -16,7 +16,7 @@ These instructions govern adding and maintaining entries in `static/templates.js
 
 Fields and types:
 - title (string, required, unique)
-- description (string, required) - Ommit reference to bicep or AZD, it is the demo that we care about
+- description (string, required) - Omit reference to bicep or AZD, it is the demo that we care about
 - preview (string, required) — relative path under `./templates/images/` or an absolute HTTPS URL
 - website (string, required) — author profile or project page
 - author (string, required)

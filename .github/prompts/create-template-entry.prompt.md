@@ -62,7 +62,7 @@ Use tools to gather the following from the repo:
 ## Validation
 - Ensure every new field is present and non-empty (except optional ones) and URLs are https.
 - Do not run any repository validation or test scripts (e.g., npm/yarn/pnpm tasks or schema validators). Produce the updated JSON only.
-- package.json is irrelevent it this task. 
+- package.json is irrelevant to this task. 
 
 ## Steps
 1. Read `static/templates.json` and `src/data/tags.tsx`.
@@ -72,7 +72,7 @@ Use tools to gather the following from the repo:
 5. Infer valid tags, dedupe, and sort.
 6. Construct the new object with the exact key order and defaults where required.
 7. Append to the existing array, preserving formatting (2 spaces) and order of existing entries.
-8. Output only the updated JSON array. The user is only insterested in the changes. Displaying the entire file is not necessary.
+8. Output only the updated JSON array. The user is only interested in the changes. Displaying the entire file is not necessary.
 9. Explain to the user any defaults, guesses, or assumptions made.
 
 ## Acceptance Criteria
