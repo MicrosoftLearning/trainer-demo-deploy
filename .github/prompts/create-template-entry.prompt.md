@@ -1,7 +1,6 @@
 ---
 mode: 'agent'
 description: 'Research a GitHub repository and generate a complete entry for static/templates.json with validated fields and allowed tags.'
-applyTo: 'static/templates.json'
 tools: ['fetch', 'githubRepo', 'search', 'openSimpleBrowser', 'codebase', 'editFiles', 'runTasks', 'problems']
 ---
 # Create Template Entry
