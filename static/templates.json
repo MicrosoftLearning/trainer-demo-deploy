@@ -649,5 +649,41 @@
 "cost": "9.00",
 "deploytime": "15",    
 "prereqs": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/prereqs.md"
+},
+{
+"title": "Protect API Management with OAuth",
+"description": "A demo that shows how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
+"preview": "https://raw.githubusercontent.com/ronaldbosma/protect-apim-with-oauth/refs/heads/main/images/diagrams-overview.png",
+"website": "https://github.com/ronaldbosma",
+"author": "Ronald Bosma",
+"source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
+"demoguide": "https://raw.githubusercontent.com/ronaldbosma/protect-apim-with-oauth/refs/heads/main/demos/demo.md",
+"tags": ["apim", "az-204", "loganalytics", "monitor", "new"],
+"cost": "3.00",
+  "deploytime": "4"
+},
+{
+"title": "Call API Management backend with OAuth",
+"description": "A demo that shows three ways to call OAuth-protected APIs through API Management: Credential Manager, send-request with client secret, and send-request with client certificate.",
+"preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-backend-with-oauth/refs/heads/main/images/diagrams-overview.png",
+"website": "https://github.com/ronaldbosma",
+"author": "Ronald Bosma",
+"source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
+"demoguide": "https://raw.githubusercontent.com/ronaldbosma/call-apim-backend-with-oauth/refs/heads/main/demos/demo.md",
+"tags": ["apim", "az-204", "keyvault", "loganalytics", "new"],
+"cost": "3.00",
+"deploytime": "4"
+},
+{
+"title": "Call API Management with Managed Identity",
+"description": "Demonstrates calling Azure API Management from Azure Functions and Logic Apps using managed identities with OAuth, including one APIM API securely calling another without secrets.",
+"preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/images/diagrams-overview.png",
+"website": "https://github.com/ronaldbosma",
+"author": "Ronald Bosma",
+"source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
+"demoguide": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/demos/demo.md",
+"tags": ["apim", "appinsights", "az-204", "functions", "logicapps", "new"],
+"cost": "3.00",
+"deploytime": "7"
 }
 ]
