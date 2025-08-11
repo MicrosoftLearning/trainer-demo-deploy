@@ -76,8 +76,6 @@ When a user provides a GitHub repository URL, populate fields as follows:
 
 ## JSON Schema (machine-validated)
 
-Place the following schema at `.copilot-tracking/schemas/templates.schema.json`. Treat it as reference for CI or external tooling; do not run validators or tests as part of this prompt-driven update.
-
 ```json
 {
    "$schema": "http://json-schema.org/draft-07/schema#",
