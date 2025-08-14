@@ -389,7 +389,7 @@
       "website": "https://github.com/daverendon",
       "author": "Dave Rendon",
       "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
-      "demoguide": "https://github.com/daveRendon/azd-deepseek-r1-on-azure-container-apps/blob/main/readme.MD",
+      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-deepseek-r1-on-azure-container-apps/refs/heads/main/demoguide/demoguide.md",
       "tags": ["ai-102", "az-305", "ai-900", "mct", "azureai", "azurecontainerapps"],
       "cost": "6.00",
       "deploytime": "11"
