@@ -1,4 +1,4 @@
-[
+[  
   {
     "title": "Minimal .NET API with ConferenceAPI sample ",
     "description": "A minimal .NET API with ConferenceAPI sample",
@@ -245,7 +245,7 @@
   
   {
     "title": "Purview Demo Environment",
-    "description": "This deployes Purview, a storage account, Data factory, Synapse, and a SQL Database. It Adds the storage account and database to collections, creates an runs a pipeline, and reports the lineage.",
+    "description": "This deployes Purview, a storage account, Data factory, Synapse, and a SQL Database. It Adds the storage account and database to collections, creates and runs a pipeline, and reports the lineage.",
     "preview": "https://github.com/user-attachments/assets/1f6f3121-a626-40f6-a228-a5153dde579b",
     "website": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
@@ -331,7 +331,7 @@
     "cost": "67",
     "deploytime": "14"
      },
-    {
+      {
       "title": "Azure Load Testing",
       "description": "This scenario is used to demonstrate Azure Load Testing.",
       "preview": "./templates/images/azloadtest.png",
@@ -586,104 +586,4 @@
     "demoguide": "https://raw.githubusercontent.com/petender/azd-ai-agent-service/refs/heads/main/demoguide/demoguide.md",
     "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai"],
     "cost": "1.00",
-    "deploytime": "3"
-  },
-  {
-  "title": "Azure AI Foundry with Sora Video Generation Model",
-  "description": "This scenario deploys an Azure AI Foundry Hub and Project, with the Sora Video Generation Model. The demo scenario relies on the Video Playground, but you could also use it in your own application.",
-  "preview": "./templates/images/AIFoundrywithSora.png",
-  "website": "https://github.com/petender",
-  "author": "Peter De Tender",
-  "source": "https://github.com/petender/azd-foundrysora",
-  "demoguide": "https://raw.githubusercontent.com/petender/azd-foundrysora/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai"],
-  "cost": "2.00",
-  "deploytime": "3"
-},
-{
-"title": "Azure Monitor custom logs, and external telemetry",
-"description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
-"preview": "./templates/images/monitor-diagram.png",
-"website": "https://github.com/kareldewinter",
-"author": "Karel De Winter",
-"source": "https://github.com/kareldewinter/tdd-azd-monitor",
-"demoguide": "https://raw.githubusercontent.com/kareldewinter/tdd-azd-monitor/refs/heads/main/demoguide/demoguide.md",
-"tags": ["az-104", "az-305", "msft", "monitor", "appinsights", "new", "loganalytics"],
-"cost": "2.00",
-"deploytime": "2"
-},
-{
-"title": "API Management with ConferenceAPI and OAuth",
-"description": "Deploy Azure API Management with OAuth2-Protected Conference API and Entra ID Integration Using AZD",
-"preview": "./templates/images/test.png",
-"website": "https://github.com/rob-foulkrod",
-"author": "Rob Foulkrod",
-"source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
-"demoguide": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/demoguide/apimwithconference.md",
-"tags": ["az-204", "msft",  "hot", "appservice", "apim", "dotnet", "new"],
-"cost": "3.00",
-"deploytime": "5",    
-"prereqs": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/prereqs.md"
-},
-{
-"title": "Microsoft Sentinel-based threat detection and response",
-"description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for a proof of concept of Microsoft Sentinel-based threat detection and response.",
-"preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
-"website": "https://github.com/daverendon",
-"author": "Dave Rendon",
-"source": "https://github.com/daverendon/azd-microsoft.sentinel",
-"demoguide": "https://raw.githubusercontent.com/daveRendon/azd-microsoft-sentinel/refs/heads/main/demoguide/demoguide.md",
-"tags": ["az-104", "az-500","mct", "new", "sentinel"],
-"cost": "10.00",
-"deploytime": "3"
-},
-{
-"title": "Introduction to Azure PostgreSQL and AI",
-"description": "Azure PostgreSQL & AI Demo offers step-by-step guidance for connecting, configuring, and integrating AI with PostgreSQL in Azure using modern tools.",
-"preview": "./templates/images/pgdemo.png",
-"website": "https://github.com/true-while",
-"author": "Alex Ivanov",
-"source": "https://github.com/true-while/pg-ai-azd",
-"demoguide": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/Demoguides/demogide.md",
-"tags": ["azureai", "msft", "azuredb-postgreSQL", "new"],
-"cost": "9.00",
-"deploytime": "15",    
-"prereqs": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/prereqs.md"
-},
-{
-"title": "Protect API Management with OAuth",
-"description": "A demo that shows how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
-"preview": "https://raw.githubusercontent.com/ronaldbosma/protect-apim-with-oauth/refs/heads/main/images/diagrams-overview.png",
-"website": "https://github.com/ronaldbosma",
-"author": "Ronald Bosma",
-"source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
-"demoguide": "https://raw.githubusercontent.com/ronaldbosma/protect-apim-with-oauth/refs/heads/main/demos/demo.md",
-"tags": ["apim", "az-204", "loganalytics", "monitor", "new"],
-"cost": "3.00",
-  "deploytime": "4"
-},
-{
-"title": "Call API Management backend with OAuth",
-"description": "A demo that shows three ways to call OAuth-protected APIs through API Management: Credential Manager, send-request with client secret, and send-request with client certificate.",
-"preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-backend-with-oauth/refs/heads/main/images/diagrams-overview.png",
-"website": "https://github.com/ronaldbosma",
-"author": "Ronald Bosma",
-"source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
-"demoguide": "https://raw.githubusercontent.com/ronaldbosma/call-apim-backend-with-oauth/refs/heads/main/demos/demo.md",
-"tags": ["apim", "az-204", "keyvault", "loganalytics", "new"],
-"cost": "3.00",
-"deploytime": "4"
-},
-{
-"title": "Call API Management with Managed Identity",
-"description": "Demonstrates calling Azure API Management from Azure Functions and Logic Apps using managed identities with OAuth, including one APIM API securely calling another without secrets.",
-"preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/images/diagrams-overview.png",
-"website": "https://github.com/ronaldbosma",
-"author": "Ronald Bosma",
-"source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
-"demoguide": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/demos/demo.md",
-"tags": ["apim", "appinsights", "az-204", "functions", "logicapps", "new"],
-"cost": "3.00",
-"deploytime": "7"
-}
-]
+    "deploytime": "3"}]
