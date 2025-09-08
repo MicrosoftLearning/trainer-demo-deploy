@@ -631,7 +631,7 @@
 "preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
 "website": "https://github.com/daverendon",
 "author": "Dave Rendon",
-"source": "https://github.com/daverendon/azd-microsoft.sentinel",
+"source": "https://github.com/daverendon/azd-microsoft-sentinel",
 "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-microsoft-sentinel/refs/heads/main/demoguide/demoguide.md",
 "tags": ["az-104", "az-500","mct", "new", "sentinel"],
 "cost": "10.00",
@@ -685,5 +685,17 @@
 "tags": ["apim", "appinsights", "az-204", "functions", "logicapps", "new"],
 "cost": "3.00",
 "deploytime": "7"
+},
+{
+"title": "Deploy a Network-hardened web app with private PaaS datastore",
+"description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for creating an Azure App Service web app in a tightly controlled network environment with strict inbound and outbound network policies.",
+"preview": "./templates/images/azd-hardened-webapp-diagram.png",
+"website": "https://github.com/daverendon",
+"author": "Dave Rendon",
+"source": "https://github.com/daverendon/azd-hardened-webapp",
+"demoguide": "https://raw.githubusercontent.com/daveRendon/azd-hardened-webapp/refs/heads/main/demoguide/demoguide.md",
+"tags": ["az-104", "az-500","mct", "new", "appservice"],
+"cost": "10.00",
+"deploytime": "10"
 }
 ]
