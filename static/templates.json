@@ -697,5 +697,17 @@
 "tags": ["az-104", "az-500","mct", "new", "appservice"],
 "cost": "10.00",
 "deploytime": "10"
+},
+{
+  "title": "AI Foundry Agent Service with Bing Search Grounding and OpenAI Deep Research LLM",
+  "description": "This scenario deploys an Azure AI Foundry Project, an Azure AI Foundry Agent Service and Bing Search Grounding. A Python with Flask Web App offers a use case to perform Deep Research",
+  "preview": "./templates/images/DeepResearcherArchitecture.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-researcher",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-researcher/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai", "python"],
+  "cost": "15.00",
+  "deploytime": "8"
 }
 ]
