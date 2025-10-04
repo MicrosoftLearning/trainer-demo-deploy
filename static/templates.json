@@ -709,5 +709,17 @@
   "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai", "python"],
   "cost": "15.00",
   "deploytime": "8"
+},
+{
+      "title": "Building a Multi-Agent Support Triage System with AZD and Azure AI Foundry",
+      "description": "This scenario demonstrates a full implementation of a production-ready multi-agent solution on Azure using Azure AI Foundry Agent Service.",
+      "preview": "./templates/images/azd-multiagent-resource-group.png",
+      "website": "https://github.com/daverendon",
+      "author": "Dave Rendon",
+      "source": "https://github.com/daverendon/azd-multiagent",
+      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-multiagent/refs/heads/main/demoguide/demoguide.md",
+      "tags": ["ai-102", "ai-900", "mct", "azureai", "azurecontainerapps"],
+      "cost": "5.00",
+      "deploytime": "12"
 }
 ]
