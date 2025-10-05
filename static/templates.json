@@ -709,5 +709,17 @@
   "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai", "python"],
   "cost": "15.00",
   "deploytime": "8"
+},
+{
+"title": "Containerized A2A Translation Service with Azure AI Translator",
+"description": "Complete Agent-to-Agent translation service using Azure Container Apps, Storage Queues, and AI Translator. Features async processing, managed identity authentication, and a web GUI for file uploads.",
+"authorUrl": "https://github.com/passadis",
+"author": "Konstantinos Passadis",
+"source": "https://github.com/passadis/azure-a2a-translation",
+"preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
+"tags": ["mct", "azureai", "new", "ai-102", "ai-900", "azurecontainerapps", "aifoundry", "openai"],
+"demoguide": "https://raw.githubusercontent.com/passadis/azure-a2a-translation/refs/heads/main/README.md",
+"cost": "6.00",
+"deploytime": "5"
 }
 ]
