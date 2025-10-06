@@ -718,7 +718,7 @@
   "author": "Dave Rendon",
   "source": "https://github.com/daverendon/azd-multiagent",
   "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-multiagent/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["ai-102", "ai-900", "mct", "azureai", "azurecontainerapps", "new"],
+  "tags": ["ai-102", "ai-900", "mct", "azureai", "azurecontainerapps", "new", "aifoundry", "openai"],
   "cost": "5.00",
   "deploytime": "12"
 },
