@@ -742,7 +742,7 @@
   "source": "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages",
   "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/media/fwsysdiagram.png",
   "tags": ["msft", "sentinel", "new", "sc-200", "az-500", "azurecontainerapps"],
-  "demoguide": "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages/blob/main/README.md",
+  "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/README.md",
   "cost": "2.00",
   "deploytime": "3"
 }  
