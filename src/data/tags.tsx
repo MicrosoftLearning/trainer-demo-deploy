@@ -85,6 +85,7 @@ export type TagType =
   | "dp-3028"
   | "dp-3029"
   | "dp-420"
+  | "dp-600"
   | "dp-601"
   | "dp-602"
   | "dp-603"
@@ -613,6 +614,15 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "dp-600": {
+    label: "DP-600 Microsoft Fabric Analytics Engineer",
+    description: "As a Fabric analytics engineer associate, you should have subject matter expertise in designing, creating, and deploying enterprise-scale data analytics solutions.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/credentials/certifications/fabric-analytics-engineer-associate/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: ""
+  },
   "dp-601": {
     label: "DP-601 Implement a Lakehouse with Microsoft Fabric",
     description: "This learning path introduces the foundational components of implementing a data lakehouse with Microsoft Fabric.",
@@ -632,11 +642,11 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprintdiag: "",
   },
   "dp-603": {
-    label: "DP-603 Fabrid Data Engineer Associate",
-    description: "Design and implement data storage solutions, data processing, and data security solutions using Microsoft Azure.",
+    label: "DP-603 Implement Real-Time Intelligence with Microsoft Fabric",
+    description: "Ingest, transform, and analyze streaming data with Microsoft Fabric.",
     type: "ILT Courses",
-    azureIcon: "./img/microsoft-certified-associate-badge.svg",
-    url: "https://learn.microsoft.com/credentials/certifications/fabric-analytics-engineer-associate/",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/paths/explore-real-time-analytics-microsoft-fabric/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -650,8 +660,8 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprintdiag: "",
   },
   "dp-700": {
-  label: "DP-700 Fabric Data Engineer Associate",
-    description: "Prepare data for analysis, model data, visualize data, analyze data, and deploy solutions using Microsoft Power BI.",
+    label: "DP-700 Fabric Data Engineer Associate",
+    description: "As a Fabric Data Engineer, you should have subject matter expertise with data loading patterns, data architectures, and orchestration processes.",
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/fabric-data-engineer-associate/",
