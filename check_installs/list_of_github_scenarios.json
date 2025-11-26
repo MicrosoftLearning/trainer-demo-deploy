@@ -1,0 +1,358 @@
+﻿{
+    "projects":  [
+                     {
+                         "name":  "iaas2019",
+                         "templateUrl":  "https://github.com/rob-foulkrod/IAAS2019",
+                         "region":  "eastus22",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "openaimodels",
+                         "templateUrl":  "https://github.com/petender/OpenAIMultiModel",
+                         "region":  "swedencentral",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "conferenceapi",
+                         "templateUrl":  "https://github.com/petender/ConferenceAPI",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "apimwithconfapi",
+                         "templateUrl":  "https://github.com/petender/azd-apimwithconfAPI",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "tollbooth",
+                         "templateUrl":  "https://github.com/rob-foulkrod/TollBooth",
+                         "region":  "eastus22",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "badgemaker",
+                         "templateUrl":  "https://github.com/rob-foulkrod/BadgeMaker",
+                         "region":  "swedencentral",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "machinelearningazd",
+                         "templateUrl":  "https://github.com/rob-foulkrod/MachineLearningAZD",
+                         "region":  "eastus22",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "acidemodemo",
+                         "templateUrl":  "https://github.com/maartenvandiemen/AZD-ACI-Demo",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "academo",
+                         "templateUrl":  "https://github.com/maartenvandiemen/AZD-ACA-Demo",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "aksdemo",
+                         "templateUrl":  "https://github.com/maartenvandiemen/AZD-AKS-Demo",
+                         "region":  "eastus22",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "fdcdn",
+                         "templateUrl":  "https://github.com/petender/azd-fdcdn",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "paasdemo",
+                         "templateUrl":  "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "eventhubazd",
+                         "templateUrl":  "https://github.com/true-while/event-hub-azd",
+                         "region":  "eastus22",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "hubspoke",
+                         "templateUrl":  "https://github.com/petender/azd-hubspoke",
+                         "region":  "eastus22",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "site2sitevpn",
+                         "templateUrl":  "https://github.com/petender/azd-site2sitevpn",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "watermarkfunction",
+                         "templateUrl":  "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "sentinel",
+                         "templateUrl":  "https://github.com/petender/azd-sentinel",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "trafficmgr",
+                         "templateUrl":  "https://github.com/petender/azd-trafficmgr",
+                         "region":  "eastus22",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "purviewenvironment",
+                         "templateUrl":  "https://github.com/rob-foulkrod/purviewEnvironment-azd",
+                         "region":  "westus",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "privatelinkpendpoint",
+                         "templateUrl":  "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "nestedhvdcrtr",
+                         "templateUrl":  "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "win11devpcdocker",
+                         "templateUrl":  "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "infradevcontainers",
+                         "templateUrl":  "https://github.com/koenraadhaedens/azd-infra-dev-containers",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "tddfunctionse2ehttptoeventhubs",
+                         "templateUrl":  "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "owaspazd",
+                         "templateUrl":  "https://github.com/true-while/owasp-azd",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "loadtest",
+                         "templateUrl":  "https://github.com/maartenvandiemen/azd-loadtest",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "securedatasolutions",
+                         "templateUrl":  "https://github.com/true-while/secure-data-solutions",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "azureintegrationservicesquickstart",
+                         "templateUrl":  "https://github.com/ronaldbosma/azure-integration-services-quickstart",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "storaccnt",
+                         "templateUrl":  "https://github.com/petender/azd-storaccnt",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "deepseekr1onazurecontainerapps",
+                         "templateUrl":  "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "youtubesummarizeropenai",
+                         "templateUrl":  "https://github.com/petender/azd-youtubesummarizer-openai",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "issdata",
+                         "templateUrl":  "https://github.com/petender/issdata",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "baselinewebapp",
+                         "templateUrl":  "https://github.com/daverendon/azd-baseline-webapp",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "firewall",
+                         "templateUrl":  "https://github.com/daverendon/azd-firewall",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "visionface",
+                         "templateUrl":  "https://github.com/vincentk16/azd-vision-face",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "addsvm",
+                         "templateUrl":  "https://github.com/petender/azd-addsvm",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "sqlao",
+                         "templateUrl":  "https://github.com/petender/azd-sqlao",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "vmwithlb",
+                         "templateUrl":  "https://github.com/trainerkrunal/azd-vmwithlb",
+                         "region":  "centralindia",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "serviceendpointsandsecuringstorage",
+                         "templateUrl":  "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "intersiteconnectivity",
+                         "templateUrl":  "https://github.com/daverendon/azd-intersite-connectivity",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "goodfood",
+                         "templateUrl":  "https://github.com/michelmsft/GoodFood",
+                         "region":  "westeurope",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "appconfiguration",
+                         "templateUrl":  "https://github.com/maartenvandiemen/AZD-AppConfiguration",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "privatelink",
+                         "templateUrl":  "https://github.com/daverendon/azd-private-link",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "sqlworloadsim",
+                         "templateUrl":  "https://github.com/koenraadhaedens/azd-sqlworloadsim",
+                         "region":  "westeurope",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "az104allinone",
+                         "templateUrl":  "https://github.com/SQLtattoo/azd-az104-all-in-one",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "aiagentservice",
+                         "templateUrl":  "https://github.com/petender/azd-ai-agent-service",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "foundrysora",
+                         "templateUrl":  "https://github.com/petender/azd-foundrysora",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "tddazdmonitor",
+                         "templateUrl":  "https://github.com/kareldewinter/tdd-azd-monitor",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "apimwithconfapioauth",
+                         "templateUrl":  "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
+                         "region":  "eastus22",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "microsoftsentinel",
+                         "templateUrl":  "https://github.com/daverendon/azd-microsoft-sentinel",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "pgaiazd",
+                         "templateUrl":  "https://github.com/true-while/pg-ai-azd",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "protectapimwithoauth",
+                         "templateUrl":  "https://github.com/ronaldbosma/protect-apim-with-oauth",
+                         "region":  "westeurope",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "callapimbackendwithoauth",
+                         "templateUrl":  "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
+                         "region":  "westeurope",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "callapimwithmanagedidentity",
+                         "templateUrl":  "https://github.com/ronaldbosma/call-apim-with-managed-identity",
+                         "region":  "westeurope",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "hardenedwebapp",
+                         "templateUrl":  "https://github.com/daverendon/azd-hardened-webapp",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "researcher",
+                         "templateUrl":  "https://github.com/petender/azd-researcher",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "multiagent",
+                         "templateUrl":  "https://github.com/daverendon/azd-multiagent",
+                         "region":  "eastus2",
+                         "status":  "failed"
+                     },
+                     {
+                         "name":  "azurea2atranslation",
+                         "templateUrl":  "https://github.com/passadis/azure-a2a-translation",
+                         "region":  "eastus2",
+                         "status":  "success"
+                     },
+                     {
+                         "name":  "firewallsendsyslogmessages",
+                         "templateUrl":  "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages",
+                         "region":  "westeurope",
+                         "status":  "failed"
+                     }
+                 ]
+}
