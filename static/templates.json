@@ -745,5 +745,17 @@
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/README.md",
   "cost": "2.00",
   "deploytime": "3"
-}  
+},
+{
+  "title": "Azure App Service as MCP Back-End with Product Catalog sample data",
+  "description": "This scenario deploys an Azure App Service back-end as MCP Server, with sample product catalog data. The app can be used with Microsoft Foundry MCP Client, Copilot Studio or any other MCP Scenario.",
+  "preview": "./templates/images/test.png",
+  "authorUrl": "https://github.com/petender/",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/demo-mcp-productcatalog",
+  "demoguide": "https://raw.githubusercontent.com/petender/demo-mcp-productcatalog/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["msft", "azureai", "mcp", "new", "aifoundry", "appservice"],
+  "cost": "2.00",
+  "deploytime": "3"
+}
 ]
