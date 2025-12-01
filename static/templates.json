@@ -754,7 +754,7 @@
   "author": "Peter De Tender",
   "source": "https://github.com/petender/demo-mcp-productcatalog",
   "demoguide": "https://raw.githubusercontent.com/petender/demo-mcp-productcatalog/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["msft", "azureai", "mcp", "new", "aifoundry", "appservice"],
+  "tags": ["msft", "azureai", "new", "aifoundry", "appservice"],
   "cost": "2.00",
   "deploytime": "3"
 }
