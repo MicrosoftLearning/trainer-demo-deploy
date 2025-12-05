@@ -764,8 +764,8 @@
   "preview": "./templates/images/test.png",
   "authorUrl": "https://github.com/petender/",
   "author": "Peter De Tender",
-  "source": "https://github.com/petender/azd-betternotes",
-  "demoguide": "https://raw.githubusercontent.com/petender/azd-betternotes/refs/heads/main/demoguide/demoguide.md",
+  "source": "https://github.com/petender/azd-betternotes-ai",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-betternotes-ai/refs/heads/main/demoguide/demoguide.md",
   "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102"],
   "cost": "2.00",
   "deploytime": "3"
