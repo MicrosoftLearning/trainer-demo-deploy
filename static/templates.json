@@ -754,7 +754,19 @@
   "author": "Peter De Tender",
   "source": "https://github.com/petender/demo-mcp-productcatalog",
   "demoguide": "https://raw.githubusercontent.com/petender/demo-mcp-productcatalog/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["msft", "azureai", "new", "aifoundry", "appservice"],
+  "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102"],
+  "cost": "2.00",
+  "deploytime": "3"
+},
+{
+  "title": "Azure Document Intelligence for your custom PDF, Docx or images text transformation",
+  "description": "This scenario deploys an Azure Document Intelligence solution for extracting and transforming text from your custom PDF, Docx, or image files.",
+  "preview": "./templates/images/test.png",
+  "authorUrl": "https://github.com/petender/",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-betternotes",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-betternotes/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102"],
   "cost": "2.00",
   "deploytime": "3"
 }
