@@ -32,7 +32,7 @@ You'll get:
 - Add your Azure resources to `infra/main.bicep` and `infra/resources.bicep`
 - Fill in the README, prerequisites, and demo guide
 
-The starter includes detailed guidance in `CONTRIBUTING.md` and `.github/instructions/`. Not sure where to start? Check out our [template creation FAQ](https://microsoftlearning.github.io/trainer-demo-deploy/docs/faq/create-template).
+The starter includes detailed guidance in `CONTRIBUTING.md` and `.github/instructions/`.
 
 ### 2. ✅ Test Your Template
 
@@ -43,10 +43,10 @@ azd up
 ```
 
 Confirm that:
-- Deployment completes successfully (ideally under 20 minutes)
+- Deployment completes successfully 
 - Resources are tagged correctly
 - Your demo steps work as documented
-- Cost is reasonable for training scenarios (typically $5-20/day)
+- Cost is reasonable for training scenarios 
 - Cleanup works: `azd down`
 
 ### 3. 📤 Publish to GitHub
@@ -97,8 +97,7 @@ If you have an existing Bicep template or ARM template, you can adapt it! The ke
 2. Organize your infrastructure files in an `infra/` folder
 3. Add a README and demo guide following our format
 
-The [starter template](https://github.com/petender/tdd-azd-starter) shows the expected structure, or check the [FAQ](https://microsoftlearning.github.io/trainer-demo-deploy/docs/faq/create-template) for more guidance.
-
+The [starter template](https://github.com/petender/tdd-azd-starter) shows the expected structure.
 ---
 
 ## Other Ways to Contribute
@@ -117,7 +116,6 @@ We also welcome contributions to improve [requested templates](https://github.co
 ## Resources
 
 - 📚 [Starter Template](https://github.com/petender/tdd-azd-starter) - Everything you need to get started
-- 📖 [Template Creation FAQ](https://microsoftlearning.github.io/trainer-demo-deploy/docs/faq/create-template) - Detailed guidance
 - 🤝 [Contribution FAQ](https://microsoftlearning.github.io/trainer-demo-deploy/docs/faq/contribute-template) - Common questions
 - 🔍 [Browse Templates](https://aka.ms/trainer-demo-deploy) - Get inspired by existing templates
 - 💡 [General FAQ](./1-faq/1-what-is-azd.md) - Learn about azd templates
