@@ -769,5 +769,29 @@
   "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102"],
   "cost": "2.00",
   "deploytime": "3"
+},
+{
+  "title": "Azure VM Backup with Recovery Services Vault",
+  "description": "This template can be used as a demo scenario for Azure Backup to showcase a Windows VM backup protection. It deploys all necessary resources such as Azure Recovery Services Vault, a Windows Server 2022 Virtual Machine and the necessary backup job.",
+  "preview": "./templates/images/test.png",
+  "authorUrl": "https://github.com/petender/",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-vmbackup",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-vmbackup/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["msft", "backup", "new", "recoveryvault", "virtualmachine", "az-104", "az-305"],
+  "cost": "2.00",
+  "deploytime": "8"
+},
+{
+  "title": "Azure VM Backup with Recovery Services Vault",
+  "description": "This template can be used as a demo scenario for Azure Recovery Vault to showcase a Windows VM disaster recovery protection. It deploys all necessary resources such as Azure Recovery Services Vault, a Windows Server 2022 Virtual Machine and the necessary recovery job.",
+  "preview": "./templates/images/test.png",
+  "authorUrl": "https://github.com/petender/",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-asrdemo",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-asrdemo/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["msft",  "new", "recoveryvault", "virtualmachine", "az-104", "az-305"],
+  "cost": "2.00",
+  "deploytime": "8"
 }
 ]

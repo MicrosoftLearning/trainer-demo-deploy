@@ -168,6 +168,8 @@ export type TagType =
   | "privateendpoint"
   | "privatelink"
   | "loadbalancer"
+  | "backup"
+  | "recoveryvault"
  
 
 
@@ -1206,6 +1208,20 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Azure Load Balancer",
     azureIcon: "./img/Azure-Load-Balancer.svg",
     url: "https://azure.microsoft.com/products/load-balancer",
+    type: "Service",
+  },
+  backup: {
+    label: "Azure Backup",
+    description: "Template architecture for Azure Backup",
+    azureIcon: "./img/Azure-Backup.svg",
+    url: "https://azure.microsoft.com/products/backup",
+    type: "Service",
+  },
+  recoveryvault: {
+    label: "Azure Site Recovery Vault",
+    description: "Template architecture for Azure Site Recovery Vault",
+    azureIcon: "./img/Azure-Recovery-Vault.svg",
+    url: "https://azure.microsoft.com/products/site-recovery",
     type: "Service",
   },
   
