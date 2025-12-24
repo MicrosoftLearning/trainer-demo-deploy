@@ -149,7 +149,7 @@ export default function ShowcaseTemplateSearch() {
             align="start"
             size={400}
             style={{
-              color: "#242424",
+              color: colorMode === "dark" ? "#E1E1E1" : "#242424",
               padding: "10px 0 20px 0",
             }}
           >
@@ -160,7 +160,7 @@ export default function ShowcaseTemplateSearch() {
             align="start"
             size={300}
             style={{
-              color: "#242424",
+              color: colorMode === "dark" ? "#E1E1E1" : "#242424",
               paddingTop: "20px",
             }}
           >
@@ -171,7 +171,7 @@ export default function ShowcaseTemplateSearch() {
             align="center"
             size={300}
             style={{
-              color: "#242424",
+              color: colorMode === "dark" ? "#E1E1E1" : "#242424",
               paddingBottom: "20px",
             }}
           >
