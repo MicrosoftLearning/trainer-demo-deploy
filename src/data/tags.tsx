@@ -1229,3 +1229,21 @@ export const Tags: { [type in TagType]: Tag } = {
 
   
 };
+
+// Helper function for case-insensitive tag lookup
+export function getTag(tagName: string): Tag | undefined {
+  // First try exact match
+  if (Tags[tagName as TagType]) {
+    return Tags[tagName as TagType];
+  }
+  
+  // If not found, try case-insensitive match
+  const lowerTagName = tagName.toLowerCase();
+  const matchingKey = Object.keys(Tags).find(key => key.toLowerCase() === lowerTagName);
+  
+  if (matchingKey) {
+    return Tags[matchingKey as TagType];
+  }
+  
+  return undefined;
+}

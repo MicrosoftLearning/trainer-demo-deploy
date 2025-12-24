@@ -8,7 +8,7 @@ import {
   UserState,
   InputValue,
 } from "../components/gallery/ShowcaseTemplateSearch";
-import { Tags, type User, type TagType } from "../data/tags";
+import { Tags, type User, type TagType, getTag } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
 import {
   Text,
@@ -111,7 +111,7 @@ function filterUsers(
     if (!user && !user.tags && user.tags.length === 0) {
       return false;
     }
-    return selectedTags.every((tag) => user.tags.includes(tag));
+    return selectedTags.every((tag) => user.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase()));
   });
 }
 
@@ -144,7 +144,7 @@ function FilterAppliedBar({
         Filters applied:
       </Body1>
       {selectedTags.map((tag, index) => {
-        const tagObject = Tags[tag];
+        const tagObject = getTag(tag);
         const key = `showcase_checkbox_key_${tag}`;
         const id = `showcase_checkbox_id_${tag}`;
 
@@ -221,7 +221,7 @@ export default function ShowcaseCardPage({
 
   useEffect(() => {
     const unionTags = new Set<TagType>();
-    cards.forEach((user) => user.tags.forEach((tag) => unionTags.add(tag)));
+    cards.forEach((user) => user.tags.forEach((tag) => unionTags.add(tag.toLowerCase())));
     setActiveTags(Array.from(unionTags));
   }, [cards]);
 

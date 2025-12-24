@@ -13,7 +13,7 @@ import {
   AccordionPanel,
   AccordionToggleEventHandler,
 } from "@fluentui/react-components";
-import { Tags, type TagType } from "../../../data/tags";
+import { Tags, type TagType, getTag } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -67,7 +67,7 @@ function ShowcaseFilterViewAll({
   return (
     <>
       {tags.slice(0, 6).map((tag, index) => {
-        const tagObject = Tags[tag];
+        const tagObject = getTag(tag);
         const key = `showcase_checkbox_key_${tag}`;
         const id = `showcase_checkbox_id_${tag}`;
 
@@ -115,7 +115,7 @@ function ShowcaseFilterViewAll({
           <AccordionItem value={value} style={{ padding: "0px" }}>
             <AccordionPanel style={{ margin: "0px" }}>
               {tags.slice(6, tags.length).map((tag) => {
-                const tagObject = Tags[tag];
+                const tagObject = getTag(tag);
                 const key = `showcase_checkbox_key_${tag}`;
                 const id = `showcase_checkbox_id_${tag}`;
 
@@ -184,32 +184,32 @@ export default function ShowcaseLeftFilters({
     return tagObject.type === undefined;
   });
   const languageTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Language";
+    const tagObject = getTag(tag);
+    return tagObject?.type === "Language";
   });
   const frameworkTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Framework";
+    const tagObject = getTag(tag);
+    return tagObject?.type === "Framework";
   });
   const servicesTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Service";
+    const tagObject = getTag(tag);
+    return tagObject?.type === "Service";
   });
   const databaseTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Database";
+    const tagObject = getTag(tag);
+    return tagObject?.type === "Database";
   });
   const ILTCourseTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "ILT Courses";
+    const tagObject = getTag(tag);
+    return tagObject?.type === "ILT Courses";
   });
   const otherTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Tools";
+    const tagObject = getTag(tag);
+    return tagObject?.type === "Tools";
   });
   const topicTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Topic";
+    const tagObject = getTag(tag);
+    return tagObject?.type === "Topic";
   });
   const [openItems, setOpenItems] = React.useState([]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
@@ -244,7 +244,7 @@ export default function ShowcaseLeftFilters({
           ) : null}
         </div>
         {uncategoryTag.map((tag) => {
-          const tagObject = Tags[tag];
+          const tagObject = getTag(tag);
           const key = `showcase_checkbox_key_${tag}`;
           const id = `showcase_checkbox_id_${tag}`;
 

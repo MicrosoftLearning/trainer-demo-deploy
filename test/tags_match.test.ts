@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { Tags } from '../src/data/tags';
+import { getTag } from '../src/data/tags';
 import Templates from '../static/templates.json';
 
 describe('Template tests', () => {
@@ -13,9 +13,9 @@ describe('Template tests', () => {
                 }
             });
         });
-        // Check if all tags exist in the Tags enum
+        // Check if all tags exist in the Tags enum (case-insensitive using getTag helper)
         tags.forEach(tag => {
-            const tagDefinition = Tags[tag];
+            const tagDefinition = getTag(tag);
             if (tagDefinition === undefined) {
                 console.error(`Error: The tag "${tag}" is not defined in ./src/data/tags.tsx.`);
             }

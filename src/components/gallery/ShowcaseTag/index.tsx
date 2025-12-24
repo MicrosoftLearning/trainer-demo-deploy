@@ -5,7 +5,7 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tag, Tags, type User, type TagType } from "../../../data/tags";
+import { Tag, Tags, type User, type TagType, getTag } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import { Badge, Tooltip, makeStyles } from "@fluentui/react-components";
@@ -50,7 +50,7 @@ export default function ShowcaseCardTag({
         tagObject != "new" &&
         tagObject != "hot"
     )
-    .map((tag) => ({ tag, ...Tags[tag] }));
+    .map((tag) => ({ tag, ...getTag(tag) }));
 
   // Keep same order for all tags
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
