@@ -797,13 +797,13 @@
 {
   "title": "Azure Routing Demo",
   "description": "This scenario deploys an Azure Hub & Spoke VNet example topology and 3 Windows Server VMs. You can use it to demonstrate VNet-Peerings and Route Tables.",
-  "image": "images/AzureRoutingDemo.png",
+  "preview": "./templates/images/AzureRoutingDemo.png",
+  "website": "https://github.com/jmenne",
   "author": "Joerg Menne",
-  "authorLink": "https://github.com/jmenne",
-  "repo": "https://github.com/jmenne/azd-routingdemo",
+  "source": "https://github.com/jmenne/azd-routingdemo",
   "tags": ["az-104", "az-700", "az-800", "vnets", "virtualmachine"],
-  "demoGuide": "https://raw.githubusercontent.com/jmenne/azd-routingdemo/refs/heads/main/demoguide/demoguide.md",
-  "deployTime": "5",
-  "cost": "14.00"
+  "demoguide": "https://raw.githubusercontent.com/jmenne/azd-routingdemo/refs/heads/main/demoguide/demoguide.md",
+  "cost": "14.00",
+  "deploytime": "5"
 }
 ]

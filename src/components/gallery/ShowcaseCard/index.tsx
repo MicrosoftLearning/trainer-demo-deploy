@@ -68,7 +68,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const star = useBaseUrl("/img/Sparkle.svg");
   const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
-    "azd init -t " + source.replace("https://github.com/", "").toLowerCase();
+    "azd init -t " + (source ? source.replace("https://github.com/", "").toLowerCase() : "");
   
   let headerLogo = useBaseUrl("/img/mctlogo_small.png");
   let headerText = "MCT Authored";
