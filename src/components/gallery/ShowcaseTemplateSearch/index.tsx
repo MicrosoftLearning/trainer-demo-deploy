@@ -107,6 +107,7 @@ function FilterBar(): React.JSX.Element {
 
 export default function ShowcaseTemplateSearch() {
   const { colorMode } = useColorMode();
+  const textColor = colorMode === "dark" ? "#E1E1E1" : "#242424";
   return (
     <div className={styles.searchContainer}>
       <img
@@ -149,7 +150,7 @@ export default function ShowcaseTemplateSearch() {
             align="start"
             size={400}
             style={{
-              color: colorMode === "dark" ? "#E1E1E1" : "#242424",
+              color: textColor,
               padding: "10px 0 20px 0",
             }}
           >
@@ -160,7 +161,7 @@ export default function ShowcaseTemplateSearch() {
             align="start"
             size={300}
             style={{
-              color: colorMode === "dark" ? "#E1E1E1" : "#242424",
+              color: textColor,
               paddingTop: "20px",
             }}
           >
@@ -171,7 +172,7 @@ export default function ShowcaseTemplateSearch() {
             align="center"
             size={300}
             style={{
-              color: colorMode === "dark" ? "#E1E1E1" : "#242424",
+              color: textColor,
               paddingBottom: "20px",
             }}
           >
