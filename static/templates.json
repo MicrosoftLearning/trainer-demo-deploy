@@ -793,5 +793,17 @@
   "tags": ["msft",  "new", "recoveryvault", "virtualmachine", "az-104", "az-305"],
   "cost": "2.00",
   "deploytime": "8"
+},
+{
+  "title": "Azure Routing Demo",
+  "description": "This scenario deploys an Azure Hub & Spoke VNet example topology and 3 Windows Server VMs. You can use it to demonstrate VNet-Peerings and Route Tables.",
+  "image": "images/AzureRoutingDemo.png",
+  "author": "Joerg Menne",
+  "authorLink": "https://github.com/jmenne",
+  "repo": "https://github.com/jmenne/azd-routingdemo",
+  "tags": ["AZ-104", "AZ-700", "AZ-800", "networking"],
+  "demoGuide": "https://raw.githubusercontent.com/jmenne/azd-routingdemo/refs/heads/main/demoguide/demoguide.md",
+  "deployTime": "5",
+  "cost": "14.00"
 }
 ]
