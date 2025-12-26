@@ -449,7 +449,7 @@
       "website": "https://github.com/vincentk16",
       "author": "Vincent Kok",
       "source": "https://github.com/vincentk16/azd-vision-face",
-      "tags": ["msft", "appservice", "azureai", "ai-102", "ai-900", "ai-3002", "ai-3003", "ai3004","python"],
+      "tags": ["msft", "appservice", "azureai", "ai-102", "ai-900", "ai-3002", "ai-3003", "ai-3004","python"],
       "demoguide": "https://raw.githubusercontent.com/vincentk16/azd-vision-face/refs/heads/main/demoguide/demoguide.md",
       "cost": "3.00",
       "deploytime": "2"
