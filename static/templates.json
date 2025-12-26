@@ -109,7 +109,7 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-ACA-Demo/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-104", "az-204", "az-305", "mct", "acr", "aci", "dotnet", "aca"],
+    "tags": ["az-104", "az-204", "az-305", "az-2003", "mct", "acr", "aci", "dotnet", "aca"],
     "cost": "3.50",
     "deploytime": "7"
   },
@@ -134,7 +134,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-fdcdn",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-fdcdn/refs/heads/main/Demoguides/fdcdn.md",
-    "tags": ["az-204", "az-305", "msft", "frontdoor", "azurecdn", "azurestorage", "blobstorage", "hot"],
+    "tags": ["az-204", "az-305", "az-1003", "msft", "frontdoor", "azurecdn", "azurestorage", "blobstorage", "hot"],
     "cost": "8.00",
     "deploytime": "5",
     "prereqs": "https://raw.githubusercontent.com/petender/azd-fdcdn/refs/heads/main/prereqs.md"
@@ -173,7 +173,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-hubspoke",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-hubspoke/refs/heads/main/README.md",
-    "tags": ["az-104", "az-700", "az-305", "msft", "vnets", "vpngw"],
+    "tags": ["az-104", "az-700", "az-305", "az-1002", "msft", "vnets", "vpngw"],
     "cost": "8.00",
     "deploytime": "35"
   },
@@ -185,7 +185,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-site2sitevpn/",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-site2sitevpn/refs/heads/main/Demoguide/s2svpn.md",
-    "tags": ["az-104", "az-700", "az-305", "msft",  "vnets", "vpngw"],
+    "tags": ["az-104", "az-700", "az-305", "az-1002", "msft",  "vnets", "vpngw"],
     "cost": "12.00",
     "deploytime": "35"
   },
@@ -197,7 +197,7 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-204", "az-305", "mct",  "functions", "dotnet", "azurestorage", "blobstorage"],
+    "tags": ["az-204", "az-305", "mct", "az-1003", "functions", "dotnet", "azurestorage", "blobstorage"],
     "cost": "3.00",
     "deploytime": "4",
     "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/prereqs.md"
@@ -210,7 +210,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-sentinel",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-sentinel/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-500", "az-305", "msft",  "sentinel"],
+    "tags": ["az-500", "az-305", "sc-5001", "msft",  "sentinel"],
     "cost": "3.00",
     "deploytime": "10"
   },
@@ -234,7 +234,7 @@
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/purviewEnvironment-azd",
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/purviewEnvironment-azd/main/Demoguide/demoguide.md",
-    "tags": ["dp-203", "az-305", "msft",  "purview", "azurestorage", "blobstorage"],
+    "tags": ["dp-203", "az-305", "msft", "az-1003", "sc-5003", "purview", "azurestorage", "blobstorage"],
     "cost": "4.50",
     "deploytime": "25"
   },
@@ -245,7 +245,7 @@
     "website": "https://github.com/sarahallali",
     "author": "Sarah Allali",
     "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
-    "tags": ["az-700", "az-305", "az-500", "az-104", "msft",   "vnets"],
+    "tags": ["az-700", "az-305", "az-500", "az-104", "az-1002", "msft",   "vnets"],
     "demoguide": "https://raw.githubusercontent.com/sarahallali/azd-Privatelink-Pendpoint/refs/heads/main/Demoguides/Privatelink-Pendpoint.md",
     "cost": "4.00",
     "deploytime": "5"
@@ -257,7 +257,7 @@
   "website": "https://github.com/koenraadhaedens",
   "author": "Koenraad Haedens",
   "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
-  "tags": ["sc-200", "az-800", "dp-300", "hot","azurearc","msft"],
+  "tags": ["sc-200", "az-800", "az-1010","dp-300", "hot","azurearc","msft"],
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
   "cost": "11.00",
   "deploytime": "5"
@@ -331,7 +331,7 @@
   "website": "https://github.com/true-while",
   "author": "Alex Ivanov",
   "source": "https://github.com/true-while/secure-data-solutions/",
-  "tags": ["dp-203","dp-300","az-204","dp-420","msft", "azurestorage", "blobstorage"],
+  "tags": ["dp-203","dp-300","az-204","dp-420", "az-1003", "msft", "azurestorage", "blobstorage"],
   "demoguide": "https://raw.githubusercontent.com/true-while/secure-data-solutions/refs/heads/main/demoguide/sds.md",
   "cost": "3",
   "deploytime": "5",
@@ -358,7 +358,7 @@
   "author": "Peter De Tender",
   "source": "https://github.com/petender/azd-storaccnt",
   "demoguide": "https://raw.githubusercontent.com/petender/azd-storaccnt/refs/heads/main/Demoguides/storaccnt.md",
-  "tags": ["az-104", "az-305", "msft",  "azurestorage", "blobstorage"],
+  "tags": ["az-104", "az-305", "az-1003","msft",  "azurestorage", "blobstorage"],
   "cost": "2.00",
   "deploytime": "3"
   },
@@ -370,7 +370,7 @@
   "author": "Dave Rendon",
   "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
   "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-deepseek-r1-on-azure-container-apps/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["ai-102", "az-305", "ai-900", "mct", "azureai", "aca"],
+  "tags": ["ai-102", "az-305", "ai-900", "az-2003", "mct", "azureai", "aca"],
   "cost": "6.00",
   "deploytime": "11"
   },
@@ -441,7 +441,7 @@
   "website": "https://github.com/petender",
   "author": "Peter De Tender",
   "source": "https://github.com/petender/azd-addsvm",
-  "tags": ["msft", "az-104", "az-800","virtualmachine", "bastion"],
+  "tags": ["msft", "az-104", "az-1008", "az-800","virtualmachine", "bastion"],
   "demoguide": "https://raw.githubusercontent.com/petender/azd-addsvm/refs/heads/main/demoguide/addsvm.md",
   "cost": "3.00",
   "deploytime": "15"
@@ -453,7 +453,7 @@
   "website": "https://github.com/petender",
   "author": "Peter De Tender",
   "source": "https://github.com/petender/azd-sqlao",
-  "tags": ["msft", "az-305", "dp-300","virtualmachine", "bastion", "vmsqlserver", "avset"],
+  "tags": ["msft", "az-305", "az-1008", "dp-300","virtualmachine", "bastion", "vmsqlserver", "avset"],
   "demoguide": "https://raw.githubusercontent.com/petender/azd-sqlao/refs/heads/main/demoguide/demoguide.md",
   "cost": "25.00",
   "deploytime": "45"
@@ -465,7 +465,7 @@
   "website": "https://github.com/trainerkrunal",
   "author": "Krunal Trivedi",
   "source": "https://github.com/trainerkrunal/azd-vmwithlb",
-  "tags": ["mct", "virtualmachine", "vnets", "az-104", "az-305"],
+  "tags": ["mct", "virtualmachine", "vnets", "az-104", "az-1002", "az-305"],
   "demoguide": "https://raw.githubusercontent.com/trainerkrunal/azd-vmwithlb/refs/heads/master/demoguide/demoguide.md",
   "cost": "11.00",
   "deploytime": "5"
@@ -478,7 +478,7 @@
   "author": "Dave Rendon",
   "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
   "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-service-endpoints-and-securing-storage/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["az-104", "az-500","mct", "azurestorage", "blobstorage"],
+  "tags": ["az-104", "az-500","mct", "az-1003","azurestorage", "blobstorage"],
   "cost": "10.00",
   "deploytime": "1"
   },
@@ -490,7 +490,7 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-intersite-connectivity",
     "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-intersite-connectivity/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-700", "az-305","mct", "vnets"],
+    "tags": ["az-700", "az-305", "az-1002","mct", "vnets"],
     "cost": "10.00",
     "deploytime": "1"
   },
@@ -501,7 +501,7 @@
   "website": "https://github.com/michelmsft",
   "author": "Michel Agah",
   "source": "https://github.com/michelmsft/GoodFood/",
-  "tags": ["msft", "semantic-kernel", "openai", "azureai", "ai-102", "ai-900", "dotnet"],
+  "tags": ["msft", "semantic-kernel", "openai", "azureai", "ai-102", "az-2005","ai-900", "dotnet"],
   "demoguide": "https://raw.githubusercontent.com/michelmsft/GoodFood/refs/heads/master/demoguide/demoguide.md",
   "cost": "2",
   "deploytime": "5"
@@ -527,7 +527,7 @@
   "author": "Dave Rendon",
   "source": "https://github.com/daverendon/azd-private-link",
   "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-private-link/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["az-104", "az-700","mct", "vnets"],
+  "tags": ["az-104", "az-700", "az-1002","mct", "vnets"],
   "cost": "5.00",
   "deploytime": "1"
   },
@@ -551,7 +551,7 @@
   "author": "Vassilis Ioannidis",
   "source": "https://github.com/SQLtattoo/azd-az104-all-in-one",
   "demoguide": "https://raw.githubusercontent.com/SQLtattoo/azd-az104-all-in-one/refs/heads/master/demoguide/demoguide.md",
-  "tags": ["az-104","msft", "virtualmachine", "appgateway", "loadbalancer", "vnets", "privatelink", "keyvault", "hot"],
+  "tags": ["az-104","az-1002", "msft", "virtualmachine", "appgateway", "loadbalancer", "vnets", "privatelink", "keyvault", "hot"],
   "cost": "20.00",
   "deploytime": "25"
   },
@@ -587,7 +587,7 @@
   "author": "Karel De Winter",
   "source": "https://github.com/kareldewinter/tdd-azd-monitor",
   "demoguide": "https://raw.githubusercontent.com/kareldewinter/tdd-azd-monitor/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["az-104", "az-305", "msft", "monitor", "appinsights", "loganalytics"],
+  "tags": ["az-104", "az-305", "az-1004", "msft", "monitor", "appinsights", "loganalytics"],
   "cost": "2.00",
   "deploytime": "2"
   },
@@ -612,7 +612,7 @@
   "author": "Dave Rendon",
   "source": "https://github.com/daverendon/azd-microsoft-sentinel",
   "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-microsoft-sentinel/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["az-104", "az-500","mct", "sentinel"],
+  "tags": ["az-104", "az-500","mct", "sc-5001", "sentinel"],
   "cost": "10.00",
   "deploytime": "3"
   },
@@ -697,7 +697,7 @@
   "author": "Dave Rendon",
   "source": "https://github.com/daverendon/azd-multiagent",
   "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-multiagent/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["ai-102", "ai-900", "mct", "azureai", "aca", "new", "aifoundry", "openai", "ai-3016", "ai-3026"],
+  "tags": ["ai-102", "ai-900", "az-2003", "mct", "azureai", "aca", "new", "aifoundry", "openai", "ai-3016", "ai-3026"],
   "cost": "5.00",
   "deploytime": "12"
   },
@@ -708,7 +708,7 @@
   "author": "Konstantinos Passadis",
   "source": "https://github.com/passadis/azure-a2a-translation",
   "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
-  "tags": ["mct", "azureai", "new", "ai-102", "ai-900", "aca", "aifoundry", "openai", "ai-3016", "ai-3026"],
+  "tags": ["mct", "azureai", "new", "ai-102", "az-2003", "ai-900", "aca", "aifoundry", "openai", "ai-3016", "ai-3026"],
   "demoguide": "https://raw.githubusercontent.com/passadis/azure-a2a-translation/refs/heads/main/README.md",
   "cost": "6.00",
   "deploytime": "5"
@@ -720,7 +720,7 @@
   "author": "Koenraad Haedens",
   "source": "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages",
   "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/media/fwsysdiagram.png",
-  "tags": ["msft", "sentinel", "new", "sc-200", "az-500", "aca"],
+  "tags": ["msft", "sentinel", "new", "sc-200", "az-500", "az-1007", "az-2003", "sc-5001", "aca"],
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/README.md",
   "cost": "2.00",
   "deploytime": "3"
@@ -780,7 +780,7 @@
   "website": "https://github.com/jmenne",
   "author": "Joerg Menne",
   "source": "https://github.com/jmenne/azd-routingdemo",
-  "tags": ["az-104", "az-700", "az-800", "vnets", "virtualmachine"],
+  "tags": ["az-104", "az-700", "az-800", "az-1002", "vnets", "virtualmachine"],
   "demoguide": "https://raw.githubusercontent.com/jmenne/azd-routingdemo/refs/heads/main/demoguide/demoguide.md",
   "cost": "14.00",
   "deploytime": "5"
