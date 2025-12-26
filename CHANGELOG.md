@@ -4,10 +4,9 @@
 
 ### Summary Statistics
 
-- **Total Commits**: 348 commits
-- **Period**: January 10, 2025 - December 24, 2025
-- **Pull Requests Merged**: 80+ PRs
-- **New Deployment Scenarios Added**: 75+
+- **Total Deployments**: 2067
+- **Period**: January 10, 2025 - December 25, 2025
+- **New Deployment Scenarios Added**: 60+
 
 ### 👥 Top Contributors
 
@@ -21,13 +20,6 @@
 8. **Karel De Winter** - Azure Monitor scenarios
 9. **Krunal Trivedi** - IIS infrastructure scenarios
 10. **Sarah Allali** - Private Link scenarios
-
-### 📈 Growth Trajectory
-
-- **Q1 2025**: Foundation and infrastructure buildout (70+ scenarios)
-- **Q2 2025**: Documentation improvements, security focus (15+ scenarios)
-- **Q3 2025**: API Management and AI expansion (10+ scenarios)
-- **Q4 2025**: Advanced AI/ML and networking scenarios (15+ scenarios)
 
 ---
 
@@ -44,12 +36,16 @@
 #### 🐛 Bug Fixes
 
 - Fixed null value check in template parameters file
-- Tags case insensitivity no longer fails build
+
 
 #### 🔧 UI/UX Improvements
 
 - **Fixed text visibility in dark mode** ([PR #80](https://github.com/MicrosoftLearning/trainer-demo-deploy/pull/80)) - by copilot-swe-agent[bot]
 - Refactored textColor constant to reduce duplication
+- Tags case insensitivity no longer fails build
+- Tags for Azure Services not sorting alphabetically fixed
+- Getting-Started text is not readable in dark mode fixed
+- Tags taking up too much space when multiple tags, moved to "+X more" styling
 
 #### 📦 Dependencies
 

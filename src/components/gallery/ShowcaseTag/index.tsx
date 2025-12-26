@@ -65,9 +65,9 @@ export default function ShowcaseCardTag({
   //console.log("checkAzureTag:", checkAzureTag);
 
   const length = tagObjectsSorted.length;
-  let number = 10;
-  if (checkAzureTag.length > 5) {
-    number = 7;
+  let number = 5;
+  if (checkAzureTag.length > 3) {
+    number = 4;
   }
   const rest = length - number;
 
@@ -99,13 +99,15 @@ export default function ShowcaseCardTag({
             relationship="label"
           >
             <Badge
-              appearance="outline"
+              appearance="filled"
               size="medium"
-              color="informative"
               style={{
                 alignContent: "center",
                 fontSize: "10px",
                 width: "auto",
+                backgroundColor: "#e860cb",
+                borderColor: "#e860cb",
+                color: "white",
               }}
             >
               + {rest} more

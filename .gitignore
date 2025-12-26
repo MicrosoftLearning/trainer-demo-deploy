@@ -21,3 +21,6 @@ yarn-error.log*
 
 # Test folder
 /azd-deployments
+
+# VSCode settings
+.vscode/
