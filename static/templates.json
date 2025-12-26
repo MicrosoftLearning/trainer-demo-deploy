@@ -306,7 +306,7 @@
   "website": "https://github.com/true-while",
   "author": "Alex Ivanov",
   "source": "https://github.com/true-while/owasp-azd/",
-  "tags": ["az-500","sc-200","sc-100","msft", "hot", "azurefirewall", "frontdoor", "appgw", "waf"],
+  "tags": ["az-500","sc-200","sc-100","msft", "hot", "azurefirewall", "frontdoor", "appgateway", "waf"],
   "demoguide": "https://raw.githubusercontent.com/true-while/owasp-azd/refs/heads/main/demoguide/demoguide.md",
   "cost": "67",
   "deploytime": "14"
