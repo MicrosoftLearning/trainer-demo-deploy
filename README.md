@@ -14,37 +14,45 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 ### Installation
 
 ```
-$ yarn
+$ npm ci
 ```
 
 ### Local Development
 
 ```
-$ yarn start
+$ npm run start
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
+Note: this site is configured for GitHub Pages with a base URL of `/trainer-demo-deploy/`, so the local URL is typically:
+
+`http://localhost:3000/trainer-demo-deploy/`
+
 ### Build
 
 ```
-$ yarn build
+$ npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+### Serve the production build (optional)
+
+```
+$ npm run serve
+```
+
+Then open:
+
+`http://localhost:3000/trainer-demo-deploy/`
+
+### Tests
+
+```
+$ npm test
+```
+
 ### Deployment
 
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+This repo deploys to GitHub Pages via GitHub Actions (see `.github/workflows/test-deploy.yml`).
