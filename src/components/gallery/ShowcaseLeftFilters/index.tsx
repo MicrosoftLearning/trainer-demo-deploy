@@ -186,30 +186,58 @@ export default function ShowcaseLeftFilters({
   const languageTag = sortTagList.filter((tag) => {
     const tagObject = getTag(tag);
     return tagObject?.type === "Language";
+  }).sort((a, b) => {
+    const labelA = getTag(a)?.label || "";
+    const labelB = getTag(b)?.label || "";
+    return labelA.localeCompare(labelB);
   });
   const frameworkTag = sortTagList.filter((tag) => {
     const tagObject = getTag(tag);
     return tagObject?.type === "Framework";
+  }).sort((a, b) => {
+    const labelA = getTag(a)?.label || "";
+    const labelB = getTag(b)?.label || "";
+    return labelA.localeCompare(labelB);
   });
   const servicesTag = sortTagList.filter((tag) => {
     const tagObject = getTag(tag);
     return tagObject?.type === "Service";
+  }).sort((a, b) => {
+    const labelA = getTag(a)?.label || "";
+    const labelB = getTag(b)?.label || "";
+    return labelA.localeCompare(labelB);
   });
   const databaseTag = sortTagList.filter((tag) => {
     const tagObject = getTag(tag);
     return tagObject?.type === "Database";
+  }).sort((a, b) => {
+    const labelA = getTag(a)?.label || "";
+    const labelB = getTag(b)?.label || "";
+    return labelA.localeCompare(labelB);
   });
   const ILTCourseTag = sortTagList.filter((tag) => {
     const tagObject = getTag(tag);
     return tagObject?.type === "ILT Courses";
+  }).sort((a, b) => {
+    const labelA = getTag(a)?.label || "";
+    const labelB = getTag(b)?.label || "";
+    return labelA.localeCompare(labelB);
   });
   const otherTag = sortTagList.filter((tag) => {
     const tagObject = getTag(tag);
     return tagObject?.type === "Tools";
+  }).sort((a, b) => {
+    const labelA = getTag(a)?.label || "";
+    const labelB = getTag(b)?.label || "";
+    return labelA.localeCompare(labelB);
   });
   const topicTag = sortTagList.filter((tag) => {
     const tagObject = getTag(tag);
     return tagObject?.type === "Topic";
+  }).sort((a, b) => {
+    const labelA = getTag(a)?.label || "";
+    const labelB = getTag(b)?.label || "";
+    return labelA.localeCompare(labelB);
   });
   const [openItems, setOpenItems] = React.useState([]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
