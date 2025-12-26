@@ -120,7 +120,7 @@ export type TagType =
   | "azuredatafactory"
   | "monitor"
   | "keyvault"
-  | "azurecontainerapps"
+  | "aca"
   | "aci"
   | "acr"
   | "mongodb"
@@ -871,7 +871,7 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/key-vault",
     type: "Service",
   },
-  azurecontainerapps: {
+  aca: {
     label: "Azure Container Apps",
     description: "Template architecture uses Azure Container Apps",
     azureIcon: "./img/Azure-Container-Apps.svg",

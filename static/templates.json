@@ -34,7 +34,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/OpenAIMultiModel",
     "demoguide": "https://raw.githubusercontent.com/petender/OpenAIMultiModel/refs/heads/main/README.md",
-    "tags": ["ai-102", "msft",  "openai", "azureai"],
+    "tags": ["ai-102", "ai-900","msft",  "openai", "azureai"],
     "cost": "5.00",
     "deploytime": "4"    
   },
@@ -59,7 +59,7 @@
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/BadgeMaker",
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-204", "az-305", "ai-102", "msft",   "appservice", "azureai", "blazor", "dotnet", "hot"],
+    "tags": ["az-204", "az-305", "ai-102", "ai-900","msft",   "appservice", "azureai", "blazor", "dotnet", "hot"],
     "cost": "4.00",
     "deploytime": "7",
     "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/BadgeMaker/refs/heads/main/prereqs.md"
@@ -112,7 +112,7 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-ACA-Demo/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-104", "az-204", "az-305", "mct", "acr", "aci", "dotnet", "azurecontainerapps"],
+    "tags": ["az-104", "az-204", "az-305", "mct", "acr", "aci", "dotnet", "aca"],
     "cost": "3.50",
     "deploytime": "7"
     
@@ -287,7 +287,7 @@
     "website": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
-    "tags": ["ai-102", "azureai","msft"],
+    "tags": ["ai-102", "ai-900", "az-204", "azureai","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/README.md",
     "cost": "3",
     "deploytime": "21"
@@ -299,7 +299,7 @@
     "website": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
-    "tags": ["ai-102", "azureai","msft"],
+    "tags": ["ai-102", "ai-900", "az-204","azureai","msft"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/README.md",
     "cost": "2",
     "deploytime": "3"
@@ -390,7 +390,7 @@
       "author": "Dave Rendon",
       "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
       "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-deepseek-r1-on-azure-container-apps/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["ai-102", "az-305", "ai-900", "mct", "azureai", "azurecontainerapps"],
+      "tags": ["ai-102", "az-305", "ai-900", "mct", "azureai", "aca"],
       "cost": "6.00",
       "deploytime": "11"
     },
@@ -449,7 +449,7 @@
       "website": "https://github.com/vincentk16",
       "author": "Vincent Kok",
       "source": "https://github.com/vincentk16/azd-vision-face",
-      "tags": ["msft", "appservice", "azureai", "ai-102", "python"],
+      "tags": ["msft", "appservice", "azureai", "ai-102", "ai-900", "ai-3002", "ai-3003", "ai3004","python"],
       "demoguide": "https://raw.githubusercontent.com/vincentk16/azd-vision-face/refs/heads/main/demoguide/demoguide.md",
       "cost": "3.00",
       "deploytime": "2"
@@ -522,7 +522,7 @@
       "website": "https://github.com/michelmsft",
       "author": "Michel Agah",
       "source": "https://github.com/michelmsft/GoodFood/",
-      "tags": ["msft", "semantic-kernel", "openai", "azureai", "ai-102", "dotnet"],
+      "tags": ["msft", "semantic-kernel", "openai", "azureai", "ai-102", "ai-900", "dotnet"],
       "demoguide": "https://raw.githubusercontent.com/michelmsft/GoodFood/refs/heads/master/demoguide/demoguide.md",
       "cost": "2",
       "deploytime": "5"
@@ -584,7 +584,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-ai-agent-service",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-ai-agent-service/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai"],
+    "tags": ["ai-102", "ai-900", "msft", "azureai", "aifoundry", "new", "openai", "ai-3016", "ai-3026"],
     "cost": "1.00",
     "deploytime": "3"
   },
@@ -596,7 +596,7 @@
   "author": "Peter De Tender",
   "source": "https://github.com/petender/azd-foundrysora",
   "demoguide": "https://raw.githubusercontent.com/petender/azd-foundrysora/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai"],
+  "tags": ["ai-102", "ai-900", "msft", "azureai", "aifoundry", "new", "openai", "ai-3016"],
   "cost": "2.00",
   "deploytime": "3"
 },
@@ -645,7 +645,7 @@
 "author": "Alex Ivanov",
 "source": "https://github.com/true-while/pg-ai-azd",
 "demoguide": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/Demoguides/demogide.md",
-"tags": ["azureai", "msft", "azuredb-postgreSQL", "new"],
+"tags": ["azureai", "msft", "azuredb-postgreSQL", "new", "ai-3019", "ai-102", "ai-900"],
 "cost": "9.00",
 "deploytime": "15",    
 "prereqs": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/prereqs.md"
@@ -706,7 +706,7 @@
   "author": "Peter De Tender",
   "source": "https://github.com/petender/azd-researcher",
   "demoguide": "https://raw.githubusercontent.com/petender/azd-researcher/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["ai-102", "msft", "azureai", "aifoundry", "new", "openai", "python"],
+  "tags": ["ai-102", "ai-900", "msft", "azureai", "aifoundry", "new", "openai", "python", "ai-3016", "ai-3026", "ai-3022"],
   "cost": "15.00",
   "deploytime": "8"
 },
@@ -718,7 +718,7 @@
   "author": "Dave Rendon",
   "source": "https://github.com/daverendon/azd-multiagent",
   "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-multiagent/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["ai-102", "ai-900", "mct", "azureai", "azurecontainerapps", "new", "aifoundry", "openai"],
+  "tags": ["ai-102", "ai-900", "mct", "azureai", "aca", "new", "aifoundry", "openai", "ai-3016", "ai-3026"],
   "cost": "5.00",
   "deploytime": "12"
 },
@@ -729,7 +729,7 @@
   "author": "Konstantinos Passadis",
   "source": "https://github.com/passadis/azure-a2a-translation",
   "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
-  "tags": ["mct", "azureai", "new", "ai-102", "ai-900", "azurecontainerapps", "aifoundry", "openai"],
+  "tags": ["mct", "azureai", "new", "ai-102", "ai-900", "aca", "aifoundry", "openai", "ai-3016", "ai-3026"],
   "demoguide": "https://raw.githubusercontent.com/passadis/azure-a2a-translation/refs/heads/main/README.md",
   "cost": "6.00",
   "deploytime": "5"
@@ -741,7 +741,7 @@
   "author": "Koenraad Haedens",
   "source": "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages",
   "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/media/fwsysdiagram.png",
-  "tags": ["msft", "sentinel", "new", "sc-200", "az-500", "azurecontainerapps"],
+  "tags": ["msft", "sentinel", "new", "sc-200", "az-500", "aca"],
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/README.md",
   "cost": "2.00",
   "deploytime": "3"
@@ -754,7 +754,7 @@
   "author": "Peter De Tender",
   "source": "https://github.com/petender/demo-mcp-productcatalog",
   "demoguide": "https://raw.githubusercontent.com/petender/demo-mcp-productcatalog/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102"],
+  "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102", "ai-900"],
   "cost": "2.00",
   "deploytime": "3"
 },
@@ -766,7 +766,7 @@
   "author": "Peter De Tender",
   "source": "https://github.com/petender/azd-betternotes-ai",
   "demoguide": "https://raw.githubusercontent.com/petender/azd-betternotes-ai/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102"],
+  "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102", "ai-900", "ai-3002"],
   "cost": "2.00",
   "deploytime": "3"
 },
