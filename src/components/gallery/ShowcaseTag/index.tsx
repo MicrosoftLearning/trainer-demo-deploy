@@ -60,7 +60,7 @@ export default function ShowcaseCardTag({
   //console.log("tagObjectsSorted:", tagObjectsSorted);
 
   const checkAzureTag = tagObjectsSorted.filter((tag) =>
-    tag.label.includes("Azure")
+    tag.label?.includes("Azure")
   );
   //console.log("checkAzureTag:", checkAzureTag);
 

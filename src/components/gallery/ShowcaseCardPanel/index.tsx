@@ -800,7 +800,7 @@ function ShowcaseCardAzureTag({
   );
 
   return tagObjectsSorted.map((tagObject, index) => {
-    const azureService = tagObject.label.includes("Azure");
+    const azureService = tagObject.label?.includes("Azure") ?? false;
 
     return azureService ? (
       <div

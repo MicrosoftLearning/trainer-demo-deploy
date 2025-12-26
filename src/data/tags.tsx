@@ -53,18 +53,13 @@ export type TagType =
   | "az-1002"
   | "az-1003"
   | "az-1004"
-  | "az-1006"
   | "az-1007"
   | "az-1008"
   | "az-1010"
-  | "az-120"
   | "az-140"
-  | "az-2001"
   | "az-2003"
   | "az-2005"
   | "az-2006"
-  | "az-2008"
-  | "az-2010"
   | "az-204"
   | "az-305"
   | "az-400"
@@ -327,15 +322,6 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
-  "az-1006": {
-    label: "AZ-1006 Migrate and Modernize SAP in the Microsoft Cloud",
-    description: "This 1-day course teaches IT professionals who have experience with SAP solutions how to use Azure resources that include setting up and configuration of SAP environments in Azure for virtual machines, virtual networks, storage accounts, and Microsoft Entra ID.",
-    type: "ILT Courses",
-    azureIcon: "./img/applied-skill.svg",
-    url: "https://learn.microsoft.com/en-us/training/courses/az-1006",
-    courseblueprint: "",
-    courseblueprintdiag: "",
-  },
   "az-1007": {
     label: "AZ-1007 Deploy and administer Linux virtual machines on Azure",
     description: "In this learning path, you prepare for the Applied Skill, Deploy and administer Linux virtual machines on Microsoft Azure.",
@@ -363,15 +349,6 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
-  "az-120":{
-    label: "AZ-120 Azure for SAP Workloads Specialty",
-    description: "Demonstrate planning, migration, and operation of an SAP solution on Microsoft Azure while you leverage Azure resources.",
-    type: "ILT Courses",
-    azureIcon: "./img/microsoft-certified-specialty-badge.svg",
-    url: "https://learn.microsoft.com/credentials/certifications/azure-for-sap-workloads-specialty/?practice-assessment-type=certification",
-    courseblueprint: "",
-    courseblueprintdiag: "",
-  },
   "az-140": {
     label: "AZ-140 Azure Virtual Desktop Specialty",
     description: "Plan, deliver, manage, and monitor virtual desktop experiences and remote apps on Microsoft Azure for any device.",
@@ -380,15 +357,6 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://learn.microsoft.com/credentials/certifications/azure-virtual-desktop-specialty/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-140Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-140.jpg",
-  },
-  "az-2001": {
-    label: "AZ-2001 Implement security through a pipeline using Azure DevOps",
-    description: "This learning path helps you prepare for the Implement security through a pipeline assessment using Azure DevOps. Learn how to configure and secure Azure Pipelines.",
-    type: "ILT Courses",
-    azureIcon: "./img/applied-skill.svg",
-    url: "https://learn.microsoft.com/en-us/training/paths/implement-security-through-pipeline-using-devops/",
-    courseblueprint: "",
-    courseblueprintdiag: "",
   },
   "az-2003": {
     label: "AZ-2003 Deploy cloud-native apps using Azure Container Apps",
@@ -414,24 +382,6 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
     url: "https://learn.microsoft.com/en-us/training/paths/automate-azure-load-testing-github/",
-    courseblueprint: "",
-    courseblueprintdiag: "",
-  },
-  "az-2008": {
-    label: "AZ-2008 DevOps Foundations: The Core Principles and Practices",
-    description: "Explore DevOps practices using GitHub. Your development and operations teams will experience improved collaboration, agility, continuous integration, continuous delivery, automation, and operational excellence throughout all phases of the application lifecycle.",
-    type: "ILT Courses",
-    azureIcon: "./img/applied-skill.svg",
-    url: "https://learn.microsoft.com/en-us/training/paths/devops-foundations-core-principles-practices/",
-    courseblueprint: "",
-    courseblueprintdiag: "",
-  },
-  "az-2010": {
-    label: "AZ-2010 Designing and Implementing Platform Engineering",
-    description: "This learning path provides a comprehensive guide to designing and implementing platform engineering within modern enterprises. It covers the foundational principles, strategic alignment with business goals, and the practical aspects of building scalable, secure, and future-proof platforms.",
-    type: "ILT Courses",
-    azureIcon: "./img/applied-skill.svg",
-    url: "https://learn.microsoft.com/en-us/training/paths/designing-implementing-platform-engineering/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
