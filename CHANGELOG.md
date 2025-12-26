@@ -37,7 +37,6 @@
 
 - Fixed null value check in template parameters file
 
-
 #### 🔧 UI/UX Improvements
 
 - **Fixed text visibility in dark mode** ([PR #80](https://github.com/MicrosoftLearning/trainer-demo-deploy/pull/80)) - by copilot-swe-agent[bot]
