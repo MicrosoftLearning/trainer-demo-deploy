@@ -112,9 +112,11 @@ function filterUsers(
   selectedAuthors: string[]
 ) {
   if (searchName) {
+    const needle = searchName.toLowerCase();
     // eslint-disable-next-line no-param-reassign
     users = users.filter((user) =>
-      user.title.toLowerCase().includes(searchName.toLowerCase())
+      user.title.toLowerCase().includes(needle) ||
+      (user.description ?? "").toLowerCase().includes(needle)
     );
   }
   if (selectedTags && selectedTags.length > 0) {
