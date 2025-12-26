@@ -48,12 +48,12 @@ function HomepageHeader({ colorMode }) {
           <h1>
             <Text
               className={style.largeTitle}
-              style={{ marginBottom: "6px", color: "#242424" }}
+              style={{ marginBottom: "6px", color: colorMode !== "dark" ? "#242424" : "#ffffff" }}
             >
               Deploy Microsoft Certified Trainer Demo scenarios from a single (azd) command
             </Text>
           </h1>
-          <Text className={style.title3} style={{ color: "#242424" }}>
+          <Text className={style.title3} style={{ color: colorMode !== "dark" ? "#242424" : "#ffffff" }}>
             The <a href="https://esi.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Technical Trainer</a> (MTT) and <a href="https://example.com/https://learn.microsoft.com/en-us/credentials/certifications/mct-certification" target="_blank" rel="noopener noreferrer">Microsoft Certified Trainer</a> (MCT) community-built scenarios, allow everyone to 
             redeploy demo scenarios in their own Azure subscription, in minutes. 
           </Text>
