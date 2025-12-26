@@ -28,3 +28,22 @@ function sortUsers() {
 }
 
 export const sortedUsers = sortUsers();
+
+// Extract unique authors from templates
+export function getUniqueAuthors(): string[] {
+  const authorSet = new Set<string>();
+  unsortedUsers.forEach((user) => {
+    if (user.author) {
+      // Handle multiple authors (comma-separated)
+      if (user.author.includes(", ")) {
+        const multiAuthors = user.author.split(", ");
+        multiAuthors.forEach((author) => authorSet.add(author.trim()));
+      } else {
+        authorSet.add(user.author.trim());
+      }
+    }
+  });
+  return Array.from(authorSet).sort();
+}
+
+export const authorList = getUniqueAuthors();

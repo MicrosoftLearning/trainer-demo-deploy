@@ -17,7 +17,7 @@ import {
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { type TagType } from "@site/src/data/tags";
-import { TagList } from "@site/src/data/users";
+import { TagList, authorList } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
@@ -37,6 +37,8 @@ export function prepareUserState(): UserState | undefined {
 }
 
 const TagQueryStringKey = "tags";
+const AuthorQueryStringKey = "authors";
+
 const readSearchTags = (search: string): TagType[] => {
   return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
 };
@@ -47,17 +49,30 @@ const replaceSearchTags = (search: string, newTags: TagType[]) => {
   return searchParams.toString();
 };
 
+const readSearchAuthors = (search: string): string[] => {
+  return new URLSearchParams(search).getAll(AuthorQueryStringKey);
+};
+const replaceSearchAuthors = (search: string, newAuthors: string[]) => {
+  const searchParams = new URLSearchParams(search);
+  searchParams.delete(AuthorQueryStringKey);
+  newAuthors.forEach((author) => searchParams.append(AuthorQueryStringKey, author));
+  return searchParams.toString();
+};
+
 const App = () => {
   const { colorMode } = useColorMode();
   const [loading, setLoading] = useState(true);
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
   const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
+  const [activeAuthors, setActiveAuthors] = useState<string[]>(authorList);
+  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
   const location = useLocation<UserState>();
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
     setSelectedCheckbox(readSearchTags(location.search));
+    setSelectedAuthors(readSearchAuthors(location.search));
     setTimeout(() => {
       setLoading(false);
     }, 500);
@@ -79,6 +94,11 @@ const App = () => {
             selectedTags={selectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
+            activeAuthors={activeAuthors}
+            selectedAuthors={selectedAuthors}
+            setSelectedAuthors={setSelectedAuthors}
+            readSearchAuthors={readSearchAuthors}
+            replaceSearchAuthors={replaceSearchAuthors}
           />
         </div>
         <div className={styles.card}>
@@ -90,6 +110,11 @@ const App = () => {
             setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
+            setActiveAuthors={setActiveAuthors}
+            selectedAuthors={selectedAuthors}
+            setSelectedAuthors={setSelectedAuthors}
+            readSearchAuthors={readSearchAuthors}
+            replaceSearchAuthors={replaceSearchAuthors}
           />
         </div>
       </div>

@@ -5,6 +5,7 @@
 
 import React from "react";
 import ShowcaseTagSelect from "../ShowcaseTagSelect";
+import ShowcaseAuthorSelect from "../ShowcaseAuthorSelect";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Accordion,
@@ -14,7 +15,7 @@ import {
   AccordionToggleEventHandler,
 } from "@fluentui/react-components";
 import { Tags, type TagType, getTag } from "../../../data/tags";
-import { TagList } from "../../../data/users";
+import { TagList, authorList } from "../../../data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
@@ -159,6 +160,142 @@ function ShowcaseFilterViewAll({
   );
 }
 
+function ShowcaseAuthorFilterViewAll({
+  authors,
+  number,
+  activeAuthors,
+  selectedAuthors,
+  setSelectedAuthors,
+  location,
+  readSearchAuthors,
+  replaceSearchAuthors,
+}: {
+  authors: string[];
+  number: string;
+  activeAuthors: string[];
+  selectedAuthors: string[];
+  setSelectedAuthors: React.Dispatch<React.SetStateAction<string[]>>;
+  location;
+  readSearchAuthors: (search: string) => string[];
+  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
+}) {
+  const [openItems, setOpenItems] = React.useState(["0"]);
+  const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
+    setOpenItems(data.openItems);
+  };
+  const { colorMode } = useColorMode();
+  const chevronDownSmall =
+    colorMode != "dark" ? (
+      <img src={useBaseUrl("/img/smallChevron.svg")} />
+    ) : (
+      <img src={useBaseUrl("/img/smallChevronDark.svg")} />
+    );
+  const chevronUpSmall =
+    colorMode != "dark" ? (
+      <img
+        style={{ transform: "rotate(180deg)" }}
+        src={useBaseUrl("/img/smallChevron.svg")}
+      />
+    ) : (
+      <img
+        style={{ transform: "rotate(180deg)" }}
+        src={useBaseUrl("/img/smallChevronDark.svg")}
+      />
+    );
+  let value = number + "2";
+  return (
+    <>
+      {authors.slice(0, 6).map((author, index) => {
+        const key = `showcase_author_checkbox_key_${author.replace(/\s+/g, '_')}`;
+        const id = `showcase_author_checkbox_id_${author.replace(/\s+/g, '_')}`;
+
+        return index == authors.length - 1 ? (
+          <div
+            key={key}
+            className={styles.checkboxListItem}
+            style={{ marginBottom: "7px" }}
+          >
+            <ShowcaseAuthorSelect
+              id={id}
+              author={author}
+              label={author}
+              activeAuthors={activeAuthors}
+              selectedAuthors={selectedAuthors}
+              setSelectedAuthors={setSelectedAuthors}
+              location={location}
+              readSearchAuthors={readSearchAuthors}
+              replaceSearchAuthors={replaceSearchAuthors}
+            />
+          </div>
+        ) : (
+          <div key={key} className={styles.checkboxListItem}>
+            <ShowcaseAuthorSelect
+              id={id}
+              author={author}
+              label={author}
+              activeAuthors={activeAuthors}
+              selectedAuthors={selectedAuthors}
+              setSelectedAuthors={setSelectedAuthors}
+              location={location}
+              readSearchAuthors={readSearchAuthors}
+              replaceSearchAuthors={replaceSearchAuthors}
+            />
+          </div>
+        );
+      })}
+      {authors.length > 6 ? (
+        <Accordion
+          openItems={openItems}
+          onToggle={handleToggle}
+          multiple
+          collapsible
+        >
+          <AccordionItem value={value} style={{ padding: "0px" }}>
+            <AccordionPanel style={{ margin: "0px" }}>
+              {authors.slice(6, authors.length).map((author) => {
+                const key = `showcase_author_checkbox_key_${author.replace(/\s+/g, '_')}`;
+                const id = `showcase_author_checkbox_id_${author.replace(/\s+/g, '_')}`;
+
+                return (
+                  <div key={key} className={styles.checkboxListItem}>
+                    <ShowcaseAuthorSelect
+                      id={id}
+                      author={author}
+                      label={author}
+                      activeAuthors={activeAuthors}
+                      selectedAuthors={selectedAuthors}
+                      setSelectedAuthors={setSelectedAuthors}
+                      location={location}
+                      readSearchAuthors={readSearchAuthors}
+                      replaceSearchAuthors={replaceSearchAuthors}
+                    />
+                  </div>
+                );
+              })}
+            </AccordionPanel>
+            <AccordionHeader
+              inline={true}
+              expandIconPosition="end"
+              expandIcon={
+                openItems.includes(value) ? chevronUpSmall : chevronDownSmall
+              }
+            >
+              <div
+                style={{
+                  fontSize: "12px",
+                }}
+                className={styles.color}
+              >
+                View All
+              </div>
+            </AccordionHeader>
+          </AccordionItem>
+        </Accordion>
+      ) : null}
+    </>
+  );
+}
+
 export default function ShowcaseLeftFilters({
   activeTags,
   selectedCheckbox,
@@ -168,6 +305,11 @@ export default function ShowcaseLeftFilters({
   setSelectedTags,
   readSearchTags,
   replaceSearchTags,
+  activeAuthors,
+  selectedAuthors,
+  setSelectedAuthors,
+  readSearchAuthors,
+  replaceSearchAuthors,
 }: {
   activeTags: TagType[];
   selectedCheckbox: TagType[];
@@ -177,6 +319,11 @@ export default function ShowcaseLeftFilters({
   setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
+  activeAuthors: string[];
+  selectedAuthors: string[];
+  setSelectedAuthors: React.Dispatch<React.SetStateAction<string[]>>;
+  readSearchAuthors: (search: string) => string[];
+  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
   const sortTagList = TagList.sort();
   const uncategoryTag = TagList.filter((tag) => {
@@ -248,7 +395,9 @@ export default function ShowcaseLeftFilters({
   const clearAll = () => {
     setSelectedCheckbox([]);
     setSelectedTags([]);
+    setSelectedAuthors([]);
     searchParams.delete("tags");
+    searchParams.delete("authors");
     history.push({
       ...location,
       search: searchParams.toString(),
@@ -265,7 +414,7 @@ export default function ShowcaseLeftFilters({
       <div style={{ paddingBottom: "7px" }}>
         <div className={styles.filterTop}>
           <div className={styles.filterBy}>Filter by</div>
-          {selectedTags.length > 0 ? (
+          {(selectedTags.length > 0 || selectedAuthors.length > 0) ? (
             <div className={styles.clearAll} onClick={clearAll}>
               Clear all
             </div>
@@ -372,6 +521,32 @@ export default function ShowcaseLeftFilters({
             location={location}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
+          />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem value="3">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
+        >
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>
+            Authors
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseAuthorFilterViewAll
+            authors={authorList}
+            number={"3"}
+            activeAuthors={activeAuthors}
+            selectedAuthors={selectedAuthors}
+            setSelectedAuthors={setSelectedAuthors}
+            location={location}
+            readSearchAuthors={readSearchAuthors}
+            replaceSearchAuthors={replaceSearchAuthors}
           />
         </AccordionPanel>
       </AccordionItem>

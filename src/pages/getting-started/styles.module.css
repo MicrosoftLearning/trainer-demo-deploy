@@ -10,14 +10,18 @@
   position: relative;
   width: 100%;
   min-width: 309px;
+  background-color: transparent;
 }
 
 .cover {
   pointer-events: none;
   position: absolute;
+  top: 2rem;
+  left: 2rem;
   height: calc(100% - 4rem);
   width: calc(100% - 4rem);
   border-radius: 20px;
+  display: none; /* Set to 'block' to show the background image */
 }
 
 .video {
@@ -48,6 +52,16 @@
   align-items: flex-start;
   flex-flow: column;
   color: black;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageContainer img {
+  display: block;
 }
 
 .container {
