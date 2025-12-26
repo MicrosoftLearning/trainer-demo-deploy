@@ -245,7 +245,7 @@
     "website": "https://github.com/sarahallali",
     "author": "Sarah Allali",
     "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
-    "tags": ["az-700", "az-305", "az-500", "az-104", "az-1002", "msft",   "vnets"],
+    "tags": ["az-700", "az-305", "az-500", "az-104", "az-1002", "msft",   "vnets", "privatelink", "privateendpoint"],
     "demoguide": "https://raw.githubusercontent.com/sarahallali/azd-Privatelink-Pendpoint/refs/heads/main/Demoguides/Privatelink-Pendpoint.md",
     "cost": "4.00",
     "deploytime": "5"
@@ -527,7 +527,7 @@
   "author": "Dave Rendon",
   "source": "https://github.com/daverendon/azd-private-link",
   "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-private-link/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["az-104", "az-700", "az-1002","mct", "vnets"],
+  "tags": ["az-104", "az-700", "az-1002","mct", "vnets", "privatelink"],
   "cost": "5.00",
   "deploytime": "1"
   },
