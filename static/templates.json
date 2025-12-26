@@ -6,7 +6,7 @@
     "website": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/ConferenceAPI",
-    "tags": ["az-204", "msft", "hot", "appservice", "dotnet"],
+    "tags": ["az-204", "az-305", "msft", "hot", "appservice", "dotnet"],
     "demoguide": "https://raw.githubusercontent.com/petender/ConferenceAPI/refs/heads/main/README.md",
     "cost": "3.00",
     "deploytime": "3",
@@ -21,7 +21,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-apimwithconfAPI",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/demoguide/apimwithconference.md",
-    "tags": ["az-204", "msft",  "hot", "appservice", "apim", "dotnet"],
+    "tags": ["az-204", "az-305", "msft",  "hot", "appservice", "apim", "dotnet"],
     "cost": "3.00",
     "deploytime": "5",    
     "prereqs": "https://raw.githubusercontent.com/petender/azd-apimwithconfAPI/refs/heads/main/prereqs.md"
@@ -46,7 +46,7 @@
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/TollBooth",
     "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/Demoguide/tollbooth.md",
-    "tags": ["az-204", "az-305","msft",  "hot", "appservice", "keyvault", "cosmosdb", "appinsights", "functions", "eventgrid", "dotnet", "nodejs", "azurestorage", "blobstorage", "eventgrid"],
+    "tags": ["az-204", "az-305","msft", "hot", "appservice", "keyvault", "cosmosdb", "appinsights", "functions", "eventgrid", "dotnet", "nodejs", "azurestorage", "blobstorage", "eventgrid"],
     "cost": "4.00",
     "deploytime": "12",
     "prereqs" : "https://raw.githubusercontent.com/rob-foulkrod/TollBooth/refs/heads/main/prereqs.md"
@@ -77,7 +77,6 @@
     "deploytime": "16",
     "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/MachineLearningAZD/refs/heads/main/prereqs.md"
   },
-  
   {
     "title": "EShopOnWeb VM Architecture",
     "description": "This scenario is based on a WebVM and SQLVM architecture, showcasing traditional IAAS in Azure.",
@@ -89,7 +88,6 @@
     "tags": ["az-104", "az-305", "msft",  "virtualmachine", "dotnet"],
     "cost": "14.00",
     "deploytime": "9"
-    
   },
   {
     "title": "EShopOnWeb ACI Architecture",
@@ -99,10 +97,9 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
     "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-ACI-Demo/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["az-104", "az-204", "az-305", "mct",  "acr", "aci", "dotnet", "hot"],
+    "tags": ["az-104", "az-204", "az-305", "mct",  "acr", "aci", "dotnet"],
     "cost": "4.00",
     "deploytime": "4"
-    
   },
   {
     "title": "EShopOnWeb ACAPPS Architecture",
@@ -115,7 +112,6 @@
     "tags": ["az-104", "az-204", "az-305", "mct", "acr", "aci", "dotnet", "aca"],
     "cost": "3.50",
     "deploytime": "7"
-    
   },
   {
     "title": "EShopOnWeb AKS Architecture",
@@ -142,7 +138,6 @@
     "cost": "8.00",
     "deploytime": "5",
     "prereqs": "https://raw.githubusercontent.com/petender/azd-fdcdn/refs/heads/main/prereqs.md"
-    
   },
   {
     "title": "EShopOnWeb in Azure App Service and SQL Azure DB",
@@ -169,9 +164,7 @@
     "cost": "2.00",
     "deploytime": "2",
     "prereqs": "https://raw.githubusercontent.com/true-while/event-hub-azd/refs/heads/main/prereqs.md"
-    
   },
-
   {
     "title": "Hub Spoke with VPN Gateway and JumpVM",
     "description": "This scenario deploys an Azure VNET Hub & Spoke architecture including VNET Peering, VPN Gateway and a Windows Server 2022 JumpVM.",
@@ -180,13 +173,10 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-hubspoke",
     "demoguide": "https://raw.githubusercontent.com/petender/azd-hubspoke/refs/heads/main/README.md",
-    "tags": ["az-104", "az-700", "az-305", "msft", "hot",  "vnets", "vpngw"],
+    "tags": ["az-104", "az-700", "az-305", "msft", "vnets", "vpngw"],
     "cost": "8.00",
     "deploytime": "35"
-   
-    
   },
-
   {
     "title": "Azure Site 2 Site VPN",
     "description": "This scenario deploys 3 Azure VPN Gateways in 3 different regions (West Europe, Central US and East Asia) and establishes the connections across all 3 of them.",
@@ -198,9 +188,7 @@
     "tags": ["az-104", "az-700", "az-305", "msft",  "vnets", "vpngw"],
     "cost": "12.00",
     "deploytime": "35"
-    
   },
-
   {
     "title": "Azure Functions with Blob Trigger (Watermark text)",
     "description": "This scenario deploys an Azure Functions App, which provides a Blob Trigger. When an image file is uploaded to the /input container, the Function gets triggered and adds a watermark text to the image file. The new image file getes saved into an /output container. Application Insights is also deployed, so you can showcase the necessary monitoring features of Azure Functions monitor, as well as more detailed in App Insights itself.",
@@ -214,7 +202,6 @@
     "deploytime": "4",
     "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-WatermarkFunction/refs/heads/main/prereqs.md"
   },
-
   {
     "title": "Azure Sentinel with Data Connectors",
     "description": "This scenario deploys an Azure Sentinel workspace, including a few sample data connectors (AWS, M365, Entra Id and LogicApps.",
@@ -226,9 +213,7 @@
     "tags": ["az-500", "az-305", "msft",  "sentinel"],
     "cost": "3.00",
     "deploytime": "10"
-    
   },
-
   {
     "title": "Azure Traffic Manager with WebApps",
     "description": "This scenario deploys Azure Traffic Manager with WebApps in 3 regions.",
@@ -240,9 +225,7 @@
     "tags": ["az-204", "az-305", "msft",  "trafficmgr", "hot"],
     "cost": "3.00",
     "deploytime": "5"
-    
   },
-  
   {
     "title": "Purview Demo Environment",
     "description": "This deployes Purview, a storage account, Data factory, Synapse, and a SQL Database. It Adds the storage account and database to collections, creates an runs a pipeline, and reports the lineage.",
@@ -266,327 +249,323 @@
     "demoguide": "https://raw.githubusercontent.com/sarahallali/azd-Privatelink-Pendpoint/refs/heads/main/Demoguides/Privatelink-Pendpoint.md",
     "cost": "4.00",
     "deploytime": "5"
-    
-  },
-    {
-    "title": "Azure Nested Hypervisor Demos",
-    "description": "This repository showcases a collection of demos leveraging Azure's nested hypervisor capabilities, integrating powerful tools like Azure Arc, Defender for Identity, and more. These demos are designed to demonstrate hybrid cloud management, advanced security, and multi-cloud governance scenarios.",
-    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/media/azure-nested-vm.png",
-    "website": "https://github.com/koenraadhaedens",
-    "author": "Koenraad Haedens",
-    "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
-    "tags": ["sc-200", "az-800", "dp-300", "hot","azurearc","msft"],
-    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
-    "cost": "11.00",
-    "deploytime": "5"
-     },
-      {
-    "title": "Windows 11 Developer Pc",
-    "description": "A Windows 11 developer PC that can be used for installing demos and showcasing them during deliveries.",
-    "preview": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/media/devpc.png",
-    "website": "https://github.com/koenraadhaedens",
-    "author": "Koenraad Haedens",
-    "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
-    "tags": ["ai-102", "ai-900", "az-204", "azureai","msft"],
-    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/README.md",
-    "cost": "3",
-    "deploytime": "21"
-     },
-    {
-    "title": "Azure hosted Dev Container",
-    "description": "an automated way to deploy a development environment inside a container, accessible as a web-based VS Code instance. The container includes all essential dependencies like Python, Node.js, and .NET, making it a ready-to-use development workspace.",
-    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/media/vscodeweb.png",
-    "website": "https://github.com/koenraadhaedens",
-    "author": "Koenraad Haedens",
-    "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
-    "tags": ["ai-102", "ai-900", "az-204","azureai","msft"],
-    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/README.md",
-    "cost": "2",
-    "deploytime": "3"
-     },
-    {
-
-    "title": "Functions E2E HTTP to Event Hubs",
-    "description": "This demo deploys a flexible, consumption-based Azure Functions app integrated with Event Hubs through private endpoints and a virtual network. It includes load testing, secure networking, and real-time monitoring via Application Insights.",
-    "preview": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/main/img/HTTP-VNET-EH.png",
-    "website": "https://github.com/rob-foulkrod",
-    "author": "Rob Foulkrod",
-    "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
-    "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/demoguide/flexfunctions.md",
-    "tags": ["az-204", "az-400", "functions", "eventhub", "loadtesting", "dotnet"],
-    "cost": "30",
-    "deploytime": "10",
-    "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/prereqs.md"
   },
   {
-
-    "title": "Azure Security Scenarios",
-    "description": "This scenario is used to demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop website.",
-    "preview": "./templates/images/owasp.png",
-    "website": "https://github.com/true-while",
-    "author": "Alex Ivanov",
-    "source": "https://github.com/true-while/owasp-azd/",
-    "tags": ["az-500","sc-200","sc-100","msft", "hot"],
-    "demoguide": "https://raw.githubusercontent.com/true-while/owasp-azd/refs/heads/main/demoguide/demoguide.md",
-    "cost": "67",
-    "deploytime": "14"
-     },
-    {
-      "title": "Azure Load Testing",
-      "description": "This scenario is used to demonstrate Azure Load Testing.",
-      "preview": "./templates/images/azloadtest.png",
-      "website": "https://github.com/maartenvandiemen",
-      "author": "Maarten van Diemen",
-      "source": "https://github.com/maartenvandiemen/azd-loadtest/",
-      "tags": ["az-400","az-305","mct","loadtesting"],
-      "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-LoadTest/refs/heads/main/demoguide/demoguide.md",
-      "cost": "5",
-      "deploytime": "3",
-      "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-LoadTest/refs/heads/main/prereqs.md"
-     },
-    {
-      "title": "Secure Azure Data Solutions",
-      "description": "Its a base template for demonstration of Data Solution including Azure Storage, Cosmos DB, Azure SQL and Keyvault. All provisioned services compliant with recent security requirements.",
-      "preview": "./templates/images/sds.png",
-      "website": "https://github.com/true-while",
-      "author": "Alex Ivanov",
-      "source": "https://github.com/true-while/secure-data-solutions/",
-      "tags": ["dp-203","dp-300","az-204","dp-420","msft", "azurestorage", "blobstorage"],
-      "demoguide": "https://raw.githubusercontent.com/true-while/secure-data-solutions/refs/heads/main/demoguide/sds.md",
-      "cost": "3",
-      "deploytime": "5",
-      "prereqs": "https://raw.githubusercontent.com/true-while/secure-data-solutions/refs/heads/main/prereqs.md"
-     },
-     {
-      "title": "Azure Integration Services Quickstart",
-      "description": "Deploys Azure Integration Services, including Azure API Management, Function App, Logic App, Service Bus and Event Hubs namespace, along with supporting resources such as Application Insights, Key Vault and Storage Account. This template is ideal for demos, testing or getting started with Azure Integration Services.",
-      "preview": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/main/images/aisquick-diagrams-infra.png",
-      "website": "https://github.com/ronaldbosma",
-      "author": "ronaldbosma",
-      "source": "https://github.com/ronaldbosma/azure-integration-services-quickstart",
-      "demoguide": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/demos/demo-sample-application.md",
-      "tags": ["az-204", "az-305", "hot", "appservice", "apim", "logicapps", "servicebus", "eventhub", "keyvault", "azurestorage", "appinsights", "blobstorage"],
-      "cost": "6.00",
-      "deploytime": "5",    
-      "prereqs": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/prereqs.md"
-    },
-    {
-      "title": "Azure Storage Account with Blobs and File Share",
-      "description": "This scenario deploys an Azure Storage Account with Blob and File Share, as well as sample data (Seattle scenery images).",
-      "preview": "./templates/images/azstorage.png",
-      "website": "https://github.com/petender",
-      "author": "Peter De Tender",
-      "source": "https://github.com/petender/azd-storaccnt",
-      "demoguide": "https://raw.githubusercontent.com/petender/azd-storaccnt/refs/heads/main/Demoguides/storaccnt.md",
-      "tags": ["az-104", "az-305", "msft",  "azurestorage", "blobstorage"],
-      "cost": "2.00",
-      "deploytime": "3"
-    },
-    {
-      "title": "Deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs.",
-      "description": "This scenario deploys deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs",
-      "preview": "./templates/images/deepseekr1.jpg",
-      "website": "https://github.com/daverendon",
-      "author": "Dave Rendon",
-      "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
-      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-deepseek-r1-on-azure-container-apps/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["ai-102", "az-305", "ai-900", "mct", "azureai", "aca"],
-      "cost": "6.00",
-      "deploytime": "11"
-    },
-    {
-      "title": "YouTube Summarizer with OpenAI and Blazor .NET",
-      "description": "This scenario deploys a Blazor .NET FrontEnd application, together with Azure OpenAI Service, to provide a summary of YouTube videos in 5 bullet points",
-      "preview": "./templates/images/YoutubeSummarizer.png",
-      "website": "https://github.com/petender",
-      "author": "Peter De Tender",
-      "source": "https://github.com/petender/azd-youtubesummarizer-openai",
-      "demoguide": "https://raw.githubusercontent.com/petender/azd-youtubesummarizer-openai/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["ai-102", "ai-900", "msft", "azureai", "dotnet"],
-      "cost": "1.00",
-      "deploytime": "6"
-    },
-    {
-      "title": "International Space Station (ISS) Tracker with Fabric and Event Hubs",
-      "description": "This scenario deploys an Azure Fabric Cluster with a sample application that tracks the International Space Station (ISS) using Azure Event Hubs and Azure LogicApps.",
-      "preview": "./templates/images/test.png",
-      "website": "https://github.com/petender",
-      "author": "Peter De Tender",
-      "source": "https://github.com/petender/issdata",
-      "demoguide": "https://raw.githubusercontent.com/petender/issdata/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["dp-603", "dp-700", "msft", "fabric", "eventhub"],
-      "cost": "12.00",
-      "deploytime": "2" 
-    },
-    {
-      "title": "Deploy a baseline web application",
-      "description": "This repository provides a baseline for deploying web applications with Deployment Slots, Azure SQL Connectivity and KeyVault.",
-      "preview": "./templates/images/baseline-webapp.png",
-      "website": "https://github.com/daverendon",
-      "author": "Dave Rendon",
-      "source": "https://github.com/daverendon/azd-baseline-webapp",
-      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-baseline-webapp/refs/heads/main/readme.MD",
-      "tags": ["az-104", "az-305", "mct", "appservice"],
-      "cost": "16.00",
-      "deploytime": "5"
-    },
-    {
-      "title": "Plan and implement security for public access to Azure resources",
-      "description": "This repository provides guidance on leveraging Azure Firewall and control inbound and outbound network access which is an important part of an overall network security plan.",
-      "preview": "./templates/images/az-firewall.png",
-      "website": "https://github.com/daverendon",
-      "author": "Dave Rendon",
-      "source": "https://github.com/daverendon/azd-firewall",
-      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-firewall/refs/heads/main/readme.MD",
-      "tags": ["az-104", "az-305", "az-500", "mct", "azurefirewall"],
-      "cost": "15.00",
-      "deploytime": "4"
-    },
-    {
-      "title": "Cognitive Services Python App with ServiceEndpoint",
-      "description": "This sample scenario deploys Microsoft.CognitiveServices (Face API, Speech, Vision, OpenAI) with a sample Python app. It also showcases a secure setup, where connectivity to the Cognitive Services is only allowed from a Client IP or the webapp Service Endpoint, not public network.",
-      "preview": "./templates/images/azd-vision-face-diagram.png",
-      "website": "https://github.com/vincentk16",
-      "author": "Vincent Kok",
-      "source": "https://github.com/vincentk16/azd-vision-face",
-      "tags": ["msft", "appservice", "azureai", "ai-102", "ai-900", "ai-3002", "ai-3003", "ai-3004","python"],
-      "demoguide": "https://raw.githubusercontent.com/vincentk16/azd-vision-face/refs/heads/main/demoguide/demoguide.md",
-      "cost": "3.00",
-      "deploytime": "2"
-    },
-    {
-      "title": "Azure VM Win2022 as ADDS Domain Controller, secured by Bastion",
-      "description": "This scenario deploys an Azure Bastion Host Service, allowing secured connectivity to a Windows Server 2022 running as Active Directory Domain Controller, deployed through DSC VM Extensions. An internal DNS domain gets created, but no other OUs or User accounts. You will get prompted for administrative credentials during the azd setup.",
-      "preview": "./templates/images/addsvm_with_bastion.png",
-      "website": "https://github.com/petender",
-      "author": "Peter De Tender",
-      "source": "https://github.com/petender/azd-addsvm",
-      "tags": ["msft", "az-104", "az-800","virtualmachine", "bastion"],
-      "demoguide": "https://raw.githubusercontent.com/petender/azd-addsvm/refs/heads/main/demoguide/addsvm.md",
-      "cost": "3.00",
-      "deploytime": "15"
-    },
-    {
-      "title": "SQL Server 2019 AlwaysOn Cluster with ADDS VM and Management VM, secured by Bastion",
-      "description": "This scenario deploys a SQL Server 2019 Always On Cluster, together with the required Active Directory Domain Controller VM, a remote Management VM Host, protected by Bastion Host. You will get prompted for administrative credentials during the azd setup.",
-      "preview": "./templates/images/SQLAO_with_Bastion.png",
-      "website": "https://github.com/petender",
-      "author": "Peter De Tender",
-      "source": "https://github.com/petender/azd-sqlao",
-      "tags": ["msft", "az-305", "dp-300","virtualmachine", "bastion", "vmsqlserver", "avset"],
-      "demoguide": "https://raw.githubusercontent.com/petender/azd-sqlao/refs/heads/main/demoguide/demoguide.md",
-      "cost": "25.00",
-      "deploytime": "45"
-
-    },
-    {
-      "title": "Windows 2019 IIS Servers with Load Balancer",
-      "description": "This scenario deploys 2 Win2019 VMs running IIS Default WebSite, behind a Load Balancer and required Network Security Group rules.",
-      "preview": "./templates/images/vmwithlb.png",
-      "website": "https://github.com/trainerkrunal",
-      "author": "Krunal Trivedi",
-      "source": "https://github.com/trainerkrunal/azd-vmwithlb",
-      "tags": ["mct", "virtualmachine", "vnets", "az-104", "az-305"],
-      "demoguide": "https://raw.githubusercontent.com/trainerkrunal/azd-vmwithlb/refs/heads/master/demoguide/demoguide.md",
-      "cost": "11.00",
-      "deploytime": "5"
-    },
-    {
-      "title": "Service Endpoints and Securing Storage",
-      "description": "This demo guides you through a hands-on exercise to build and secure a networked environment in Azure. You will start by creating a virtual network and adding a subnet with a configured storage endpoint. Next, you will implement network security groups. Following this, you will create a storage account with a file share and deploy virtual machines into their respective subnets. Finally, you will test the storage connection from both the private and public subnets to verify that access is correctly allowed from the private subnet and denied from the public subnet.",
-      "preview": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
-      "website": "https://github.com/daverendon",
-      "author": "Dave Rendon",
-      "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
-      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-service-endpoints-and-securing-storage/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["az-104", "az-500","mct", "azurestorage", "blobstorage"],
-      "cost": "10.00",
-      "deploytime": "1"
-    },
-    {
-       "title": "Implement Intersite Connectivity with Azure VMs",
-       "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
-      "preview": "./templates/images/az-firewall.png",
-      "website": "https://github.com/daverendon",
-      "author": "Dave Rendon",
-      "source": "https://github.com/daverendon/azd-intersite-connectivity",
-      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-intersite-connectivity/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["az-700", "az-305","mct", "vnets"],
-      "cost": "10.00",
-      "deploytime": "1"
-    },
-    {
-      "title": "Fast Food Drive thru Operator Ai Agent with Semantic Kernel and GPT 3.5 Turbo",
-      "description": "This AI-powered Fast Food Drive-Thru Operator leverages Semantic Kernel and Azure OpenAI GPT-3.5 turbo to streamline customer interactions, improve efficiency, and automate order processing.",
-      "preview": "https://private-user-images.githubusercontent.com/188291745/429761182-e61f1162-93d1-4847-a57a-bbb6de614d34.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY4MDMwMDIsIm5iZiI6MTc0NjgwMjcwMiwicGF0aCI6Ii8xODgyOTE3NDUvNDI5NzYxMTgyLWU2MWYxMTYyLTkzZDEtNDg0Ny1hNTdhLWJiYjZkZTYxNGQzNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwOVQxNDU4MjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mNTFhMThkNTA5YTEwOGUwZWMxODA3MTA2N2ZjYWYyYjk2OTdjZTA4NzQ1OWZmOTc3OGY1YTY3N2U1YTcxOWIzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0YTxyQQOgo4qjQjNsPGh4G6APvB7dPBp-iVrnM_9zvg",
-      "website": "https://github.com/michelmsft",
-      "author": "Michel Agah",
-      "source": "https://github.com/michelmsft/GoodFood/",
-      "tags": ["msft", "semantic-kernel", "openai", "azureai", "ai-102", "ai-900", "dotnet"],
-      "demoguide": "https://raw.githubusercontent.com/michelmsft/GoodFood/refs/heads/master/demoguide/demoguide.md",
-      "cost": "2",
-      "deploytime": "5"
-    },
-    {
-      "title": "Azure App Configuration",
-      "description": "Demo to show possibilities of Azure App Configuration",
-      "preview": "./templates/images/AppConfiguration.png",
-      "website": "https://github.com/maartenvandiemen",
-      "author": "Maarten van Diemen",
-      "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
-      "tags": ["az-400", "az-204", "mct", "functions", "dotnet", "azureappconfig"],
-      "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AppConfiguration/refs/heads/main/demoguide/demoguide.md",
-      "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AppConfiguration/refs/heads/main/prereqs.md",
-      "cost": "1",
-      "deploytime": "2"
-    },
-    {
-      "title": "Utilize Private Link for accessing apps on networks with overlapping addresses",
-      "description": "This scenario is aligned with the Az-104 and Az-700 path and provides a demo solution for managing overlapping IP address spaces with Azure Private Link.",
-      "preview": "./templates/images/diagram-private-link.png",
-      "website": "https://github.com/daverendon",
-      "author": "Dave Rendon",
-      "source": "https://github.com/daverendon/azd-private-link",
-      "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-private-link/refs/heads/main/demoguide/demoguide.md",
-      "tags": ["az-104", "az-700","mct", "vnets"],
-      "cost": "5.00",
-      "deploytime": "1"
-    },
-    {
-    "title": "Azure SQL Workload Simulator Demo",
-    "description": "This project sets up an Azure environment with a SQL workload simulator, After 24 hrs you will be able to demo Azure SQL Database Performance Recommendations.",
-    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-sqlworloadsim/main/media/resourcesdeployed.png",
-    "website": "https://github.com/koenraadhaedens",
-    "author": "Koenraad Haedens",
-    "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
-    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-sqlworloadsim/refs/heads/main/README.md",
-    "tags": ["dp-300", "az-700","mct", "azuresql","keyvault"],
-    "cost": "5.00",
-    "deploytime": "6"
-    },
-    {
-    "title": "AZ-104 All-in-one demo",
-    "description": "This project sets up an Azure environment for AZ-104 course demo purposes.",
-    "preview": "https://github.com/SQLtattoo/azd-az104-all-in-one/blob/master/demoguide/images/az104allinone-diagram.png?raw=true",
-    "website": "https://github.com/SQLtattoo",
-    "author": "Vassilis Ioannidis",
-    "source": "https://github.com/SQLtattoo/azd-az104-all-in-one",
-    "demoguide": "https://raw.githubusercontent.com/SQLtattoo/azd-az104-all-in-one/refs/heads/master/demoguide/demoguide.md",
-    "tags": ["az-104","msft", "virtualmachine", "appgateway", "loadbalancer", "vnets", "privatelink", "keyvault"],
-    "cost": "20.00",
-    "deploytime": "25"
+  "title": "Azure Nested Hypervisor Demos",
+  "description": "This repository showcases a collection of demos leveraging Azure's nested hypervisor capabilities, integrating powerful tools like Azure Arc, Defender for Identity, and more. These demos are designed to demonstrate hybrid cloud management, advanced security, and multi-cloud governance scenarios.",
+  "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/media/azure-nested-vm.png",
+  "website": "https://github.com/koenraadhaedens",
+  "author": "Koenraad Haedens",
+  "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
+  "tags": ["sc-200", "az-800", "dp-300", "hot","azurearc","msft"],
+  "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/README.md",
+  "cost": "11.00",
+  "deploytime": "5"
   },
   {
-    "title": "Azure AI Foundry Agent Service",
-    "description": "This scenario deploys an Azure AI Foundry Hub and Project, as well as an AI Services Agent. You still need to add an Agent description, knowledge and actions to build something useful with it",
-    "preview": "./templates/images/AIFoundrywithAgent.png",
-    "website": "https://github.com/petender",
-    "author": "Peter De Tender",
-    "source": "https://github.com/petender/azd-ai-agent-service",
-    "demoguide": "https://raw.githubusercontent.com/petender/azd-ai-agent-service/refs/heads/main/demoguide/demoguide.md",
-    "tags": ["ai-102", "ai-900", "msft", "azureai", "aifoundry", "new", "openai", "ai-3016", "ai-3026"],
-    "cost": "1.00",
-    "deploytime": "3"
+  "title": "Windows 11 Developer Pc",
+  "description": "A Windows 11 developer PC that can be used for installing demos and showcasing them during deliveries.",
+  "preview": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/media/devpc.png",
+  "website": "https://github.com/koenraadhaedens",
+  "author": "Koenraad Haedens",
+  "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
+  "tags": ["ai-102", "ai-900", "az-204", "azureai","msft"],
+  "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/README.md",
+  "cost": "3",
+  "deploytime": "21"
+  },
+  {
+  "title": "Azure hosted Dev Container",
+  "description": "an automated way to deploy a development environment inside a container, accessible as a web-based VS Code instance. The container includes all essential dependencies like Python, Node.js, and .NET, making it a ready-to-use development workspace.",
+  "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/media/vscodeweb.png",
+  "website": "https://github.com/koenraadhaedens",
+  "author": "Koenraad Haedens",
+  "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
+  "tags": ["ai-102", "ai-900", "az-204","azureai","msft"],
+  "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/README.md",
+  "cost": "2",
+  "deploytime": "3"
+  },
+  {
+  "title": "Functions E2E HTTP to Event Hubs",
+  "description": "This demo deploys a flexible, consumption-based Azure Functions app integrated with Event Hubs through private endpoints and a virtual network. It includes load testing, secure networking, and real-time monitoring via Application Insights.",
+  "preview": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/main/img/HTTP-VNET-EH.png",
+  "website": "https://github.com/rob-foulkrod",
+  "author": "Rob Foulkrod",
+  "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
+  "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/demoguide/flexfunctions.md",
+  "tags": ["az-204", "az-400", "functions", "eventhub", "loadtesting", "dotnet"],
+  "cost": "30",
+  "deploytime": "10",
+  "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/refs/heads/main/prereqs.md"
+  },
+  {
+  "title": "Azure Security Scenarios",
+  "description": "This scenario is used to demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop website.",
+  "preview": "./templates/images/owasp.png",
+  "website": "https://github.com/true-while",
+  "author": "Alex Ivanov",
+  "source": "https://github.com/true-while/owasp-azd/",
+  "tags": ["az-500","sc-200","sc-100","msft", "hot", "azurefirewall", "frontdoor", "appgw", "waf"],
+  "demoguide": "https://raw.githubusercontent.com/true-while/owasp-azd/refs/heads/main/demoguide/demoguide.md",
+  "cost": "67",
+  "deploytime": "14"
+  },
+  {
+  "title": "Azure Load Testing",
+  "description": "This scenario is used to demonstrate Azure Load Testing.",
+  "preview": "./templates/images/azloadtest.png",
+  "website": "https://github.com/maartenvandiemen",
+  "author": "Maarten van Diemen",
+  "source": "https://github.com/maartenvandiemen/azd-loadtest/",
+  "tags": ["az-400","az-305","mct","loadtesting"],
+  "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-LoadTest/refs/heads/main/demoguide/demoguide.md",
+  "cost": "5",
+  "deploytime": "3",
+  "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-LoadTest/refs/heads/main/prereqs.md"
+  },
+  {
+  "title": "Secure Azure Data Solutions",
+  "description": "Its a base template for demonstration of Data Solution including Azure Storage, Cosmos DB, Azure SQL and Keyvault. All provisioned services compliant with recent security requirements.",
+  "preview": "./templates/images/sds.png",
+  "website": "https://github.com/true-while",
+  "author": "Alex Ivanov",
+  "source": "https://github.com/true-while/secure-data-solutions/",
+  "tags": ["dp-203","dp-300","az-204","dp-420","msft", "azurestorage", "blobstorage"],
+  "demoguide": "https://raw.githubusercontent.com/true-while/secure-data-solutions/refs/heads/main/demoguide/sds.md",
+  "cost": "3",
+  "deploytime": "5",
+  "prereqs": "https://raw.githubusercontent.com/true-while/secure-data-solutions/refs/heads/main/prereqs.md"
+   },
+   {
+  "title": "Azure Integration Services Quickstart",
+  "description": "Deploys Azure Integration Services, including Azure API Management, Function App, Logic App, Service Bus and Event Hubs namespace, along with supporting resources such as Application Insights, Key Vault and Storage Account. This template is ideal for demos, testing or getting started with Azure Integration Services.",
+  "preview": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/main/images/aisquick-diagrams-infra.png",
+  "website": "https://github.com/ronaldbosma",
+  "author": "ronaldbosma",
+  "source": "https://github.com/ronaldbosma/azure-integration-services-quickstart",
+  "demoguide": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/demos/demo-sample-application.md",
+  "tags": ["az-204", "az-305", "hot", "appservice", "apim", "logicapps", "servicebus", "eventhub", "keyvault", "azurestorage", "appinsights", "blobstorage"],
+  "cost": "6.00",
+  "deploytime": "5",    
+  "prereqs": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/prereqs.md"
+  },
+  {
+  "title": "Azure Storage Account with Blobs and File Share",
+  "description": "This scenario deploys an Azure Storage Account with Blob and File Share, as well as sample data (Seattle scenery images).",
+  "preview": "./templates/images/azstorage.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-storaccnt",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-storaccnt/refs/heads/main/Demoguides/storaccnt.md",
+  "tags": ["az-104", "az-305", "msft",  "azurestorage", "blobstorage"],
+  "cost": "2.00",
+  "deploytime": "3"
+  },
+  {
+  "title": "Deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs.",
+  "description": "This scenario deploys deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs",
+  "preview": "./templates/images/deepseekr1.jpg",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
+  "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-deepseek-r1-on-azure-container-apps/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["ai-102", "az-305", "ai-900", "mct", "azureai", "aca"],
+  "cost": "6.00",
+  "deploytime": "11"
+  },
+  {
+  "title": "YouTube Summarizer with OpenAI and Blazor .NET",
+  "description": "This scenario deploys a Blazor .NET FrontEnd application, together with Azure OpenAI Service, to provide a summary of YouTube videos in 5 bullet points",
+  "preview": "./templates/images/YoutubeSummarizer.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-youtubesummarizer-openai",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-youtubesummarizer-openai/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["ai-102", "ai-900", "msft", "azureai", "dotnet"],
+  "cost": "1.00",
+  "deploytime": "6"
+  },
+  {
+  "title": "International Space Station (ISS) Tracker with Fabric and Event Hubs",
+  "description": "This scenario deploys an Azure Fabric Cluster with a sample application that tracks the International Space Station (ISS) using Azure Event Hubs and Azure LogicApps.",
+  "preview": "./templates/images/test.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/issdata",
+  "demoguide": "https://raw.githubusercontent.com/petender/issdata/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["dp-603", "dp-700", "msft", "fabric", "eventhub"],
+  "cost": "12.00",
+  "deploytime": "2" 
+  },
+  {
+  "title": "Deploy a baseline web application",
+  "description": "This repository provides a baseline for deploying web applications with Deployment Slots, Azure SQL Connectivity and KeyVault.",
+  "preview": "./templates/images/baseline-webapp.png",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-baseline-webapp",
+  "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-baseline-webapp/refs/heads/main/readme.MD",
+  "tags": ["az-104", "az-305", "mct", "appservice"],
+  "cost": "16.00",
+  "deploytime": "5"
+  },
+  {
+  "title": "Plan and implement security for public access to Azure resources",
+  "description": "This repository provides guidance on leveraging Azure Firewall and control inbound and outbound network access which is an important part of an overall network security plan.",
+  "preview": "./templates/images/az-firewall.png",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-firewall",
+  "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-firewall/refs/heads/main/readme.MD",
+  "tags": ["az-104", "az-305", "az-500", "mct", "azurefirewall"],
+  "cost": "15.00",
+  "deploytime": "4"
+  },
+  {
+  "title": "Cognitive Services Python App with ServiceEndpoint",
+  "description": "This sample scenario deploys Microsoft.CognitiveServices (Face API, Speech, Vision, OpenAI) with a sample Python app. It also showcases a secure setup, where connectivity to the Cognitive Services is only allowed from a Client IP or the webapp Service Endpoint, not public network.",
+  "preview": "./templates/images/azd-vision-face-diagram.png",
+  "website": "https://github.com/vincentk16",
+  "author": "Vincent Kok",
+  "source": "https://github.com/vincentk16/azd-vision-face",
+  "tags": ["msft", "appservice", "azureai", "ai-102", "ai-900", "ai-3002", "ai-3003", "ai-3004","python"],
+  "demoguide": "https://raw.githubusercontent.com/vincentk16/azd-vision-face/refs/heads/main/demoguide/demoguide.md",
+  "cost": "3.00",
+  "deploytime": "2"
+  },
+  {
+  "title": "Azure VM Win2022 as ADDS Domain Controller, secured by Bastion",
+  "description": "This scenario deploys an Azure Bastion Host Service, allowing secured connectivity to a Windows Server 2022 running as Active Directory Domain Controller, deployed through DSC VM Extensions. An internal DNS domain gets created, but no other OUs or User accounts. You will get prompted for administrative credentials during the azd setup.",
+  "preview": "./templates/images/addsvm_with_bastion.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-addsvm",
+  "tags": ["msft", "az-104", "az-800","virtualmachine", "bastion"],
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-addsvm/refs/heads/main/demoguide/addsvm.md",
+  "cost": "3.00",
+  "deploytime": "15"
+  },
+  {
+  "title": "SQL Server 2019 AlwaysOn Cluster with ADDS VM and Management VM, secured by Bastion",
+  "description": "This scenario deploys a SQL Server 2019 Always On Cluster, together with the required Active Directory Domain Controller VM, a remote Management VM Host, protected by Bastion Host. You will get prompted for administrative credentials during the azd setup.",
+  "preview": "./templates/images/SQLAO_with_Bastion.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-sqlao",
+  "tags": ["msft", "az-305", "dp-300","virtualmachine", "bastion", "vmsqlserver", "avset"],
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-sqlao/refs/heads/main/demoguide/demoguide.md",
+  "cost": "25.00",
+  "deploytime": "45"
+  },
+  {
+  "title": "Windows 2019 IIS Servers with Load Balancer",
+  "description": "This scenario deploys 2 Win2019 VMs running IIS Default WebSite, behind a Load Balancer and required Network Security Group rules.",
+  "preview": "./templates/images/vmwithlb.png",
+  "website": "https://github.com/trainerkrunal",
+  "author": "Krunal Trivedi",
+  "source": "https://github.com/trainerkrunal/azd-vmwithlb",
+  "tags": ["mct", "virtualmachine", "vnets", "az-104", "az-305"],
+  "demoguide": "https://raw.githubusercontent.com/trainerkrunal/azd-vmwithlb/refs/heads/master/demoguide/demoguide.md",
+  "cost": "11.00",
+  "deploytime": "5"
+  },
+  {
+  "title": "Service Endpoints and Securing Storage",
+  "description": "This demo guides you through a hands-on exercise to build and secure a networked environment in Azure. You will start by creating a virtual network and adding a subnet with a configured storage endpoint. Next, you will implement network security groups. Following this, you will create a storage account with a file share and deploy virtual machines into their respective subnets. Finally, you will test the storage connection from both the private and public subnets to verify that access is correctly allowed from the private subnet and denied from the public subnet.",
+  "preview": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
+  "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-service-endpoints-and-securing-storage/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-104", "az-500","mct", "azurestorage", "blobstorage"],
+  "cost": "10.00",
+  "deploytime": "1"
+  },
+  {
+      "title": "Implement Intersite Connectivity with Azure VMs",
+      "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
+    "preview": "./templates/images/az-firewall.png",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-intersite-connectivity",
+    "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-intersite-connectivity/refs/heads/main/demoguide/demoguide.md",
+    "tags": ["az-700", "az-305","mct", "vnets"],
+    "cost": "10.00",
+    "deploytime": "1"
+  },
+{
+  "title": "Fast Food Drive thru Operator Ai Agent with Semantic Kernel and GPT 3.5 Turbo",
+  "description": "This AI-powered Fast Food Drive-Thru Operator leverages Semantic Kernel and Azure OpenAI GPT-3.5 turbo to streamline customer interactions, improve efficiency, and automate order processing.",
+  "preview": "https://private-user-images.githubusercontent.com/188291745/429761182-e61f1162-93d1-4847-a57a-bbb6de614d34.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY4MDMwMDIsIm5iZiI6MTc0NjgwMjcwMiwicGF0aCI6Ii8xODgyOTE3NDUvNDI5NzYxMTgyLWU2MWYxMTYyLTkzZDEtNDg0Ny1hNTdhLWJiYjZkZTYxNGQzNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwOVQxNDU4MjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mNTFhMThkNTA5YTEwOGUwZWMxODA3MTA2N2ZjYWYyYjk2OTdjZTA4NzQ1OWZmOTc3OGY1YTY3N2U1YTcxOWIzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0YTxyQQOgo4qjQjNsPGh4G6APvB7dPBp-iVrnM_9zvg",
+  "website": "https://github.com/michelmsft",
+  "author": "Michel Agah",
+  "source": "https://github.com/michelmsft/GoodFood/",
+  "tags": ["msft", "semantic-kernel", "openai", "azureai", "ai-102", "ai-900", "dotnet"],
+  "demoguide": "https://raw.githubusercontent.com/michelmsft/GoodFood/refs/heads/master/demoguide/demoguide.md",
+  "cost": "2",
+  "deploytime": "5"
+},
+{
+  "title": "Azure App Configuration",
+  "description": "Demo to show possibilities of Azure App Configuration",
+  "preview": "./templates/images/AppConfiguration.png",
+  "website": "https://github.com/maartenvandiemen",
+  "author": "Maarten van Diemen",
+  "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
+  "tags": ["az-400", "az-204", "mct", "functions", "dotnet", "azureappconfig"],
+  "demoguide": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AppConfiguration/refs/heads/main/demoguide/demoguide.md",
+  "prereqs": "https://raw.githubusercontent.com/maartenvandiemen/AZD-AppConfiguration/refs/heads/main/prereqs.md",
+  "cost": "1",
+  "deploytime": "2"
+},
+{
+  "title": "Utilize Private Link for accessing apps on networks with overlapping addresses",
+  "description": "This scenario is aligned with the Az-104 and Az-700 path and provides a demo solution for managing overlapping IP address spaces with Azure Private Link.",
+  "preview": "./templates/images/diagram-private-link.png",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-private-link",
+  "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-private-link/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-104", "az-700","mct", "vnets"],
+  "cost": "5.00",
+  "deploytime": "1"
+  },
+  {
+  "title": "Azure SQL Workload Simulator Demo",
+  "description": "This project sets up an Azure environment with a SQL workload simulator, After 24 hrs you will be able to demo Azure SQL Database Performance Recommendations.",
+  "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-sqlworloadsim/main/media/resourcesdeployed.png",
+  "website": "https://github.com/koenraadhaedens",
+  "author": "Koenraad Haedens",
+  "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
+  "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-sqlworloadsim/refs/heads/main/README.md",
+  "tags": ["dp-300", "az-700","mct", "azuresql","keyvault"],
+  "cost": "5.00",
+  "deploytime": "6"
+  },
+  {
+  "title": "AZ-104 All-in-one demo",
+  "description": "This project sets up an Azure environment for AZ-104 course demo purposes.",
+  "preview": "https://github.com/SQLtattoo/azd-az104-all-in-one/blob/master/demoguide/images/az104allinone-diagram.png?raw=true",
+  "website": "https://github.com/SQLtattoo",
+  "author": "Vassilis Ioannidis",
+  "source": "https://github.com/SQLtattoo/azd-az104-all-in-one",
+  "demoguide": "https://raw.githubusercontent.com/SQLtattoo/azd-az104-all-in-one/refs/heads/master/demoguide/demoguide.md",
+  "tags": ["az-104","msft", "virtualmachine", "appgateway", "loadbalancer", "vnets", "privatelink", "keyvault", "hot"],
+  "cost": "20.00",
+  "deploytime": "25"
+  },
+  {
+  "title": "Azure AI Foundry Agent Service",
+  "description": "This scenario deploys an Azure AI Foundry Hub and Project, as well as an AI Services Agent. You still need to add an Agent description, knowledge and actions to build something useful with it",
+  "preview": "./templates/images/AIFoundrywithAgent.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-ai-agent-service",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-ai-agent-service/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["ai-102", "ai-900", "msft", "azureai", "aifoundry", "openai", "ai-3016", "ai-3026", "hot"],
+  "cost": "1.00",
+  "deploytime": "3"
   },
   {
   "title": "Azure AI Foundry with Sora Video Generation Model",
@@ -596,109 +575,109 @@
   "author": "Peter De Tender",
   "source": "https://github.com/petender/azd-foundrysora",
   "demoguide": "https://raw.githubusercontent.com/petender/azd-foundrysora/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["ai-102", "ai-900", "msft", "azureai", "aifoundry", "new", "openai", "ai-3016"],
+  "tags": ["ai-102", "ai-900", "msft", "azureai", "aifoundry", "openai", "ai-3016"],
   "cost": "2.00",
   "deploytime": "3"
-},
-{
-"title": "Azure Monitor custom logs, and external telemetry",
-"description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
-"preview": "./templates/images/monitor-diagram.png",
-"website": "https://github.com/kareldewinter",
-"author": "Karel De Winter",
-"source": "https://github.com/kareldewinter/tdd-azd-monitor",
-"demoguide": "https://raw.githubusercontent.com/kareldewinter/tdd-azd-monitor/refs/heads/main/demoguide/demoguide.md",
-"tags": ["az-104", "az-305", "msft", "monitor", "appinsights", "new", "loganalytics"],
-"cost": "2.00",
-"deploytime": "2"
-},
-{
-"title": "API Management with ConferenceAPI and OAuth",
-"description": "Deploy Azure API Management with OAuth2-Protected Conference API and Entra ID Integration Using AZD",
-"preview": "./templates/images/test.png",
-"website": "https://github.com/rob-foulkrod",
-"author": "Rob Foulkrod",
-"source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
-"demoguide": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/demoguide/apimwithconference.md",
-"tags": ["az-204", "msft",  "hot", "appservice", "apim", "dotnet", "new"],
-"cost": "3.00",
-"deploytime": "5",    
-"prereqs": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/prereqs.md"
-},
-{
-"title": "Microsoft Sentinel-based threat detection and response",
-"description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for a proof of concept of Microsoft Sentinel-based threat detection and response.",
-"preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
-"website": "https://github.com/daverendon",
-"author": "Dave Rendon",
-"source": "https://github.com/daverendon/azd-microsoft-sentinel",
-"demoguide": "https://raw.githubusercontent.com/daveRendon/azd-microsoft-sentinel/refs/heads/main/demoguide/demoguide.md",
-"tags": ["az-104", "az-500","mct", "new", "sentinel"],
-"cost": "10.00",
-"deploytime": "3"
-},
-{
-"title": "Introduction to Azure PostgreSQL and AI",
-"description": "Azure PostgreSQL & AI Demo offers step-by-step guidance for connecting, configuring, and integrating AI with PostgreSQL in Azure using modern tools.",
-"preview": "./templates/images/pgdemo.png",
-"website": "https://github.com/true-while",
-"author": "Alex Ivanov",
-"source": "https://github.com/true-while/pg-ai-azd",
-"demoguide": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/Demoguides/demogide.md",
-"tags": ["azureai", "msft", "azuredb-postgreSQL", "new", "ai-3019", "ai-102", "ai-900"],
-"cost": "9.00",
-"deploytime": "15",    
-"prereqs": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/prereqs.md"
-},
-{
-"title": "Protect API Management with OAuth",
-"description": "A demo that shows how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
-"preview": "https://raw.githubusercontent.com/ronaldbosma/protect-apim-with-oauth/refs/heads/main/images/diagrams-overview.png",
-"website": "https://github.com/ronaldbosma",
-"author": "Ronald Bosma",
-"source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
-"demoguide": "https://raw.githubusercontent.com/ronaldbosma/protect-apim-with-oauth/refs/heads/main/demos/demo.md",
-"tags": ["apim", "az-204", "loganalytics", "monitor", "new"],
-"cost": "3.00",
+  },
+  {
+  "title": "Azure Monitor custom logs, and external telemetry",
+  "description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
+  "preview": "./templates/images/monitor-diagram.png",
+  "website": "https://github.com/kareldewinter",
+  "author": "Karel De Winter",
+  "source": "https://github.com/kareldewinter/tdd-azd-monitor",
+  "demoguide": "https://raw.githubusercontent.com/kareldewinter/tdd-azd-monitor/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-104", "az-305", "msft", "monitor", "appinsights", "loganalytics"],
+  "cost": "2.00",
+  "deploytime": "2"
+  },
+  {
+  "title": "API Management with ConferenceAPI and OAuth",
+  "description": "Deploy Azure API Management with OAuth2-Protected Conference API and Entra ID Integration Using AZD",
+  "preview": "./templates/images/test.png",
+  "website": "https://github.com/rob-foulkrod",
+  "author": "Rob Foulkrod",
+  "source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
+  "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/demoguide/apimwithconference.md",
+  "tags": ["az-204", "msft",  "hot", "appservice", "apim", "dotnet"],
+  "cost": "3.00",
+  "deploytime": "5",    
+  "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/azd-apimwithconfAPI-OAuth/refs/heads/main/prereqs.md"
+  },
+  {
+  "title": "Microsoft Sentinel-based threat detection and response",
+  "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for a proof of concept of Microsoft Sentinel-based threat detection and response.",
+  "preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-microsoft-sentinel",
+  "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-microsoft-sentinel/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-104", "az-500","mct", "sentinel"],
+  "cost": "10.00",
+  "deploytime": "3"
+  },
+  {
+  "title": "Introduction to Azure PostgreSQL and AI",
+  "description": "Azure PostgreSQL & AI Demo offers step-by-step guidance for connecting, configuring, and integrating AI with PostgreSQL in Azure using modern tools.",
+  "preview": "./templates/images/pgdemo.png",
+  "website": "https://github.com/true-while",
+  "author": "Alex Ivanov",
+  "source": "https://github.com/true-while/pg-ai-azd",
+  "demoguide": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/Demoguides/demogide.md",
+  "tags": ["azureai", "msft", "azuredb-postgreSQL", "ai-3019", "ai-102", "ai-900"],
+  "cost": "9.00",
+  "deploytime": "15",    
+  "prereqs": "https://raw.githubusercontent.com/true-while/pg-ai-azd/refs/heads/main/prereqs.md"
+  },
+  {
+  "title": "Protect API Management with OAuth",
+  "description": "A demo that shows how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
+  "preview": "https://raw.githubusercontent.com/ronaldbosma/protect-apim-with-oauth/refs/heads/main/images/diagrams-overview.png",
+  "website": "https://github.com/ronaldbosma",
+  "author": "Ronald Bosma",
+  "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
+  "demoguide": "https://raw.githubusercontent.com/ronaldbosma/protect-apim-with-oauth/refs/heads/main/demos/demo.md",
+  "tags": ["apim", "az-204", "loganalytics", "monitor"],
+  "cost": "3.00",
+    "deploytime": "4"
+  },
+  {
+  "title": "Call API Management backend with OAuth",
+  "description": "A demo that shows three ways to call OAuth-protected APIs through API Management: Credential Manager, send-request with client secret, and send-request with client certificate.",
+  "preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-backend-with-oauth/refs/heads/main/images/diagrams-overview.png",
+  "website": "https://github.com/ronaldbosma",
+  "author": "Ronald Bosma",
+  "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
+  "demoguide": "https://raw.githubusercontent.com/ronaldbosma/call-apim-backend-with-oauth/refs/heads/main/demos/demo.md",
+  "tags": ["apim", "az-204", "keyvault", "loganalytics"],
+  "cost": "3.00",
   "deploytime": "4"
-},
-{
-"title": "Call API Management backend with OAuth",
-"description": "A demo that shows three ways to call OAuth-protected APIs through API Management: Credential Manager, send-request with client secret, and send-request with client certificate.",
-"preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-backend-with-oauth/refs/heads/main/images/diagrams-overview.png",
-"website": "https://github.com/ronaldbosma",
-"author": "Ronald Bosma",
-"source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
-"demoguide": "https://raw.githubusercontent.com/ronaldbosma/call-apim-backend-with-oauth/refs/heads/main/demos/demo.md",
-"tags": ["apim", "az-204", "keyvault", "loganalytics", "new"],
-"cost": "3.00",
-"deploytime": "4"
-},
-{
-"title": "Call API Management with Managed Identity",
-"description": "Demonstrates calling Azure API Management from Azure Functions and Logic Apps using managed identities with OAuth, including one APIM API securely calling another without secrets.",
-"preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/images/diagrams-overview.png",
-"website": "https://github.com/ronaldbosma",
-"author": "Ronald Bosma",
-"source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
-"demoguide": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/demos/demo.md",
-"tags": ["apim", "appinsights", "az-204", "functions", "logicapps", "new"],
-"cost": "3.00",
-"deploytime": "7"
-},
-{
-"title": "Deploy a Network-hardened web app with private PaaS datastore",
-"description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for creating an Azure App Service web app in a tightly controlled network environment with strict inbound and outbound network policies.",
-"preview": "./templates/images/azd-hardened-webapp-diagram.png",
-"website": "https://github.com/daverendon",
-"author": "Dave Rendon",
-"source": "https://github.com/daverendon/azd-hardened-webapp",
-"demoguide": "https://raw.githubusercontent.com/daveRendon/azd-hardened-webapp/refs/heads/main/demoguide/demoguide.md",
-"tags": ["az-104", "az-500","mct", "new", "appservice"],
-"cost": "10.00",
-"deploytime": "10"
-},
-{
+  },
+  {
+  "title": "Call API Management with Managed Identity",
+  "description": "Demonstrates calling Azure API Management from Azure Functions and Logic Apps using managed identities with OAuth, including one APIM API securely calling another without secrets.",
+  "preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/images/diagrams-overview.png",
+  "website": "https://github.com/ronaldbosma",
+  "author": "Ronald Bosma",
+  "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
+  "demoguide": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/demos/demo.md",
+  "tags": ["apim", "appinsights", "az-204", "functions", "logicapps"],
+  "cost": "3.00",
+  "deploytime": "7"
+  },
+  {
+  "title": "Deploy a Network-hardened web app with private PaaS datastore",
+  "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for creating an Azure App Service web app in a tightly controlled network environment with strict inbound and outbound network policies.",
+  "preview": "./templates/images/azd-hardened-webapp-diagram.png",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-hardened-webapp",
+  "demoguide": "https://raw.githubusercontent.com/daveRendon/azd-hardened-webapp/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-104", "az-500","mct", "new", "appservice"],
+  "cost": "10.00",
+  "deploytime": "10"
+  },
+  {
   "title": "AI Foundry Agent Service with Bing Search Grounding and OpenAI Deep Research LLM",
   "description": "This scenario deploys an Azure AI Foundry Project, an Azure AI Foundry Agent Service and Bing Search Grounding. A Python with Flask Web App offers a use case to perform Deep Research",
   "preview": "./templates/images/DeepResearcherArchitecture.png",
@@ -709,8 +688,8 @@
   "tags": ["ai-102", "ai-900", "msft", "azureai", "aifoundry", "new", "openai", "python", "ai-3016", "ai-3026", "ai-3022"],
   "cost": "15.00",
   "deploytime": "8"
-},
-{
+  },
+  {
   "title": "Building a Multi-Agent Support Triage System with AZD and Azure AI Foundry",
   "description": "This scenario demonstrates a full implementation of a production-ready multi-agent solution on Azure using Azure AI Foundry Agent Service.",
   "preview": "./templates/images/azd-multiagent-resource-group.png",
@@ -721,8 +700,8 @@
   "tags": ["ai-102", "ai-900", "mct", "azureai", "aca", "new", "aifoundry", "openai", "ai-3016", "ai-3026"],
   "cost": "5.00",
   "deploytime": "12"
-},
-{
+  },
+  {
   "title": "Containerized A2A Translation Service with Azure AI Translator",
   "description": "Complete Agent-to-Agent translation service using Azure Container Apps, Storage Queues, and AI Translator. Features async processing, managed identity authentication, and a web GUI for file uploads.",
   "authorUrl": "https://github.com/passadis",
@@ -733,8 +712,8 @@
   "demoguide": "https://raw.githubusercontent.com/passadis/azure-a2a-translation/refs/heads/main/README.md",
   "cost": "6.00",
   "deploytime": "5"
-},
-{
+  },
+  {
   "title": "Emulated Firewall sending Syslog to linux VM",
   "description": "infrastructure setup to simulate firewall syslog messages for Microsoft Sentinel training purposes. It consists of an emulated firewall (containerized application) that sends realistic firewall logs as syslog messages to a VM, which can then be ingested by Microsoft Sentinel for analysis and parser development. (the Data Collection Rule is not created, you should do this as a demo)",
   "authorUrl": "https://github.com/koenraadhaedens",
@@ -745,8 +724,8 @@
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/README.md",
   "cost": "2.00",
   "deploytime": "3"
-},
-{
+  },
+  {
   "title": "Azure App Service as MCP Back-End with Product Catalog sample data",
   "description": "This scenario deploys an Azure App Service back-end as MCP Server, with sample product catalog data. The app can be used with Microsoft Foundry MCP Client, Copilot Studio or any other MCP Scenario.",
   "preview": "./templates/images/test.png",
@@ -757,8 +736,8 @@
   "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102", "ai-900"],
   "cost": "2.00",
   "deploytime": "3"
-},
-{
+  },
+  {
   "title": "Azure Document Intelligence for your custom PDF, Docx or images text transformation",
   "description": "This scenario deploys an Azure Document Intelligence solution for extracting and transforming text from your custom PDF, Docx, or image files.",
   "preview": "./templates/images/test.png",
@@ -769,8 +748,8 @@
   "tags": ["msft", "azureai", "new", "aifoundry", "appservice", "ai-102", "ai-900", "ai-3002"],
   "cost": "2.00",
   "deploytime": "3"
-},
-{
+  },
+  {
   "title": "Azure VM Backup with Recovery Services Vault",
   "description": "This template can be used as a demo scenario for Azure Backup to showcase a Windows VM backup protection. It deploys all necessary resources such as Azure Recovery Services Vault, a Windows Server 2022 Virtual Machine and the necessary backup job.",
   "preview": "./templates/images/test.png",
@@ -781,8 +760,8 @@
   "tags": ["msft", "backup", "new", "recoveryvault", "virtualmachine", "az-104", "az-305"],
   "cost": "2.00",
   "deploytime": "8"
-},
-{
+  },
+  {
   "title": "Azure VM Disaster Recovery with Recovery Services Vault (ASR)",
   "description": "This template can be used as a demo scenario for Azure Recovery Vault to showcase a Windows VM disaster recovery protection. It deploys all necessary resources such as Azure Recovery Services Vault, a Windows Server 2022 Virtual Machine and the necessary recovery job.",
   "preview": "./templates/images/test.png",
@@ -793,8 +772,8 @@
   "tags": ["msft",  "new", "recoveryvault", "virtualmachine", "az-104", "az-305"],
   "cost": "2.00",
   "deploytime": "8"
-},
-{
+  },
+  {
   "title": "Azure Routing Demo",
   "description": "This scenario deploys an Azure Hub & Spoke VNet example topology and 3 Windows Server VMs. You can use it to demonstrate VNet-Peerings and Route Tables.",
   "preview": "./templates/images/AzureRoutingDemo.png",
@@ -805,5 +784,5 @@
   "demoguide": "https://raw.githubusercontent.com/jmenne/azd-routingdemo/refs/heads/main/demoguide/demoguide.md",
   "cost": "14.00",
   "deploytime": "5"
-}
+  }
 ]
