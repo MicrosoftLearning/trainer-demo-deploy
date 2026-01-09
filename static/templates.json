@@ -784,5 +784,18 @@
   "demoguide": "https://raw.githubusercontent.com/jmenne/azd-routingdemo/refs/heads/main/demoguide/demoguide.md",
   "cost": "14.00",
   "deploytime": "5"
+  },
+  {
+  "title": "Azure Managed Identity Demo: System vs User-Assigned (Azure SQL)",
+  "description": "Deploys an Azure App Service (ASP.NET Core) and an Azure SQL Database (AdventureWorksLT sample) to demonstrate system-assigned vs user-assigned managed identity for database access.",
+  "preview": "https://raw.githubusercontent.com/rob-foulkrod/tdd-managed-identity-sql/main/demoguide/screenshots/screenshot1.png",
+  "website": "https://github.com/rob-foulkrod",
+  "author": "Rob Foulkrod",
+  "source": "https://github.com/rob-foulkrod/tdd-managed-identity-sql",
+  "demoguide": "https://raw.githubusercontent.com/rob-foulkrod/tdd-managed-identity-sql/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["appservice", "az-204", "azuresql", "dotnet", "dp-300"],
+  "cost": "4.00",
+  "deploytime": "10",
+  "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/tdd-managed-identity-sql/main/prereqs.md"
   }
 ]
