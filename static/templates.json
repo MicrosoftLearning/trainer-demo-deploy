@@ -821,6 +821,6 @@
   "tags": ["az-204", "az-305", "appinsights", "dotnet", "functions", "logicapps", "monitor"],
   "cost": "8.00",
   "deploytime": "10",    
-  "prereqs": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/refs/heads/main/README.md"
+  "prereqs": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/refs/heads/main/prereqs.md"
   }
 ]
