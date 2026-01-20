@@ -797,5 +797,17 @@
   "cost": "4.00",
   "deploytime": "10",
   "prereqs": "https://raw.githubusercontent.com/rob-foulkrod/tdd-managed-identity-sql/main/prereqs.md"
+  },
+  {
+  "title": "Azure Private Link SNAT Port Exhaustion Demo",
+  "description": "This scenario deploys an Azure Linux VM setup to simulate and test a Private Link with SNAT Port Exhaustion.",
+  "preview": "./templates/images/test.png",
+  "website": "https://github.com/msrini-MSFT",
+  "author": "Karthik Srinivas",
+  "source": "https://github.com/msrini-MSFT/azd-azure-private-link-service-snat-exhaustion",
+  "tags": ["az-104", "az-700", "az-800", "az-1002", "vnets", "virtualmachine", "privatelink"],
+  "demoguide": "https://github.com/msrini-MSFT/azd-azure-private-link-service-snat-exhaustion/blob/main/docs/instructions.md",
+  "cost": "6.00",
+  "deploytime": "9"  
   }
 ]

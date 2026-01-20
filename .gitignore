@@ -14,6 +14,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.vscode/settings.json
+.vscode
 
 npm-debug.log*
 yarn-debug.log*
@@ -22,5 +24,4 @@ yarn-error.log*
 # Test folder
 /azd-deployments
 
-# VSCode settings
-.vscode/
+
