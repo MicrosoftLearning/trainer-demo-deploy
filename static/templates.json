@@ -810,4 +810,16 @@
   "cost": "6.00",
   "deploytime": "9"  
   }
+  {
+  "title": "Azure AI Foundry - Private Networking Infrastructure",
+  "description": "This repository provides a production-ready, fully private Azure AI Foundry deployment. All resources are deployed with no public endpoints and Microsoft Entra ID authentication only.",
+  "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-Azure-AI-Foundry-hub-and-project/main/media/architecturepreview.jpg",
+  "website": "https://github.com/koenraadhaedens",
+  "author": "Koenraad Haedens",
+  "source": "https://github.com/koenraadhaedens/azd-Azure-AI-Foundry-hub-and-project",
+  "tags": ["ai-3002", "ai-3003", "ai-3004, "ai-102", "aifoundry", "privateendpoint", "privatelink"],
+  "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-Azure-AI-Foundry-hub-and-project/main/Demos/demoguide.md",
+  "cost": "6.00",
+  "deploytime": "20"  
+  }
 ]
