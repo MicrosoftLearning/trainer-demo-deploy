@@ -809,5 +809,18 @@
   "demoguide": "https://github.com/msrini-MSFT/azd-azure-private-link-service-snat-exhaustion/blob/main/docs/instructions.md",
   "cost": "6.00",
   "deploytime": "9"  
+  },
+  {
+  "title": "Track Availability in Application Insights using Standard Test, Azure Function and Logic App Workflow",
+  "description": "A demo that shows three different ways to track availability in Application Insights using a standard test (webtest), an Azure Function (.NET) and a Logic App workflow",
+  "preview": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/main/images/diagrams-overview.png",
+  "website": "https://github.com/ronaldbosma",
+  "author": "ronaldbosma",
+  "source": "https://github.com/ronaldbosma/track-availability-in-app-insights",
+  "demoguide": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/refs/heads/main/demos/demo-availability-tests.md",
+  "tags": ["az-204", "az-305", "appinsights", "dotnet", "functions", "logicapps", "monitor"],
+  "cost": "8.00",
+  "deploytime": "10",    
+  "prereqs": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/refs/heads/main/prereqs.md"
   }
 ]
