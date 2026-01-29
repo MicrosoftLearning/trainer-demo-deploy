@@ -815,7 +815,7 @@
   "description": "A demo that shows three different ways to track availability in Application Insights using a standard test (webtest), an Azure Function (.NET) and a Logic App workflow",
   "preview": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/main/images/diagrams-overview.png",
   "website": "https://github.com/ronaldbosma",
-  "author": "ronaldbosma",
+  "author": "Ronald Bosma",
   "source": "https://github.com/ronaldbosma/track-availability-in-app-insights",
   "demoguide": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/refs/heads/main/demos/demo-availability-tests.md",
   "tags": ["az-204", "az-305", "appinsights", "dotnet", "functions", "logicapps", "monitor"],
