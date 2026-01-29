@@ -830,7 +830,7 @@
   "website": "https://github.com/koenraadhaedens",
   "author": "Koenraad Haedens",
   "source": "https://github.com/koenraadhaedens/azd-Azure-AI-Foundry-hub-and-project",
-  "tags": ["ai-3002", "ai-3003", "ai-3004", "ai-102", "aifoundry", "privateendpoint", "privatelink"],
+  "tags": ["msft", "ai-3002", "ai-3003", "ai-3004", "ai-102", "aifoundry", "privateendpoint", "privatelink"],
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-Azure-AI-Foundry-hub-and-project/main/Demos/demoguide.md",
   "cost": "6.00",
   "deploytime": "20"  
