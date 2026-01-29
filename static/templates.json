@@ -342,7 +342,7 @@
   "description": "Deploys Azure Integration Services, including Azure API Management, Function App, Logic App, Service Bus and Event Hubs namespace, along with supporting resources such as Application Insights, Key Vault and Storage Account. This template is ideal for demos, testing or getting started with Azure Integration Services.",
   "preview": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/main/images/aisquick-diagrams-infra.png",
   "website": "https://github.com/ronaldbosma",
-  "author": "ronaldbosma",
+  "author": "Ronald Bosma",
   "source": "https://github.com/ronaldbosma/azure-integration-services-quickstart",
   "demoguide": "https://raw.githubusercontent.com/ronaldbosma/azure-integration-services-quickstart/refs/heads/main/demos/demo-sample-application.md",
   "tags": ["az-204", "az-305", "hot", "appservice", "apim", "logicapps", "servicebus", "eventhub", "keyvault", "azurestorage", "appinsights", "blobstorage"],
