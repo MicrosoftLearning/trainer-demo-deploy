@@ -836,7 +836,7 @@
   "deploytime": "20"  
   },
   {
-  "title": "Basic Fabric Deployment",
+  "title": "Auto-Pause Fabric Deployment",
   "description": "Fabric Capacity Deployment (F8) and Logic App to Pause Every 4 Hours",
   "preview": "./templates/images/test.png",
   "website": "https://github.com/Jason-Microsoft-MTT",
