@@ -834,5 +834,17 @@
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-Azure-AI-Foundry-hub-and-project/main/Demos/demoguide.md",
   "cost": "6.00",
   "deploytime": "20"  
+  },
+  {
+  "title": "Basic Fabric Deployment",
+  "description": "Fabric Capacity Deployment (F8) and Logic App to Pause Every 4 Hours",
+  "preview": "./templates/images/test.png",
+  "website": "https://github.com/Jason-Microsoft-MTT",
+  "author": "Jason Richards",
+  "source": "https://github.com/Jason-Microsoft-MTT/azd-fabric-pause",
+  "demoguide": "https://raw.githubusercontent.com/Jason-Microsoft-MTT/azd-fabric-pause/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["msft", "dp-603", "dp-700", "msft", "fabric"],
+  "cost": "6.00 (assuming pause after 4 hours)",
+  "deploytime": "2" 
   }
 ]
