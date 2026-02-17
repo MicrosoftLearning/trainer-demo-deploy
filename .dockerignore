@@ -1,0 +1,15 @@
+.git
+.github
+.vscode
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+build
+.docusaurus
+.cache
+coverage
+.DS_Store
+*.swp
+*.swo
