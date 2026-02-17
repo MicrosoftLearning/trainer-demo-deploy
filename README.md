@@ -23,6 +23,30 @@ $ npm ci
 $ npm run start
 ```
 
+### Local Development (Docker)
+
+Dev server (hot reload):
+
+```
+$ docker compose up --build dev
+```
+
+Then open:
+
+`http://localhost:3000/trainer-demo-deploy/`
+
+### Local Development (Docker)
+
+Dev server (hot reload):
+
+```
+$ docker compose up --build dev
+```
+
+Then open:
+
+`http://localhost:3000/trainer-demo-deploy/`
+
 ### Local Development (Dev Container)
 
 If you use VS Code, you can develop in a preconfigured container:
@@ -58,6 +82,26 @@ $ npm run serve
 Then open:
 
 `http://localhost:3000/trainer-demo-deploy/`
+
+### Serve the production build (Docker)
+
+```
+$ docker compose --profile prod up --build prod
+```
+
+Then open:
+
+`http://localhost:8080/trainer-demo-deploy/`
+
+### Serve the production build (Docker)
+
+```
+$ docker compose --profile prod up --build prod
+```
+
+Then open:
+
+`http://localhost:8080/trainer-demo-deploy/`
 
 ### Tests
 
