@@ -1,0 +1,19 @@
+{
+  "name": "trainer-demo-deploy",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "remoteUser": "node",
+  "updateRemoteUserUID": true,
+  "containerEnv": {
+    "HOST": "0.0.0.0",
+    "PORT": "3000",
+    "CHOKIDAR_USEPOLLING": "true"
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Docusaurus dev server",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postCreateCommand": "npm ci"
+}
