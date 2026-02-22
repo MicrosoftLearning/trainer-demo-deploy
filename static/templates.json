@@ -846,5 +846,17 @@
   "tags": ["msft", "dp-603", "dp-700", "msft", "fabric"],
   "cost": "6.00 (assuming pause after 4 hours)",
   "deploytime": "2" 
+  },
+  {
+  "title": "Azure AI Content Understanding (Document Intelligence) for your custom PDF, Docx or images text transformation",
+  "description": "A straightforward demo application in Azure App Service that utilizes Azure AI Content Understanding (Document Intelligence) to extract and transform text from custom PDF, Docx, or image files. The application provides a user-friendly interface for uploading documents and viewing the extracted information.",
+  "preview": "./templates/images/test.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-betternotes-ai",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-betternotes-ai/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["msft", "ai-3002", "ai-102", "aifoundry"],
+  "cost": "1.00",
+  "deploytime": "4" 
   }
 ]
