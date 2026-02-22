@@ -858,5 +858,17 @@
   "tags": ["msft", "ai-3002", "ai-102", "aifoundry"],
   "cost": "1.00",
   "deploytime": "4" 
+  },
+  {
+  "title": "Azure Container Apps advanced features",
+  "description": "This demo scenario showcases different more advanced features of Azure Container Apps, such as Replica Scaling, traffic splitting, and using ContainerApps Jobs.",
+  "preview": "./templates/images/test.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-contapp-demo-v2",
+  "demoguide": "https://raw.githubusercontent.com/petender/azd-contapp-demo-v2/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["msft", "az-2003", "aca"],
+  "cost": "4.00",
+  "deploytime": "11" 
   }
 ]
