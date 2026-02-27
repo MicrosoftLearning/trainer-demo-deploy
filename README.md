@@ -23,6 +23,42 @@ $ npm ci
 $ npm run start
 ```
 
+### Local Development (Docker)
+
+Dev server (hot reload):
+
+```
+$ docker compose up --build dev
+```
+
+Then open:
+
+`http://localhost:3000/trainer-demo-deploy/`
+
+### Local Development (Docker)
+
+Dev server (hot reload):
+
+```
+$ docker compose up --build dev
+```
+
+Then open:
+
+`http://localhost:3000/trainer-demo-deploy/`
+
+### Local Development (Dev Container)
+
+If you use VS Code, you can develop in a preconfigured container:
+
+1. Install the **Dev Containers** extension.
+2. Run **Dev Containers: Reopen in Container**.
+3. The container runs `npm ci` on first create. Then start the dev server:
+
+```
+$ npm run start
+```
+
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
 Note: this site is configured for GitHub Pages with a base URL of `/trainer-demo-deploy/`, so the local URL is typically:
@@ -46,6 +82,26 @@ $ npm run serve
 Then open:
 
 `http://localhost:3000/trainer-demo-deploy/`
+
+### Serve the production build (Docker)
+
+```
+$ docker compose --profile prod up --build prod
+```
+
+Then open:
+
+`http://localhost:8080/trainer-demo-deploy/`
+
+### Serve the production build (Docker)
+
+```
+$ docker compose --profile prod up --build prod
+```
+
+Then open:
+
+`http://localhost:8080/trainer-demo-deploy/`
 
 ### Tests
 

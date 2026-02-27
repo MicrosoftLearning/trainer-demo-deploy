@@ -1,0 +1,33 @@
+{
+  "name": "trainer-demo-deploy",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "remoteUser": "node",
+  "updateRemoteUserUID": true,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "orta.vscode-jest",
+        "unifiedjs.vscode-mdx",
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
+        "redhat.vscode-yaml"
+      ]
+    }
+  },
+  "containerEnv": {
+    "HOST": "0.0.0.0",
+    "PORT": "3000",
+    "CHOKIDAR_USEPOLLING": "true"
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Docusaurus dev server",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postCreateCommand": "npm ci"
+}
