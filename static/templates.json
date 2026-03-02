@@ -870,5 +870,17 @@
   "tags": ["msft", "az-2003", "aca"],
   "cost": "4.00",
   "deploytime": "11" 
+  },
+  {
+  "title": "App Service Networking",
+  "description": "This demo provides a base setup to demonstrate all the different App Service networking setups, such as service endpoint, private endpoint, vnet integration, fronting with app gateway and fronting with AFD. It can also be used to demonstrate connectivity with a MI to a backend database.",
+  "image": "./templates/images/test.png",
+  "author": "Gitte Vermeiren",
+  "authorLink": "https://github.com/vermegi",
+  "repo": "https://github.com/Azure-Samples/app-service-networking-samples",
+  "tags": ["AZ-204", "az-104", "app service", "networking", "app gateway", "front door"],
+  "demoGuide": "https://github.com/Azure-Samples/app-service-networking-samples/README.md",
+  "deployTime": "5 minutes",
+  "cost": "$10-15/day"
   }
 ]
