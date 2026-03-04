@@ -877,9 +877,9 @@
   "image": "./templates/images/test.png",
   "author": "Gitte Vermeiren",
   "authorLink": "https://github.com/vermegi",
-  "repo": "https://github.com/vermegi/app-service-networking-samples",
+  "repo": "https://github.com/Azure-Samples/app-service-networking-samples",
   "tags": ["AZ-204", "az-104", "app service", "networking", "app gateway", "front door"],
-  "demoGuide": "https://github.com/vermegi/app-service-networking-samples/README.md",
+  "demoGuide": "https://github.com/Azure-Samples/app-service-networking-samples/blob/main/README.md",
   "deployTime": "5 minutes",
   "cost": "$10-15/day"
   }
