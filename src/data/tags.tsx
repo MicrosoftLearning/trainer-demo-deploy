@@ -38,17 +38,26 @@ export type TagType =
   | "new"
   | "hot"
 
-
 // ILT Courses
+// AI
   | "ai-102"
+  | "ai-200"
+  | "ai-300"
   | "ai-3002"
   | "ai-3003"
   | "ai-3004"
+  | "ai-3008"
   | "ai-3016"
+  | "ai-3017"
+  | "ai-3018"
   | "ai-3019"
   | "ai-3022"
+  | "ai-3025"
   | "ai-3026"
   | "ai-900"
+  | "ai-901"
+
+// Azure
   | "az-104"
   | "az-1002"
   | "az-1003"
@@ -57,6 +66,8 @@ export type TagType =
   | "az-1008"
   | "az-1010"
   | "az-140"
+  | "az-2001"
+  | "az-2002"
   | "az-2003"
   | "az-2005"
   | "az-2006"
@@ -68,11 +79,15 @@ export type TagType =
   | "az-800"
   | "az-801"
   | "az-900"
+
+// Data
   | "dp-100"
   | "dp-203"
   | "dp-300"
   | "dp-3001"
+  | "dp-3007"
   | "dp-3011"
+  | "dp-3012"
   | "dp-3014"
   | "dp-3015"
   | "dp-3020"
@@ -80,16 +95,22 @@ export type TagType =
   | "dp-3028"
   | "dp-3029"
   | "dp-420"
+  | "dp-500"
   | "dp-600"
   | "dp-601"
   | "dp-602"
   | "dp-603"
   | "dp-604"
+  | "dp-605"
   | "dp-700"
   | "dp-900"
+
+// Security
   | "sc-100"
   | "sc-200"
   | "sc-300"
+  | "sc-400"
+  | "sc-500"
   | "sc-5001"
   | "sc-5002"
   | "sc-5003"
@@ -98,7 +119,7 @@ export type TagType =
   | "sc-5007"
   | "sc-5008"
   | "sc-900"
-  
+  // end ILT
 
   // Frameworks
   | "dotnet"
