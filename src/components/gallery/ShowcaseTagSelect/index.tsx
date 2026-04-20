@@ -47,6 +47,12 @@ export default function ShowcaseTagSelect({
   const template = id.replace("showcase_checkbox_id_", "");
   const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`;
 
+  // For ILT-style labels like "AI-102 Azure AI Engineer Associate",
+  // show only the course code and display the full name as a tooltip.
+  const iltMatch = label.match(/^([A-Za-z]+-\d+)\s+(.+)$/);
+  const displayLabel = iltMatch ? iltMatch[1] : label;
+  const tooltipText = iltMatch ? label : undefined;
+
   const toggleCheck = (tag: TagType) => {
     if (selectedCheckbox.includes(tag)) {
       setSelectedCheckbox(selectedCheckbox.filter((item) => item !== tag));
@@ -57,23 +63,25 @@ export default function ShowcaseTagSelect({
 
   return (
     <>
-      <Checkbox
-        id={id}
-        data-m={contentForAdobeAnalytics}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
+      <span title={tooltipText}>
+        <Checkbox
+          id={id}
+          data-m={contentForAdobeAnalytics}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              toggleTag();
+            }
+            toggleCheck(tag);
+          }}
+          onChange={() => {
             toggleTag();
-          }
-          toggleCheck(tag);
-        }}
-        onChange={() => {
-          toggleTag();
-          toggleCheck(tag);
-        }}
-        checked={selectedCheckbox.includes(tag)}
-        label={label}
-        disabled={!activeTags?.includes(tag)}
-      />
+            toggleCheck(tag);
+          }}
+          checked={selectedCheckbox.includes(tag)}
+          label={displayLabel}
+          disabled={!activeTags?.includes(tag)}
+        />
+      </span>
     </>
   );
 }

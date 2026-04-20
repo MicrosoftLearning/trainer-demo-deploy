@@ -5,7 +5,6 @@
 
 .checkboxListItem {
   user-select: none;
-  white-space: nowrap;
 }
 
 .checkboxListItem:last-child {
