@@ -95,7 +95,6 @@ export type TagType =
   | "dp-3028"
   | "dp-3029"
   | "dp-420"
-  | "dp-500"
   | "dp-600"
   | "dp-601"
   | "dp-602"
@@ -109,7 +108,6 @@ export type TagType =
   | "sc-100"
   | "sc-200"
   | "sc-300"
-  | "sc-400"
   | "sc-500"
   | "sc-5001"
   | "sc-5002"
@@ -235,6 +233,24 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "ai-200": {
+    label: "AI-200 Develop AI cloud solutions on Microsoft Azure",
+    description: "Learn how to create, monitor, and troubleshoot AI solutions on Azure including compute, containerization, serverless APIs, event-driven architectures, and data services that support AI workloads.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-200t00",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "ai-300": {
+    label: "AI-300 Operationalize machine learning and generative AI solutions",
+    description: "Design, implement, and operate MLOps and GenAIOps solutions on Azure. Covers building secure AI infrastructure, managing the full lifecycle of ML models with Azure Machine Learning, and deploying generative AI applications using Microsoft Foundry.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-300t00",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "ai-3002": {
     label: "AI-3002 Develop AI information extraction solutions in Azure",
     description: "Use Azure AI to extract information from content to support scenarios like data capture, business process automation, meeting summarization and analysis, digital asset management (DAM), and knowledge mining",
@@ -262,12 +278,41 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "ai-3008": {
+    label: "AI-3008 Extract insights from visual data on Azure",
+    description: "Build intelligent applications that see, interpret, and reason over images and documents using multimodal models and agent-based tools. Learn practical patterns for extracting information, orchestrating tools, and grounding model responses in visual data.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-3008",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "ai-3016": {
     label: "AI-3016 Develop generative AI apps in Azure",
     description: "Generative Artificial Intelligence (AI) is becoming more accessible through comprehensive development platforms like Azure AI Foundry. Learn how to build generative AI applications that use language models to chat with your users.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
     url: "https://learn.microsoft.com/en-us/training/paths/create-custom-copilots-ai-studio/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  // TODO: AI-3017 - Course not found on Microsoft Learn - needs research
+  "ai-3017": {
+    label: "AI-3017",
+    description: "Course details pending - not currently listed on Microsoft Learn.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  // TODO: AI-3018 - Course not found on Microsoft Learn - needs research
+  "ai-3018": {
+    label: "AI-3018",
+    description: "Course details pending - not currently listed on Microsoft Learn.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -289,6 +334,15 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "ai-3025": {
+    label: "AI-3025 Work smarter with AI",
+    description: "Introduction to Microsoft Copilot and Microsoft 365 Copilot. Learn about their capabilities, identify tasks they can support, understand how they work, and gain practical skills in writing effective prompts to generate useful, relevant results.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-3025",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "ai-3026": {
     label: "AI-3026 Develop AI agents on Azure",
     description: "This learning path will help you understand the AI agents, including when to use them and how to build them, using Azure AI Foundry Agent Service and Microsoft Agent Framework.",
@@ -304,6 +358,15 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-ai-fundamentals/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "ai-901": {
+    label: "AI-901 Azure AI Fundamentals",
+    description: "Validates conceptual knowledge and practical understanding needed to work with AI solutions on Azure, including using Microsoft Foundry to deploy models and implement single-agent solutions.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
+    url: "https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-901/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -378,6 +441,26 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://learn.microsoft.com/credentials/certifications/azure-virtual-desktop-specialty/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/AZ-140Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-140.jpg",
+  },
+  // TODO: AZ-2001 - Course not found on Microsoft Learn - needs research
+  "az-2001": {
+    label: "AZ-2001",
+    description: "Course details pending - not currently listed on Microsoft Learn.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  // TODO: AZ-2002 - Course not found on Microsoft Learn - needs research
+  "az-2002": {
+    label: "AZ-2002",
+    description: "Course details pending - not currently listed on Microsoft Learn.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "az-2003": {
     label: "AZ-2003 Deploy cloud-native apps using Azure Container Apps",
@@ -515,12 +598,32 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  // TODO: DP-3007 - Course not found on Microsoft Learn - needs research
+  "dp-3007": {
+    label: "DP-3007",
+    description: "Course details pending - not currently listed on Microsoft Learn.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "dp-3011": {
     label: "DP-3011 Implement a Data Analytics Solution with Azure Databricks",
     description: "By the end of this learning path, you'll have built solid intermediate to advanced skills in both Databricks and Spark on Azure. You're able to ingest, transform, and analyze large-scale datasets using Spark DataFrames, Spark SQL, and PySpark, giving you confidence in working with distributed data processing.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
     url: "https://learn.microsoft.com/en-us/training/paths/data-engineer-azure-databricks/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  // TODO: DP-3012 - Course not found on Microsoft Learn - needs research
+  "dp-3012": {
+    label: "DP-3012",
+    description: "Course details pending - not currently listed on Microsoft Learn.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -632,6 +735,15 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "dp-605": {
+    label: "DP-605 Prepare and visualize data with Microsoft Power BI",
+    description: "Introduction to Power BI for data analysis and reporting. Learn to connect to data, perform data preparation with Power Query, design report pages for optimal user experience, and explore how Copilot in Power BI aids the report development process.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/dp-605t00",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "dp-700": {
     label: "DP-700 Fabric Data Engineer Associate",
     description: "As a Fabric Data Engineer, you should have subject matter expertise with data loading patterns, data architectures, and orchestration processes.",
@@ -676,6 +788,15 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://learn.microsoft.com/credentials/certifications/identity-and-access-administrator/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/SC-300Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/SC-300_Blueprint.pdf?sp=r&st=2024-10-10T16:20:37Z&se=2025-07-02T00:20:37Z&spr=https&sv=2022-11-02&sr=b&sig=Q8NZNEY0oa96Olaeyuu8Wf1DeTJ77TJbUmesb6uSjZw%3D",
+  },
+  "sc-500": {
+    label: "SC-500 Implement end-to-end security controls for cloud and AI workloads",
+    description: "Design, implement, and manage end-to-end security controls across Microsoft Azure and Microsoft 365 environments, including the emerging landscape of AI workloads and autonomous agents. Covers identity security, cloud infrastructure protection, threat detection, and posture management.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/sc-500t00",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "sc-5001": {
     label: "SC-5001 Configure SIEM security operations using Microsoft Sentinel",
