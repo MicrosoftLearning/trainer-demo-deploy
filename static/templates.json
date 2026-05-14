@@ -894,5 +894,17 @@
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-rbac-policy-demo/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "2",
   "cost": "4"
+  },
+  {
+  "title": "AZ-700 All-in-one demo",
+  "description": "This project sets up an Azure environment for AZ-700 course demo purposes.",
+  "preview": "https://raw.githubusercontent.com/SQLtattoo/az700env/main/demoguide/architecture.png",
+  "website": "https://github.com/SQLtattoo",
+  "author": "Vassilis Ioannidis",
+  "source": "https://github.com/SQLtattoo/az700env",
+  "demoguide": "https://raw.githubusercontent.com/SQLtattoo/az700env/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-700", "msft", "appgateway", "loadbalancer", "vnets", "privatelink", "firewall", "vpn", "avnm", "afd", "waf", "atm", "flow-logs", "monitoring", "hot"],
+  "cost": "25.00",
+  "deploytime": "25"
   }
 ]
