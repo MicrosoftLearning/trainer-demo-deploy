@@ -112,7 +112,6 @@ const Meta = z.object({
   agent: z.string().default("orchestrator"),
   model: z.string().default("Claude Opus 4.7"),
   context: z.string().default(""),
-  notes: z.number().int().nonnegative().default(0),
   task: Task,
   diff: Diff,
   speed: z.number().positive().default(1),

@@ -102,10 +102,34 @@ html.dark {
   40%           { transform: translateY(-3px); opacity: 1; }
 }
 
+/* Composer placeholder <-> typing state toggle (driven by the player runtime). */
+[data-opx-composer][data-opx-composer-state="placeholder"] [data-opx-composer-typing] { display: none; }
+[data-opx-composer][data-opx-composer-state="typing"]      [data-opx-composer-placeholder] { display: none; }
+/* Lock the composer input to a fixed height so growing/shrinking typing text
+   doesn't reflow the surrounding page layout. Newest text auto-scrolls into
+   view from the runtime (see typeIntoComposer in Transcript.astro). */
+.opx-composer-input {
+  height: 4.25rem;
+  overflow: hidden;
+  line-height: 1.35;
+}
+/* Blinking caret tacked onto the live typing text. */
+[data-opx-composer][data-opx-composer-state="typing"] [data-opx-composer-typing]::after {
+  content: "▍";
+  display: inline-block;
+  margin-left: 1px;
+  color: #cccccc;
+  animation: opx-caret-blink 1s steps(1) infinite;
+}
+@keyframes opx-caret-blink {
+  50% { opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .opx-player [data-opx-step] { animation: none !important; transition: none !important; opacity: 1 !important; }
   .opx-player [data-opx-step][data-opx-state="pending"] { display: block; }
   .opx-typing-indicator span { animation: none; }
+  [data-opx-composer][data-opx-composer-state="typing"] [data-opx-composer-typing]::after { animation: none; }
 }
 
 /* Prose styling for rendered markdown inside the side panel */

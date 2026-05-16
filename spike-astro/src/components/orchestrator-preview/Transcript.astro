@@ -50,6 +50,11 @@ const cfg = { id, loop, startDelay, loopPause, speed };
       const k = stepKind(s);
       const tj = isPlayer ? JSON.stringify((s as any).timing ?? {}) : null;
       const aj = isPlayer ? JSON.stringify((s as any).advances ?? null) : null;
+      // For user steps in player mode, flatten the markdown body into a single
+      // line of typing text for the composer.
+      const utext = isPlayer && k === "user"
+        ? String((s as any).user?.body ?? "").replace(/\s+/g, " ").trim()
+        : null;
       let body;
       if      (k === "user")    { const { handle, avatar, body: b, when } = (s as any).user;   body = <UserStep handle={handle} initials={avatar.initials} gradient={avatar.gradient} body={b} when={when} />; }
       else if (k === "agent")   { const { body: b, code }                  = (s as any).agent;  body = <AgentStep body={b} code={code} />; }
@@ -65,6 +70,7 @@ const cfg = { id, loop, startDelay, loopPause, speed };
             data-opx-state="pending"
             data-opx-timing={tj}
             data-opx-advances={aj}
+            data-opx-typing-text={utext}
           >{body}</div>
         );
       }
@@ -85,6 +91,8 @@ const cfg = { id, loop, startDelay, loopPause, speed };
         if (!steps.length) return;
         const preview  = root.closest("[data-opx-preview]");
         const composer = preview?.querySelector("[data-opx-composer]");
+        const composerTyping = composer?.querySelector("[data-opx-composer-typing]");
+        const composerInput  = composer?.querySelector("[data-opx-composer-input]");
         const $        = (sel) => composer?.querySelector(sel);
         const counters = {
           taskDone:    $("[data-opx-task-done]"),
@@ -156,6 +164,32 @@ const cfg = { id, loop, startDelay, loopPause, speed };
           setText(counters.diffFiles, 0);
           setText(counters.diffAdded, 0);
           setText(counters.diffRemoved, 0);
+          if (composer) composer.dataset.opxComposerState = "placeholder";
+          if (composerTyping) composerTyping.textContent = "";
+        }
+
+        async function typeIntoComposer(text, totalMs) {
+          if (!composer || !composerTyping || !text) {
+            if (totalMs > 0) await sleep(totalMs);
+            return;
+          }
+          composer.dataset.opxComposerState = "typing";
+          composerTyping.textContent = "";
+          if (composerInput) composerInput.scrollTop = 0;
+          const chars = Array.from(text);
+          const perChar = Math.max(14, Math.floor(totalMs / Math.max(1, chars.length)));
+          for (let i = 0; i < chars.length; i++) {
+            composerTyping.textContent += chars[i];
+            // Keep the trailing caret in view as the prompt fills past the
+            // fixed-height input.
+            if (composerInput) composerInput.scrollTop = composerInput.scrollHeight;
+            await sleep(perChar);
+          }
+          // brief pause to register the completed prompt, then "submit"
+          await sleep(220);
+          composer.dataset.opxComposerState = "placeholder";
+          composerTyping.textContent = "";
+          if (composerInput) composerInput.scrollTop = 0;
         }
 
         async function play() {
@@ -171,7 +205,9 @@ const cfg = { id, loop, startDelay, loopPause, speed };
               const holdFor     = (t.holdFor     ?? 1400) / cfg.speed;
               const typing      = (t.typing      ?? 0) / cfg.speed;
               if (appearAfter) await sleep(appearAfter);
-              if (typing && el.dataset.opxKind === "agent") {
+              if (typing && el.dataset.opxKind === "user") {
+                await typeIntoComposer(el.dataset.opxTypingText || "", typing);
+              } else if (typing && el.dataset.opxKind === "agent") {
                 el.dataset.opxState = "typing";
                 requestAnimationFrame(() => scrollTo(el));
                 await sleep(typing);

@@ -4,7 +4,6 @@ meta:
   agent: orchestrator
   model: "Claude Opus 4.7"
   context: "Trainer Demo Deploy — Demos, r…"
-  notes: 1
   task:
     label: "Build BYOD Azure scaffold for AZ-204"
     progress: [12, 12]
@@ -29,7 +28,7 @@ steps:
         event-driven scaling for my AZ-204 class. Use a .NET 8 minimal API as
         the producer, managed identity everywhere, and include a demo guide
         with a 5-step walkthrough.
-    timing: { appearAfter: 0,   holdFor: 1600 }
+    timing: { appearAfter: 0,   holdFor: 1600, typing: 3200 }
 
   - agent:
       body: |

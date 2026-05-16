@@ -4,12 +4,11 @@ type Props = {
   task: { label: string; progress: [number, number] };
   diff: { files: number; added: number; removed: number };
   context: string;
-  notes: number;
   agent: string;
   model: string;
   mode?: "marquee" | "player";
 };
-const { task, diff, context, notes, agent, model, mode = "marquee" } = Astro.props;
+const { task, diff, context, agent, model, mode = "marquee" } = Astro.props;
 // In player mode, counters start at zero and are driven by the runtime as
 // each step completes. In marquee mode, they render the static meta values.
 const initDone    = mode === "player" ? 0 : task.progress[0];
@@ -17,7 +16,7 @@ const initFiles   = mode === "player" ? 0 : diff.files;
 const initAdded   = mode === "player" ? 0 : diff.added;
 const initRemoved = mode === "player" ? 0 : diff.removed;
 ---
-<div class="bg-[#1e1e1e] border-t border-[#2b2b2b] text-[#cccccc]" data-opx-composer>
+<div class="bg-[#1e1e1e] border-t border-[#2b2b2b] text-[#cccccc]" data-opx-composer data-opx-composer-state="placeholder">
   <!-- task progress row -->
   <div class="flex items-center gap-2 px-3 pt-2 pb-1.5 text-[12px]">
     <Icon name="caretRight" size={10} color="#cccccc" />
@@ -52,9 +51,11 @@ const initRemoved = mode === "player" ? 0 : diff.removed;
         <span class="italic text-[#9e9e9e] truncate max-w-[180px]">{context}</span>
       </span>
     </div>
-    {notes > 0 && <div class="px-3 pt-2 text-[12px] text-[#9e9e9e]">{notes} note{notes === 1 ? "" : "s"}</div>}
-    <!-- placeholder -->
-    <div class="px-3 pt-2 pb-2 text-[13px] text-[#7a7a7a]">Describe what to build</div>
+    <!-- placeholder / typing area -->
+    <div class="opx-composer-input px-3 pt-2 pb-2 text-[13px]" data-opx-composer-input>
+      <span class="opx-composer-placeholder text-[#7a7a7a]" data-opx-composer-placeholder>Describe what to build</span>
+      <span class="opx-composer-typing text-[#cccccc] whitespace-pre-wrap" data-opx-composer-typing></span>
+    </div>
     <!-- bottom toolbar -->
     <div class="flex items-center gap-2 px-2 py-1.5 border-t border-[#2b2b2b]">
       <Icon name="plus" size={16} color="#cccccc" />
