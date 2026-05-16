@@ -127,7 +127,7 @@ Step 3: Bicep           →  infra/ + azure.yaml + 04-runtime-diagram.png
 Step 3b: Development    →  src/ + azure.yaml (services block) (conditional)
 Step 4: Deploy          →  README.md
 Step 5: Demo Guide      →  demoguide/demoguide.md
-Step 6: Contribute      →  standalone repo + scenarios/registry.json PR (user-invoked)
+Step 6: Contribute      →  standalone repo + static/templates.json PR (user-invoked)
 ```
 
 > **Step 3b** is conditional. During Step 1, ask the user:

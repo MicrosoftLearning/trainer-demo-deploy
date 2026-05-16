@@ -20,7 +20,7 @@
 | 4b   | Development  | `07-webapp-summary.md` + `generated-scenarios/{project}/src/`        | Conditional |
 | 5    | Deploy       | `06-deployment-summary.md`                                | Automatic   |
 | 6    | DemoGuide    | `/demoguide/demoguide.md` + `/demoguide/*.png`            | Automatic   |
-| 7    | Contribute   | Standalone repo + `scenarios/registry.json` PR    | User-invoked |
+| 7    | Contribute   | Standalone repo + `static/templates.json` PR    | User-invoked |
 
 All outputs → `generated-scenarios/{project}/`. Context flows via artifact files + handoffs.
 

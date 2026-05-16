@@ -1,6 +1,6 @@
 ---
 name: az-08-Contribute
-description: Publishes a completed scenario to a standalone repo in the contributor's GitHub account and registers it in the upstream project's scenario registry via a cross-fork PR.
+description: Publishes a completed scenario to a standalone repo in the contributor's GitHub account and registers it in the upstream project's template gallery (static/templates.json) via a cross-fork PR.
 model: "Claude Opus 4.6"
 user-invokable: true
 argument-hint: Provide the scenario project folder name to contribute (e.g., sentinel-threat-detection)
@@ -45,7 +45,7 @@ tools:
 
 Publishes a completed scenario as a standalone `azd`-compatible repo in the
 contributor's GitHub account, then registers it in the upstream project's
-scenario registry via a cross-fork PR.
+template gallery (`static/templates.json`) via a cross-fork PR.
 
 ## MANDATORY: Read Skills First
 
@@ -63,7 +63,8 @@ scenario registry via a cross-fork PR.
 - ✅ Copy only publishable artifacts to the standalone repo (`infra/`, `src/`, `demoguide/`, `azure.yaml`, `README.md`)
 - ✅ Scan for sensitive files (`.azure/`, `.env`, `bin/`, `obj/`, `publish/`, `applogs/`) and **refuse to proceed** if they would be included
 - ✅ Prefer GitHub MCP tools for PR and Issue creation; fall back to `gh` CLI only when MCP is unavailable
-- ✅ Create the registry PR as a **draft** by default
+- ✅ Validate all proposed tags against `src/data/tags.tsx` TagType union before creating the PR
+- ✅ Create the gallery PR as a **draft** by default
 - ✅ Present the user with a clear summary at the end (standalone repo URL, PR URL, next steps)
 
 ### DON'T
@@ -72,7 +73,8 @@ scenario registry via a cross-fork PR.
 - ❌ Copy requirements, architecture assessments, diagrams, implementation plans, or other working files to the standalone repo
 - ❌ Include deployment state (`.azure/`), build outputs (`bin/`, `obj/`, `publish/`), logs (`applogs/`), archives (`*.zip`), or environment files (`.env`)
 - ❌ Force-push or rewrite history
-- ❌ Create the registry PR as ready-for-review — always use draft
+- ❌ Create the gallery PR as ready-for-review — always use draft
+- ❌ Submit a PR with tags that don't exist in `src/data/tags.tsx`
 
 ---
 
@@ -253,9 +255,9 @@ The standalone repo should look like a fresh `azd init` project:
    git push origin main
    ```
 
-### Phase 4: Register in Upstream Scenario Registry
+### Phase 4: Register in Upstream Template Gallery
 
-Create a cross-fork PR that adds the scenario to `scenarios/registry.json`
+Create a cross-fork PR that adds the scenario to `static/templates.json`
 in the upstream repo.
 
 1. **Detect the upstream repo** from the current git remote:
@@ -264,7 +266,7 @@ in the upstream repo.
    git remote get-url origin
    ```
 
-   Extract `{UPSTREAM_OWNER}/{REPO}` (e.g., `petender/tdd-azd-demo-builder`).
+   Extract `{UPSTREAM_OWNER}/{REPO}` (e.g., `MicrosoftLearning/trainer-demo-deploy`).
 
 2. **Ensure the contributor has a fork** of the upstream repo:
 
@@ -289,99 +291,146 @@ in the upstream repo.
    git checkout -b contribute/{PROJECT} upstream/main
    ```
 
-5. **Read the existing registry** (or create it if first contribution):
+5. **Read the existing templates file**:
 
    ```bash
-   cat scenarios/registry.json
+   cat static/templates.json
    ```
 
-   If the file doesn't exist, initialize it as `{ "scenarios": [] }`.
+6. **Validate tags** (HARD GATE — must pass before proceeding):
 
-6. **Add the new scenario entry** to the `scenarios` array:
+   Before adding the entry, validate that every value in the `tags` array
+   exists as a valid `TagType` in `src/data/tags.tsx`.
+
+   **Steps:**
+   1. Read `src/data/tags.tsx` and extract all valid tag values from the
+      `TagType` union type (the string literals between the `|` operators)
+   2. Compare the proposed tags against the valid set
+   3. If **any** tag is invalid, report the failure and **stop** — do NOT
+      create the PR
+
+   **Report format for invalid tags:**
+
+   ```text
+   ❌ TAG VALIDATION FAILED
+   ━━━━━━━━━━━━━━━━━━━━━━━━
+
+   The following tags are NOT valid TagType values in src/data/tags.tsx:
+     • "{invalid_tag_1}" — did you mean "{closest_match}"?
+     • "{invalid_tag_2}" — no close match found
+
+   Valid tags include: {comma-separated list of all valid tags}
+
+   Action: Fix the tags in your scenario metadata and re-run.
+   ```
+
+   **Examples:**
+   - `az-204` → ✅ valid
+   - `az-205` → ❌ invalid (does not exist in TagType)
+   - `vnets` → ✅ valid
+   - `vnet` → ❌ invalid (correct value is `vnets`)
+   - `virtual network` → ❌ invalid (correct value is `vnets`)
+   - `cosmosdb` → ✅ valid
+   - `cosmos` → ❌ invalid (correct value is `cosmosdb`)
+
+7. **Add the new scenario entry** to the `static/templates.json` array:
 
    ```json
    {
-     "name": "{PROJECT}",
-     "repo": "https://github.com/{CONTRIBUTOR}/{REPO_NAME}",
+     "title": "{scenario title}",
      "description": "{brief description from 01-requirements.md}",
-     "services": ["{service1}", "{service2}", "..."],
-     "hasWebapp": true,
-     "contributor": "{CONTRIBUTOR}",
-     "date": "{YYYY-MM-DD}"
+     "preview": "./templates/images/{PROJECT}.png",
+     "website": "https://github.com/{CONTRIBUTOR}",
+     "author": "{contributor display name}",
+     "source": "https://github.com/{CONTRIBUTOR}/{REPO_NAME}",
+     "tags": ["{tag1}", "{tag2}", "..."],
+     "demoguide": "https://raw.githubusercontent.com/{CONTRIBUTOR}/{REPO_NAME}/refs/heads/main/demoguide/demoguide.md",
+     "cost": "{estimated monthly cost}",
+     "deploytime": "{minutes}",
+     "prereqs": "https://raw.githubusercontent.com/{CONTRIBUTOR}/{REPO_NAME}/refs/heads/main/prereqs.md"
    }
    ```
 
    **Source data:**
-   - `name` — from `azure.yaml` `name:` field
-   - `repo` — the standalone repo URL from Phase 2
+   - `title` — human-readable scenario name
    - `description` — first 1-2 sentences from `01-requirements.md`
-   - `services` — extracted from `02-architecture-assessment.md`
-   - `hasWebapp` — `true` if `src/` exists, `false` otherwise
-   - `contributor` — GitHub username
-   - `date` — current date
+   - `preview` — path to the template card image (use `./templates/images/{PROJECT}.png`)
+   - `website` — contributor's GitHub profile URL
+   - `author` — contributor's display name (from `gh api user --jq '.name'`)
+   - `source` — the standalone repo URL from Phase 2
+   - `tags` — validated tag values from `src/data/tags.tsx` (ILT courses + Azure services + frameworks)
+   - `demoguide` — raw URL to the demo guide markdown (or `null` if none)
+   - `cost` — estimated monthly cost in USD (from deployment summary or architecture assessment)
+   - `deploytime` — estimated deployment time in minutes
+   - `prereqs` — raw URL to prerequisites file (or omit if none)
 
-7. **Stage and commit**:
+8. **Stage and commit**:
 
    ```bash
-   git add -f scenarios/registry.json
-   git commit -m "feat(registry): add {PROJECT} by @{CONTRIBUTOR}"
+   git add -f static/templates.json
+   git commit -m "feat(gallery): add {PROJECT} by @{CONTRIBUTOR}"
    ```
 
-8. **Push to the contributor's fork**:
+9. **Push to the contributor's fork**:
 
    ```bash
    git push origin contribute/{PROJECT}
    ```
 
-9. **Create a draft PR** using `gh` CLI (cross-fork PRs require CLI):
+10. **Create a draft PR** using `gh` CLI (cross-fork PRs require CLI):
 
-   ```bash
-   gh pr create \
-     --repo {UPSTREAM_OWNER}/{REPO} \
-     --head {CONTRIBUTOR}:contribute/{PROJECT} \
-     --base main \
-     --draft \
-     --title "feat(registry): add {PROJECT} scenario" \
-     --body "{pr_body}"
-   ```
+    ```bash
+    gh pr create \
+      --repo {UPSTREAM_OWNER}/{REPO} \
+      --head {CONTRIBUTOR}:contribute/{PROJECT} \
+      --base main \
+      --draft \
+      --title "feat(gallery): add {PROJECT} scenario" \
+      --body "{pr_body}"
+    ```
 
-   **PR body:**
+    **PR body:**
 
-   ```markdown
-   ## New Scenario Registration
+    ```markdown
+    ## New Template Registration
 
-   | Field       | Value |
-   |-------------|-------|
-   | Scenario    | {PROJECT} |
-   | Repo        | [{CONTRIBUTOR}/{REPO_NAME}](https://github.com/{CONTRIBUTOR}/{REPO_NAME}) |
-   | Services    | {comma-separated list} |
-   | Sample App  | {yes/no} |
-   | Contributor | @{CONTRIBUTOR} |
+    | Field       | Value |
+    |-------------|-------|
+    | Scenario    | {PROJECT} |
+    | Repo        | [{CONTRIBUTOR}/{REPO_NAME}](https://github.com/{CONTRIBUTOR}/{REPO_NAME}) |
+    | Tags        | {comma-separated list} |
+    | Sample App  | {yes/no} |
+    | Contributor | @{CONTRIBUTOR} |
 
-   ### What's in the standalone repo
+    ### Tag Validation
 
-   - `infra/` — Bicep templates (AVM-first)
-   - `azure.yaml` — azd project configuration
-   - `README.md` — Quickstart deployment instructions
-   - `src/` — Sample webapp ({industry}) *(if applicable)*
-   - `demoguide/` — Demo runbook + screenshots *(if applicable)*
+    All tags validated against `src/data/tags.tsx` TagType union: ✅ PASSED
 
-   ### Deployment
+    ### What's in the standalone repo
 
-   ```bash
-   gh repo clone {CONTRIBUTOR}/{REPO_NAME}
-   cd {REPO_NAME}
-   azd init
-   azd up
-   ```
+    - `infra/` — Bicep templates (AVM-first)
+    - `azure.yaml` — azd project configuration
+    - `README.md` — Quickstart deployment instructions
+    - `src/` — Sample webapp ({industry}) *(if applicable)*
+    - `demoguide/` — Demo runbook + screenshots *(if applicable)*
 
-   ### Reviewer Checklist
+    ### Deployment
 
-   - [ ] Verify standalone repo is accessible
-   - [ ] Run `azd up` in a test subscription
-   - [ ] Review demo guide for accuracy
-   - [ ] Merge this registry entry
-   ```
+    ```bash
+    gh repo clone {CONTRIBUTOR}/{REPO_NAME}
+    cd {REPO_NAME}
+    azd init
+    azd up
+    ```
+
+    ### Reviewer Checklist
+
+    - [ ] Verify standalone repo is accessible
+    - [ ] All tags are valid TagType values
+    - [ ] Run `azd up` in a test subscription
+    - [ ] Review demo guide for accuracy
+    - [ ] Merge this gallery entry
+    ```
 
 ### Phase 5: Contribution Summary
 
@@ -392,7 +441,8 @@ Present the final summary to the contributor:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Standalone Repo:  https://github.com/{CONTRIBUTOR}/{REPO_NAME}
-Registry PR:      {pr_url} (draft)
+Gallery PR:       {pr_url} (draft)
+Tag Validation:   ✅ All tags verified against src/data/tags.tsx
 
 Your scenario is now:
   ✅ Published as a standalone azd-compatible repo
@@ -400,8 +450,8 @@ Your scenario is now:
 
 Next Steps:
 1. Review the standalone repo on GitHub to verify all artifacts
-2. Mark the registry PR as "Ready for Review" when satisfied
-3. Maintainers will review, test deployment, and merge the registry entry
+2. Mark the gallery PR as "Ready for Review" when satisfied
+3. Maintainers will review, test deployment, and merge the gallery entry
 ```
 
 ---
@@ -413,7 +463,8 @@ Next Steps:
 | `gh` CLI not authenticated | Run `gh auth status` to diagnose. Guide the user through `gh auth login` |
 | Standalone repo already exists | Ask user: overwrite (delete + recreate) or abort |
 | Fork of upstream fails | Check if the user has a GitHub account and network access. Report the error |
-| Registry branch already exists on remote | Ask user: reuse existing branch or create a new branch with a suffix |
+| Tag validation fails | Report invalid tags with suggested corrections. Do NOT create the PR |
+| Registration branch already exists on remote | Ask user: reuse existing branch or create a new branch with a suffix |
 | PR creation fails (403/422) | Check if the fork is up to date with upstream. Suggest `git fetch upstream main && git rebase upstream/main` |
 | Sensitive files detected in copy | Remove them from the standalone repo, warn the user |
 
@@ -426,5 +477,5 @@ If the agent is re-invoked for a project that already has a standalone repo:
    - Update the existing repo (overwrite with latest artifacts)
    - Skip repo creation and only update the registry PR
    - Abort
-3. Check if a registry PR already exists via `gh pr list --head {CONTRIBUTOR}:contribute/{PROJECT} --repo {UPSTREAM_OWNER}/{REPO}`
+3. Check if a gallery PR already exists via `gh pr list --head {CONTRIBUTOR}:contribute/{PROJECT} --repo {UPSTREAM_OWNER}/{REPO}`
 4. If a PR exists, report its status and ask whether to update it or create a new one
