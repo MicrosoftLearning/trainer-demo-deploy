@@ -1,6 +1,10 @@
 ---
 import "../styles/global.css";
 const { title = "Trainer Demo Deploy (Astro Spike)" } = Astro.props;
+// `import.meta.env.BASE_URL` always ends with a slash (Astro 4+), so we
+// can append the page slug directly without a separator. Local dev: "/".
+// GitHub Pages project deploy: "/tdd/".
+const base = import.meta.env.BASE_URL;
 ---
 <!doctype html>
 <html lang="en">
@@ -12,15 +16,15 @@ const { title = "Trainer Demo Deploy (Astro Spike)" } = Astro.props;
   <body class="min-h-screen antialiased">
     <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/60">
       <nav class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
+        <a href={base} class="flex items-center gap-2 font-semibold tracking-tight">
           <span class="inline-block w-6 h-6 rounded-md bg-gradient-to-br from-[#8661C5] to-[#C03BC4]"></span>
           <span>Trainer Demo Deploy</span>
         </a>
         <div class="flex items-center gap-6 text-sm text-neutral-600 dark:text-neutral-300">
-          <a href="/gallery" class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">Catalog</a>
-          <a href="/byod-azure" class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">BYOD · Azure</a>
-          <a href="/byod-copilot-studio" class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">BYOD · Copilot Studio</a>
-          <a href="/" class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">Home</a>
+          <a href={`${base}gallery`} class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">Catalog</a>
+          <a href={`${base}byod-azure`} class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">BYOD · Azure</a>
+          <a href={`${base}byod-copilot-studio`} class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">BYOD · Copilot Studio</a>
+          <a href={base} class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">Home</a>
           <button id="theme-toggle" class="px-3 py-1.5 rounded-md border border-neutral-300 dark:border-neutral-700 text-xs hover:border-[#8661C5] dark:hover:border-[#C5B4E3]">Toggle theme</button>
         </div>
       </nav>
