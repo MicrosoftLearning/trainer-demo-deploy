@@ -1,0 +1,10 @@
+---
+type Props = { kind?: "done" | "running" | "error"; text: string };
+const { kind = "done", text } = Astro.props;
+const dotColor = kind === "error" ? "#f85149" : kind === "running" ? "#d29922" : "#3fb950";
+const pulse = kind !== "error";
+---
+<div class="ml-8 flex items-center gap-2 text-[#8b949e] text-[11px] pt-1">
+  <span class={`inline-block w-1.5 h-1.5 rounded-full ${pulse ? "animate-pulse" : ""}`} style={`background:${dotColor}`}></span>
+  {text}
+</div>

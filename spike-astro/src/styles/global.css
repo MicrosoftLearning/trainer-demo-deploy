@@ -26,23 +26,32 @@ html.dark {
   color: #f3f3f3;
 }
 
-/* GitHub Copilot Chat mock — auto-scroll the transcript with edge fade */
-.chat-viewport {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
-          mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+/* Orchestrator Preview — auto-scrolling transcript with edge fade.
+   The viewport height + scroll end position are driven by the host element
+   (see Transcript.astro). The marquee duration comes from --opx-end. */
+.opx-viewport {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
 }
-.chat-scroll {
-  animation: chat-scroll-up 36s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+.opx-scroll {
+  animation-name: opx-scroll-up;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  animation-iteration-count: infinite;
   will-change: transform;
 }
-.chat-viewport:hover .chat-scroll { animation-play-state: paused; }
-@keyframes chat-scroll-up {
-  0%,  6%  { transform: translateY(0); }
-  92%, 100% { transform: translateY(calc(-100% + 240px)); }
+.opx-viewport:hover .opx-scroll { animation-play-state: paused; }
+@keyframes opx-scroll-up {
+  0%,  6%   { transform: translateY(0); }
+  92%, 100% { transform: translateY(calc(-100% + var(--opx-end, 240px))); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .chat-scroll { animation: none; }
+  .opx-scroll { animation: none; }
 }
+
+/* Compact prose for step bodies inside the chat panel. */
+.opx-prose p { margin: 0; }
+.opx-prose p + p { margin-top: 0.5em; }
+.opx-prose-inline p { margin: 0; display: inline; }
 
 /* Prose styling for rendered markdown inside the side panel */
 .prose-spike { font-size: 14px; line-height: 1.6; color: inherit; }

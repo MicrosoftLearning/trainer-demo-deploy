@@ -1,0 +1,17 @@
+---
+import Icon from "../Icon.astro";
+type Props = { title: string; lead?: string; bullets?: string[] };
+const { title, lead, bullets = [] } = Astro.props;
+---
+<div class="ml-8 rounded-md border border-[#3fb950]/40 bg-[#3fb950]/5 px-3 py-2.5 text-[12.5px]">
+  <div class="flex items-center gap-2 text-[#3fb950] font-semibold mb-1">
+    <Icon name="check" size={14} color="#3fb950" />
+    {title}
+  </div>
+  {lead && <div class="text-[#c9d1d9]">{lead}</div>}
+  {bullets.length > 0 && (
+    <ul class="list-disc list-inside text-[#c9d1d9] mt-1 space-y-0.5">
+      {bullets.map((b) => <li>{b}</li>)}
+    </ul>
+  )}
+</div>

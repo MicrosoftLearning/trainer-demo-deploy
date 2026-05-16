@@ -1,0 +1,92 @@
+meta:
+  id: byod-azure-aca
+  title: "Trainer Demo Deploy — BYOD Azure scaffold"
+  agent: orchestrator
+  model: "Claude Opus 4.7"
+  context: "Trainer Demo Deploy — Demos, r…"
+  notes: 1
+  task:
+    label: "Build BYOD Azure scaffold for AZ-204"
+    progress: [4, 12]
+  diff:
+    files: 12
+    added: 481
+    removed: 12
+  speed: 1.0
+  mode: marquee
+
+steps:
+  - user:
+      handle: rfoulkrod
+      avatar:
+        initials: RF
+        gradient: ["#0078D4", "#8661C5"]
+      body: |
+        @workspace Build me an Azure Container Apps demo with Service Bus
+        event-driven scaling for my AZ-204 class. Use a .NET 8 minimal API as
+        the producer, managed identity everywhere, and include a demo guide
+        with a 5-step walkthrough.
+
+  - agent:
+      body: |
+        Got it — I'll scaffold an azd template for an event-driven ACA demo.
+        Looking at similar templates in the catalog first…
+
+  - tool:
+      kind: search
+      title: searched workspace
+      detail: 'catalog filtered by tag `"aca"`'
+      result: 'Found 4 reference templates · using `aca-keda-servicebus` as a starting point'
+
+  - agent:
+      body: |
+        I'll create the infra, a .NET 8 producer with a Service Bus sender,
+        and a demo guide. Generating files now.
+
+  - files:
+      - { path: "infra/main.bicep",                op: add, lines: 82 }
+      - { path: "infra/modules/aca.bicep",         op: add, lines: 64 }
+      - { path: "infra/modules/servicebus.bicep",  op: add, lines: 38 }
+      - { path: "src/producer/Program.cs",         op: add, lines: 41 }
+
+  - agent:
+      body: |
+        Here's the core producer endpoint — uses `DefaultAzureCredential` so
+        it picks up the managed identity in ACA:
+      code:
+        lang: csharp
+        source: |
+          var builder = WebApplication.CreateBuilder(args);
+          builder.Services.AddAzureClients(c =>
+            c.AddServiceBusClientWithNamespace("<ns>.servicebus.windows.net")
+             .WithCredential(new DefaultAzureCredential()));
+
+          var app = builder.Build();
+          app.MapPost("/orders", async (Order o, ServiceBusSender s) =>
+          {
+              await s.SendMessageAsync(new(BinaryData.FromObjectAsJson(o)));
+              return Results.Accepted();
+          });
+          app.Run();
+
+  - files:
+      - { path: "azure.yaml",         op: add, lines: 18  }
+      - { path: "demoguide/demo.md",  op: add, lines: 126 }
+      - { path: "README.md",          op: add, lines: 47  }
+
+  - summary:
+      title: "Generated 12 files across infra, app, and demo guide"
+      lead: "Your demo includes:"
+      bullets:
+        - "Container Apps env with KEDA Service Bus scaler"
+        - "Service Bus namespace + queue, managed identity (no keys)"
+        - ".NET 8 minimal API producer container"
+        - "5-step demo guide with screenshots placeholders"
+
+  - agent:
+      body: |
+        Run `azd up` when you're ready — provisioning takes about 4 minutes.
+
+  - status:
+      kind: done
+      text: "Agent finished · 12 edits · 1 search · 0 errors"

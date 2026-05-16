@@ -1,0 +1,21 @@
+---
+import Icon from "../Icon.astro";
+import { renderMarkdown } from "../../../lib/markdown";
+type Props = {
+  kind?: "search" | "run" | "read" | "edit";
+  title: string;
+  detail?: string;
+  result?: string;
+};
+const { kind = "search", title, detail, result } = Astro.props;
+const iconName = ({ search: "search", run: "caretRight", read: "file", edit: "file" } as const)[kind];
+---
+<div class="ml-8 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-2 text-[12px]">
+  <div class="flex items-center gap-2 text-[#8b949e]">
+    <Icon name={iconName} size={12} color="#8b949e" />
+    <span><span class="text-[#c9d1d9]">{title}</span>{detail && <> · <span set:html={renderMarkdown(detail).replace(/^<p>|<\/p>$/g, "")} /></>}</span>
+  </div>
+  {result && (
+    <div class="mt-1 text-[#8b949e] pl-5 opx-prose-inline" set:html={renderMarkdown(result)} />
+  )}
+</div>

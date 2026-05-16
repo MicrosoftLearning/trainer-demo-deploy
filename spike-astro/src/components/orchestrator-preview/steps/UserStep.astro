@@ -1,0 +1,22 @@
+---
+import { renderMarkdown } from "../../../lib/markdown";
+type Props = {
+  handle: string;
+  initials: string;
+  gradient?: [string, string];
+  body: string;
+  when?: string;
+};
+const { handle, initials, gradient = ["#0078D4", "#8661C5"], body, when = "now" } = Astro.props;
+---
+<div class="space-y-2">
+  <div class="flex items-center gap-2 text-[#8b949e]">
+    <span
+      class="w-6 h-6 rounded-full flex items-center justify-center text-white text-[11px] font-semibold"
+      style={`background: linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})`}
+    >{initials}</span>
+    <span class="text-[#c9d1d9] text-xs font-semibold">{handle}</span>
+    <span class="text-[11px]">· {when}</span>
+  </div>
+  <div class="ml-8 text-[#c9d1d9] opx-prose" set:html={renderMarkdown(body)} />
+</div>

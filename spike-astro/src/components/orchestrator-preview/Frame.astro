@@ -1,0 +1,31 @@
+---
+import Icon from "./Icon.astro";
+type Props = { title: string };
+const { title } = Astro.props;
+---
+<!-- Row 1: CHAT tab + window controls -->
+<div class="flex items-center px-3 pt-2 pb-0 bg-[#1e1e1e]">
+  <div class="relative">
+    <span class="text-[11px] font-semibold tracking-wider text-[#cccccc] uppercase">Chat</span>
+    <span class="absolute -bottom-[6px] left-0 right-0 h-[2px] bg-[#e8762d]"></span>
+  </div>
+  <div class="ml-auto flex items-center gap-2 text-[#cccccc]">
+    <div class="flex items-center gap-0.5">
+      <Icon name="plus" size={16} />
+      <Icon name="caretDown" size={10} />
+    </div>
+    <Icon name="gear" size={15} />
+    <Icon name="ellipsis" size={16} />
+    <span class="w-px h-4 bg-[#3c3c3c] mx-0.5"></span>
+    <Icon name="expand" size={14} />
+    <Icon name="close" size={14} />
+  </div>
+</div>
+<!-- Row 2: back arrow + breadcrumb -->
+<div class="flex items-center gap-2 px-3 pt-3 pb-2 border-b border-[#2b2b2b]">
+  <Icon name="back" size={14} color="#cccccc" />
+  <span class="text-[12px] font-semibold tracking-wide text-[#cccccc] uppercase truncate">{title}</span>
+  <span class="ml-auto flex items-center text-[#cccccc]">
+    <Icon name="splitPane" size={15} />
+  </span>
+</div>

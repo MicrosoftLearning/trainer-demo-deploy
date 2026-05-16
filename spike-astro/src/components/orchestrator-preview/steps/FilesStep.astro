@@ -1,0 +1,25 @@
+---
+import Icon from "../Icon.astro";
+type FileEntry = { path: string; op: "add" | "edit" | "delete" | "rename"; lines: number };
+type Props = { files: FileEntry[] };
+const { files } = Astro.props;
+const opGlyph: Record<FileEntry["op"], { sym: string; color: string }> = {
+  add:    { sym: "+",  color: "#3fb950" },
+  edit:   { sym: "~",  color: "#d29922" },
+  delete: { sym: "−",  color: "#f85149" },
+  rename: { sym: "→",  color: "#8b949e" },
+};
+const linePrefix: Record<FileEntry["op"], string> = {
+  add: "+", edit: "~", delete: "-", rename: "→",
+};
+---
+<div class="ml-8 space-y-1.5">
+  {files.map((f) => (
+    <div class="flex items-center gap-2 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1.5 text-[12px]">
+      <span style={`color:${opGlyph[f.op].color}`}>{opGlyph[f.op].sym}</span>
+      <Icon name="file" size={14} color="#8b949e" />
+      <span class="font-mono text-[#a5d6ff] truncate">{f.path}</span>
+      {f.lines > 0 && <span class="ml-auto text-[#8b949e]">{linePrefix[f.op]}{f.lines}</span>}
+    </div>
+  ))}
+</div>

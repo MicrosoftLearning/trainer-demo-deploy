@@ -1,0 +1,24 @@
+---
+import type { OpxScript } from "../../lib/opx";
+import Frame from "./Frame.astro";
+import Composer from "./Composer.astro";
+import Transcript from "./Transcript.astro";
+
+type Props = { script: OpxScript; viewportHeight?: number };
+const { script, viewportHeight = 260 } = Astro.props;
+const m = script.meta;
+---
+<div class="relative min-w-0">
+  <div class="rounded-md overflow-hidden border border-[#252526] bg-[#1e1e1e] shadow-2xl shadow-[#8661C5]/20">
+    <Frame title={m.title} />
+    <Transcript steps={script.steps} height={viewportHeight} speed={m.speed} />
+    <Composer
+      task={m.task}
+      diff={m.diff}
+      context={m.context}
+      notes={m.notes}
+      agent={m.agent}
+      model={m.model}
+    />
+  </div>
+</div>

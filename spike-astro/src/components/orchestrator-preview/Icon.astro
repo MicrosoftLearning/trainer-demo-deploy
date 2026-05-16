@@ -1,0 +1,15 @@
+---
+import { icons } from "./icons";
+type Props = { name: keyof typeof icons; size?: number; class?: string; color?: string };
+const { name, size = 14, class: cls = "", color } = Astro.props;
+const i = icons[name];
+if (!i) throw new Error(`Unknown icon: ${String(name)}`);
+const v = i.v ?? "0 0 16 16";
+const fill = i.fill ?? "none";
+const stroke = i.stroke ?? "none";
+const sw = i.strokeWidth ?? 1.2;
+---
+<svg width={size} height={size} viewBox={v} fill={fill} stroke={stroke} stroke-width={sw} class={cls} style={color ? `color:${color}` : undefined} aria-hidden="true">
+  {i.shapes && <Fragment set:html={i.shapes} />}
+  {i.paths.map((d) => <path d={d} />)}
+</svg>

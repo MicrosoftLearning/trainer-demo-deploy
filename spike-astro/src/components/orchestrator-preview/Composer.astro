@@ -1,0 +1,65 @@
+---
+import Icon from "./Icon.astro";
+type Props = {
+  task: { label: string; progress: [number, number] };
+  diff: { files: number; added: number; removed: number };
+  context: string;
+  notes: number;
+  agent: string;
+  model: string;
+};
+const { task, diff, context, notes, agent, model } = Astro.props;
+---
+<div class="bg-[#1e1e1e] border-t border-[#2b2b2b] text-[#cccccc]">
+  <!-- task progress row -->
+  <div class="flex items-center gap-2 px-3 pt-2 pb-1.5 text-[12px]">
+    <Icon name="caretRight" size={10} color="#cccccc" />
+    <span class="relative inline-flex items-center justify-center w-4 h-4">
+      <span class="absolute inset-0 rounded-full border-2 border-[#3794ff]"></span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#3794ff]"></span>
+    </span>
+    <span class="truncate">{task.label} ({task.progress[0]}/{task.progress[1]})</span>
+    <Icon name="collapseAll" size={16} color="#cccccc" class="ml-auto" />
+  </div>
+  <!-- files changed row -->
+  <div class="flex items-center gap-2 px-3 pb-2 text-[12px]">
+    <Icon name="caretRight" size={10} color="#cccccc" />
+    <span class="text-[#cccccc]">{diff.files} files changed</span>
+    <span class="text-[#3fb950] font-mono text-[12px]">+{diff.added}</span>
+    <span class="text-[#f85149] font-mono text-[12px]">-{diff.removed}</span>
+    <div class="ml-auto flex items-center gap-1.5">
+      <button class="text-[12px] px-2.5 py-0.5 rounded bg-[#0e639c] text-white">Keep</button>
+      <button class="text-[12px] px-2.5 py-0.5 rounded bg-[#3a3d41] text-[#cccccc] border border-[#3c3c3c]">Undo</button>
+      <Icon name="clipboard" size={15} color="#cccccc" />
+    </div>
+  </div>
+  <!-- composer textarea -->
+  <div class="mx-3 mb-2 rounded border border-[#3c3c3c] bg-[#1e1e1e]">
+    <!-- context chip -->
+    <div class="flex items-center gap-2 px-2 pt-2">
+      <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded border border-[#3c3c3c] text-[12px] text-[#cccccc]">
+        <Icon name="plus" size={12} />
+        <Icon name="globe" size={12} />
+        <span class="italic text-[#9e9e9e] truncate max-w-[180px]">{context}</span>
+      </span>
+    </div>
+    {notes > 0 && <div class="px-3 pt-2 text-[12px] text-[#9e9e9e]">{notes} note{notes === 1 ? "" : "s"}</div>}
+    <!-- placeholder -->
+    <div class="px-3 pt-2 pb-2 text-[13px] text-[#7a7a7a]">Describe what to build</div>
+    <!-- bottom toolbar -->
+    <div class="flex items-center gap-2 px-2 py-1.5 border-t border-[#2b2b2b]">
+      <Icon name="plus" size={16} color="#cccccc" />
+      <span class="text-[12px] text-[#cccccc]">{agent}</span>
+      <span class="w-px h-4 bg-[#3c3c3c]"></span>
+      <span class="text-[12px] text-[#cccccc]">{model}</span>
+      <span class="w-px h-4 bg-[#3c3c3c]"></span>
+      <Icon name="sliders" size={16} color="#cccccc" />
+      <div class="ml-auto flex items-center gap-2 text-[#cccccc]">
+        <Icon name="mic" size={15} />
+        <span class="inline-flex items-center justify-center w-5 h-5 rounded-full border border-[#cccccc]">
+          <span class="w-2 h-2 bg-[#cccccc]"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
