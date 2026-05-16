@@ -17,11 +17,22 @@ const OUT = (name) => path.resolve(__dirname, '..', name);
   await page.waitForTimeout(500);
   const info = await page.evaluate(() => ({ w: window.innerWidth, h: window.innerHeight }));
   console.log('viewport', info);
-  await page.screenshot({ path: OUT('spike-home-real-a.png') });
-  await page.waitForTimeout(15000);
-  await page.screenshot({ path: OUT('spike-home-real-b.png') });
-  await page.waitForTimeout(15000);
-  await page.screenshot({ path: OUT('spike-home-real-c.png') });
+  // Frames span ~75s so the carousel rotates from the Azure script through to
+  // (and partway into) the Copilot Studio script.
+  const frames = [
+    { name: 'a',           waitAfter: 500   },
+    { name: 'b-mid-azure', waitAfter: 15000 },
+    { name: 'c-late-azure',waitAfter: 12000 },
+    { name: 'd-swap',      waitAfter: 6000  },
+    { name: 'e-mid-cps',   waitAfter: 18000 },
+    { name: 'f-late-cps',  waitAfter: 12000 },
+  ];
+  for (let i = 0; i < frames.length; i++) {
+    if (i > 0) await page.waitForTimeout(frames[i].waitAfter);
+    const out = OUT(`spike-home-real-${frames[i].name}.png`);
+    await page.screenshot({ path: out });
+    console.log('saved', frames[i].name);
+  }
   await browser.close();
-  console.log('done', OUT('spike-home-real-a.png'));
+  console.log('done');
 })().catch(e => { console.error(e); process.exit(1); });

@@ -1,0 +1,127 @@
+---
+import type { OpxScript } from "../../lib/opx";
+import OrchestratorPreview from "./OrchestratorPreview.astro";
+
+type Props = { scripts: OpxScript[]; viewportHeight?: number };
+const { scripts, viewportHeight = 260 } = Astro.props;
+---
+<div class="opx-carousel relative min-w-0" data-opx-carousel>
+  <div class="relative">
+    {scripts.map((s, i) => (
+      <div
+        class="opx-carousel-slide transition-opacity duration-300"
+        data-opx-slide-index={i}
+        style={i === 0
+          ? "position:relative; opacity:1;"
+          : "position:absolute; inset:0; opacity:0; pointer-events:none;"}
+      >
+        <OrchestratorPreview script={s} viewportHeight={viewportHeight} autoPlay={false} />
+      </div>
+    ))}
+  </div>
+
+  {scripts.length > 1 && (
+    <div class="flex justify-center items-center gap-2 mt-4" data-opx-pips>
+      {scripts.map((s, i) => (
+        <button
+          type="button"
+          class="opx-carousel-pip rounded-full transition-all duration-300"
+          data-opx-pip-index={i}
+          aria-label={`Show ${s.meta.title}`}
+          style={i === 0
+            ? "width:1.5rem; height:0.375rem; background:#C03BC4;"
+            : "width:0.375rem; height:0.375rem; background:rgba(140,140,160,0.4);"}
+        ></button>
+      ))}
+    </div>
+  )}
+</div>
+
+<script is:inline>
+  (function () {
+    function start() {
+      document.querySelectorAll("[data-opx-carousel]").forEach((carousel) => {
+        const slides = Array.from(carousel.querySelectorAll("[data-opx-slide-index]"));
+        const pips   = Array.from(carousel.querySelectorAll("[data-opx-pip-index]"));
+        if (slides.length === 0) return;
+        let active = 0;
+        let advanceTimer = null;
+
+        function setPip(idx) {
+          pips.forEach((p, i) => {
+            if (i === idx) {
+              p.style.width = "1.5rem";
+              p.style.background = "#C03BC4";
+            } else {
+              p.style.width = "0.375rem";
+              p.style.background = "rgba(140,140,160,0.4)";
+            }
+          });
+        }
+
+        function showSlide(idx) {
+          slides.forEach((s, i) => {
+            if (i === idx) {
+              s.style.position = "relative";
+              s.style.opacity = "1";
+              s.style.pointerEvents = "";
+            } else {
+              s.style.position = "absolute";
+              s.style.inset = "0";
+              s.style.opacity = "0";
+              s.style.pointerEvents = "none";
+            }
+          });
+          setPip(idx);
+        }
+
+        function playSlide(idx) {
+          const slide = slides[idx];
+          const preview = slide.querySelector("[data-opx-preview]");
+          if (!preview) return;
+          preview.addEventListener("opx:done", () => {
+            // Brief breath between scripts, then advance to the next.
+            clearTimeout(advanceTimer);
+            advanceTimer = setTimeout(() => {
+              const next = (active + 1) % slides.length;
+              swapTo(next);
+            }, 900);
+          }, { once: true });
+          preview.dispatchEvent(new CustomEvent("opx:play"));
+        }
+
+        function swapTo(idx) {
+          if (idx === active) return;
+          // Fade out current, swap, fade in new, then play.
+          const current = slides[active];
+          current.style.opacity = "0";
+          setTimeout(() => {
+            active = idx;
+            showSlide(active);
+            // Wait for the opacity transition before kicking off so the user
+            // doesn't see steps materialise mid-fade.
+            setTimeout(() => playSlide(active), 280);
+          }, 280);
+        }
+
+        // Manual pip control: clicking a dot jumps to that script.
+        pips.forEach((pip, i) => {
+          pip.addEventListener("click", () => {
+            if (i === active) return;
+            clearTimeout(advanceTimer);
+            swapTo(i);
+          });
+        });
+
+        showSlide(0);
+        // Tiny delay so layout settles before we measure scroll heights.
+        setTimeout(() => playSlide(0), 80);
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", start, { once: true });
+    } else {
+      start();
+    }
+  })();
+</script>

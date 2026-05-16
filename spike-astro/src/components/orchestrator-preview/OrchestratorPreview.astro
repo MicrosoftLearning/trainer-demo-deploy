@@ -4,8 +4,8 @@ import Frame from "./Frame.astro";
 import Composer from "./Composer.astro";
 import Transcript from "./Transcript.astro";
 
-type Props = { script: OpxScript; viewportHeight?: number };
-const { script, viewportHeight = 260 } = Astro.props;
+type Props = { script: OpxScript; viewportHeight?: number; autoPlay?: boolean };
+const { script, viewportHeight = 260, autoPlay = true } = Astro.props;
 const m = script.meta;
 ---
 <div class="relative min-w-0" data-opx-preview={m.id}>
@@ -20,6 +20,7 @@ const m = script.meta;
       loop={m.loop}
       startDelay={m.startDelay}
       loopPause={m.loopPause}
+      autoPlay={autoPlay}
     />
     <Composer
       task={m.task}

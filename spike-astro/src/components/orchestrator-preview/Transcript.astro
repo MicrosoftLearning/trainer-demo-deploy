@@ -17,6 +17,10 @@ type Props = {
   loop?: boolean;
   startDelay?: number;
   loopPause?: number;
+  /** Player mode only. When false, the runtime waits for an `opx:play` event
+   *  on the preview root, runs a single pass, then dispatches `opx:done`.
+   *  Used by OrchestratorCarousel to rotate between scripts. */
+  autoPlay?: boolean;
 };
 const {
   steps,
@@ -27,13 +31,14 @@ const {
   loop = true,
   startDelay = 400,
   loopPause = 2200,
+  autoPlay = true,
 } = Astro.props;
 
 const duration = Math.max(8, Math.round(36 / speed));
 const isPlayer = mode === "player";
 
 // Player runtime config (passed into the inline script via define:vars).
-const cfg = { id, loop, startDelay, loopPause, speed };
+const cfg = { id, loop, startDelay, loopPause, speed, autoPlay };
 ---
 <div
   class={`opx-viewport relative overflow-hidden ${isPlayer ? "opx-player" : ""}`}
@@ -192,41 +197,57 @@ const cfg = { id, loop, startDelay, loopPause, speed };
           if (composerInput) composerInput.scrollTop = 0;
         }
 
+        async function runOnce() {
+          reset();
+          await sleep(cfg.startDelay);
+          for (let i = 0; i < steps.length; i++) {
+            const el = steps[i];
+            const t  = safeJSON(el.dataset.opxTiming) || {};
+            const adv = safeJSON(el.dataset.opxAdvances);
+            const appearAfter = (t.appearAfter ?? 0) / cfg.speed;
+            const holdFor     = (t.holdFor     ?? 1400) / cfg.speed;
+            const typing      = (t.typing      ?? 0) / cfg.speed;
+            if (appearAfter) await sleep(appearAfter);
+            if (typing && el.dataset.opxKind === "user") {
+              await typeIntoComposer(el.dataset.opxTypingText || "", typing);
+            } else if (typing && el.dataset.opxKind === "agent") {
+              el.dataset.opxState = "typing";
+              requestAnimationFrame(() => scrollTo(el));
+              await sleep(typing);
+            }
+            el.dataset.opxState = "visible";
+            applyAdvances(adv);
+            requestAnimationFrame(() => scrollTo(el));
+            requestAnimationFrame(() => {
+              for (let j = 0; j < i; j++) {
+                if (steps[j].dataset.opxState === "visible") steps[j].dataset.opxState = "past";
+              }
+            });
+            if (holdFor) await sleep(holdFor);
+          }
+        }
+
         async function play() {
           document.addEventListener("visibilitychange", () => { paused = document.hidden; });
           while (true) {
-            reset();
-            await sleep(cfg.startDelay);
-            for (let i = 0; i < steps.length; i++) {
-              const el = steps[i];
-              const t  = safeJSON(el.dataset.opxTiming) || {};
-              const adv = safeJSON(el.dataset.opxAdvances);
-              const appearAfter = (t.appearAfter ?? 0) / cfg.speed;
-              const holdFor     = (t.holdFor     ?? 1400) / cfg.speed;
-              const typing      = (t.typing      ?? 0) / cfg.speed;
-              if (appearAfter) await sleep(appearAfter);
-              if (typing && el.dataset.opxKind === "user") {
-                await typeIntoComposer(el.dataset.opxTypingText || "", typing);
-              } else if (typing && el.dataset.opxKind === "agent") {
-                el.dataset.opxState = "typing";
-                requestAnimationFrame(() => scrollTo(el));
-                await sleep(typing);
-              }
-              el.dataset.opxState = "visible";
-              applyAdvances(adv);
-              requestAnimationFrame(() => scrollTo(el));
-              requestAnimationFrame(() => {
-                for (let j = 0; j < i; j++) {
-                  if (steps[j].dataset.opxState === "visible") steps[j].dataset.opxState = "past";
-                }
-              });
-              if (holdFor) await sleep(holdFor);
-            }
+            await runOnce();
+            preview?.dispatchEvent(new CustomEvent("opx:done", { bubbles: true }));
             if (!cfg.loop) break;
             await sleep(cfg.loopPause);
           }
         }
-        play();
+
+        if (cfg.autoPlay) {
+          play();
+        } else if (preview) {
+          // Managed mode: wait to be told to play (e.g. by OrchestratorCarousel),
+          // run a single pass, then announce we're done. Repeat on each new play.
+          document.addEventListener("visibilitychange", () => { paused = document.hidden; });
+          preview.addEventListener("opx:play", async () => {
+            await runOnce();
+            preview.dispatchEvent(new CustomEvent("opx:done", { bubbles: true }));
+          });
+        }
       }
       if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", start, { once: true });

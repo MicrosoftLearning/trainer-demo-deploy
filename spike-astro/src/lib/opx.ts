@@ -150,6 +150,20 @@ export function loadScript(id: string): OpxScript {
   return parsed.data;
 }
 
+// Load every *.opx.yaml under src/scripts/, alphabetically by filename.
+// Each file is validated through the same loader (and will throw on failure).
+export function loadAllScripts(): OpxScript[] {
+  const root = path.resolve(process.cwd(), "src", "scripts");
+  if (!fs.existsSync(root)) return [];
+  const files = fs.readdirSync(root)
+    .filter((f) => /\.opx\.ya?ml$/.test(f))
+    .sort();
+  return files.map((f) => {
+    const id = f.replace(/\.opx\.ya?ml$/, "");
+    return loadScript(id);
+  });
+}
+
 // ---- Step kind helpers ----------------------------------------------------
 export type StepKind = "user" | "agent" | "tool" | "files" | "summary" | "status";
 export function stepKind(s: Step): StepKind {

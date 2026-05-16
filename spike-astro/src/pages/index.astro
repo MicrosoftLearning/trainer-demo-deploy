@@ -1,9 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
-import OrchestratorPreview from "../components/orchestrator-preview/OrchestratorPreview.astro";
-import { loadScript } from "../lib/opx";
+import OrchestratorCarousel from "../components/orchestrator-preview/OrchestratorCarousel.astro";
+import { loadAllScripts } from "../lib/opx";
 
-const script = loadScript("byod-azure-aca");
+const scripts = loadAllScripts();
 
 const featureCards = [
   {
@@ -78,8 +78,8 @@ const featureCards = [
         </div>
       </div>
 
-      <!-- RIGHT: Orchestrator Preview (script-driven) -->
-      <OrchestratorPreview script={script} />
+      <!-- RIGHT: Orchestrator Preview carousel (cycles through every .opx.yaml under src/scripts/) -->
+      <OrchestratorCarousel scripts={scripts} />
     </div>
   </section>
 

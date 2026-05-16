@@ -38,7 +38,7 @@ steps:
 
   - tool:
       kind: search
-      title: searched workspace
+      title: searched template catalog
       detail: 'catalog filtered by tag `"aca"`'
       result: 'Found 4 reference templates · using `aca-keda-servicebus` as a starting point'
     timing: { appearAfter: 250, holdFor: 1700 }
@@ -85,6 +85,21 @@ steps:
     timing:   { appearAfter: 250, holdFor: 1600 }
     advances: { task: 3, files: 3, added: 191 }
 
+  - agent:
+      body: |
+        One small tweak to `main.bicep` to expose the Service Bus connection
+        string output, plus the supporting config and CI bits:
+    timing: { appearAfter: 300, holdFor: 1400, typing: 500 }
+
+  - files:
+      - { path: ".github/workflows/azd-deploy.yml",     op: add,  lines: 22 }
+      - { path: "src/producer/Models/Order.cs",        op: add,  lines: 12 }
+      - { path: ".devcontainer/devcontainer.json",     op: add,  lines: 13 }
+      - { path: ".gitignore",                          op: add,  lines: 18 }
+      - { path: "infra/main.bicep",                    op: edit, lines: 12 }
+    timing:   { appearAfter: 250, holdFor: 1800 }
+    advances: { task: 5, files: 5, added: 65, removed: 12 }
+
   - summary:
       title: "Generated 12 files across infra, app, and demo guide"
       lead: "Your demo includes:"
@@ -92,9 +107,8 @@ steps:
         - "Container Apps env with KEDA Service Bus scaler"
         - "Service Bus namespace + queue, managed identity (no keys)"
         - ".NET 8 minimal API producer container"
-        - "5-step demo guide with screenshots placeholders"
+        - "5-step demo guide with screenshot placeholders"
     timing:   { appearAfter: 300, holdFor: 2200 }
-    advances: { task: 5, files: 5, added: 65, removed: 12 }
 
   - agent:
       body: |
@@ -103,5 +117,5 @@ steps:
 
   - status:
       kind: done
-      text: "Agent finished · 12 edits · 1 search · 0 errors"
+      text: "Agent finished · 12 files · 1 search · 0 errors"
     timing: { appearAfter: 200, holdFor: 2000 }

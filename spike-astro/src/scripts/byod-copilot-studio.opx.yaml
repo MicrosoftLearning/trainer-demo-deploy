@@ -1,0 +1,136 @@
+meta:
+  id: byod-copilot-studio
+  title: "Trainer Demo Deploy — BYOD Copilot Studio scaffold"
+  agent: orchestrator
+  model: "Claude Opus 4.7"
+  context: "Trainer Demo Deploy — BYOD Cop…"
+  task:
+    label: "Build BYOD Copilot Studio agent for MS-4006"
+    progress: [14, 14]
+  diff:
+    files: 14
+    added: 389
+    removed: 0
+  speed: 1.0
+  mode: player
+  loop: true
+  startDelay: 500
+  loopPause: 2600
+
+steps:
+  - user:
+      handle: jsmith
+      avatar:
+        initials: js
+        gradient: ["#C03BC4", "#8661C5"]
+      body: |
+        @workspace Build me an IT Helpdesk triage agent for Copilot Studio.
+        It should classify incoming tickets, surface relevant KB articles
+        from our SharePoint, and escalate hard cases to a human via Teams.
+        Include a demo guide so I can show it in class.
+    timing: { appearAfter: 0,   holdFor: 1600, typing: 3400 }
+
+  - agent:
+      body: |
+        Got it — I'll scaffold a Copilot Studio solution with classify, KB
+        lookup, and a Teams escalation flow. Checking the catalog for a
+        similar starting point…
+    timing: { appearAfter: 350, holdFor: 1600, typing: 750 }
+
+  - tool:
+      kind: search
+      title: searched template catalog
+      detail: 'catalog filtered by tag `"copilot-studio"`'
+      result: 'Found 2 reference agents · using `cps-helpdesk-triage` as a starting point'
+    timing: { appearAfter: 250, holdFor: 1700 }
+
+  - agent:
+      body: |
+        I'll generate the solution metadata, five topics for the
+        conversation flows, the SharePoint knowledge source, and a Teams
+        connector reference. Starting with the solution skeleton.
+    timing: { appearAfter: 300, holdFor: 1400, typing: 650 }
+
+  - files:
+      - { path: "solution/Solution.xml",                      op: add, lines: 28 }
+      - { path: "solution/Other/Customizations.xml",          op: add, lines: 24 }
+      - { path: "solution/Bots/IT-Triage/bot.json",           op: add, lines: 12 }
+    timing:   { appearAfter: 250, holdFor: 1700 }
+    advances: { task: 3, files: 3, added: 64 }
+
+  - agent:
+      body: |
+        Here's the classify-ticket topic — it routes the conversation based
+        on a single-prompt classification, then dispatches to KB lookup or
+        escalation:
+      code:
+        lang: yaml
+        source: |
+          kind: Topic
+          name: classify_ticket
+          triggers:
+            - phrase: "I have an issue with"
+            - phrase: "my computer is"
+            - phrase: "I can't access"
+          nodes:
+            - prompt:
+                model: gpt-4o-mini
+                instruction: |
+                  Classify the user's IT issue as exactly one of:
+                  network, hardware, software, access. Reply with the
+                  category only.
+                output: ticket_category
+            - branch:
+                on: ticket_category
+                cases:
+                  network:  goto: kb_lookup
+                  software: goto: kb_lookup
+                  access:   goto: kb_lookup
+                  hardware: goto: escalate_to_human
+    timing: { appearAfter: 300, holdFor: 2600, typing: 700 }
+
+  - files:
+      - { path: "solution/Bots/IT-Triage/Topics/greeting.yaml",        op: add, lines: 24 }
+      - { path: "solution/Bots/IT-Triage/Topics/classify-ticket.yaml", op: add, lines: 62 }
+      - { path: "solution/Bots/IT-Triage/Topics/kb-lookup.yaml",       op: add, lines: 44 }
+      - { path: "solution/Bots/IT-Triage/Topics/escalate.yaml",        op: add, lines: 38 }
+      - { path: "solution/Bots/IT-Triage/Topics/fallback.yaml",        op: add, lines: 20 }
+    timing:   { appearAfter: 250, holdFor: 1900 }
+    advances: { task: 5, files: 5, added: 188 }
+
+  - agent:
+      body: |
+        Wiring the SharePoint knowledge source and a Teams connector for
+        the escalation handoff, plus the demo guide and import notes.
+    timing: { appearAfter: 300, holdFor: 1400, typing: 600 }
+
+  - files:
+      - { path: "solution/Bots/IT-Triage/SystemPrompt.txt",                   op: add, lines: 18 }
+      - { path: "solution/Bots/IT-Triage/KnowledgeSources/sharepoint-kb.json", op: add, lines: 28 }
+      - { path: "solution/Bots/IT-Triage/Connectors/m365-teams.json",         op: add, lines: 25 }
+      - { path: "solution/Bots/IT-Triage/Connectors/sharepoint-search.json",  op: add, lines: 22 }
+      - { path: "demoguide/demo.md",                                          op: add, lines: 32 }
+      - { path: "import-instructions.md",                                     op: add, lines: 12 }
+    timing:   { appearAfter: 250, holdFor: 1800 }
+    advances: { task: 6, files: 6, added: 137 }
+
+  - summary:
+      title: "Generated 14 files for a working Copilot Studio agent"
+      lead: "Your agent includes:"
+      bullets:
+        - "5 topics — greeting, classify, KB lookup, escalate, fallback"
+        - "SharePoint knowledge source (swap the site URL on import)"
+        - "Teams connector for human escalation"
+        - "Demo guide with 4 sample tickets to walk through in class"
+    timing: { appearAfter: 300, holdFor: 2200 }
+
+  - agent:
+      body: |
+        Import `solution/` into your Copilot Studio environment, then walk
+        through the 4 sample tickets in `demoguide/demo.md`.
+    timing: { appearAfter: 300, holdFor: 1600, typing: 500 }
+
+  - status:
+      kind: done
+      text: "Agent finished · 14 files · 1 search · 0 errors"
+    timing: { appearAfter: 200, holdFor: 2000 }
