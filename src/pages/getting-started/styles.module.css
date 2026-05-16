@@ -10,7 +10,18 @@
   position: relative;
   width: 100%;
   min-width: 309px;
-  background-color: transparent;
+  /* Larger radials that bleed past the hero edge so the falloff is graceful. */
+  background:
+    radial-gradient(1600px 720px at 8% -20%, rgba(134, 97, 197, 0.22) 0%, transparent 70%),
+    radial-gradient(1400px 640px at 100% -10%, rgba(192, 59, 196, 0.18) 0%, transparent 72%),
+    transparent;
+}
+
+[data-theme="dark"] .heroBanner {
+  background:
+    radial-gradient(1600px 720px at 8% -20%, rgba(134, 97, 197, 0.38) 0%, transparent 70%),
+    radial-gradient(1400px 640px at 100% -10%, rgba(192, 59, 196, 0.30) 0%, transparent 72%),
+    transparent;
 }
 
 .cover {
@@ -76,10 +87,6 @@
 }
 
 [data-theme="dark"] .container {
-  background-color: #1f1f1f;
-}
-
-[data-theme="dark"] .heroBanner {
   background-color: #1f1f1f;
 }
 

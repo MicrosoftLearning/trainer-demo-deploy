@@ -6,21 +6,40 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  /*--ifm-color-primary: #6b5bdc;*/
-  --ifm-color-primary: #007FFF;
-  --ifm-color-primary-dark: #205585;
-  --ifm-color-primary-darker: #1f507e;
-  --ifm-color-primary-darkest: #194268;
-  --ifm-color-primary-light: #2867a3;
-  --ifm-color-primary-lighter: #296caa;
-  --ifm-color-primary-lightest: #2f7ac0;
+  /* ───── Microsoft brand accent palette ───────────────────────── */
+  --ms-accent-1-purple:        #8661C5;
+  --ms-accent-2-expanded-teal: #389A91;
+  --ms-accent-3-blue:          #0078D4;
+  --ms-accent-4-magenta:       #C03BC4;
+  --ms-accent-5-teal:          #49C5B1;
+  --ms-accent-6-light-purple:  #C5B4E3;
+
+  /* Gradients (Squad-inspired) */
+  --ms-gradient-hero:   linear-gradient(90deg, #8661C5 0%, #C03BC4 100%);
+  --ms-gradient-cool:   linear-gradient(135deg, #0078D4 0%, #389A91 100%);
+  --ms-gradient-warm:   linear-gradient(135deg, #8661C5 0%, #0078D4 100%);
+  --ms-gradient-soft-bg:
+    radial-gradient(1200px 480px at 12% -10%, rgba(134,97,197,0.18) 0%, transparent 60%),
+    radial-gradient(1000px 420px at 95% 0%,  rgba(192,59,196,0.14) 0%, transparent 65%);
+
+  /* Primary brand → Accent 1 Purple */
+  --ifm-color-primary:         #8661C5;
+  --ifm-color-primary-dark:    #6f4cb0;
+  --ifm-color-primary-darker:  #5e3fa0;
+  --ifm-color-primary-darkest: #4a3180;
+  --ifm-color-primary-light:   #9a7ad2;
+  --ifm-color-primary-lighter: #ab8eda;
+  --ifm-color-primary-lightest:#C5B4E3;
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-navbar-link-color: #242424;
-  --ifm-color-purple: #6b5bdc;
-  --ifm-color-purple-light: #6656d1;
-  --ifm-color-blue: #007FFF;
-  --ifm-color-black: #242424;
+
+  /* Legacy aliases kept for components still referencing them */
+  --ifm-color-purple:       #8661C5;
+  --ifm-color-purple-light: #9a7ad2;
+  --ifm-color-blue:         #0078D4;
+  --ifm-color-black:        #242424;
 }
 
 .navbar {
@@ -36,9 +55,12 @@
 [data-theme="dark"] {
   --ifm-navbar-link-color: white;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --ifm-color-purple: #a79cf1;
-  --ifm-color-purple-light: #a79cf1;
-  --ifm-color-primary: #a79cf1;
+  --ifm-color-purple: #C5B4E3;
+  --ifm-color-purple-light: #C5B4E3;
+  --ifm-color-primary: #C5B4E3;
+  --ms-gradient-soft-bg:
+    radial-gradient(1200px 480px at 12% -10%, rgba(134,97,197,0.30) 0%, transparent 60%),
+    radial-gradient(1000px 420px at 95% 0%,  rgba(192,59,196,0.22) 0%, transparent 65%);
 }
 
 .header-github-link:hover {
@@ -55,22 +77,23 @@
 }
 
 .button {
-  background-color: #007FFF;
+  background-color: var(--ms-accent-1-purple);
   color: white;
+  border: none;
 }
 
 .button:hover {
-  background-color: #5a4cb9;
+  background-color: var(--ms-accent-4-magenta);
   color: white;
 }
 
 [data-theme="dark"] .button {
-  background-color: #5649b0;
+  background-color: var(--ms-accent-1-purple);
   color: white;
 }
 
 [data-theme="dark"] .button:hover {
-  background-color: #443a8c;
+  background-color: var(--ms-accent-4-magenta);
   color: white;
 }
 

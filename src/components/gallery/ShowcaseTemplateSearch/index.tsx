@@ -138,7 +138,7 @@ export default function ShowcaseTemplateSearch() {
               weight="semibold"
               style={{
                 background:
-                  "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
+                  "linear-gradient(90deg, #8661C5 0%, #C03BC4 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}

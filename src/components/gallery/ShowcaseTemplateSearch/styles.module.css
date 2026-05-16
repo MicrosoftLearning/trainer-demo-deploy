@@ -43,9 +43,9 @@
 }
 
 .learnMoreColor {
-  color: #007FFF !important;
+  color: #0078D4 !important;
 }
 
 [data-theme="dark"] .learnMoreColor {
-  color: #007FFF !important;
+  color: #C5B4E3 !important;
 }
