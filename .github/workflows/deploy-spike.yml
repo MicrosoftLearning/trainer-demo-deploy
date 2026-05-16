@@ -1,0 +1,73 @@
+# Deploy the Astro spike (spike-astro/) to GitHub Pages.
+#
+# This workflow is intentionally placed under .github/workflows/ at the
+# upstream repo root so it travels with the `spike/astro` branch wherever
+# it's pushed (e.g. a personal `rob-foulkrod/tdd` fork). The repo guard
+# below makes it a no-op on the upstream `MicrosoftLearning/trainer-demo-deploy`
+# repo so it can't accidentally clobber the Docusaurus production site.
+#
+# Trigger: manual (workflow_dispatch). Runs in whatever repo it's dispatched
+# from, so the default GITHUB_TOKEN is sufficient (no cross-owner secrets).
+
+name: Deploy spike to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deploy at a time per repo; cancel any in-flight run.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Hard guard: never build/deploy the spike from the canonical upstream
+    # repo — its GitHub Pages site is the Docusaurus production build.
+    if: github.repository != 'MicrosoftLearning/trainer-demo-deploy'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./spike-astro
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: spike-astro/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (Astro static export)
+        env:
+          # Project-page deploy: site is served at
+          #   https://<owner>.github.io/<repo-name>/
+          # so the Astro base path must match the repo name exactly. We
+          # derive it from the workflow context so this file works for any
+          # target repo without edits.
+          BASE_PATH: /${{ github.event.repository.name }}/
+          SITE_URL: https://${{ github.repository_owner }}.github.io
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: spike-astro/dist
+
+  deploy:
+    needs: build
+    if: github.repository != 'MicrosoftLearning/trainer-demo-deploy'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
