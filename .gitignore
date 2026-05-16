@@ -24,4 +24,15 @@ yarn-error.log*
 # Test folder
 /azd-deployments
 
+# Playwright / browser-tool artifacts
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# Spike screenshots (throwaway visual checks)
+/spike-*.png
+/getting-started-*.png
+/showcase-*.png
+/live-demo-guide.png
+
 
