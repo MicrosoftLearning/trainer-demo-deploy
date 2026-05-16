@@ -894,5 +894,17 @@
   "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-rbac-policy-demo/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "2",
   "cost": "4"
+  },
+  {
+  "title": "Azure AI Foundry Healthcare Agents",
+  "description": "Healthcare-focused AI agent demo deploying Azure AI Foundry Hub, Project, and supporting infrastructure. Showcases patient triage, appointment scheduling, clinical Q&A, and medication info agents powered by GPT-4o.",
+  "preview": "./templates/images/foundry-healthcare-agents.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-foundry-healthcare-agents",
+  "tags": ["ai-102", "msft", "aifoundry", "openai", "dotnet", "appservice", "aisearch", "keyvault", "appinsights"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "8",
+  "cost": "15.00"
   }
 ]
