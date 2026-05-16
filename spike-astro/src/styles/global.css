@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Use a `.dark` class on <html> for dark mode instead of prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Microsoft accent palette */
+  --color-ms-purple: #8661C5;
+  --color-ms-teal-x: #389A91;
+  --color-ms-blue: #0078D4;
+  --color-ms-magenta: #C03BC4;
+  --color-ms-teal: #49C5B1;
+  --color-ms-light-purple: #C5B4E3;
+
+  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+  background: #ffffff;
+  color: #161616;
+}
+
+html.dark {
+  background: #161616;
+  color: #f3f3f3;
+}

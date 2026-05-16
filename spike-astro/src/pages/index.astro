@@ -1,0 +1,73 @@
+---
+import Base from "../layouts/Base.astro";
+
+const cards = [
+  { title: "Discover", desc: "Browse curated, ready-to-deploy demo templates aligned to Microsoft Learn courses.", cta: "Browse the gallery" },
+  { title: "Deploy", desc: "Provision a working demo environment in minutes using azd up — no manual setup.", cta: "See how" },
+  { title: "Teach", desc: "Use the running demo live in class. Reset between cohorts; tear down when finished.", cta: "Read the guide" },
+  { title: "Customize", desc: "Fork a template, tweak the Bicep or Terraform, and contribute it back to the gallery.", cta: "Customize a template" },
+  { title: "Contribute", desc: "Have a great demo? Share it with the trainer community via a pull request.", cta: "Contribute" },
+  { title: "FAQs", desc: "What is azd? Why these templates? Answers to common trainer questions.", cta: "Check out the FAQs" },
+];
+
+const stripes = [
+  "from-[#8661C5] to-[#C03BC4]",
+  "from-[#0078D4] to-[#389A91]",
+  "from-[#49C5B1] to-[#C03BC4]",
+  "from-[#C03BC4] to-[#8661C5]",
+  "from-[#49C5B1] to-[#0078D4]",
+  "from-[#C5B4E3] to-[#8661C5]",
+];
+---
+<Base title="Getting Started — Astro Spike">
+  <section class="relative overflow-hidden">
+    <!-- Ambient radial gradient hero (Squad-style) -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 -left-20 w-[1600px] h-[720px] rounded-full opacity-70 dark:opacity-90"
+           style="background: radial-gradient(closest-side, rgba(134,97,197,0.35), transparent 70%);"></div>
+      <div class="absolute -top-32 right-0 w-[1400px] h-[640px] rounded-full opacity-60 dark:opacity-80"
+           style="background: radial-gradient(closest-side, rgba(192,59,196,0.30), transparent 72%);"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 pt-24 pb-20 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 dark:bg-white/10 border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-6">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#49C5B1]"></span>
+        Astro 5 + Tailwind v4 spike
+      </div>
+      <h1 class="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] mb-6">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#8661C5] via-[#C03BC4] to-[#8661C5]">
+          Trainer demos,
+        </span><br />
+        ready in minutes.
+      </h1>
+      <p class="max-w-2xl mx-auto text-lg text-neutral-600 dark:text-neutral-300 mb-10">
+        Pick a template, run <code class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.95em]">azd up</code>,
+        and walk into class with a live demo — every time.
+      </p>
+      <div class="flex items-center justify-center gap-3">
+        <a href="#cards" class="px-5 py-2.5 rounded-md bg-[#8661C5] hover:bg-[#C03BC4] text-white text-sm font-medium transition-colors shadow-lg shadow-[#8661C5]/30">
+          Get started
+        </a>
+        <a href="#" class="px-5 py-2.5 rounded-md border border-neutral-300 dark:border-neutral-700 hover:border-[#8661C5] dark:hover:border-[#C5B4E3] text-sm font-medium">
+          Browse templates
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="max-w-7xl mx-auto px-6 pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {cards.map((c, i) => (
+        <article class="group relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#8661C5]/20 hover:border-[#8661C5]/40 dark:hover:border-[#C5B4E3]/40">
+          <div class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${stripes[i % stripes.length]}`}></div>
+          <h2 class="text-lg font-semibold mb-2 mt-1">{c.title}</h2>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 mb-5 leading-relaxed">{c.desc}</p>
+          <a href="#" class="inline-flex items-center gap-1 text-sm font-medium text-[#8661C5] dark:text-[#C5B4E3] group-hover:gap-2 transition-all">
+            {c.cta}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>

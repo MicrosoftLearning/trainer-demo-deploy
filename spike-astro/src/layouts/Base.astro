@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+const { title = "Trainer Demo Deploy (Astro Spike)" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen antialiased">
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/60">
+      <nav class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
+          <span class="inline-block w-6 h-6 rounded-md bg-gradient-to-br from-[#8661C5] to-[#C03BC4]"></span>
+          <span>Trainer Demo Deploy</span>
+        </a>
+        <div class="flex items-center gap-6 text-sm text-neutral-600 dark:text-neutral-300">
+          <a href="/" class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">Showcase</a>
+          <a href="/getting-started" class="text-[#8661C5] dark:text-[#C5B4E3] font-medium">Getting Started</a>
+          <a href="#" class="hover:text-[#8661C5] dark:hover:text-[#C5B4E3]">FAQs</a>
+          <button id="theme-toggle" class="px-3 py-1.5 rounded-md border border-neutral-300 dark:border-neutral-700 text-xs hover:border-[#8661C5] dark:hover:border-[#C5B4E3]">Toggle theme</button>
+        </div>
+      </nav>
+    </header>
+    <slot />
+    <footer class="border-t border-neutral-200 dark:border-neutral-800 mt-24">
+      <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+        <div>
+          <div class="font-semibold mb-2">Trainer Demo Deploy</div>
+          <p class="text-neutral-500 dark:text-neutral-400">Astro + Tailwind v4 spike to evaluate a Squad-style stack.</p>
+        </div>
+        <div>
+          <div class="font-semibold mb-2">Resources</div>
+          <ul class="space-y-1 text-neutral-500 dark:text-neutral-400">
+            <li><a class="hover:text-[#8661C5]" href="#">Documentation</a></li>
+            <li><a class="hover:text-[#8661C5]" href="#">FAQ</a></li>
+            <li><a class="hover:text-[#8661C5]" href="#">GitHub</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-2">Microsoft Learn</div>
+          <ul class="space-y-1 text-neutral-500 dark:text-neutral-400">
+            <li><a class="hover:text-[#8661C5]" href="#">Trainings</a></li>
+            <li><a class="hover:text-[#8661C5]" href="#">Certifications</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script is:inline>
+      // Theme toggle with localStorage + system preference
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) document.documentElement.classList.add('dark');
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    </script>
+  </body>
+</html>
