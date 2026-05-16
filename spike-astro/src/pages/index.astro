@@ -1,72 +1,143 @@
 ---
 import Base from "../layouts/Base.astro";
 
-const cards = [
-  { title: "Discover", desc: "Browse curated, ready-to-deploy demo templates aligned to Microsoft Learn courses.", cta: "Browse the gallery" },
-  { title: "Deploy", desc: "Provision a working demo environment in minutes using azd up — no manual setup.", cta: "See how" },
-  { title: "Teach", desc: "Use the running demo live in class. Reset between cohorts; tear down when finished.", cta: "Read the guide" },
-  { title: "Customize", desc: "Fork a template, tweak the Bicep or Terraform, and contribute it back to the gallery.", cta: "Customize a template" },
-  { title: "Contribute", desc: "Have a great demo? Share it with the trainer community via a pull request.", cta: "Contribute" },
-  { title: "FAQs", desc: "What is azd? Why these templates? Answers to common trainer questions.", cta: "Check out the FAQs" },
-];
-
-const stripes = [
-  "from-[#8661C5] to-[#C03BC4]",
-  "from-[#0078D4] to-[#389A91]",
-  "from-[#49C5B1] to-[#C03BC4]",
-  "from-[#C03BC4] to-[#8661C5]",
-  "from-[#49C5B1] to-[#0078D4]",
-  "from-[#C5B4E3] to-[#8661C5]",
+const featureCards = [
+  {
+    title: "Catalog",
+    tagline: "Pre-built, ready to deploy",
+    desc: "Browse curated demo templates aligned to Microsoft Learn courses. Pick one, run azd up, walk into class with a working demo.",
+    href: "/gallery",
+    cta: "Browse the catalog",
+    accent: "from-[#8661C5] to-[#C03BC4]",
+  },
+  {
+    title: "BYOD — Azure",
+    tagline: "Bring Your Own Demo",
+    desc: "An agentic demo builder powered by GitHub Copilot. Describe the Azure workload you want to teach and let the agents scaffold a working azd template for you.",
+    href: "/byod-azure",
+    cta: "Build an Azure demo",
+    accent: "from-[#0078D4] to-[#49C5B1]",
+  },
+  {
+    title: "BYOD — Copilot Studio",
+    tagline: "Bring Your Own Demo",
+    desc: "The same agentic builder, focused on Copilot Studio. Generate ready-to-import agent solutions, topics, and connectors from a plain-English description.",
+    href: "/byod-copilot-studio",
+    cta: "Build a Copilot Studio demo",
+    accent: "from-[#C03BC4] to-[#8661C5]",
+  },
 ];
 ---
-<Base title="Getting Started — Astro Spike">
+<Base title="Trainer Demo Deploy — Demos, ready in minutes.">
+  <!-- Ambient gradients -->
   <section class="relative overflow-hidden">
-    <!-- Ambient radial gradient hero (Squad-style) -->
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-      <div class="absolute -top-40 -left-20 w-[1600px] h-[720px] rounded-full opacity-70 dark:opacity-90"
+      <div class="absolute -top-40 -left-32 w-[1400px] h-[700px] rounded-full opacity-60 dark:opacity-80"
            style="background: radial-gradient(closest-side, rgba(134,97,197,0.35), transparent 70%);"></div>
-      <div class="absolute -top-32 right-0 w-[1400px] h-[640px] rounded-full opacity-60 dark:opacity-80"
+      <div class="absolute -top-24 right-[-20%] w-[1200px] h-[600px] rounded-full opacity-50 dark:opacity-70"
            style="background: radial-gradient(closest-side, rgba(192,59,196,0.30), transparent 72%);"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 pt-24 pb-20 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 dark:bg-white/10 border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-6">
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#49C5B1]"></span>
-        Astro 5 + Tailwind v4 spike
+    <!-- HERO: left text + right "screenshot" -->
+    <div class="max-w-7xl mx-auto px-6 pt-16 pb-16 md:pt-24 md:pb-20 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <!-- LEFT: Demo Deploy headline + CTAs -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-6">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C03BC4]"></span>
+          Spike — Astro 5 + Tailwind v4
+        </div>
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.02] mb-6">
+          <span class="block text-neutral-900 dark:text-neutral-50">Demo.</span>
+          <span class="block bg-clip-text text-transparent bg-gradient-to-r from-[#8661C5] via-[#C03BC4] to-[#8661C5]">
+            Deploy.
+          </span>
+        </h1>
+        <p class="max-w-xl text-lg text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed">
+          Pick a curated template, or describe your own. Trainer Demo Deploy hands you
+          a working Azure or Copilot Studio demo — provisioned in minutes — so you can
+          walk into class focused on teaching, not setup.
+        </p>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="/gallery" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#8661C5] hover:bg-[#C03BC4] text-white text-sm font-medium transition-colors shadow-lg shadow-[#8661C5]/30">
+            Browse the catalog
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://github.com/MicrosoftLearning/trainer-demo-deploy" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-neutral-300 dark:border-neutral-700 hover:border-[#8661C5] dark:hover:border-[#C5B4E3] text-sm font-medium">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.19 1.78 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.17a11.04 11.04 0 0 1 5.79 0c2.2-1.48 3.17-1.17 3.17-1.17.63 1.58.23 2.75.12 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.7 5.36-5.27 5.65.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+        <div class="mt-6 text-xs text-neutral-500 dark:text-neutral-400">
+          <code class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.95em]">azd init -t &lt;template&gt;</code>
+          <span class="mx-1">·</span>
+          <code class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.95em]">azd up</code>
+        </div>
       </div>
-      <h1 class="text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] mb-6">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#8661C5] via-[#C03BC4] to-[#8661C5]">
-          Trainer demos,
-        </span><br />
-        ready in minutes.
-      </h1>
-      <p class="max-w-2xl mx-auto text-lg text-neutral-600 dark:text-neutral-300 mb-10">
-        Pick a template, run <code class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.95em]">azd up</code>,
-        and walk into class with a live demo — every time.
-      </p>
-      <div class="flex items-center justify-center gap-3">
-        <a href="#cards" class="px-5 py-2.5 rounded-md bg-[#8661C5] hover:bg-[#C03BC4] text-white text-sm font-medium transition-colors shadow-lg shadow-[#8661C5]/30">
-          Get started
-        </a>
-        <a href="#" class="px-5 py-2.5 rounded-md border border-neutral-300 dark:border-neutral-700 hover:border-[#8661C5] dark:hover:border-[#C5B4E3] text-sm font-medium">
-          Browse templates
-        </a>
+
+      <!-- RIGHT: "screenshot" mock window -->
+      <div class="relative">
+        <div class="rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-700 bg-neutral-900 shadow-2xl shadow-[#8661C5]/20">
+          <div class="flex items-center gap-2 px-4 py-3 bg-neutral-800 border-b border-neutral-700">
+            <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+            <span class="ml-3 text-xs text-neutral-400 font-mono">azd up — trainer-demo-deploy</span>
+          </div>
+          <div class="px-5 py-5 font-mono text-[12.5px] leading-relaxed text-neutral-200">
+            <div><span class="text-[#49C5B1]">trainer@class</span><span class="text-neutral-500">:</span><span class="text-[#C5B4E3]">~/conference-api</span><span class="text-neutral-500">$ </span><span class="text-neutral-100">azd init -t conferenceapi</span></div>
+            <div class="text-neutral-400 mt-1">Initializing a new project (~3s)…</div>
+            <div class="text-neutral-400">  (✓) Done: Initialized template</div>
+
+            <div class="mt-3"><span class="text-[#49C5B1]">trainer@class</span><span class="text-neutral-500">:</span><span class="text-[#C5B4E3]">~/conference-api</span><span class="text-neutral-500">$ </span><span class="text-neutral-100">azd up</span></div>
+            <div class="mt-1"><span class="text-[#C03BC4]">?</span> <span class="text-neutral-300">Select an Azure Subscription:</span> <span class="text-neutral-100">MS Learn Trainer Sub</span></div>
+            <div><span class="text-[#C03BC4]">?</span> <span class="text-neutral-300">Select an Azure location:</span> <span class="text-neutral-100">East US 2</span></div>
+
+            <div class="mt-3 text-neutral-400">Packaging services (api)…</div>
+            <div class="text-neutral-400">Provisioning Azure resources (azd provision)</div>
+            <div class="text-[#49C5B1]">  (✓) Done: Resource group: rg-conferenceapi-eus2</div>
+            <div class="text-[#49C5B1]">  (✓) Done: API Management: apim-conf-7x2k</div>
+            <div class="text-[#49C5B1]">  (✓) Done: App Service Plan: plan-conf-7x2k</div>
+            <div class="text-[#49C5B1]">  (✓) Done: App Service: app-conf-7x2k</div>
+
+            <div class="mt-3 text-neutral-400">Deploying services (azd deploy)</div>
+            <div class="text-[#49C5B1]">  (✓) Done: Deploying service api</div>
+
+            <div class="mt-3 text-neutral-100">SUCCESS: Your application was provisioned and deployed in <span class="text-[#C5B4E3]">4 minutes 12 seconds</span>.</div>
+            <div class="mt-1 text-neutral-400">You can view your resources in the Azure portal:</div>
+            <div class="text-[#8661C5] underline truncate">https://portal.azure.com/#@/resource/.../rg-conferenceapi-eus2</div>
+
+            <div class="mt-3 flex items-center gap-2">
+              <span class="inline-block w-2 h-2 rounded-full bg-[#49C5B1] animate-pulse"></span>
+              <span class="text-neutral-300">Demo ready. Open the demo guide and teach.</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="cards" class="max-w-7xl mx-auto px-6 pb-24">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {cards.map((c, i) => (
-        <article class="group relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#8661C5]/20 hover:border-[#8661C5]/40 dark:hover:border-[#C5B4E3]/40">
-          <div class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${stripes[i % stripes.length]}`}></div>
-          <h2 class="text-lg font-semibold mb-2 mt-1">{c.title}</h2>
-          <p class="text-sm text-neutral-600 dark:text-neutral-300 mb-5 leading-relaxed">{c.desc}</p>
-          <a href="#" class="inline-flex items-center gap-1 text-sm font-medium text-[#8661C5] dark:text-[#C5B4E3] group-hover:gap-2 transition-all">
+  <!-- THREE PATHS -->
+  <section id="paths" class="max-w-7xl mx-auto px-6 pb-24">
+    <div class="text-center mb-10">
+      <div class="text-xs uppercase tracking-widest text-[#8661C5] dark:text-[#C5B4E3] font-semibold mb-2">Three ways in</div>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Pick a path</h2>
+      <p class="mt-3 text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+        Start from the curated catalog, or let agents build a brand-new demo with you.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {featureCards.map((c) => (
+        <a href={c.href} class="group relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#8661C5]/20 hover:border-[#8661C5]/40 dark:hover:border-[#C5B4E3]/40 flex flex-col">
+          <div class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${c.accent}`}></div>
+          <div class="text-[11px] uppercase tracking-wider font-semibold text-neutral-500 dark:text-neutral-400 mt-1 mb-1">{c.tagline}</div>
+          <h3 class="text-xl font-semibold mb-2">{c.title}</h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-5 flex-1">{c.desc}</p>
+          <span class="inline-flex items-center gap-1 text-sm font-medium text-[#8661C5] dark:text-[#C5B4E3] group-hover:gap-2 transition-all">
             {c.cta}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-        </article>
+          </span>
+        </a>
       ))}
     </div>
   </section>

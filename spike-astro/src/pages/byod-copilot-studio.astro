@@ -1,0 +1,90 @@
+---
+import Base from "../layouts/Base.astro";
+
+const steps = [
+  { n: "01", title: "Describe the agent", desc: "Tell the builder what the agent should do, who it serves, and which systems it needs to reach." },
+  { n: "02", title: "Agents draft a solution", desc: "Copilot agents scaffold a Copilot Studio solution: topics, prompts, knowledge sources, and connector references." },
+  { n: "03", title: "Review & refine", desc: "Inspect topics in plain English, ask for changes, iterate on the system prompt and tool list." },
+  { n: "04", title: "Import & test", desc: "Import the solution into your Copilot Studio environment and test the conversation flows." },
+  { n: "05", title: "Contribute", desc: "Share polished agents back to the catalog so other trainers can reuse them." },
+];
+
+const examples = [
+  {
+    title: "IT Helpdesk triage agent",
+    prompt: "An IT helpdesk agent that classifies tickets, suggests KB articles from SharePoint, and escalates to a human via Teams.",
+    outcome: "Topics for ticket intake, SharePoint knowledge source wiring, Teams connector action, and a demo script.",
+  },
+  {
+    title: "HR onboarding companion",
+    prompt: "Friendly onboarding agent that walks a new hire through day-1 tasks, links to policies, and books their orientation meeting.",
+    outcome: "Greeting + task-checklist topics, policy knowledge source, Outlook calendar action, and sample dialogs.",
+  },
+  {
+    title: "Sales account briefing",
+    prompt: "Pre-meeting briefing agent: pulls last 30 days of email + Dynamics activity for a named account and summarizes risk.",
+    outcome: "Dynamics + Graph connectors, summary topic with prompt template, and a sample test conversation.",
+  },
+];
+---
+<Base title="BYOD — Copilot Studio · Trainer Demo Deploy">
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[600px] rounded-full opacity-50 dark:opacity-70"
+           style="background: radial-gradient(closest-side, rgba(192,59,196,0.30), transparent 70%);"></div>
+    </div>
+    <div class="max-w-5xl mx-auto px-6 pt-20 pb-12 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-6">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C03BC4]"></span>
+        BYOD — Bring Your Own Demo
+      </div>
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight mb-5">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#C03BC4] to-[#8661C5]">
+          Agentic demo builder
+        </span><br />for Copilot Studio
+      </h1>
+      <p class="text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+        Describe the Copilot Studio agent you want to teach. The builder drafts topics,
+        knowledge sources, and connector wiring — ready to import into your environment.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold mb-6">How it works</h2>
+    <ol class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {steps.map((s) => (
+        <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+          <div class="text-xs font-mono text-[#C03BC4] dark:text-[#C5B4E3] mb-1">{s.n}</div>
+          <div class="font-semibold mb-1">{s.title}</div>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">{s.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-24">
+    <h2 class="text-2xl font-semibold mb-2">Example prompts</h2>
+    <p class="text-sm text-neutral-600 dark:text-neutral-300 mb-6">
+      The builder is designed to translate trainer intent into a working Copilot Studio solution.
+    </p>
+    <div class="space-y-4">
+      {examples.map((e) => (
+        <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+          <div class="font-semibold mb-2">{e.title}</div>
+          <div class="text-xs uppercase tracking-wider text-neutral-500 mb-1">Prompt</div>
+          <blockquote class="text-sm italic text-neutral-700 dark:text-neutral-200 border-l-2 border-[#C03BC4] pl-3 mb-3">“{e.prompt}”</blockquote>
+          <div class="text-xs uppercase tracking-wider text-neutral-500 mb-1">What you get</div>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300">{e.outcome}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 rounded-xl border border-[#C03BC4]/30 bg-[#C03BC4]/5 dark:bg-[#C03BC4]/10 p-6">
+      <div class="font-semibold mb-1">Status: early access</div>
+      <p class="text-sm text-neutral-700 dark:text-neutral-200">
+        BYOD — Copilot Studio is in active development. Public preview coming soon.
+      </p>
+    </div>
+  </section>
+</Base>
