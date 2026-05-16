@@ -25,3 +25,50 @@ html.dark {
   background: #161616;
   color: #f3f3f3;
 }
+
+/* Prose styling for rendered markdown inside the side panel */
+.prose-spike { font-size: 14px; line-height: 1.6; color: inherit; }
+.prose-spike h1, .prose-spike h2, .prose-spike h3, .prose-spike h4 {
+  font-weight: 600; line-height: 1.25; margin: 1.25em 0 0.6em;
+}
+.prose-spike h1 { font-size: 1.6em; }
+.prose-spike h2 { font-size: 1.35em; }
+.prose-spike h3 { font-size: 1.15em; }
+.prose-spike h4 { font-size: 1em; }
+.prose-spike p { margin: 0.6em 0; }
+.prose-spike ul, .prose-spike ol { margin: 0.6em 0; padding-left: 1.5em; }
+.prose-spike ul { list-style: disc; }
+.prose-spike ol { list-style: decimal; }
+.prose-spike li { margin: 0.2em 0; }
+.prose-spike a { color: #0078D4; text-decoration: underline; text-underline-offset: 2px; }
+html.dark .prose-spike a { color: #C5B4E3; }
+.prose-spike strong { font-weight: 600; }
+.prose-spike em { font-style: italic; }
+.prose-spike code {
+  background: rgba(134, 97, 197, 0.12); padding: 1px 5px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em;
+}
+.prose-spike pre {
+  background: #f6f6f6; border: 1px solid #e5e5e5; padding: 12px; border-radius: 6px;
+  overflow-x: auto; margin: 0.8em 0;
+}
+html.dark .prose-spike pre { background: #1f1f1f; border-color: #2e2e2e; }
+.prose-spike pre code { background: transparent; padding: 0; font-size: 0.85em; }
+.prose-spike img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.8em 0; }
+.prose-spike hr { margin: 1.2em 0; border: 0; border-top: 1px solid #e5e5e5; }
+html.dark .prose-spike hr { border-top-color: #2e2e2e; }
+.prose-spike blockquote {
+  border-left: 3px solid #8661C5; padding: 0.2em 0.9em; margin: 0.8em 0;
+  background: rgba(134, 97, 197, 0.05); color: inherit;
+}
+.prose-spike table { border-collapse: collapse; margin: 0.8em 0; width: 100%; }
+.prose-spike th, .prose-spike td {
+  border: 1px solid #e5e5e5; padding: 6px 10px; text-align: left;
+}
+html.dark .prose-spike th, html.dark .prose-spike td { border-color: #2e2e2e; }
+.prose-spike th { background: #f6f6f6; font-weight: 600; }
+html.dark .prose-spike th { background: #1f1f1f; }
+/* Author-provided callout boxes (raw <div style=...> in markdown) need readable
+   text colors in dark mode since the source forces white-friendly backgrounds. */
+.prose-spike div[style*="background"] { color: #161616; }
+.prose-spike div[style*="background"] a { color: #0033a0; }

@@ -653,10 +653,30 @@ function azdSlug(source: string | null | undefined): string | null {
         errEl.classList.add('hidden');
         contentEl.innerHTML = '';
         try {
-          const res = await fetch(url);
+          const [res, mod] = await Promise.all([
+            fetch(url),
+            import('https://esm.sh/marked@12?bundle'),
+          ]);
           if (!res.ok) throw new Error('HTTP ' + res.status);
           const md = await res.text();
-          contentEl.innerHTML = renderMarkdown(md);
+          const marked = mod.marked || mod.default;
+          marked.setOptions({ gfm: true, breaks: false });
+          // marked allows raw HTML by default, which we want (note/tip boxes).
+          contentEl.innerHTML = marked.parse(md);
+          // Rewrite relative image URLs against the raw guide URL
+          const base = url.replace(/[^/]*$/, '');
+          contentEl.querySelectorAll('img').forEach(img => {
+            const src = img.getAttribute('src') || '';
+            if (src && !/^https?:|^data:|^\//.test(src)) {
+              img.setAttribute('src', base + src);
+            }
+            img.setAttribute('loading', 'lazy');
+          });
+          // Force anchors to open in new tab
+          contentEl.querySelectorAll('a').forEach(a => {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener');
+          });
           demoLoadedFor = idx;
         } catch (e) {
           errEl.textContent = 'Could not load demo guide: ' + e.message + ' — use the "Open raw guide" link above.';
@@ -664,58 +684,6 @@ function azdSlug(source: string | null | undefined): string | null {
         } finally {
           loadingEl.classList.add('hidden');
         }
-      }
-
-      // Tiny markdown renderer (spike-grade; not exhaustive)
-      function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
-      function renderMarkdown(md) {
-        const lines = md.split(/\r?\n/);
-        let html = '';
-        let inCode = false;
-        let inList = false;
-        for (let raw of lines) {
-          if (raw.startsWith('```')) {
-            if (inCode) { html += '</code></pre>'; inCode = false; }
-            else { html += '<pre class="bg-neutral-100 dark:bg-neutral-800 p-3 rounded text-xs overflow-x-auto my-3"><code>'; inCode = true; }
-            continue;
-          }
-          if (inCode) { html += escapeHtml(raw) + '\n'; continue; }
-          let line = raw;
-          if (/^\s*$/.test(line)) { if (inList) { html += '</ul>'; inList = false; } html += ''; continue; }
-          // headings
-          const h = line.match(/^(#{1,6})\s+(.*)$/);
-          if (h) {
-            if (inList) { html += '</ul>'; inList = false; }
-            const lvl = Math.min(h[1].length + 1, 6);
-            html += `<h${lvl} class="font-semibold mt-4 mb-2 text-neutral-900 dark:text-neutral-100">${inline(h[2])}</h${lvl}>`;
-            continue;
-          }
-          // list item
-          const li = line.match(/^\s*[-*]\s+(.*)$/);
-          if (li) {
-            if (!inList) { html += '<ul class="list-disc pl-5 space-y-1 my-2">'; inList = true; }
-            html += `<li>${inline(li[1])}</li>`;
-            continue;
-          }
-          if (inList) { html += '</ul>'; inList = false; }
-          // image
-          if (/^\s*!\[/.test(line)) {
-            const m = line.match(/!\[([^\]]*)\]\(([^)]+)\)/);
-            if (m) { html += `<img alt="${escapeHtml(m[1])}" src="${m[2]}" class="max-w-full my-3 rounded" />`; continue; }
-          }
-          html += `<p class="my-2 leading-relaxed">${inline(line)}</p>`;
-        }
-        if (inList) html += '</ul>';
-        if (inCode) html += '</code></pre>';
-        return html;
-      }
-      function inline(s) {
-        s = escapeHtml(s);
-        s = s.replace(/`([^`]+)`/g, '<code class="bg-neutral-100 dark:bg-neutral-800 px-1 py-0.5 rounded text-[0.9em]">$1</code>');
-        s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-        s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-        s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="text-[#0078D4] dark:text-[#C5B4E3] hover:underline">$1</a>');
-        return s;
       }
 
       // Card click → open
