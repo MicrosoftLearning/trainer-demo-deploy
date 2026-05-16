@@ -1,0 +1,266 @@
+meta:
+  id: stress
+  title: "OPX Stress Test — every step kind & feature"
+  agent: orchestrator
+  model: "Claude Opus 4.7"
+  context: "OPX Stress Test — exercise every feature"
+  task:
+    label: "Exercise every step kind, file op, tool kind, and status kind"
+    progress: [12, 12]
+  diff:
+    files: 12
+    added: 210
+    removed: 18
+  speed: 1.0
+  mode: player
+  loop: true
+  startDelay: 300
+  # Short pause between iterations so this script churns quickly when used
+  # for visual regression / runtime testing.
+  loopPause: 1500
+
+# ---------------------------------------------------------------------------
+# What this script covers (use it as a smoke test for the renderer):
+#   - user step (markdown body w/ @mention, `code`, **bold**, _italic_, [link])
+#   - agent step (plain body)
+#   - agent step + code block in csharp
+#   - agent step + code block in yaml
+#   - agent step + code block in bicep
+#   - agent step + code block in json
+#   - agent step + code block in bash
+#   - tool kinds: search, run, read, edit  (also: with detail+result, with no detail, with no result)
+#   - files step with every op: add, edit, delete, rename
+#   - summary step with lead + bullets
+#   - summary step with no lead and no bullets (default [])
+#   - status kinds: running, error, done
+#   - long agent body that wraps across multiple paragraph blocks
+#   - advances sums that match meta totals exactly (12 / 12 / 210 / 18)
+# ---------------------------------------------------------------------------
+
+steps:
+  # 1. User prompt — exercises typing-into-composer + all inline markdown bits.
+  - user:
+      handle: tester
+      avatar:
+        initials: tx
+        gradient: ["#3fb950", "#58a6ff"]
+      body: |
+        @workspace Run the **stress test**. I want to see every step kind,
+        every file `op`, every tool `kind`, and the [highlighter](http://example.com)
+        in _every_ supported language.
+    timing: { appearAfter: 0, holdFor: 1200, typing: 2400 }
+
+  # 2. Plain agent reply — no code block.
+  - agent:
+      body: |
+        Got it — kicking off the stress run now. I'll touch each step renderer
+        in order so anything that regresses is obvious on screen.
+    timing: { appearAfter: 250, holdFor: 1100, typing: 500 }
+
+  # 3. tool kind=search with detail + result.
+  - tool:
+      kind: search
+      title: "searched workspace"
+      detail: 'query: `**/*.opx.yaml`'
+      result: 'Found 3 OPX scripts · validating each through `loadScript()`'
+    timing: { appearAfter: 200, holdFor: 1300 }
+
+  # 4. tool kind=run with detail + result.
+  - tool:
+      kind: run
+      title: "ran terminal command"
+      detail: '`npm run test:opx`'
+      result: '`✓ 14 passed in 1.8s`'
+    timing: { appearAfter: 200, holdFor: 1300 }
+
+  # 5. tool kind=read with no detail, no result.
+  - tool:
+      kind: read
+      title: "read src/lib/opx.ts"
+    timing: { appearAfter: 200, holdFor: 1100 }
+
+  # 6. tool kind=edit with detail, no result.
+  - tool:
+      kind: edit
+      title: "edited src/scripts/stress.opx.yaml"
+      detail: "appended 3 new tool steps"
+    timing: { appearAfter: 200, holdFor: 1100 }
+
+  # 7. agent + csharp code block — exercises csharp keywords + type colors.
+  - agent:
+      body: |
+        Here's a tiny **csharp** sample so the highlighter has keywords,
+        PascalCase types, strings, and a `//` comment to color:
+      code:
+        lang: csharp
+        source: |
+          // Stress: keywords + types + strings + comments
+          public record Order(string Id, decimal Total);
+
+          public class OrderHandler
+          {
+              public async Task<Order> CreateAsync(string id)
+              {
+                  var order = new Order(id, 42.0m);
+                  return await Task.FromResult(order);
+              }
+          }
+    timing: { appearAfter: 250, holdFor: 2200, typing: 550 }
+
+  # 8. files batch A — every op exactly once.
+  - files:
+      - { path: "src/new-feature.ts",                op: add,    lines: 42 }
+      - { path: "src/existing-feature.ts",           op: edit,   lines: 12 }
+      - { path: "src/very/long/nested/legacy.module.ts", op: delete, lines: 30 }
+      - { path: "src/Old.cs",                        op: rename, lines: 0  }
+      - { path: "tests/new-feature.test.ts",         op: add,    lines: 28 }
+    timing:   { appearAfter: 250, holdFor: 1700 }
+    advances: { task: 5, files: 5, added: 70, removed: 8 }
+
+  # 9. agent + yaml code block — also tests `code` in body markdown.
+  - agent:
+      body: |
+        And here's some `yaml` — keywords like `true`/`false`/`null` and
+        `# comments` should be colored.
+      code:
+        lang: yaml
+        source: |
+          # Stress: yaml keywords + strings + comments
+          enabled: true
+          retries: null
+          name: "stress-suite"
+          tags:
+            - smoke
+            - regression
+    timing: { appearAfter: 250, holdFor: 2000, typing: 500 }
+
+  # 10. files batch B — all adds, varying line counts and very long paths.
+  - files:
+      - { path: "infra/modules/observability/loganalytics.bicep", op: add, lines: 64 }
+      - { path: "infra/modules/security/keyvault-rbac.bicep",     op: add, lines: 18 }
+      - { path: "infra/main.bicep",                               op: add, lines: 8  }
+    timing:   { appearAfter: 250, holdFor: 1700 }
+    advances: { task: 3, files: 3, added: 90 }
+
+  # 11. agent + bicep code block.
+  - agent:
+      body: |
+        A `bicep` snippet to verify the `param`/`resource`/`output`
+        keywords and `Microsoft.X/Y@version` types both light up:
+      code:
+        lang: bicep
+        source: |
+          param location string = resourceGroup().location
+
+          resource sb 'Microsoft.ServiceBus/namespaces@2022-10-01' = {
+            name: 'sb-${uniqueString(resourceGroup().id)}'
+            location: location
+            sku: { name: 'Standard' }
+          }
+
+          output connection string = listKeys(sb.id, sb.apiVersion).primaryConnectionString
+    timing: { appearAfter: 250, holdFor: 2200, typing: 550 }
+
+  # 12. status kind=running — amber, pulsing.
+  - status:
+      kind: running
+      text: "Long-running operation in progress · this step uses kind=running"
+    timing: { appearAfter: 200, holdFor: 1600 }
+
+  # 13. files batch C — mix of edits and a delete; uses `removed`.
+  - files:
+      - { path: "src/refactored.ts", op: edit,   lines: 22 }
+      - { path: "src/other.ts",      op: edit,   lines: 18 }
+      - { path: "src/dead-code.ts",  op: delete, lines: 10 }
+    timing:   { appearAfter: 250, holdFor: 1700 }
+    advances: { task: 3, files: 3, added: 30, removed: 10 }
+
+  # 14. agent + json code block.
+  - agent:
+      body: |
+        A `json` block — keywords `true`/`false`/`null` and strings only:
+      code:
+        lang: json
+        source: |
+          {
+            "enabled": true,
+            "threshold": 0.95,
+            "owner": null,
+            "tags": ["stress", "renderer"]
+          }
+    timing: { appearAfter: 250, holdFor: 1900, typing: 500 }
+
+  # 15. summary WITH lead and bullets — the common case.
+  - summary:
+      title: "Renderer coverage: every step kind exercised"
+      lead: "This pass touched:"
+      bullets:
+        - "6 step kinds (user, agent, tool, files, summary, status)"
+        - "4 tool kinds (search, run, read, edit)"
+        - "4 file ops (add, edit, delete, rename)"
+        - "3 status kinds (running, error, done)"
+        - "5 highlighter langs (csharp, yaml, bicep, json, bash)"
+    timing: { appearAfter: 300, holdFor: 2200 }
+
+  # 16. summary WITHOUT lead and WITHOUT bullets — exercises the defaults.
+  - summary:
+      title: "Minimal summary — no lead, no bullets (still valid)"
+    timing: { appearAfter: 250, holdFor: 1500 }
+
+  # 17. agent + bash code block.
+  - agent:
+      body: |
+        And a `bash` block — control keywords (`if`/`then`/`for`/`done`),
+        strings, and `# comments` should all color:
+      code:
+        lang: bash
+        source: |
+          #!/usr/bin/env bash
+          # Stress: bash keywords + strings + comments
+          for f in src/scripts/*.opx.yaml; do
+            if [ -f "$f" ]; then
+              echo "validating $f"
+            fi
+          done
+    timing: { appearAfter: 250, holdFor: 2000, typing: 500 }
+
+  # 18. Long multi-paragraph agent body — exercises markdown paragraph splitting.
+  - agent:
+      body: |
+        This is a longer reply that intentionally spans **multiple
+        paragraphs** so the prose renderer has to split on blank lines
+        and wrap properly inside the panel.
+
+        The second paragraph contains `inline code`, a [hyperlink](http://example.com),
+        an _italic_ phrase, and an @workspace mention so every inline
+        markdown rule fires at least once in a single block.
+
+        A third paragraph is here mostly to push the previous content
+        above the viewport and force the auto-scroller to keep up.
+    timing: { appearAfter: 250, holdFor: 2400, typing: 700 }
+
+  # 19. files batch D — single-file add, exhausts the remaining counter budget.
+  - files:
+      - { path: "docs/stress-test.md", op: add, lines: 20 }
+    timing:   { appearAfter: 250, holdFor: 1600 }
+    advances: { task: 1, files: 1, added: 20 }
+
+  # 20. status kind=error — red, no pulse.
+  - status:
+      kind: error
+      text: "Simulated error · this step uses kind=error to verify the red dot"
+    timing: { appearAfter: 200, holdFor: 1800 }
+
+  # 21. Final agent line.
+  - agent:
+      body: |
+        Stress run complete. If counters read **12 / 12** files and
+        **+210 / −18** at this point, every step kind is wiring through
+        `advances` correctly.
+    timing: { appearAfter: 250, holdFor: 1500, typing: 500 }
+
+  # 22. status kind=done — green, pulsing.
+  - status:
+      kind: done
+      text: "Stress test finished · 12 files · 4 tools · 3 statuses · 5 code langs"
+    timing: { appearAfter: 200, holdFor: 2000 }

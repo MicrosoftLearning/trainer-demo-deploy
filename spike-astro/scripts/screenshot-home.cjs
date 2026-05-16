@@ -17,15 +17,17 @@ const OUT = (name) => path.resolve(__dirname, '..', name);
   await page.waitForTimeout(500);
   const info = await page.evaluate(() => ({ w: window.innerWidth, h: window.innerHeight }));
   console.log('viewport', info);
-  // Frames span ~75s so the carousel rotates from the Azure script through to
-  // (and partway into) the Copilot Studio script.
+  // Frames span ~115s so the carousel rotates Azure → Copilot Studio → Stress.
   const frames = [
-    { name: 'a',           waitAfter: 500   },
-    { name: 'b-mid-azure', waitAfter: 15000 },
-    { name: 'c-late-azure',waitAfter: 12000 },
-    { name: 'd-swap',      waitAfter: 6000  },
-    { name: 'e-mid-cps',   waitAfter: 18000 },
-    { name: 'f-late-cps',  waitAfter: 12000 },
+    { name: 'a-azure-start',  waitAfter: 500   },
+    { name: 'b-azure-mid',    waitAfter: 15000 },
+    { name: 'c-azure-end',    waitAfter: 12000 },
+    { name: 'd-cps-start',    waitAfter: 6000  },
+    { name: 'e-cps-mid',      waitAfter: 18000 },
+    { name: 'f-cps-end',      waitAfter: 14000 },
+    { name: 'g-stress-start', waitAfter: 6000  },
+    { name: 'h-stress-mid',   waitAfter: 18000 },
+    { name: 'i-stress-end',   waitAfter: 15000 },
   ];
   for (let i = 0; i < frames.length; i++) {
     if (i > 0) await page.waitForTimeout(frames[i].waitAfter);
