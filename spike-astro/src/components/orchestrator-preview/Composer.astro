@@ -7,10 +7,17 @@ type Props = {
   notes: number;
   agent: string;
   model: string;
+  mode?: "marquee" | "player";
 };
-const { task, diff, context, notes, agent, model } = Astro.props;
+const { task, diff, context, notes, agent, model, mode = "marquee" } = Astro.props;
+// In player mode, counters start at zero and are driven by the runtime as
+// each step completes. In marquee mode, they render the static meta values.
+const initDone    = mode === "player" ? 0 : task.progress[0];
+const initFiles   = mode === "player" ? 0 : diff.files;
+const initAdded   = mode === "player" ? 0 : diff.added;
+const initRemoved = mode === "player" ? 0 : diff.removed;
 ---
-<div class="bg-[#1e1e1e] border-t border-[#2b2b2b] text-[#cccccc]">
+<div class="bg-[#1e1e1e] border-t border-[#2b2b2b] text-[#cccccc]" data-opx-composer>
   <!-- task progress row -->
   <div class="flex items-center gap-2 px-3 pt-2 pb-1.5 text-[12px]">
     <Icon name="caretRight" size={10} color="#cccccc" />
@@ -18,15 +25,17 @@ const { task, diff, context, notes, agent, model } = Astro.props;
       <span class="absolute inset-0 rounded-full border-2 border-[#3794ff]"></span>
       <span class="w-1.5 h-1.5 rounded-full bg-[#3794ff]"></span>
     </span>
-    <span class="truncate">{task.label} ({task.progress[0]}/{task.progress[1]})</span>
+    <span class="truncate">
+      {task.label} (<span data-opx-task-done>{initDone}</span>/<span data-opx-task-total>{task.progress[1]}</span>)
+    </span>
     <Icon name="collapseAll" size={16} color="#cccccc" class="ml-auto" />
   </div>
   <!-- files changed row -->
   <div class="flex items-center gap-2 px-3 pb-2 text-[12px]">
     <Icon name="caretRight" size={10} color="#cccccc" />
-    <span class="text-[#cccccc]">{diff.files} files changed</span>
-    <span class="text-[#3fb950] font-mono text-[12px]">+{diff.added}</span>
-    <span class="text-[#f85149] font-mono text-[12px]">-{diff.removed}</span>
+    <span class="text-[#cccccc]"><span data-opx-diff-files>{initFiles}</span> files changed</span>
+    <span class="text-[#3fb950] font-mono text-[12px]">+<span data-opx-diff-added>{initAdded}</span></span>
+    <span class="text-[#f85149] font-mono text-[12px]">-<span data-opx-diff-removed>{initRemoved}</span></span>
     <div class="ml-auto flex items-center gap-1.5">
       <button class="text-[12px] px-2.5 py-0.5 rounded bg-[#0e639c] text-white">Keep</button>
       <button class="text-[12px] px-2.5 py-0.5 rounded bg-[#3a3d41] text-[#cccccc] border border-[#3c3c3c]">Undo</button>

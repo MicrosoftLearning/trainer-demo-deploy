@@ -8,27 +8,195 @@ import FilesStep from "./steps/FilesStep.astro";
 import SummaryStep from "./steps/SummaryStep.astro";
 import StatusStep from "./steps/StatusStep.astro";
 
-type Props = { steps: Step[]; height?: number; speed?: number };
-const { steps, height = 260, speed = 1 } = Astro.props;
+type Props = {
+  steps: Step[];
+  height?: number;
+  speed?: number;
+  mode?: "marquee" | "player";
+  id?: string;
+  loop?: boolean;
+  startDelay?: number;
+  loopPause?: number;
+};
+const {
+  steps,
+  height = 260,
+  speed = 1,
+  mode = "marquee",
+  id = "opx",
+  loop = true,
+  startDelay = 400,
+  loopPause = 2200,
+} = Astro.props;
+
 const duration = Math.max(8, Math.round(36 / speed));
+const isPlayer = mode === "player";
+
+// Player runtime config (passed into the inline script via define:vars).
+const cfg = { id, loop, startDelay, loopPause, speed };
 ---
 <div
-  class="opx-viewport relative overflow-hidden"
+  class={`opx-viewport relative overflow-hidden ${isPlayer ? "opx-player" : ""}`}
   style={`height:${height}px`}
+  data-opx-viewport-id={id}
 >
   <div
-    class="opx-scroll px-4 py-4 space-y-3 text-[11.5px] leading-snug text-[#c9d1d9]"
-    style={`animation-duration:${duration}s; --opx-end:${height - 20}px;`}
+    class={`opx-scroll ${isPlayer ? "opx-scroll--player" : ""} px-4 py-4 space-y-3 text-[11.5px] leading-snug text-[#c9d1d9]`}
+    style={isPlayer
+      ? `transition: transform ${Math.max(180, Math.round(420 / speed))}ms cubic-bezier(.45,0,.55,1); will-change: transform;`
+      : `animation-duration:${duration}s; --opx-end:${height - 20}px;`}
   >
     {steps.map((s) => {
       const k = stepKind(s);
-      if (k === "user")    { const { handle, avatar, body, when } = (s as any).user;       return <UserStep handle={handle} initials={avatar.initials} gradient={avatar.gradient} body={body} when={when} />; }
-      if (k === "agent")   { const { body, code } = (s as any).agent;                       return <AgentStep body={body} code={code} />; }
-      if (k === "tool")    { const { kind, title, detail, result } = (s as any).tool;       return <ToolStep kind={kind} title={title} detail={detail} result={result} />; }
-      if (k === "files")   { const { files } = s as any;                                    return <FilesStep files={files} />; }
-      if (k === "summary") { const { title, lead, bullets } = (s as any).summary;           return <SummaryStep title={title} lead={lead} bullets={bullets} />; }
-      const { kind: sk, text } = (s as any).status;                                         return <StatusStep kind={sk} text={text} />;
+      const tj = isPlayer ? JSON.stringify((s as any).timing ?? {}) : null;
+      const aj = isPlayer ? JSON.stringify((s as any).advances ?? null) : null;
+      let body;
+      if      (k === "user")    { const { handle, avatar, body: b, when } = (s as any).user;   body = <UserStep handle={handle} initials={avatar.initials} gradient={avatar.gradient} body={b} when={when} />; }
+      else if (k === "agent")   { const { body: b, code }                  = (s as any).agent;  body = <AgentStep body={b} code={code} />; }
+      else if (k === "tool")    { const { kind, title, detail, result }    = (s as any).tool;   body = <ToolStep kind={kind} title={title} detail={detail} result={result} />; }
+      else if (k === "files")   { const { files }                          = s as any;          body = <FilesStep files={files} />; }
+      else if (k === "summary") { const { title, lead, bullets }           = (s as any).summary;body = <SummaryStep title={title} lead={lead} bullets={bullets} />; }
+      else                      { const { kind: sk, text }                 = (s as any).status; body = <StatusStep kind={sk} text={text} />; }
+      if (isPlayer) {
+        return (
+          <div
+            data-opx-step
+            data-opx-kind={k}
+            data-opx-state="pending"
+            data-opx-timing={tj}
+            data-opx-advances={aj}
+          >{body}</div>
+        );
+      }
+      return <div data-opx-step data-opx-kind={k}>{body}</div>;
     })}
     <div class="h-8"></div>
   </div>
 </div>
+
+{isPlayer && (
+  <script is:inline define:vars={{ cfg }}>
+    (() => {
+      function start() {
+        const root = document.querySelector(`[data-opx-viewport-id="${cfg.id}"]`);
+        if (!root) return;
+        const scroller = root.querySelector(".opx-scroll");
+        const steps    = Array.from(scroller.querySelectorAll("[data-opx-step]"));
+        if (!steps.length) return;
+        const preview  = root.closest("[data-opx-preview]");
+        const composer = preview?.querySelector("[data-opx-composer]");
+        const $        = (sel) => composer?.querySelector(sel);
+        const counters = {
+          taskDone:    $("[data-opx-task-done]"),
+          diffFiles:   $("[data-opx-diff-files]"),
+          diffAdded:   $("[data-opx-diff-added]"),
+          diffRemoved: $("[data-opx-diff-removed]"),
+        };
+
+        const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) {
+          // Static render: reveal everything; counters keep their meta values
+          // (Composer rendered 0s in player mode, so bump to final by walking advances once).
+          let t = 0, f = 0, a = 0, r = 0;
+          steps.forEach((el) => {
+            el.dataset.opxState = "visible";
+            const adv = safeJSON(el.dataset.opxAdvances);
+            if (adv) { t += adv.task||0; f += adv.files||0; a += adv.added||0; r += adv.removed||0; }
+          });
+          setText(counters.taskDone, t);
+          setText(counters.diffFiles, f);
+          setText(counters.diffAdded, a);
+          setText(counters.diffRemoved, r);
+          return;
+        }
+
+        let paused = false;
+        root.addEventListener("mouseenter", () => { paused = true; });
+        root.addEventListener("mouseleave", () => { paused = false; });
+
+        function safeJSON(s) { try { return s ? JSON.parse(s) : null; } catch { return null; } }
+        function setText(el, v) { if (el) el.textContent = String(v); }
+        function sleep(ms) {
+          return new Promise((res) => {
+            const start = performance.now();
+            (function tick() {
+              if (paused) return setTimeout(tick, 80);
+              const left = ms - (performance.now() - start);
+              if (left <= 0) return res();
+              setTimeout(tick, Math.min(left, 80));
+            })();
+          });
+        }
+        function scrollTo(el) {
+          const padBottom = 20;
+          const viewportH = root.clientHeight;
+          const targetBottom = el.offsetTop + el.offsetHeight + padBottom;
+          const maxY = scroller.scrollHeight - viewportH;
+          const y = Math.max(0, Math.min(targetBottom - viewportH, maxY));
+          scroller.style.transform = `translateY(-${y}px)`;
+        }
+
+        let state = { task: 0, files: 0, added: 0, removed: 0 };
+        function applyAdvances(adv) {
+          if (!adv) return;
+          state.task    += adv.task    || 0;
+          state.files   += adv.files   || 0;
+          state.added   += adv.added   || 0;
+          state.removed += adv.removed || 0;
+          setText(counters.taskDone,    state.task);
+          setText(counters.diffFiles,   state.files);
+          setText(counters.diffAdded,   state.added);
+          setText(counters.diffRemoved, state.removed);
+        }
+        function reset() {
+          state = { task: 0, files: 0, added: 0, removed: 0 };
+          steps.forEach((el) => { el.dataset.opxState = "pending"; });
+          scroller.style.transform = "translateY(0)";
+          setText(counters.taskDone, 0);
+          setText(counters.diffFiles, 0);
+          setText(counters.diffAdded, 0);
+          setText(counters.diffRemoved, 0);
+        }
+
+        async function play() {
+          document.addEventListener("visibilitychange", () => { paused = document.hidden; });
+          while (true) {
+            reset();
+            await sleep(cfg.startDelay);
+            for (let i = 0; i < steps.length; i++) {
+              const el = steps[i];
+              const t  = safeJSON(el.dataset.opxTiming) || {};
+              const adv = safeJSON(el.dataset.opxAdvances);
+              const appearAfter = (t.appearAfter ?? 0) / cfg.speed;
+              const holdFor     = (t.holdFor     ?? 1400) / cfg.speed;
+              const typing      = (t.typing      ?? 0) / cfg.speed;
+              if (appearAfter) await sleep(appearAfter);
+              if (typing && el.dataset.opxKind === "agent") {
+                el.dataset.opxState = "typing";
+                requestAnimationFrame(() => scrollTo(el));
+                await sleep(typing);
+              }
+              el.dataset.opxState = "visible";
+              applyAdvances(adv);
+              requestAnimationFrame(() => scrollTo(el));
+              requestAnimationFrame(() => {
+                for (let j = 0; j < i; j++) {
+                  if (steps[j].dataset.opxState === "visible") steps[j].dataset.opxState = "past";
+                }
+              });
+              if (holdFor) await sleep(holdFor);
+            }
+            if (!cfg.loop) break;
+            await sleep(cfg.loopPause);
+          }
+        }
+        play();
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", start, { once: true });
+      } else {
+        start();
+      }
+    })();
+  </script>
+)}

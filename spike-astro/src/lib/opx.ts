@@ -5,6 +5,26 @@ import yaml from "js-yaml";
 import fs from "node:fs";
 import path from "node:path";
 
+// ---- Per-step extras (used in player mode) --------------------------------
+const Timing = z.object({
+  appearAfter: z.number().nonnegative().default(0),    // ms after previous step finishes
+  holdFor:     z.number().nonnegative().default(1400), // ms it remains "current" before next step starts
+  typing:      z.number().nonnegative().default(0),    // ms of typing-dot animation before body shows (agent only)
+}).default({});
+
+const Advances = z.object({
+  task:    z.number().int().default(0),  // +N to task.progress[0]
+  files:   z.number().int().default(0),  // +N to diff.files
+  added:   z.number().int().default(0),  // +N to diff.added
+  removed: z.number().int().default(0),  // +N to diff.removed
+}).partial().optional();
+
+// Common (optional) sibling keys present on every step kind.
+const StepExtras = {
+  timing:   Timing.optional(),
+  advances: Advances,
+};
+
 // ---- Step schemas ---------------------------------------------------------
 const Avatar = z.object({
   initials: z.string().min(1).max(3),
@@ -18,6 +38,7 @@ const UserStep = z.object({
     body: z.string(),                              // markdown
     when: z.string().default("now"),
   }),
+  ...StepExtras,
 });
 
 const CodeBlock = z.object({
@@ -30,6 +51,7 @@ const AgentStep = z.object({
     body: z.string(),                              // markdown
     code: CodeBlock.optional(),
   }),
+  ...StepExtras,
 });
 
 const ToolStep = z.object({
@@ -39,6 +61,7 @@ const ToolStep = z.object({
     detail: z.string().optional(),
     result: z.string().optional(),                  // markdown allowed
   }),
+  ...StepExtras,
 });
 
 const FileOp = z.enum(["add", "edit", "delete", "rename"]);
@@ -48,6 +71,7 @@ const FilesStep = z.object({
     op: FileOp.default("add"),
     lines: z.number().int().nonnegative().default(0),
   })).min(1),
+  ...StepExtras,
 });
 
 const SummaryStep = z.object({
@@ -56,6 +80,7 @@ const SummaryStep = z.object({
     lead: z.string().optional(),
     bullets: z.array(z.string()).default([]),
   }),
+  ...StepExtras,
 });
 
 const StatusStep = z.object({
@@ -63,10 +88,13 @@ const StatusStep = z.object({
     kind: z.enum(["done", "running", "error"]).default("done"),
     text: z.string(),
   }),
+  ...StepExtras,
 });
 
 export const Step = z.union([UserStep, AgentStep, ToolStep, FilesStep, SummaryStep, StatusStep]);
 export type Step = z.infer<typeof Step>;
+export type StepTiming = z.infer<typeof Timing>;
+export type StepAdvances = z.infer<typeof Advances>;
 
 // ---- Meta -----------------------------------------------------------------
 const Task = z.object({
@@ -89,6 +117,10 @@ const Meta = z.object({
   diff: Diff,
   speed: z.number().positive().default(1),
   mode: z.enum(["marquee", "player"]).default("marquee"),
+  // player-mode-only knobs (ignored in marquee mode)
+  loop:       z.boolean().default(true),
+  startDelay: z.number().nonnegative().default(400),
+  loopPause:  z.number().nonnegative().default(2200),
 });
 
 export const OpxScript = z.object({

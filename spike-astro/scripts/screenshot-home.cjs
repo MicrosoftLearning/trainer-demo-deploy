@@ -4,7 +4,11 @@ const { chromium } = require(playwrightDir);
 
 (async () => {
   const browser = await chromium.launch();
-  const ctx = await browser.newContext({ viewport: { width: 990, height: 800 }, deviceScaleFactor: 1 });
+  const ctx = await browser.newContext({
+    viewport: { width: 990, height: 800 },
+    deviceScaleFactor: 1,
+    reducedMotion: 'no-preference',
+  });
   const page = await ctx.newPage();
   await page.goto('http://localhost:4321/', { waitUntil: 'networkidle' });
   await page.waitForTimeout(500);

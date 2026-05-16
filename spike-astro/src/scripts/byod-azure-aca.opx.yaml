@@ -7,47 +7,56 @@ meta:
   notes: 1
   task:
     label: "Build BYOD Azure scaffold for AZ-204"
-    progress: [4, 12]
+    progress: [12, 12]
   diff:
     files: 12
     added: 481
     removed: 12
   speed: 1.0
-  mode: marquee
+  mode: player
+  loop: true
+  startDelay: 500
+  loopPause: 2600
 
 steps:
   - user:
-      handle: rfoulkrod
+      handle: jsmith
       avatar:
-        initials: RF
+        initials: js
         gradient: ["#0078D4", "#8661C5"]
       body: |
         @workspace Build me an Azure Container Apps demo with Service Bus
         event-driven scaling for my AZ-204 class. Use a .NET 8 minimal API as
         the producer, managed identity everywhere, and include a demo guide
         with a 5-step walkthrough.
+    timing: { appearAfter: 0,   holdFor: 1600 }
 
   - agent:
       body: |
         Got it — I'll scaffold an azd template for an event-driven ACA demo.
         Looking at similar templates in the catalog first…
+    timing: { appearAfter: 350, holdFor: 1500, typing: 700 }
 
   - tool:
       kind: search
       title: searched workspace
       detail: 'catalog filtered by tag `"aca"`'
       result: 'Found 4 reference templates · using `aca-keda-servicebus` as a starting point'
+    timing: { appearAfter: 250, holdFor: 1700 }
 
   - agent:
       body: |
         I'll create the infra, a .NET 8 producer with a Service Bus sender,
         and a demo guide. Generating files now.
+    timing: { appearAfter: 300, holdFor: 1300, typing: 550 }
 
   - files:
       - { path: "infra/main.bicep",                op: add, lines: 82 }
       - { path: "infra/modules/aca.bicep",         op: add, lines: 64 }
       - { path: "infra/modules/servicebus.bicep",  op: add, lines: 38 }
       - { path: "src/producer/Program.cs",         op: add, lines: 41 }
+    timing:   { appearAfter: 250, holdFor: 1800 }
+    advances: { task: 4, files: 4, added: 225 }
 
   - agent:
       body: |
@@ -68,11 +77,14 @@ steps:
               return Results.Accepted();
           });
           app.Run();
+    timing: { appearAfter: 300, holdFor: 2400, typing: 600 }
 
   - files:
       - { path: "azure.yaml",         op: add, lines: 18  }
       - { path: "demoguide/demo.md",  op: add, lines: 126 }
       - { path: "README.md",          op: add, lines: 47  }
+    timing:   { appearAfter: 250, holdFor: 1600 }
+    advances: { task: 3, files: 3, added: 191 }
 
   - summary:
       title: "Generated 12 files across infra, app, and demo guide"
@@ -82,11 +94,15 @@ steps:
         - "Service Bus namespace + queue, managed identity (no keys)"
         - ".NET 8 minimal API producer container"
         - "5-step demo guide with screenshots placeholders"
+    timing:   { appearAfter: 300, holdFor: 2200 }
+    advances: { task: 5, files: 5, added: 65, removed: 12 }
 
   - agent:
       body: |
         Run `azd up` when you're ready — provisioning takes about 4 minutes.
+    timing: { appearAfter: 300, holdFor: 1500, typing: 450 }
 
   - status:
       kind: done
       text: "Agent finished · 12 edits · 1 search · 0 errors"
+    timing: { appearAfter: 200, holdFor: 2000 }

@@ -15,9 +15,15 @@ const { body, code } = Astro.props;
     <span class="text-xs font-semibold text-[#c9d1d9]">GitHub Copilot</span>
   </div>
   <div class="ml-8 space-y-3">
-    <div class="opx-prose text-[#c9d1d9]" set:html={renderMarkdown(body)} />
-    {code && (
-      <pre class="rounded-md bg-[#161b22] border border-[#30363d] p-3 overflow-x-auto text-[12px] font-mono leading-relaxed text-[#c9d1d9]"><code set:html={highlight(code.lang, code.source)} /></pre>
-    )}
+    <!-- Typing indicator (player mode: visible while parent step is in `typing` state) -->
+    <div class="opx-typing-indicator items-center gap-0.5 py-1">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="opx-agent-body space-y-3">
+      <div class="opx-prose text-[#c9d1d9]" set:html={renderMarkdown(body)} />
+      {code && (
+        <pre class="rounded-md bg-[#161b22] border border-[#30363d] p-3 overflow-x-auto text-[12px] font-mono leading-relaxed text-[#c9d1d9]"><code set:html={highlight(code.lang, code.source)} /></pre>
+      )}
+    </div>
   </div>
 </div>
