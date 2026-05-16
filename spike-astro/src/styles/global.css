@@ -26,6 +26,24 @@ html.dark {
   color: #f3f3f3;
 }
 
+/* GitHub Copilot Chat mock — auto-scroll the transcript with edge fade */
+.chat-viewport {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+}
+.chat-scroll {
+  animation: chat-scroll-up 36s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+.chat-viewport:hover .chat-scroll { animation-play-state: paused; }
+@keyframes chat-scroll-up {
+  0%,  6%  { transform: translateY(0); }
+  92%, 100% { transform: translateY(calc(-100% + 240px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-scroll { animation: none; }
+}
+
 /* Prose styling for rendered markdown inside the side panel */
 .prose-spike { font-size: 14px; line-height: 1.6; color: inherit; }
 .prose-spike h1, .prose-spike h2, .prose-spike h3, .prose-spike h4 {

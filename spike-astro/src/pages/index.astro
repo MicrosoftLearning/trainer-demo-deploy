@@ -1,6 +1,19 @@
 ---
 import Base from "../layouts/Base.astro";
 
+const codeSample = `<span style="color:#ff7b72">var</span> <span style="color:#c9d1d9">builder</span> = <span style="color:#d2a8ff">WebApplication</span>.<span style="color:#d2a8ff">CreateBuilder</span>(<span style="color:#c9d1d9">args</span>);
+<span style="color:#c9d1d9">builder</span>.<span style="color:#c9d1d9">Services</span>.<span style="color:#d2a8ff">AddAzureClients</span>(<span style="color:#c9d1d9">c</span> =&gt;
+  <span style="color:#c9d1d9">c</span>.<span style="color:#d2a8ff">AddServiceBusClientWithNamespace</span>(<span style="color:#a5d6ff">"&lt;ns&gt;.servicebus.windows.net"</span>)
+   .<span style="color:#d2a8ff">WithCredential</span>(<span style="color:#ff7b72">new</span> <span style="color:#d2a8ff">DefaultAzureCredential</span>()));
+
+<span style="color:#ff7b72">var</span> <span style="color:#c9d1d9">app</span> = <span style="color:#c9d1d9">builder</span>.<span style="color:#d2a8ff">Build</span>();
+<span style="color:#c9d1d9">app</span>.<span style="color:#d2a8ff">MapPost</span>(<span style="color:#a5d6ff">"/orders"</span>, <span style="color:#ff7b72">async</span> (<span style="color:#d2a8ff">Order</span> <span style="color:#c9d1d9">o</span>, <span style="color:#d2a8ff">ServiceBusSender</span> <span style="color:#c9d1d9">s</span>) =&gt;
+{
+    <span style="color:#ff7b72">await</span> <span style="color:#c9d1d9">s</span>.<span style="color:#d2a8ff">SendMessageAsync</span>(<span style="color:#ff7b72">new</span>(<span style="color:#d2a8ff">BinaryData</span>.<span style="color:#d2a8ff">FromObjectAsJson</span>(<span style="color:#c9d1d9">o</span>)));
+    <span style="color:#ff7b72">return</span> <span style="color:#d2a8ff">Results</span>.<span style="color:#d2a8ff">Accepted</span>();
+});
+<span style="color:#c9d1d9">app</span>.<span style="color:#d2a8ff">Run</span>();`;
+
 const featureCards = [
   {
     title: "Catalog",
@@ -41,7 +54,7 @@ const featureCards = [
     <!-- HERO: left text + right "screenshot" -->
     <div class="max-w-7xl mx-auto px-6 pt-16 pb-16 md:pt-24 md:pb-20 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-center">
       <!-- LEFT: Demo Deploy headline + CTAs -->
-      <div>
+      <div class="min-w-0">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-6">
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C03BC4]"></span>
           Spike — Astro 5 + Tailwind v4
@@ -74,41 +87,219 @@ const featureCards = [
         </div>
       </div>
 
-      <!-- RIGHT: "screenshot" mock window -->
-      <div class="relative">
-        <div class="rounded-xl overflow-hidden border border-neutral-300 dark:border-neutral-700 bg-neutral-900 shadow-2xl shadow-[#8661C5]/20">
-          <div class="flex items-center gap-2 px-4 py-3 bg-neutral-800 border-b border-neutral-700">
-            <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
-            <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
-            <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
-            <span class="ml-3 text-xs text-neutral-400 font-mono">azd up — trainer-demo-deploy</span>
+      <!-- RIGHT: GitHub Copilot Chat mock with auto-scrolling agent transcript -->
+      <div class="relative min-w-0">
+        <div class="rounded-md overflow-hidden border border-[#252526] bg-[#1e1e1e] shadow-2xl shadow-[#8661C5]/20">
+          <!-- VS Code Chat panel header: row 1 = CHAT tab + window controls -->
+          <div class="flex items-center px-3 pt-2 pb-0 bg-[#1e1e1e]">
+            <div class="relative">
+              <span class="text-[11px] font-semibold tracking-wider text-[#cccccc] uppercase">Chat</span>
+              <span class="absolute -bottom-[6px] left-0 right-0 h-[2px] bg-[#e8762d]"></span>
+            </div>
+            <div class="ml-auto flex items-center gap-2 text-[#cccccc]">
+              <!-- + with caret -->
+              <div class="flex items-center gap-0.5">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 3v10M3 8h10"/></svg>
+                <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="m4 6 4 4 4-4z"/></svg>
+              </div>
+              <!-- gear -->
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.5 1.5M11.5 11.5 13 13M3 13l1.5-1.5M11.5 4.5 13 3"/></svg>
+              <!-- … -->
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="3" cy="8" r="1"/><circle cx="8" cy="8" r="1"/><circle cx="13" cy="8" r="1"/></svg>
+              <span class="w-px h-4 bg-[#3c3c3c] mx-0.5"></span>
+              <!-- expand brackets -->
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 5V2h3M14 5V2h-3M2 11v3h3M14 11v3h-3"/></svg>
+              <!-- close X -->
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m3 3 10 10M13 3 3 13"/></svg>
+            </div>
           </div>
-          <div class="px-5 py-5 font-mono text-[12.5px] leading-relaxed text-neutral-200">
-            <div><span class="text-[#49C5B1]">trainer@class</span><span class="text-neutral-500">:</span><span class="text-[#C5B4E3]">~/conference-api</span><span class="text-neutral-500">$ </span><span class="text-neutral-100">azd init -t conferenceapi</span></div>
-            <div class="text-neutral-400 mt-1">Initializing a new project (~3s)…</div>
-            <div class="text-neutral-400">  (✓) Done: Initialized template</div>
+          <!-- Row 2: back arrow + breadcrumb title + split icon -->
+          <div class="flex items-center gap-2 px-3 pt-3 pb-2 border-b border-[#2b2b2b]">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#cccccc" stroke-width="1.4"><path d="M10 3 5 8l5 5"/></svg>
+            <span class="text-[12px] font-semibold tracking-wide text-[#cccccc] uppercase truncate">Trainer Demo Deploy — BYOD Azure scaffold</span>
+            <span class="ml-auto flex items-center text-[#cccccc]">
+              <!-- split editor icon -->
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="2.5" width="12" height="11" rx="1"/><path d="M8 2.5v11"/></svg>
+            </span>
+          </div>
 
-            <div class="mt-3"><span class="text-[#49C5B1]">trainer@class</span><span class="text-neutral-500">:</span><span class="text-[#C5B4E3]">~/conference-api</span><span class="text-neutral-500">$ </span><span class="text-neutral-100">azd up</span></div>
-            <div class="mt-1"><span class="text-[#C03BC4]">?</span> <span class="text-neutral-300">Select an Azure Subscription:</span> <span class="text-neutral-100">MS Learn Trainer Sub</span></div>
-            <div><span class="text-[#C03BC4]">?</span> <span class="text-neutral-300">Select an Azure location:</span> <span class="text-neutral-100">East US 2</span></div>
+          <!-- Scroll viewport with top/bottom fade mask -->
+          <div class="chat-viewport relative h-[260px] overflow-hidden">
+            <div class="chat-scroll px-4 py-4 space-y-3 text-[11.5px] leading-snug text-[#c9d1d9]">
 
-            <div class="mt-3 text-neutral-400">Packaging services (api)…</div>
-            <div class="text-neutral-400">Provisioning Azure resources (azd provision)</div>
-            <div class="text-[#49C5B1]">  (✓) Done: Resource group: rg-conferenceapi-eus2</div>
-            <div class="text-[#49C5B1]">  (✓) Done: API Management: apim-conf-7x2k</div>
-            <div class="text-[#49C5B1]">  (✓) Done: App Service Plan: plan-conf-7x2k</div>
-            <div class="text-[#49C5B1]">  (✓) Done: App Service: app-conf-7x2k</div>
+              <!-- USER MESSAGE -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2 text-[#8b949e]">
+                  <span class="w-6 h-6 rounded-full bg-gradient-to-br from-[#0078D4] to-[#8661C5] flex items-center justify-center text-white text-[11px] font-semibold">RF</span>
+                  <span class="text-[#c9d1d9] text-xs font-semibold">rfoulkrod</span>
+                  <span class="text-[11px]">· now</span>
+                </div>
+                <div class="ml-8 text-[#c9d1d9]">
+                  <span class="text-[#58a6ff]">@workspace</span> Build me an Azure Container Apps demo with Service Bus event-driven scaling
+                  for my AZ-204 class. Use a .NET 8 minimal API as the producer, managed identity everywhere, and
+                  include a demo guide with a 5-step walkthrough.
+                </div>
+              </div>
 
-            <div class="mt-3 text-neutral-400">Deploying services (azd deploy)</div>
-            <div class="text-[#49C5B1]">  (✓) Done: Deploying service api</div>
+              <!-- ASSISTANT MESSAGE -->
+              <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-md bg-[#161b22] border border-[#30363d] flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="#c9d1d9"><path d="M7.998 0a8 8 0 0 0-2.529 15.59c.4.074.547-.174.547-.385 0-.19-.007-.693-.011-1.36-2.226.483-2.695-1.073-2.695-1.073-.364-.924-.888-1.17-.888-1.17-.726-.496.055-.486.055-.486.803.057 1.226.824 1.226.824.714 1.223 1.873.87 2.33.665.072-.517.279-.87.508-1.07-1.777-.202-3.644-.889-3.644-3.953 0-.873.312-1.587.823-2.146-.082-.202-.357-1.015.078-2.117 0 0 .672-.215 2.2.82a7.66 7.66 0 0 1 2.003-.27 7.7 7.7 0 0 1 2.003.27c1.527-1.035 2.198-.82 2.198-.82.436 1.102.162 1.915.08 2.117.512.559.822 1.273.822 2.146 0 3.072-1.87 3.748-3.653 3.946.287.247.543.735.543 1.481 0 1.07-.01 1.933-.01 2.195 0 .213.144.463.55.385A8 8 0 0 0 7.998 0Z"/></svg>
+                  </span>
+                  <span class="text-xs font-semibold text-[#c9d1d9]">GitHub Copilot</span>
+                </div>
+                <div class="ml-8 space-y-3">
+                  <p>Got it — I'll scaffold an azd template for an event-driven ACA demo. Looking at similar templates in the catalog first…</p>
 
-            <div class="mt-3 text-neutral-100">SUCCESS: Your application was provisioned and deployed in <span class="text-[#C5B4E3]">4 minutes 12 seconds</span>.</div>
-            <div class="mt-1 text-neutral-400">You can view your resources in the Azure portal:</div>
-            <div class="text-[#8661C5] underline truncate">https://portal.azure.com/#@/resource/.../rg-conferenceapi-eus2</div>
+                  <!-- tool call card -->
+                  <div class="rounded-md border border-[#30363d] bg-[#161b22] px-3 py-2 text-[12px]">
+                    <div class="flex items-center gap-2 text-[#8b949e]">
+                      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 1 1-1.06 1.06l-3.04-3.04ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/></svg>
+                      <span><span class="text-[#c9d1d9]">searched workspace</span> · catalog filtered by tag <span class="font-mono text-[#a5d6ff]">"aca"</span></span>
+                    </div>
+                    <div class="mt-1 text-[#8b949e] pl-5">Found 4 reference templates · using <span class="font-mono text-[#a5d6ff]">aca-keda-servicebus</span> as a starting point</div>
+                  </div>
 
-            <div class="mt-3 flex items-center gap-2">
-              <span class="inline-block w-2 h-2 rounded-full bg-[#49C5B1] animate-pulse"></span>
-              <span class="text-neutral-300">Demo ready. Open the demo guide and teach.</span>
+                  <p>I'll create the infra, a .NET 8 producer with a Service Bus sender, and a demo guide. Generating files now.</p>
+
+                  <!-- File-edit cards -->
+                  <div class="space-y-1.5">
+                    <div class="flex items-center gap-2 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1.5 text-[12px]">
+                      <span class="text-[#3fb950]">+</span>
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Z"/></svg>
+                      <span class="font-mono text-[#a5d6ff]">infra/main.bicep</span>
+                      <span class="ml-auto text-[#8b949e]">+82</span>
+                    </div>
+                    <div class="flex items-center gap-2 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1.5 text-[12px]">
+                      <span class="text-[#3fb950]">+</span>
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Z"/></svg>
+                      <span class="font-mono text-[#a5d6ff]">infra/modules/aca.bicep</span>
+                      <span class="ml-auto text-[#8b949e]">+64</span>
+                    </div>
+                    <div class="flex items-center gap-2 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1.5 text-[12px]">
+                      <span class="text-[#3fb950]">+</span>
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Z"/></svg>
+                      <span class="font-mono text-[#a5d6ff]">infra/modules/servicebus.bicep</span>
+                      <span class="ml-auto text-[#8b949e]">+38</span>
+                    </div>
+                    <div class="flex items-center gap-2 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1.5 text-[12px]">
+                      <span class="text-[#3fb950]">+</span>
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Z"/></svg>
+                      <span class="font-mono text-[#a5d6ff]">src/producer/Program.cs</span>
+                      <span class="ml-auto text-[#8b949e]">+41</span>
+                    </div>
+                  </div>
+
+                  <p class="text-[#c9d1d9]">Here's the core producer endpoint — uses <span class="font-mono text-[#a5d6ff]">DefaultAzureCredential</span> so it picks up the managed identity in ACA:</p>
+
+                  <!-- code block -->
+                  <pre class="rounded-md bg-[#161b22] border border-[#30363d] p-3 overflow-x-auto text-[12px] font-mono leading-relaxed text-[#c9d1d9]"><code set:html={codeSample}></code></pre>
+
+                  <!-- more tool cards -->
+                  <div class="space-y-1.5">
+                    <div class="flex items-center gap-2 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1.5 text-[12px]">
+                      <span class="text-[#3fb950]">+</span>
+                      <span class="font-mono text-[#a5d6ff]">azure.yaml</span>
+                      <span class="ml-auto text-[#8b949e]">+18</span>
+                    </div>
+                    <div class="flex items-center gap-2 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1.5 text-[12px]">
+                      <span class="text-[#3fb950]">+</span>
+                      <span class="font-mono text-[#a5d6ff]">demoguide/demo.md</span>
+                      <span class="ml-auto text-[#8b949e]">+126</span>
+                    </div>
+                    <div class="flex items-center gap-2 rounded-md border border-[#30363d] bg-[#161b22] px-3 py-1.5 text-[12px]">
+                      <span class="text-[#3fb950]">+</span>
+                      <span class="font-mono text-[#a5d6ff]">README.md</span>
+                      <span class="ml-auto text-[#8b949e]">+47</span>
+                    </div>
+                  </div>
+
+                  <!-- summary card -->
+                  <div class="rounded-md border border-[#3fb950]/40 bg-[#3fb950]/5 px-3 py-2.5 text-[12.5px]">
+                    <div class="flex items-center gap-2 text-[#3fb950] font-semibold mb-1">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+                      Generated 12 files across infra, app, and demo guide
+                    </div>
+                    <div class="text-[#c9d1d9]">Your demo includes:</div>
+                    <ul class="list-disc list-inside text-[#c9d1d9] mt-1 space-y-0.5">
+                      <li>Container Apps env with KEDA Service Bus scaler</li>
+                      <li>Service Bus namespace + queue, managed identity (no keys)</li>
+                      <li>.NET 8 minimal API producer container</li>
+                      <li>5-step demo guide with screenshots placeholders</li>
+                    </ul>
+                  </div>
+
+                  <p>Run <code class="px-1.5 py-0.5 rounded bg-[#161b22] border border-[#30363d] font-mono text-[12px] text-[#a5d6ff]">azd up</code> when you're ready — provisioning takes about 4 minutes.</p>
+
+                  <div class="flex items-center gap-2 text-[#8b949e] text-[11px] pt-1">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#3fb950] animate-pulse"></span>
+                    Agent finished · 12 edits · 1 search · 0 errors
+                  </div>
+                </div>
+              </div>
+
+              <!-- spacer so scroll loops cleanly -->
+              <div class="h-8"></div>
+            </div>
+          </div>
+
+          <!-- VS Code Chat composer (matches reference) -->
+          <div class="bg-[#1e1e1e] border-t border-[#2b2b2b] text-[#cccccc]">
+            <!-- task progress row -->
+            <div class="flex items-center gap-2 px-3 pt-2 pb-1.5 text-[12px]">
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="m5 3 6 5-6 5z"/></svg>
+              <span class="relative inline-flex items-center justify-center w-4 h-4">
+                <span class="absolute inset-0 rounded-full border-2 border-[#3794ff]"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#3794ff]"></span>
+              </span>
+              <span class="truncate">Build BYOD Azure scaffold for AZ-204 (4/12)</span>
+              <svg class="ml-auto" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#cccccc" stroke-width="1.2"><path d="M3 4h6M3 8h6M3 12h6"/><path d="m12 4 2 2-2 2M12 10l2 2-2 2"/></svg>
+            </div>
+            <!-- files changed row -->
+            <div class="flex items-center gap-2 px-3 pb-2 text-[12px]">
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="m5 3 6 5-6 5z"/></svg>
+              <span class="text-[#cccccc]">12 files changed</span>
+              <span class="text-[#3fb950] font-mono text-[12px]">+481</span>
+              <span class="text-[#f85149] font-mono text-[12px]">-12</span>
+              <div class="ml-auto flex items-center gap-1.5">
+                <button class="text-[12px] px-2.5 py-0.5 rounded bg-[#0e639c] text-white">Keep</button>
+                <button class="text-[12px] px-2.5 py-0.5 rounded bg-[#3a3d41] text-[#cccccc] border border-[#3c3c3c]">Undo</button>
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#cccccc" stroke-width="1.2"><rect x="4" y="2" width="8" height="11" rx="1"/><path d="M6 2v-.5h4V2"/></svg>
+              </div>
+            </div>
+            <!-- composer textarea -->
+            <div class="mx-3 mb-2 rounded border border-[#3c3c3c] bg-[#1e1e1e]">
+              <!-- context chip -->
+              <div class="flex items-center gap-2 px-2 pt-2">
+                <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded border border-[#3c3c3c] text-[12px] text-[#cccccc]">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 3v10M3 8h10"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg>
+                  <span class="italic text-[#9e9e9e] truncate max-w-[180px]">Trainer Demo Deploy — Demos, r…</span>
+                </span>
+              </div>
+              <!-- notes count -->
+              <div class="px-3 pt-2 text-[12px] text-[#9e9e9e]">1 note</div>
+              <!-- placeholder -->
+              <div class="px-3 pt-2 pb-2 text-[13px] text-[#7a7a7a]">Describe what to build</div>
+              <!-- bottom toolbar -->
+              <div class="flex items-center gap-2 px-2 py-1.5 border-t border-[#2b2b2b]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#cccccc" stroke-width="1.3"><path d="M8 3v10M3 8h10"/></svg>
+                <span class="text-[12px] text-[#cccccc]">orchestrator</span>
+                <span class="w-px h-4 bg-[#3c3c3c]"></span>
+                <span class="text-[12px] text-[#cccccc]">Claude Opus 4.7</span>
+                <span class="w-px h-4 bg-[#3c3c3c]"></span>
+                <!-- sliders -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#cccccc" stroke-width="1.2"><path d="M2 4h7M12 4h2M2 8h3M8 8h6M2 12h9M12 12h2"/><circle cx="10.5" cy="4" r="1.3"/><circle cx="6.5" cy="8" r="1.3"/><circle cx="10.5" cy="12" r="1.3"/></svg>
+                <div class="ml-auto flex items-center gap-2 text-[#cccccc]">
+                  <!-- mic -->
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="6" y="2" width="4" height="7" rx="2"/><path d="M3.5 8a4.5 4.5 0 0 0 9 0M8 12.5V14"/></svg>
+                  <!-- stop (square in circle, since agent is running) -->
+                  <span class="inline-flex items-center justify-center w-5 h-5 rounded-full border border-[#cccccc]">
+                    <span class="w-2 h-2 bg-[#cccccc]"></span>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
