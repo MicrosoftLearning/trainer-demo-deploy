@@ -1,0 +1,764 @@
+---
+import Base from "../layouts/Base.astro";
+import templates from "../data/templates.json";
+import tagLabelsRaw from "../data/tag-labels.json";
+
+type TagInfo = { label: string };
+const tagLabels = tagLabelsRaw as Record<string, TagInfo>;
+
+type Template = {
+  title: string;
+  description: string;
+  preview: string;
+  website: string;
+  author: string;
+  source: string | null;
+  tags: string[];
+  demoguide?: string;
+  cost?: string;
+  deploytime?: string;
+  prereqs?: string;
+};
+
+const data = templates as Template[];
+
+// Derive tag universe from actual usage so we never show a filter for an unused tag
+const tagsInUse = new Set<string>();
+data.forEach((t) => t.tags?.forEach((tag) => tagsInUse.add(tag)));
+
+// Special tags (badge-rendered on cards too)
+const SPECIAL = ["hot", "mct", "msft", "new"] as const;
+
+// Classify a tag id into a filter group
+function groupOf(id: string): "special" | "course" | "framework" | "service" {
+  if ((SPECIAL as readonly string[]).includes(id)) return "special";
+  // Course IDs match ai-102, az-204, dp-3001, sc-5008, etc.
+  if (/^(ai|az|dp|sc|md|ms|pl)-\d+$/.test(id)) return "course";
+  const frameworks = new Set(["dotnet", "nodejs", "python", "semantic-kernel", "blazor"]);
+  if (frameworks.has(id)) return "framework";
+  return "service";
+}
+
+function labelFor(id: string): string {
+  const meta = tagLabels[id];
+  if (meta?.label) return meta.label;
+  // Fallback: az-204 → AZ-204, appservice → Appservice
+  if (/^[a-z]{2,3}-\d+$/.test(id)) return id.toUpperCase();
+  return id.charAt(0).toUpperCase() + id.slice(1);
+}
+
+// Build the filter groups (sorted by label)
+const groups = {
+  special: [] as string[],
+  course: [] as string[],
+  framework: [] as string[],
+  service: [] as string[],
+};
+[...tagsInUse].forEach((id) => groups[groupOf(id)].push(id));
+(Object.keys(groups) as (keyof typeof groups)[]).forEach((k) =>
+  groups[k].sort((a, b) => labelFor(a).localeCompare(labelFor(b)))
+);
+
+// Authors universe
+const authors = [...new Set(data.map((t) => t.author).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+
+// Stripe palette to cycle on each card
+const stripes = [
+  "from-[#8661C5] to-[#C03BC4]",
+  "from-[#0078D4] to-[#389A91]",
+  "from-[#49C5B1] to-[#C03BC4]",
+  "from-[#C03BC4] to-[#8661C5]",
+  "from-[#49C5B1] to-[#0078D4]",
+  "from-[#C5B4E3] to-[#8661C5]",
+];
+
+// Build the azd init command from the source URL (https://github.com/OWNER/REPO)
+function azdSlug(source: string | null | undefined): string | null {
+  if (!source) return null;
+  const m = source.match(/github\.com\/([^/]+)\/([^/?#]+)/i);
+  return m ? `${m[1]}/${m[2].replace(/\.git$/i, "")}` : null;
+}
+---
+<Base title="Trainer-Demo-Deploy Catalog — Astro Spike">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 -left-20 w-[1600px] h-[720px] rounded-full opacity-70 dark:opacity-90"
+           style="background: radial-gradient(closest-side, rgba(134,97,197,0.30), transparent 70%);"></div>
+      <div class="absolute -top-32 right-0 w-[1400px] h-[640px] rounded-full opacity-60 dark:opacity-80"
+           style="background: radial-gradient(closest-side, rgba(192,59,196,0.25), transparent 72%);"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 pt-16 pb-10 text-center">
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-3">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#8661C5] via-[#C03BC4] to-[#8661C5]">
+          Trainer-Demo-Deploy Catalog
+        </span>
+      </h1>
+      <p class="text-neutral-600 dark:text-neutral-300 mb-6">
+        Open-sourced, AZD-based, available to trainers and learners of Microsoft ILT Courses.
+      </p>
+      <div class="relative max-w-3xl mx-auto">
+        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input
+          id="q"
+          type="search"
+          placeholder="Find your next Azure training demo..."
+          class="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 focus:border-[#8661C5] dark:focus:border-[#C5B4E3] focus:outline-none focus:ring-2 focus:ring-[#8661C5]/30 shadow-sm text-base"
+        />
+      </div>
+      <p class="mt-4 text-sm text-neutral-500 dark:text-neutral-400 max-w-2xl mx-auto">
+        Each template is a fully-workable, cloud-ready scenario deployable with the Azure Developer CLI (azd).
+        New to azd? <a class="text-[#8661C5] dark:text-[#C5B4E3] hover:underline" href="https://aka.ms/azd">Welcome — learn more in the official AZD docs.</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Body: filter sidebar + cards -->
+  <section class="max-w-7xl mx-auto px-6 pb-24 md:flex md:gap-8">
+    <!-- Sidebar -->
+    <aside class="space-y-6 md:w-[240px] md:shrink-0 mb-8 md:mb-0">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold">Filter by</h2>
+        <button id="clear-filters" class="text-xs text-[#8661C5] dark:text-[#C5B4E3] hover:underline">Clear</button>
+      </div>
+
+      <!-- Special tags (always visible) -->
+      <div class="space-y-2">
+        {groups.special.map((id) => (
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" class="tag-cb accent-[#8661C5]" data-tag={id} />
+            <span>{labelFor(id)}</span>
+          </label>
+        ))}
+      </div>
+
+      <!-- Collapsible groups -->
+      {([
+        ["service", "Azure Services"],
+        ["course", "ILT Courses"],
+        ["framework", "Frameworks"],
+      ] as const).map(([key, title]) => (
+        <details class="group border-t border-neutral-200 dark:border-neutral-800 pt-4">
+          <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-sm">
+            <span>{title}</span>
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="mt-3 space-y-2 max-h-72 overflow-y-auto pr-2">
+            {groups[key].map((id) => (
+              <label class="flex items-start gap-2 text-sm cursor-pointer">
+                <input type="checkbox" class="tag-cb accent-[#8661C5] mt-0.5" data-tag={id} />
+                <span class="text-neutral-700 dark:text-neutral-300">{labelFor(id)}</span>
+              </label>
+            ))}
+          </div>
+        </details>
+      ))}
+
+      <details class="group border-t border-neutral-200 dark:border-neutral-800 pt-4">
+        <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-sm">
+          <span>Authors</span>
+          <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="mt-3 space-y-2 max-h-72 overflow-y-auto pr-2">
+          {authors.map((a) => (
+            <label class="flex items-start gap-2 text-sm cursor-pointer">
+              <input type="checkbox" class="author-cb accent-[#8661C5] mt-0.5" data-author={a} />
+              <span class="text-neutral-700 dark:text-neutral-300">{a}</span>
+            </label>
+          ))}
+        </div>
+      </details>
+    </aside>
+
+    <!-- Card grid -->
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center justify-between mb-4">
+        <p class="text-sm text-neutral-600 dark:text-neutral-400">
+          <span id="count">{data.length}</span> of {data.length} templates
+        </p>
+        <select id="sort" class="text-sm bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-md px-2 py-1">
+          <option value="default">Default order</option>
+          <option value="title">Title A→Z</option>
+          <option value="author">Author A→Z</option>
+        </select>
+      </div>
+
+      <div id="empty" class="hidden text-center py-20 text-neutral-500">
+        <p class="text-lg font-medium mb-2">No templates match those filters.</p>
+        <p class="text-sm">Try clearing some checkboxes or adjusting your search.</p>
+      </div>
+
+      <div id="grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {data.map((t, i) => {
+          const isMtt = t.tags?.includes("msft");
+          const isMct = t.tags?.includes("mct");
+          const isHot = t.tags?.includes("hot");
+          const isNew = t.tags?.includes("new");
+          const slug = azdSlug(t.source);
+          const visibleTags = (t.tags ?? []).filter((tag) => !(SPECIAL as readonly string[]).includes(tag));
+          const shownTags = visibleTags.slice(0, 4);
+          const overflow = visibleTags.length - shownTags.length;
+          const haystack = (t.title + " " + t.description + " " + t.author).toLowerCase();
+          return (
+            <article
+              class="card group relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5 flex flex-col cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#8661C5]/20 hover:border-[#8661C5]/40 dark:hover:border-[#C5B4E3]/40"
+              data-tags={(t.tags ?? []).join(",")}
+              data-author={t.author}
+              data-title={t.title}
+              data-haystack={haystack}
+              data-index={i}
+              tabindex="0"
+              role="button"
+              aria-label={`Open details for ${t.title}`}
+            >
+              <div class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${stripes[i % stripes.length]}`}></div>
+
+              <!-- Author badge row -->
+              <div class="flex items-center justify-between mb-3 mt-1">
+                <div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+                  {isMtt && (
+                    <span class="inline-flex items-center gap-1.5">
+                      <svg width="14" height="14" viewBox="0 0 23 23"><rect width="10" height="10" fill="#f25022"/><rect x="12" width="10" height="10" fill="#7fba00"/><rect y="12" width="10" height="10" fill="#00a4ef"/><rect x="12" y="12" width="10" height="10" fill="#ffb900"/></svg>
+                      MTT Authored
+                    </span>
+                  )}
+                  {isMct && !isMtt && (
+                    <span class="inline-flex items-center gap-1.5 text-[#8661C5] dark:text-[#C5B4E3] font-medium">MCT Authored</span>
+                  )}
+                </div>
+                <div class="flex items-center gap-2 text-xs">
+                  {isHot && <span class="inline-flex items-center gap-1 text-[#C03BC4]">🔥 hot</span>}
+                  {isNew && <span class="inline-flex items-center gap-1 text-[#389A91]">✦ new</span>}
+                </div>
+              </div>
+
+              <h3 class="text-base font-semibold leading-tight mb-1">
+                <a href={t.source ?? t.website ?? "#"} target="_blank" rel="noopener" class="text-[#0078D4] dark:text-[#C5B4E3] hover:underline">
+                  {t.title}
+                </a>
+              </h3>
+              <p class="text-xs text-neutral-500 dark:text-neutral-400 mb-3">by {t.author}</p>
+
+              <p class="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4 line-clamp-3 flex-1">
+                {t.description}
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                {shownTags.map((tag) => (
+                  <span class="inline-flex items-center text-[11px] px-2 py-0.5 rounded-full border border-[#C03BC4]/40 text-[#C03BC4] dark:text-[#C5B4E3] dark:border-[#C5B4E3]/40 truncate max-w-[180px]" title={labelFor(tag)}>
+                    {labelFor(tag)}
+                  </span>
+                ))}
+                {overflow > 0 && (
+                  <span class="inline-flex items-center text-[11px] px-2 py-0.5 rounded-full bg-[#C03BC4] text-white">+ {overflow} more</span>
+                )}
+              </div>
+
+              {slug && (
+                <div class="flex items-center gap-2 bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 rounded-md px-2.5 py-1.5 mt-auto">
+                  <code class="text-[12px] font-mono text-neutral-700 dark:text-neutral-300 truncate flex-1">azd init -t {slug}</code>
+                  <button
+                    class="copy-btn shrink-0 inline-flex items-center justify-center w-7 h-7 rounded bg-[#0078D4] hover:bg-[#106EBE] text-white"
+                    data-copy={`azd init -t ${slug}`}
+                    aria-label="Copy command"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                </div>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const q = document.getElementById('q');
+      const grid = document.getElementById('grid');
+      const empty = document.getElementById('empty');
+      const count = document.getElementById('count');
+      const sort = document.getElementById('sort');
+      const tagCbs = document.querySelectorAll('.tag-cb');
+      const authorCbs = document.querySelectorAll('.author-cb');
+      const cards = Array.from(grid.querySelectorAll('.card'));
+      const totalCards = cards.length;
+
+      function apply() {
+        const term = (q.value || '').trim().toLowerCase();
+        const selectedTags = Array.from(tagCbs).filter(c => c.checked).map(c => c.dataset.tag);
+        const selectedAuthors = Array.from(authorCbs).filter(c => c.checked).map(c => c.dataset.author);
+
+        let shown = 0;
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || '').split(',');
+          const author = card.dataset.author || '';
+          const hay = card.dataset.haystack || '';
+          const matchesTerm = !term || hay.includes(term);
+          const matchesTags = selectedTags.length === 0 || selectedTags.every(t => tags.includes(t));
+          const matchesAuthors = selectedAuthors.length === 0 || selectedAuthors.includes(author);
+          const show = matchesTerm && matchesTags && matchesAuthors;
+          card.style.display = show ? '' : 'none';
+          if (show) shown++;
+        });
+
+        count.textContent = String(shown);
+        empty.classList.toggle('hidden', shown !== 0);
+        grid.classList.toggle('hidden', shown === 0);
+      }
+
+      function applySort() {
+        const mode = sort.value;
+        const sorted = [...cards];
+        if (mode === 'title') sorted.sort((a, b) => (a.dataset.title || '').localeCompare(b.dataset.title || ''));
+        else if (mode === 'author') sorted.sort((a, b) => (a.dataset.author || '').localeCompare(b.dataset.author || ''));
+        else sorted.sort((a, b) => Number(a.dataset.index) - Number(b.dataset.index));
+        sorted.forEach(c => grid.appendChild(c));
+      }
+
+      q?.addEventListener('input', apply);
+      tagCbs.forEach(cb => cb.addEventListener('change', apply));
+      authorCbs.forEach(cb => cb.addEventListener('change', apply));
+      sort?.addEventListener('change', applySort);
+
+      document.getElementById('clear-filters')?.addEventListener('click', () => {
+        q.value = '';
+        tagCbs.forEach(cb => (cb.checked = false));
+        authorCbs.forEach(cb => (cb.checked = false));
+        apply();
+      });
+
+      // Copy buttons
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const text = btn.dataset.copy || '';
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = btn.innerHTML;
+            btn.innerHTML = '✓';
+            btn.classList.add('bg-emerald-600');
+            btn.classList.remove('bg-[#0078D4]');
+            setTimeout(() => {
+              btn.innerHTML = orig;
+              btn.classList.remove('bg-emerald-600');
+              btn.classList.add('bg-[#0078D4]');
+            }, 1200);
+          } catch (e) {
+            console.warn('Clipboard write failed', e);
+          }
+        });
+      });
+
+      // Initial paint
+      apply();
+    })();
+  </script>
+
+  <!-- ============ SIDE PANEL ============ -->
+  <!-- Backdrop -->
+  <div
+    id="panel-backdrop"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-200"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Panel -->
+  <aside
+    id="detail-panel"
+    class="fixed top-0 right-0 h-full w-full sm:w-[560px] md:w-[640px] lg:w-[720px] bg-white dark:bg-neutral-900 z-50 shadow-2xl translate-x-full transition-transform duration-300 ease-out flex flex-col"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="panel-title"
+    tabindex="-1"
+  >
+    <!-- Header -->
+    <div class="flex items-start justify-between gap-4 px-6 pt-5 pb-3 border-b border-neutral-200 dark:border-neutral-800">
+      <div class="flex-1 min-w-0">
+        <div id="panel-badges" class="flex items-center gap-3 text-xs mb-2"></div>
+        <h2 id="panel-title" class="text-2xl font-semibold leading-tight"></h2>
+        <div class="flex items-center gap-2 text-sm mt-2 text-neutral-600 dark:text-neutral-400 flex-wrap">
+          <span>by</span>
+          <a id="panel-author-link" target="_blank" rel="noopener" class="text-[#0078D4] dark:text-[#C5B4E3] hover:underline font-medium"></a>
+          <span class="text-neutral-300 dark:text-neutral-600">•</span>
+          <a id="panel-source-link" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[#0078D4] dark:text-[#C5B4E3] hover:underline">
+            View in GitHub
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+      <button
+        id="panel-close"
+        aria-label="Close panel"
+        class="shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Tag pills -->
+    <div id="panel-tags" class="flex flex-wrap gap-1.5 px-6 py-3 border-b border-neutral-200 dark:border-neutral-800"></div>
+
+    <!-- Tabs -->
+    <div class="px-6 border-b border-neutral-200 dark:border-neutral-800">
+      <div role="tablist" class="flex gap-1 -mb-px">
+        <button data-tab="details" class="panel-tab px-4 py-2.5 text-sm font-medium border-b-2 border-[#8661C5] text-[#8661C5] dark:text-[#C5B4E3]" role="tab" aria-selected="true">Template Details</button>
+        <button data-tab="demo" class="panel-tab px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white" role="tab" aria-selected="false">Demo Guide</button>
+        <button data-tab="blueprint" class="panel-tab px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white" role="tab" aria-selected="false">Course Blueprint</button>
+        <button data-tab="legal" class="panel-tab px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white" role="tab" aria-selected="false">Legal</button>
+      </div>
+    </div>
+
+    <!-- Body (scrollable) -->
+    <div class="flex-1 overflow-y-auto">
+      <!-- Details tab -->
+      <section data-panel="details" class="panel-pane p-6 space-y-5">
+        <p id="panel-description" class="text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300"></p>
+
+        <hr class="border-neutral-200 dark:border-neutral-800" />
+
+        <div class="grid grid-cols-1 gap-3 text-sm">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-[#49C5B1]/15 text-[#389A91] shrink-0">$</span>
+            <div>
+              <div class="font-medium text-neutral-900 dark:text-neutral-100">Cost Estimate</div>
+              <div class="text-neutral-600 dark:text-neutral-400" id="panel-cost"></div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-[#0078D4]/15 text-[#0078D4] shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <div>
+              <div class="font-medium text-neutral-900 dark:text-neutral-100">Time Estimate</div>
+              <div class="text-neutral-600 dark:text-neutral-400" id="panel-deploytime"></div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-[#8661C5]/15 text-[#8661C5] shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+            </span>
+            <div class="min-w-0">
+              <div class="font-medium text-neutral-900 dark:text-neutral-100">Deployment Prereqs</div>
+              <div id="panel-prereqs" class="text-neutral-600 dark:text-neutral-400"></div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-neutral-200 dark:border-neutral-800" />
+
+        <!-- Deploy commands -->
+        <div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2">Deploy with Azure Developer CLI</div>
+          <div id="panel-commands" class="space-y-2"></div>
+        </div>
+      </section>
+
+      <!-- Demo Guide tab -->
+      <section data-panel="demo" class="panel-pane p-6 hidden">
+        <div id="panel-demo-loading" class="text-sm text-neutral-500 hidden">Loading demo guide…</div>
+        <div id="panel-demo-error" class="text-sm text-red-600 hidden"></div>
+        <a id="panel-demo-link" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-sm text-[#0078D4] dark:text-[#C5B4E3] hover:underline mb-4">
+          Open raw guide
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+        <article id="panel-demo-content" class="prose-spike"></article>
+      </section>
+
+      <!-- Course Blueprint tab -->
+      <section data-panel="blueprint" class="panel-pane p-6 hidden text-sm text-neutral-600 dark:text-neutral-400">
+        <div id="panel-blueprint-body">
+          <p class="mb-3">Microsoft ILT courses this template maps to:</p>
+          <ul id="panel-courses" class="list-disc pl-5 space-y-1"></ul>
+          <p id="panel-courses-empty" class="hidden italic">No course mapping declared for this template.</p>
+        </div>
+      </section>
+
+      <!-- Legal tab -->
+      <section data-panel="legal" class="panel-pane p-6 hidden text-sm text-neutral-600 dark:text-neutral-400 space-y-3">
+        <p>These templates are community contributions distributed under the licenses declared in their source repositories. Microsoft makes no representations or warranties about them.</p>
+        <p>See the <a id="panel-legal-source" target="_blank" rel="noopener" class="text-[#0078D4] dark:text-[#C5B4E3] hover:underline">source repository</a> for license, code of conduct, and contribution terms.</p>
+      </section>
+    </div>
+  </aside>
+
+  <!-- Catalog data island (consumed by panel script) -->
+  <script type="application/json" id="catalog-data" set:html={JSON.stringify(data.map((t, i) => ({
+    i,
+    title: t.title,
+    description: t.description,
+    author: t.author,
+    website: t.website,
+    source: t.source,
+    tags: t.tags ?? [],
+    demoguide: t.demoguide,
+    cost: t.cost,
+    deploytime: t.deploytime,
+    prereqs: t.prereqs,
+  })))} />
+
+  <!-- Tag label island (id -> label) -->
+  <script type="application/json" id="tag-labels-data" set:html={JSON.stringify(Object.fromEntries((Object.entries(tagLabels) as [string, { label?: string }][]).map(([k, v]) => [k, v?.label ?? k])))} />
+
+  <script is:inline>
+    (function () {
+      const panel = document.getElementById('detail-panel');
+      const backdrop = document.getElementById('panel-backdrop');
+      const closeBtn = document.getElementById('panel-close');
+      const data = JSON.parse(document.getElementById('catalog-data').textContent || '[]');
+      const tagLabels = JSON.parse(document.getElementById('tag-labels-data').textContent || '{}');
+
+      function labelFor(id) {
+        if (tagLabels[id]) return tagLabels[id];
+        if (/^(ai|az|dp|sc|md|ms|pl)-\d+$/i.test(id)) return id.toUpperCase();
+        return id.charAt(0).toUpperCase() + id.slice(1);
+      }
+
+      function azdSlug(source) {
+        if (!source) return '';
+        return source.replace(/^https?:\/\/github\.com\//i, '').replace(/\/$/, '').toLowerCase();
+      }
+
+      let lastFocus = null;
+      let demoLoadedFor = -1;
+
+      function openPanel(idx) {
+        const t = data[idx];
+        if (!t) return;
+        lastFocus = document.activeElement;
+
+        // Badges
+        const isMtt = t.tags.includes('msft');
+        const isMct = t.tags.includes('mct');
+        const isHot = t.tags.includes('hot');
+        const isNew = t.tags.includes('new');
+        const badges = [];
+        if (isMtt) badges.push('<span class="inline-flex items-center gap-1.5 text-neutral-700 dark:text-neutral-300"><svg width="14" height="14" viewBox="0 0 23 23"><rect width="10" height="10" fill="#f25022"/><rect x="12" width="10" height="10" fill="#7fba00"/><rect y="12" width="10" height="10" fill="#00a4ef"/><rect x="12" y="12" width="10" height="10" fill="#ffb900"/></svg>MTT Authored</span>');
+        else if (isMct) badges.push('<span class="inline-flex items-center gap-1.5 text-[#8661C5] dark:text-[#C5B4E3] font-medium">MCT Authored</span>');
+        if (isHot) badges.push('<span class="inline-flex items-center gap-1 text-[#C03BC4]">🔥 hot</span>');
+        if (isNew) badges.push('<span class="inline-flex items-center gap-1 text-[#389A91]">✦ new</span>');
+        document.getElementById('panel-badges').innerHTML = badges.join('');
+
+        // Title / author / source
+        document.getElementById('panel-title').textContent = t.title;
+        const authorA = document.getElementById('panel-author-link');
+        authorA.textContent = t.author || 'Unknown';
+        authorA.href = t.website || '#';
+        const sourceA = document.getElementById('panel-source-link');
+        sourceA.href = t.source || '#';
+        document.getElementById('panel-legal-source').href = t.source || '#';
+
+        // Tag pills
+        const visibleTags = t.tags.filter(tag => !['hot','mct','msft','new'].includes(tag));
+        document.getElementById('panel-tags').innerHTML = visibleTags.map(tag =>
+          `<span class="inline-flex items-center text-xs px-2.5 py-1 rounded-full border border-[#C03BC4]/40 text-[#C03BC4] dark:text-[#C5B4E3] dark:border-[#C5B4E3]/40">${labelFor(tag)}</span>`
+        ).join('');
+
+        // Description
+        document.getElementById('panel-description').textContent = t.description || '';
+
+        // Cost / time
+        document.getElementById('panel-cost').textContent = t.cost ? `Cost Estimate (per 24h): +/- $${t.cost}` : 'Not specified';
+        document.getElementById('panel-deploytime').textContent = t.deploytime ? `Deploy Time Estimate (in min): +/- ${t.deploytime}` : 'Not specified';
+
+        // Prereqs
+        const prereqsEl = document.getElementById('panel-prereqs');
+        if (t.prereqs) {
+          prereqsEl.innerHTML = `<a href="${t.prereqs}" target="_blank" rel="noopener" class="text-[#0078D4] dark:text-[#C5B4E3] hover:underline">View scenario-specific prereqs</a>`;
+        } else {
+          prereqsEl.textContent = 'No additional prereqs declared.';
+        }
+
+        // Commands
+        const slug = azdSlug(t.source);
+        const cmds = slug ? [
+          `mkdir ${slug}`,
+          `cd ${slug}`,
+          `azd init -t ${slug}`,
+          'azd up',
+          'azd down --purge --force',
+        ] : [];
+        document.getElementById('panel-commands').innerHTML = cmds.map(c => `
+          <div class="flex items-center gap-2 bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 rounded-md px-3 py-1.5">
+            <code class="text-[13px] font-mono text-neutral-700 dark:text-neutral-300 truncate flex-1">${c}</code>
+            <button class="panel-copy shrink-0 inline-flex items-center justify-center w-7 h-7 rounded bg-[#0078D4] hover:bg-[#106EBE] text-white" data-copy="${c}" aria-label="Copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+        `).join('');
+
+        // Demo Guide link
+        const demoA = document.getElementById('panel-demo-link');
+        demoA.href = t.demoguide || '#';
+        demoA.style.display = t.demoguide ? '' : 'none';
+        document.getElementById('panel-demo-content').innerHTML = '';
+        document.getElementById('panel-demo-error').classList.add('hidden');
+        demoLoadedFor = -1;
+
+        // Course list (extract course-id tags like ai-102, az-204…)
+        const ul = document.getElementById('panel-courses');
+        const courses = t.tags.filter(tag => /^(ai|az|dp|sc|md|ms|pl)-\d+$/i.test(tag));
+        ul.innerHTML = courses.map(c => `<li><span class="font-mono">${c.toUpperCase()}</span> — ${labelFor(c)}</li>`).join('');
+        document.getElementById('panel-courses-empty').classList.toggle('hidden', courses.length > 0);
+
+        // Reset to first tab
+        switchTab('details');
+
+        // Show
+        panel.classList.remove('translate-x-full');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => panel.focus(), 50);
+
+        // Track for demo lazy load
+        panel.dataset.currentIdx = String(idx);
+      }
+
+      function closePanel() {
+        panel.classList.add('translate-x-full');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      function switchTab(name) {
+        document.querySelectorAll('.panel-tab').forEach(btn => {
+          const active = btn.dataset.tab === name;
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          btn.classList.toggle('border-[#8661C5]', active);
+          btn.classList.toggle('text-[#8661C5]', active);
+          btn.classList.toggle('dark:text-[#C5B4E3]', active);
+          btn.classList.toggle('border-transparent', !active);
+          btn.classList.toggle('text-neutral-600', !active);
+          btn.classList.toggle('dark:text-neutral-400', !active);
+        });
+        document.querySelectorAll('.panel-pane').forEach(pane => {
+          pane.classList.toggle('hidden', pane.dataset.panel !== name);
+        });
+
+        if (name === 'demo') {
+          const idx = Number(panel.dataset.currentIdx || -1);
+          const t = data[idx];
+          if (t && t.demoguide && demoLoadedFor !== idx) {
+            loadDemoGuide(t.demoguide, idx);
+          }
+        }
+      }
+
+      async function loadDemoGuide(url, idx) {
+        const loadingEl = document.getElementById('panel-demo-loading');
+        const errEl = document.getElementById('panel-demo-error');
+        const contentEl = document.getElementById('panel-demo-content');
+        loadingEl.classList.remove('hidden');
+        errEl.classList.add('hidden');
+        contentEl.innerHTML = '';
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const md = await res.text();
+          contentEl.innerHTML = renderMarkdown(md);
+          demoLoadedFor = idx;
+        } catch (e) {
+          errEl.textContent = 'Could not load demo guide: ' + e.message + ' — use the "Open raw guide" link above.';
+          errEl.classList.remove('hidden');
+        } finally {
+          loadingEl.classList.add('hidden');
+        }
+      }
+
+      // Tiny markdown renderer (spike-grade; not exhaustive)
+      function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+      function renderMarkdown(md) {
+        const lines = md.split(/\r?\n/);
+        let html = '';
+        let inCode = false;
+        let inList = false;
+        for (let raw of lines) {
+          if (raw.startsWith('```')) {
+            if (inCode) { html += '</code></pre>'; inCode = false; }
+            else { html += '<pre class="bg-neutral-100 dark:bg-neutral-800 p-3 rounded text-xs overflow-x-auto my-3"><code>'; inCode = true; }
+            continue;
+          }
+          if (inCode) { html += escapeHtml(raw) + '\n'; continue; }
+          let line = raw;
+          if (/^\s*$/.test(line)) { if (inList) { html += '</ul>'; inList = false; } html += ''; continue; }
+          // headings
+          const h = line.match(/^(#{1,6})\s+(.*)$/);
+          if (h) {
+            if (inList) { html += '</ul>'; inList = false; }
+            const lvl = Math.min(h[1].length + 1, 6);
+            html += `<h${lvl} class="font-semibold mt-4 mb-2 text-neutral-900 dark:text-neutral-100">${inline(h[2])}</h${lvl}>`;
+            continue;
+          }
+          // list item
+          const li = line.match(/^\s*[-*]\s+(.*)$/);
+          if (li) {
+            if (!inList) { html += '<ul class="list-disc pl-5 space-y-1 my-2">'; inList = true; }
+            html += `<li>${inline(li[1])}</li>`;
+            continue;
+          }
+          if (inList) { html += '</ul>'; inList = false; }
+          // image
+          if (/^\s*!\[/.test(line)) {
+            const m = line.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+            if (m) { html += `<img alt="${escapeHtml(m[1])}" src="${m[2]}" class="max-w-full my-3 rounded" />`; continue; }
+          }
+          html += `<p class="my-2 leading-relaxed">${inline(line)}</p>`;
+        }
+        if (inList) html += '</ul>';
+        if (inCode) html += '</code></pre>';
+        return html;
+      }
+      function inline(s) {
+        s = escapeHtml(s);
+        s = s.replace(/`([^`]+)`/g, '<code class="bg-neutral-100 dark:bg-neutral-800 px-1 py-0.5 rounded text-[0.9em]">$1</code>');
+        s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="text-[#0078D4] dark:text-[#C5B4E3] hover:underline">$1</a>');
+        return s;
+      }
+
+      // Card click → open
+      document.querySelectorAll('.card').forEach(card => {
+        const openFromCard = (ev) => {
+          // Ignore clicks on links and buttons inside the card (copy / title link)
+          if (ev.target.closest('a, button')) return;
+          const idx = Number(card.dataset.index);
+          openPanel(idx);
+        };
+        card.addEventListener('click', openFromCard);
+        card.addEventListener('keydown', (ev) => {
+          if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            openPanel(Number(card.dataset.index));
+          }
+        });
+      });
+
+      // Tab clicks
+      document.querySelectorAll('.panel-tab').forEach(btn => {
+        btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+      });
+
+      // Close handlers
+      closeBtn.addEventListener('click', closePanel);
+      backdrop.addEventListener('click', closePanel);
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape' && !panel.classList.contains('translate-x-full')) closePanel();
+      });
+
+      // Panel copy buttons (delegated since populated dynamically)
+      document.getElementById('panel-commands').addEventListener('click', async (ev) => {
+        const btn = ev.target.closest('.panel-copy');
+        if (!btn) return;
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy || '');
+          const orig = btn.innerHTML;
+          btn.innerHTML = '✓';
+          btn.classList.add('bg-emerald-600'); btn.classList.remove('bg-[#0078D4]');
+          setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('bg-emerald-600'); btn.classList.add('bg-[#0078D4]'); }, 1200);
+        } catch (e) { console.warn(e); }
+      });
+    })();
+  </script>
+</Base>

@@ -1,0 +1,494 @@
+{
+  "msft": {
+    "type": "",
+    "label": "MTT Authored"
+  },
+  "mct": {
+    "type": "",
+    "label": "MCT Authored"
+  },
+  "new": {
+    "type": "",
+    "label": "New"
+  },
+  "hot": {
+    "type": "",
+    "label": "hot"
+  },
+  "ai-102": {
+    "type": "",
+    "label": "AI-102 Azure AI Engineer Associate"
+  },
+  "ai-3002": {
+    "type": "",
+    "label": "AI-3002 Develop AI information extraction solutions in Azure"
+  },
+  "ai-3003": {
+    "type": "",
+    "label": "AI-3003 Develop natural language solutions in Azure​"
+  },
+  "ai-3004": {
+    "type": "",
+    "label": "AI-3004 Develop computer vision solutions in Azure"
+  },
+  "ai-3016": {
+    "type": "",
+    "label": "AI-3016 Develop generative AI apps in Azure"
+  },
+  "ai-3019": {
+    "type": "",
+    "label": "AI-3019 Build AI Apps with Azure Database for PostgreSQL"
+  },
+  "ai-3022": {
+    "type": "",
+    "label": "AI-3022 Implement knowledge mining with Azure AI Search"
+  },
+  "ai-3026": {
+    "type": "",
+    "label": "AI-3026 Develop AI agents on Azure"
+  },
+  "ai-900": {
+    "type": "",
+    "label": "AI-900 Azure AI Fundamentals"
+  },
+  "az-104": {
+    "type": "",
+    "label": "AZ-104 Azure Administrator"
+  },
+  "az-1002": {
+    "type": "",
+    "label": "AZ-1002 Configure secure access to your workloads using networking with Azure Virtual Network"
+  },
+  "az-1003": {
+    "type": "",
+    "label": "AZ-1003 Secure storage for Azure Files and Azure Blob Storage"
+  },
+  "az-1004": {
+    "type": "",
+    "label": "AZ-1004 Deploy and configure Azure Monitor"
+  },
+  "az-1007": {
+    "type": "",
+    "label": "AZ-1007 Deploy and administer Linux virtual machines on Azure"
+  },
+  "az-1008": {
+    "type": "",
+    "label": "AZ-1008 Administer Active Directory Domain Services"
+  },
+  "az-1010": {
+    "type": "",
+    "label": "AZ-1010 Deploy and manage Azure Arc-enabled Servers"
+  },
+  "az-140": {
+    "type": "",
+    "label": "AZ-140 Azure Virtual Desktop Specialty"
+  },
+  "az-2003": {
+    "type": "",
+    "label": "AZ-2003 Deploy cloud-native apps using Azure Container Apps"
+  },
+  "az-2005": {
+    "type": "",
+    "label": "AZ-2005 Develop Generative AI solutions using Azure OpenAI and the Semantic Kernel SDK"
+  },
+  "az-2006": {
+    "type": "",
+    "label": "AZ-2006 Automate Azure Load Testing by using GitHub Actions"
+  },
+  "az-204": {
+    "type": "",
+    "label": "AZ-204 Azure Developer Associate"
+  },
+  "az-305": {
+    "type": "",
+    "label": "AZ-305 Azure Solutions Architect Expert"
+  },
+  "az-400": {
+    "type": "",
+    "label": "AZ-400 Azure DevOps Engineer Expert"
+  },
+  "az-500": {
+    "type": "",
+    "label": "AZ-500 Azure Security Engineer Associate"
+  },
+  "az-700": {
+    "type": "",
+    "label": "AZ-700 Azure Network Engineer Associate"
+  },
+  "az-800": {
+    "type": "",
+    "label": "AZ-800 Windows Server Hybrid Administrator Associate"
+  },
+  "az-801": {
+    "type": "",
+    "label": "AZ-801 Windows Server Hybrid Administrator Associate"
+  },
+  "az-900": {
+    "type": "",
+    "label": "AZ-900 Azure Fundamentals"
+  },
+  "dp-100": {
+    "type": "",
+    "label": "DP-100 Azure Data Scientist Associate"
+  },
+  "dp-203": {
+    "type": "",
+    "label": "DP-203 Azure Data Engineer Associate"
+  },
+  "dp-300": {
+    "type": "",
+    "label": "DP-300 Azure Database Administrator Associate"
+  },
+  "dp-3001": {
+    "type": "",
+    "label": "DP-3001 Migrate SQL Server workload to Azure SQL"
+  },
+  "dp-3011": {
+    "type": "",
+    "label": "DP-3011 Implement a Data Analytics Solution with Azure Databricks"
+  },
+  "dp-3014": {
+    "type": "",
+    "label": "DP-3014 Build machine learning solutions using Azure Databricks"
+  },
+  "dp-3015": {
+    "type": "",
+    "label": "DP-3015 Getting Started with Cosmos DB NoSQL Development"
+  },
+  "dp-3020": {
+    "type": "",
+    "label": "DP-3020 Develop data-driven applications with Azure SQL Database"
+  },
+  "dp-3021": {
+    "type": "",
+    "label": "DP-3021 Configure and migrate to Azure Database for PostgreSQL"
+  },
+  "dp-3028": {
+    "type": "",
+    "label": "DP-3028 Implement Generative AI engineering with Azure Databricks"
+  },
+  "dp-3029": {
+    "type": "",
+    "label": "DP-3029 Work smarter with Copilot in Microsoft Fabric"
+  },
+  "dp-420": {
+    "type": "",
+    "label": "DP-420 Azure Cosmos DB Developer Specialty"
+  },
+  "dp-600": {
+    "type": "",
+    "label": "DP-600 Microsoft Fabric Analytics Engineer"
+  },
+  "dp-601": {
+    "type": "",
+    "label": "DP-601 Implement a Lakehouse with Microsoft Fabric"
+  },
+  "dp-602": {
+    "type": "",
+    "label": "DP-602 Implement a Data Warehouse with Microsoft Fabric"
+  },
+  "dp-603": {
+    "type": "",
+    "label": "DP-603 Implement Real-Time Intelligence with Microsoft Fabric"
+  },
+  "dp-604": {
+    "type": "",
+    "label": "DP-604 Implement a data science and machine learning solution for AI with Microsoft Fabric"
+  },
+  "dp-700": {
+    "type": "",
+    "label": "DP-700 Fabric Data Engineer Associate"
+  },
+  "dp-900": {
+    "type": "",
+    "label": "DP-900 Azure Data Fundamentals"
+  },
+  "sc-100": {
+    "type": "",
+    "label": "SC-100 Cybersecurity Architect Expert"
+  },
+  "sc-200": {
+    "type": "",
+    "label": "SC-200 Microsoft Security Operations Analyst Associate"
+  },
+  "sc-300": {
+    "type": "",
+    "label": "SC-300 Microsoft Identity and Access Administrator Associate"
+  },
+  "sc-5001": {
+    "type": "",
+    "label": "SC-5001 Configure SIEM security operations using Microsoft Sentinel"
+  },
+  "sc-5002": {
+    "type": "",
+    "label": "SC-5002: Secure Azure services and workloads with Microsoft Defender for Cloud regulatory compliance controls"
+  },
+  "sc-5003": {
+    "type": "",
+    "label": "SC-5003: Implement information protection and data loss prevention by using Microsoft Purview"
+  },
+  "sc-5004": {
+    "type": "",
+    "label": "SC-5004 Defend against cyberthreats with Microsoft Defender XDR"
+  },
+  "sc-5006": {
+    "type": "",
+    "label": "SC-5006 Enhance security operations by using Microsoft Security Copilot"
+  },
+  "sc-5007": {
+    "type": "",
+    "label": "SC-5007 Implement retention, eDiscovery, and Communication compliance in Microsoft Purview"
+  },
+  "sc-5008": {
+    "type": "",
+    "label": "SC-5008 Configure and govern entitlement with Microsoft Entra ID"
+  },
+  "sc-900": {
+    "type": "",
+    "label": "SC-900 Microsoft Security, Compliance, and Identity Fundamentals"
+  },
+  "mongodb": {
+    "type": "",
+    "label": "MongoDB"
+  },
+  "semantic-kernel": {
+    "type": "",
+    "label": "Semantic Kernel"
+  },
+  "blazor": {
+    "type": "",
+    "label": "Blazor"
+  },
+  "python": {
+    "type": "",
+    "label": "Python"
+  },
+  "nodejs": {
+    "type": "",
+    "label": "Node.js"
+  },
+  "dotnet": {
+    "type": "",
+    "label": ".NET"
+  },
+  "kubernetes": {
+    "type": "",
+    "label": "Kubernetes"
+  },
+  "appinsights": {
+    "type": "",
+    "label": "Azure Application Insights"
+  },
+  "azureml": {
+    "type": "",
+    "label": "Azure Machine Learning"
+  },
+  "loganalytics": {
+    "type": "",
+    "label": "Azure Log Analytics"
+  },
+  "appservice": {
+    "type": "",
+    "label": "Azure App Service"
+  },
+  "monitor": {
+    "type": "",
+    "label": "Azure Monitor"
+  },
+  "keyvault": {
+    "type": "",
+    "label": "Azure Key Vault"
+  },
+  "aca": {
+    "type": "",
+    "label": "Azure Container Apps"
+  },
+  "aci": {
+    "type": "",
+    "label": "Azure Container Instance"
+  },
+  "acr": {
+    "type": "",
+    "label": "Azure Container Registry"
+  },
+  "cosmosdb": {
+    "type": "",
+    "label": "Azure CosmosDB"
+  },
+  "functions": {
+    "type": "",
+    "label": "Azure Functions"
+  },
+  "blobstorage": {
+    "type": "",
+    "label": "Azure Blob Storage"
+  },
+  "azuresql": {
+    "type": "",
+    "label": "Azure SQL"
+  },
+  "azuredb-postgreSQL": {
+    "type": "",
+    "label": "Azure PostgreSQL"
+  },
+  "azuredb-mySQL": {
+    "type": "",
+    "label": "Azure MySQL"
+  },
+  "staticwebapps": {
+    "type": "",
+    "label": "Azure Static Web Apps"
+  },
+  "servicebus": {
+    "type": "",
+    "label": "Azure Service Bus"
+  },
+  "vnets": {
+    "type": "",
+    "label": "Azure Virtual Networks (VNET)"
+  },
+  "aisearch": {
+    "type": "",
+    "label": "Azure AI Search"
+  },
+  "openai": {
+    "type": "",
+    "label": "Azure OpenAI Service"
+  },
+  "azureai": {
+    "type": "",
+    "label": "Azure AI Service"
+  },
+  "speechservice": {
+    "type": "",
+    "label": "Azure Speech Services"
+  },
+  "apim": {
+    "type": "",
+    "label": "Azure API Management"
+  },
+  "aks": {
+    "type": "",
+    "label": "Azure Kubernetes Service"
+  },
+  "azurecdn": {
+    "type": "",
+    "label": "Azure Content Delivery Network"
+  },
+  "frontdoor": {
+    "type": "",
+    "label": "Azure Front Door"
+  },
+  "rediscache": {
+    "type": "",
+    "label": "Azure Cache for Redis"
+  },
+  "azurebot": {
+    "type": "",
+    "label": "Azure AI Bot Service"
+  },
+  "eventhub": {
+    "type": "",
+    "label": "Azure Event Hubs"
+  },
+  "azurestorage": {
+    "type": "",
+    "label": "Azure Storage Account"
+  },
+  "azureappconfig": {
+    "type": "",
+    "label": "Azure App Configuration"
+  },
+  "aifoundry": {
+    "type": "",
+    "label": "Azure AI Foundry"
+  },
+  "apicenter": {
+    "type": "",
+    "label": "Azure API Center"
+  },
+  "eventgrid": {
+    "type": "",
+    "label": "Azure Event Grid"
+  },
+  "logicapps": {
+    "type": "",
+    "label": "Azure Logic Apps"
+  },
+  "azuredatafactory": {
+    "type": "",
+    "label": "Azure Data Factory"
+  },
+  "virtualmachine": {
+    "type": "",
+    "label": "Azure Virtual Machine"
+  },
+  "sentinel": {
+    "type": "",
+    "label": "Azure Sentinel"
+  },
+  "trafficmgr": {
+    "type": "",
+    "label": "Azure Traffic Manager"
+  },
+  "purview": {
+    "type": "",
+    "label": "Azure Purview"
+  },
+  "vpngw": {
+    "type": "",
+    "label": "Azure VPN Gateway"
+  },
+  "azurearc": {
+    "type": "",
+    "label": "Azure ARC"
+  },
+  "loadtesting": {
+    "type": "",
+    "label": "Azure Load Testing"
+  },
+  "fabric": {
+    "type": "",
+    "label": "Microsoft Fabric"
+  },
+  "azurefirewall": {
+    "type": "",
+    "label": "Azure Firewall"
+  },
+  "bastion": {
+    "type": "",
+    "label": "Azure Bastion"
+  },
+  "vmsqlserver": {
+    "type": "",
+    "label": "SQL Server on Azure Virtual Machines"
+  },
+  "avset": {
+    "type": "",
+    "label": "Availability Set"
+  },
+  "appgateway": {
+    "type": "",
+    "label": "Azure Application Gateway"
+  },
+  "privateendpoint": {
+    "type": "",
+    "label": "Azure Private Endpoint"
+  },
+  "privatelink": {
+    "type": "",
+    "label": "Azure Private Link"
+  },
+  "loadbalancer": {
+    "type": "",
+    "label": "Azure Load Balancer"
+  },
+  "backup": {
+    "type": "",
+    "label": "Azure Backup"
+  },
+  "recoveryvault": {
+    "type": "",
+    "label": "Azure Site Recovery Vault"
+  }
+}
