@@ -60,6 +60,7 @@ template gallery (`static/templates.json`) via a cross-fork PR.
 
 - ✅ Validate all required artifacts exist before touching git
 - ✅ Ask the user for explicit approval before creating a repo in their account
+- ✅ Initialize git **in-place** inside `generated-scenarios/{project}/` so the folder remains a tracked working copy
 - ✅ Copy only publishable artifacts to the standalone repo (`infra/`, `src/`, `demoguide/`, `azure.yaml`, `README.md`)
 - ✅ Scan for sensitive files (`.azure/`, `.env`, `bin/`, `obj/`, `publish/`, `applogs/`) and **refuse to proceed** if they would be included
 - ✅ Prefer GitHub MCP tools for PR and Issue creation; fall back to `gh` CLI only when MCP is unavailable
@@ -70,6 +71,7 @@ template gallery (`static/templates.json`) via a cross-fork PR.
 ### DON'T
 
 - ❌ Create a repo in the user's account without explicit approval
+- ❌ Use `--clone` with `gh repo create` — git is initialized in-place in the scenario folder
 - ❌ Copy requirements, architecture assessments, diagrams, implementation plans, or other working files to the standalone repo
 - ❌ Include deployment state (`.azure/`), build outputs (`bin/`, `obj/`, `publish/`), logs (`applogs/`), archives (`*.zip`), or environment files (`.env`)
 - ❌ Force-push or rewrite history
@@ -186,57 +188,91 @@ Result: PASS — ready for contribution
 3. **Create the repo** (only after user says yes):
 
    ```bash
-   gh repo create {CONTRIBUTOR}/{REPO_NAME} --public --description "{description}" --clone
+   gh repo create {CONTRIBUTOR}/{REPO_NAME} --public --description "{description}"
    ```
 
    Where `{description}` is extracted from `01-requirements.md` (first 1-2
    sentences of the business context).
 
+   > **NOTE:** Do NOT use `--clone`. The git repo will be initialized directly
+   > inside `generated-scenarios/{project}/` (see Phase 3) so the scenario
+   > folder becomes the tracked working copy.
+
    If the repo already exists, ask the user whether to overwrite or abort.
 
-### Phase 3: Populate Standalone Repo
+### Phase 3: Initialize Git In-Place & Push
 
-Copy scenario artifacts from `generated-scenarios/{project}/` to the standalone repo's
-root, promoting them from the nested scenario path to a flat `azd`-compatible
-structure:
+Instead of copying files to a separate clone directory, initialize git
+**directly inside** `generated-scenarios/{project}/`. This enables ongoing
+change tracking — any future edits in the scenario folder can be committed
+and pushed to the user's repo without extra steps.
 
-```
-generated-scenarios/{project}/infra/       →  {REPO_NAME}/infra/
-generated-scenarios/{project}/src/         →  {REPO_NAME}/src/          (if exists)
-generated-scenarios/{project}/demoguide/   →  {REPO_NAME}/demoguide/    (if exists)
-generated-scenarios/{project}/azure.yaml   →  {REPO_NAME}/azure.yaml
-generated-scenarios/{project}/README.md    →  {REPO_NAME}/README.md
-```
-
-The standalone repo should look like a fresh `azd init` project:
-
-```
-{REPO_NAME}/
-├── infra/
-│   ├── main.bicep
-│   ├── main.bicepparam
-│   └── modules/
-├── src/                    # If webapp scenario
-│   └── {ProjectName}.Web/
-├── demoguide/              # If demo guide was generated
-│   ├── demoguide.md
-│   └── images/
-├── azure.yaml
-└── README.md
-```
+> [!IMPORTANT]
+> Because `generated-scenarios/` is already in the parent repo's `.gitignore`,
+> a nested `.git` directory here will NOT conflict with the parent repo.
 
 **Steps:**
 
-1. Copy publishable artifacts to the cloned repo directory
-2. Create a `.gitignore` in the standalone repo (exclude `.azure/`, `bin/`,
-   `obj/`, `publish/`, `.env`, `applogs/`)
-3. Verify no sensitive files are present in the copy
-4. Stage all files:
+1. Create a `.gitignore` in `generated-scenarios/{project}/`:
 
    ```bash
-   cd {REPO_NAME}
+   cd generated-scenarios/{project}
+   cat > .gitignore << 'EOF'
+   ## .NET
+   bin/
+   obj/
+   *.user
+   *.suo
+   .vs/
+
+   ## azd
+   .azure/
+
+   ## Build & publish
+   publish/
+
+   ## Logs
+   applogs/
+
+   ## Environment
+   .env
+
+   ## IDE
+   .idea/
+   *.swp
+
+   ## OS
+   .DS_Store
+   Thumbs.db
+
+   ## Archives
+   *.zip
+   EOF
+   ```
+
+2. Initialize git and add the remote:
+
+   ```bash
+   git init
+   git remote add origin https://github.com/{CONTRIBUTOR}/{REPO_NAME}.git
+   ```
+
+3. Stage only publishable artifacts:
+
+   ```bash
    git add -A
    ```
+
+   The `.gitignore` will automatically exclude sensitive/build files.
+
+4. Verify no sensitive files are staged:
+
+   ```bash
+   git status
+   ```
+
+   If any `.azure/`, `bin/`, `obj/`, `.env`, or `applogs/` paths appear,
+   remove them with `git reset HEAD -- <path>` before committing.
 
 5. Commit:
 
@@ -252,17 +288,34 @@ The standalone repo should look like a fresh `azd init` project:
 6. Push:
 
    ```bash
-   git push origin main
+   git branch -M main
+   git push -u origin main
    ```
+
+   The `-u` flag sets up tracking so future `git push` from this folder
+   pushes to the user's repo automatically.
+
+> **Post-contribution workflow:** After this phase completes, the user can
+> make changes to `generated-scenarios/{project}/` and push them with:
+>
+> ```bash
+> cd generated-scenarios/{project}
+> git add -A && git commit -m "fix: description" && git push
+> ```
 
 ### Phase 4: Register in Upstream Template Gallery
 
 Create a cross-fork PR that adds the scenario to `static/templates.json`
 in the upstream repo.
 
-1. **Detect the upstream repo** from the current git remote:
+> **Working directory:** Switch back to the parent repo root for this phase.
+> All git operations below apply to the parent `trainer-demo-deploy` repo,
+> NOT the scenario folder's git.
+
+1. **Detect the upstream repo** from the parent repo's git remote:
 
    ```bash
+   cd {demo-builder-repo-root}
    git remote get-url origin
    ```
 
@@ -443,10 +496,14 @@ Present the final summary to the contributor:
 Standalone Repo:  https://github.com/{CONTRIBUTOR}/{REPO_NAME}
 Gallery PR:       {pr_url} (draft)
 Tag Validation:   ✅ All tags verified against src/data/tags.tsx
+Local Tracking:   ✅ generated-scenarios/{project}/ is now a git repo
 
 Your scenario is now:
   ✅ Published as a standalone azd-compatible repo
   ✅ Registered via PR for maintainer review
+  ✅ Locally tracked — push future changes with:
+       cd generated-scenarios/{project}
+       git add -A && git commit -m "fix: description" && git push
 
 Next Steps:
 1. Review the standalone repo on GitHub to verify all artifacts
@@ -472,10 +529,18 @@ Next Steps:
 
 If the agent is re-invoked for a project that already has a standalone repo:
 
-1. Check if `{CONTRIBUTOR}/{REPO_NAME}` exists via `gh repo view {CONTRIBUTOR}/{REPO_NAME} --json name`
-2. If the repo exists, ask the user:
-   - Update the existing repo (overwrite with latest artifacts)
-   - Skip repo creation and only update the registry PR
+1. Check if `generated-scenarios/{project}/.git` exists locally:
+   - If YES, verify the remote matches `{CONTRIBUTOR}/{REPO_NAME}` via
+     `git -C generated-scenarios/{project} remote get-url origin`
+   - If the remote matches, skip Phase 2-3 and go directly to Phase 4
+     (or ask the user if they want to push latest changes first)
+2. Check if `{CONTRIBUTOR}/{REPO_NAME}` exists via `gh repo view {CONTRIBUTOR}/{REPO_NAME} --json name`
+3. If the repo exists but no local `.git`:
+   - Re-initialize git in the scenario folder (Phase 3 steps 2-6)
+   - Use `git push --force-with-lease` to sync (safer than force-push)
+4. If the repo exists and has local `.git`, ask the user:
+   - Push latest changes to the existing repo
+   - Skip repo update and only update the registry PR
    - Abort
-3. Check if a gallery PR already exists via `gh pr list --head {CONTRIBUTOR}:contribute/{PROJECT} --repo {UPSTREAM_OWNER}/{REPO}`
-4. If a PR exists, report its status and ask whether to update it or create a new one
+5. Check if a gallery PR already exists via `gh pr list --head {CONTRIBUTOR}:contribute/{PROJECT} --repo {UPSTREAM_OWNER}/{REPO}`
+6. If a PR exists, report its status and ask whether to update it or create a new one
