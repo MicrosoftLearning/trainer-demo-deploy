@@ -278,23 +278,66 @@ homepage.png
 {persona}-{action}.png                   (e.g., backoffice-sentiment.png)
 ```
 
+#### Persistent Browser Authentication (Required for Portal Screenshots)
+
+> [!CAUTION]
+> **SECURITY: The `.auth/` directory contains session cookies and tokens.
+> It MUST be listed in `.gitignore` and NEVER committed to any repository.**
+
+Azure Portal screenshots require an authenticated browser session. Use
+Playwright's **persistent context** to store the login state on disk so
+the user only authenticates once (including MFA), and all subsequent
+screenshot runs reuse the saved session.
+
+**Two-script pattern (generate both in `generated-scenarios/{project}/`):**
+
+1. **`portal-login.js`** — One-time authentication script:
+   - Uses `chromium.launchPersistentContext('.auth/', { channel: 'msedge', headless: false })`
+   - Navigates to `https://portal.azure.com`
+   - Pauses for the user to sign in (with MFA) via `readline` prompt
+   - After user presses Enter, verifies the URL is on `portal.azure.com`
+   - Closes context — session is persisted in `.auth/` directory
+
+2. **`capture-portal-screenshots.js`** — Reusable capture script:
+   - Checks `.auth/` directory exists; errors with instructions if not
+   - Uses `chromium.launchPersistentContext('.auth/', { channel: 'msedge', headless: false })`
+   - Navigates to `https://portal.azure.com` and verifies no login redirect
+   - If redirected to login, errors with "Session expired — run portal-login.js again"
+   - Iterates through screenshot targets (URL + wait selector + filename)
+   - Saves all screenshots to `demoguide/images/`
+
+**Workflow for the user:**
+```bash
+# First time only (or when session expires):
+npm install playwright   # if not already installed
+node portal-login.js     # Opens Edge, sign in with MFA, press Enter
+
+# Capture/recapture anytime:
+node capture-portal-screenshots.js
+```
+
+**Ensure `.auth/` is in `.gitignore`** — add it if not already present.
+
 #### Playwright Script Generation
 
-Generate a `capture_screenshots.py` script in `generated-scenarios/{project}/demoguide/`
-that captures BOTH categories. The script should:
+Generate **two** Node.js scripts in `generated-scenarios/{project}/`:
 
-1. Launch a Chromium browser via Playwright
-2. **App screenshots**: Navigate each app route and capture
-3. **Portal screenshots**: Navigate Azure Portal blades using the resource
-   group URL pattern `https://portal.azure.com/#@/resource/subscriptions/{sub}/resourceGroups/{rg}/overview`
-4. Save all images to `generated-scenarios/{project}/demoguide/images/`
+| Script | Purpose |
+| ------ | ------- |
+| `portal-login.js` | One-time auth — opens browser, user signs in, session saved |
+| `capture-portal-screenshots.js` | Reusable — captures all portal screenshots using saved session |
 
-> **Note on Portal authentication**: Azure Portal screenshots require an
-> authenticated browser session. The script should either:
-> - Use `browser.launch(headless=False)` and pause for manual login, OR
-> - Document that the trainer must run the script interactively
-> - If Portal login cannot be automated, capture Portal screenshots manually
->   and document this in the demo guide as a pre-demo step
+Both scripts should:
+- Use `chromium.launchPersistentContext` with the `.auth/` directory
+- Use `channel: 'msedge'` and `viewport: { width: 1920, height: 1080 }`
+- Include popup dismissal logic for Portal notifications
+- Wait for `[class*="fxs-blade-content"]` selector with a timeout fallback
+
+For **app screenshots** (Category B), either include them in the portal script
+or generate a separate section that doesn't require Portal auth (just navigates
+the webapp URL directly).
+
+Save all images to `generated-scenarios/{project}/demoguide/images/`
 
 > [!IMPORTANT]
 > If Playwright MCP is unavailable or the user declines the browser session,
@@ -373,7 +416,8 @@ Before marking the demo guide complete:
 - [ ] **Category B (App) screenshots**: homepage + each functional route/page
 - [ ] Demo script includes Portal walkthrough steps (not just webapp routes)
 - [ ] Screenshots referenced inline in the demo guide with `![alt](images/filename.png)` or `<img>` tags
-- [ ] A `capture_screenshots.py` script exists in `generated-scenarios/{project}/demoguide/` covering both categories
+- [ ] `portal-login.js` and `capture-portal-screenshots.js` exist in `generated-scenarios/{project}/`
+- [ ] `.auth/` is listed in the scenario's `.gitignore`
 - [ ] If Portal screenshots require manual capture, this is documented as a pre-demo step
 - [ ] If Playwright is unavailable, fallback placeholders include `TODO: capture screenshot` alt text and a brief reason is documented
 - [ ] Required screenshot files exist on disk (or documented fallback mode is present)

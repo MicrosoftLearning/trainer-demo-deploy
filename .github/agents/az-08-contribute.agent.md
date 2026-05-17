@@ -247,6 +247,17 @@ and pushed to the user's repo without extra steps.
 
    ## Archives
    *.zip
+
+   ## Playwright auth state (session cookies — NEVER commit)
+   .auth/
+
+   ## Screenshot tooling
+   node_modules/
+   package-lock.json
+   capture-screenshots.js
+   capture-portal-screenshots.js
+   portal-login.js
+   package.json
    EOF
    ```
 
