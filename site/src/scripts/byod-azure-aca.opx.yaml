@@ -1,7 +1,7 @@
 meta:
   id: byod-azure-aca
   title: "Trainer Demo Deploy — BYOD Azure scaffold"
-  agent: orchestrator
+  agent: Conductor
   model: "Claude Opus 4.7"
   context: "BYOD Azure — AI-200 Container Apps"
   task:

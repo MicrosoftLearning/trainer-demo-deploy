@@ -169,7 +169,7 @@ const MetaSchema = z
   .object({
     id: z.string().min(1),
     title: z.string().min(1),
-    agent: z.string().default("orchestrator"),
+    agent: z.string().default("Conductor"),
     model: z.string().default("Claude Opus 4.7"),
     context: z.string().default(""),
     task: TaskSchema,
