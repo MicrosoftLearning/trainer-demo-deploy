@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "App Service with SQL - Logistics Tracking",
+  "description": "Logistics shipment tracking web app on Azure App Service with Azure SQL Database backend for warehouse management and driver assignments.",
+  "preview": "./templates/images/appservice-sql-webapp.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-appservice-sql-webapp",
+  "tags": ["az-204","az-305","msft","appservice","azuresql","keyvault","loganalytics","dotnet"],
+  "demoguide": null,
+  "deploytime": "5",
+  "cost": "8.00"
   }
 ]
