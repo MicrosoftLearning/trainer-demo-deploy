@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "AI Foundry Logistics Assistant on Container Apps",
+  "description": "A .NET web app on Container Apps querying shipment data in Azure SQL via Azure AI Foundry for natural-language logistics insights.",
+  "preview": "./templates/images/foundry-sql-containerapp.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-foundry-sql-containerapp",
+  "tags": ["ai-102","msft","aifoundry","aca","acr","azuresql","azurestorage","loganalytics","dotnet"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-sql-containerapp/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "8",
+  "cost": "12.00"
   }
 ]
