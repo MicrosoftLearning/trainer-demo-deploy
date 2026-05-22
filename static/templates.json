@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "Microsoft Sentinel Threat Detection",
+  "description": "Microsoft Sentinel SIEM demo with pre-configured data connectors, analytics rules, and a vulnerable VM generating security signals for SOC training.",
+  "preview": "./templates/images/sentinel-threat-detection.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-sentinel-threat-detection",
+  "tags": ["sc-200","az-500","msft","sentinel","virtualmachine","keyvault","appservice","vnets","loganalytics","dotnet"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-sentinel-threat-detection/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "8",
+  "cost": "12.00"
   }
 ]
