@@ -412,7 +412,7 @@ in the upstream repo.
     - `azure.yaml` — azd project configuration
     - `README.md` — Quickstart deployment instructions
     - `src/` — Sample webapp ({industry}) *(if applicable)*
-    - `demoguide/` — Demo runbook + screenshots *(if applicable)*
+    - `demoguide/` — Demo guide + screenshots *(if applicable)*
 
     ### Deployment
 

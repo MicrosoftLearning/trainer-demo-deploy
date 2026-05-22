@@ -1,0 +1,83 @@
+meta:
+  id: byod-cps-it-triage
+  title: "Trainer Demo Deploy — BYOD Copilot Studio scaffold"
+  agent: orchestrator
+  model: "Claude Opus 4.7"
+  context: "BYOD Copilot Studio — MS-4006"
+  task:
+    label: "Build BYOD Copilot Studio agent for MS-4006"
+    progress: [14, 14]
+  diff:
+    files:   14
+    added:   312
+    removed: 0
+  mode: player
+  loop: true
+  startDelay: 600
+  loopPause: 2400
+
+steps:
+  - user:
+      handle: trainer
+      avatar:
+        initials: tr
+        gradient: ["#8661C5", "#c03bc4"]
+      body: |
+        Build me a Copilot Studio IT-Triage agent with knowledge lookup and an escalation topic.
+    timing: { typing: 2200, holdFor: 1400 }
+
+  - agent:
+      body: |
+        On it. I'll draft topics, knowledge sources, and an escalation flow.
+    timing: { appearAfter: 300, typing: 600, holdFor: 1600 }
+
+  - tool:
+      kind: search
+      title: "searched gallery"
+      detail: "looking for `cps` agent templates"
+      result: "Found 1 reference solution · adapting for MS-4006"
+    timing: { appearAfter: 250, holdFor: 1400 }
+    advances: { task: 2 }
+
+  - agent:
+      body: |
+        Generating Topic YAML for the IT-Triage scenario.
+      code:
+        lang: yaml
+        source: |
+          name: greet
+          trigger: { phrases: [hi, hello, "I need help"] }
+          actions:
+            - say: "Hi! I'm IT-Triage. What's the issue today?"
+            - prompt: ticket_summary
+          branches:
+            access:   { goto: kb_lookup }
+            hardware: { goto: escalate_to_human }
+    timing: { appearAfter: 300, holdFor: 2200 }
+    advances: { task: 3, files: 1, added: 24 }
+
+  - files:
+      - { path: "solution/Bots/IT-Triage/Topics/greeting.yaml",     op: add, lines: 24 }
+      - { path: "solution/Bots/IT-Triage/Topics/classify-ticket.yaml", op: add, lines: 62 }
+      - { path: "solution/Bots/IT-Triage/Topics/kb-lookup.yaml",   op: add, lines: 44 }
+      - { path: "solution/Bots/IT-Triage/Topics/escalate.yaml",    op: add, lines: 38 }
+      - { path: "solution/Bots/IT-Triage/Topics/fallback.yaml",    op: add, lines: 20 }
+    timing:   { appearAfter: 350, holdFor: 2000 }
+    advances: { task: 5, files: 7, added: 228 }
+
+  - summary:
+      title: "Generated 14 files: topics, knowledge sources, and demo guide"
+      lead: "Your agent includes:"
+      bullets:
+        - "5 topics covering classify, lookup, and escalate paths"
+        - "SharePoint knowledge source binding"
+        - "Microsoft Teams channel setup"
+        - "Trainer demo guide with 3 scripted prompts"
+    timing: { appearAfter: 300, holdFor: 2400 }
+    advances: { task: 3, files: 6, added: 60 }
+
+  - status:
+      kind: done
+      text: "Import `solution/IT-Triage.zip` into Copilot Studio to publish."
+    timing: { appearAfter: 200, holdFor: 2200 }
+    advances: { task: 1 }

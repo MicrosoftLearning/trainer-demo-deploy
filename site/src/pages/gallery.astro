@@ -1,0 +1,799 @@
+---
+/**
+ * Catalog page. Hero + filter rail + card grid + side panel.
+ *
+ * Data flows from the canonical `static/templates.json` via the
+ * `lib/templates` shim. All tag grouping, labels, and section
+ * membership derive from `Tags` in `src/data/tags.tsx` — no
+ * hardcoded ID lists or course regexes.
+ */
+import Base from "../layouts/Base.astro";
+import {
+  allTemplates,
+  azdInitCommand,
+  tagMeta,
+  tagSection,
+  FILTER_SECTIONS,
+  type FilterSection,
+} from "../lib/templates";
+import type { TagType } from "../data/tags-shim";
+
+const data = allTemplates;
+
+/**
+ * Every tag actually used by the catalog, looked up against the Tags
+ * metadata table. We bucket by `tagSection` (which returns null for
+ * special sentinel tags like hot/new/mct/msft).
+ */
+const tagsInUse = new Set<TagType>();
+data.forEach((t) => t.tags?.forEach((tag) => tagsInUse.add(tag)));
+
+function labelFor(id: TagType): string {
+  return tagMeta(id)?.label ?? id;
+}
+
+type GroupKey = "special" | FilterSection;
+const groups: Record<GroupKey, TagType[]> = {
+  special: [],
+  "Azure Services": [],
+  "ILT Courses": [],
+  Frameworks: [],
+};
+for (const id of tagsInUse) {
+  const section = tagSection(id);
+  groups[section ?? "special"].push(id);
+}
+(Object.keys(groups) as GroupKey[]).forEach((k) =>
+  groups[k].sort((a, b) => labelFor(a).localeCompare(labelFor(b))),
+);
+
+/**
+ * Tag metadata shipped to the client island so the side panel and
+ * search/filter logic can read labels and section membership without
+ * re-implementing the grouping rules.
+ */
+const tagMetaForClient: Record<string, { label: string; section: FilterSection | null }> =
+  Object.fromEntries(
+    [...tagsInUse].map((id) => [id, { label: labelFor(id), section: tagSection(id) }]),
+  );
+
+const authors = [...new Set(data.map((t) => t.author).filter(Boolean))].sort((a, b) =>
+  a.localeCompare(b),
+);
+
+const stripes = [
+  "from-brand-violet to-brand-magenta",
+  "from-brand-blue to-brand-teal-expanded",
+  "from-brand-teal to-brand-magenta",
+  "from-brand-magenta to-brand-violet",
+  "from-brand-teal to-brand-blue",
+  "from-brand-violet-tint to-brand-violet",
+];
+---
+<Base title="Catalog" description="Browse the curated trainer demo catalog.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div
+        class="absolute -top-40 -left-20 h-[720px] w-[1600px] rounded-full opacity-70 dark:opacity-90"
+        style="background: radial-gradient(closest-side, rgba(134,97,197,0.30), transparent 70%);"
+      ></div>
+      <div
+        class="absolute -top-32 right-0 h-[640px] w-[1400px] rounded-full opacity-60 dark:opacity-80"
+        style="background: radial-gradient(closest-side, rgba(192,59,196,0.25), transparent 72%);"
+      ></div>
+    </div>
+    <div class="mx-auto max-w-7xl px-6 pt-16 pb-10 text-center">
+      <h1 class="mb-3 text-4xl font-semibold tracking-tight md:text-5xl">
+        <span class="bg-gradient-to-r from-brand-violet via-brand-magenta to-brand-violet bg-clip-text text-transparent">
+          Trainer-Demo-Deploy Catalog
+        </span>
+      </h1>
+      <p class="mb-6 text-neutral-600 dark:text-neutral-300">
+        Open-sourced, azd-based scenarios for Microsoft ILT courses.
+      </p>
+      <div class="relative mx-auto max-w-3xl">
+        <label for="q" class="sr-only">Search the catalog</label>
+        <svg class="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <input
+          id="q"
+          type="search"
+          placeholder="Find your next Azure training demo..."
+          class="w-full rounded-xl border border-neutral-300 bg-white py-3.5 pr-4 pl-12 text-base shadow-sm focus:border-brand-violet focus:ring-2 focus:ring-brand-violet/30 focus:outline-none dark:border-neutral-700 dark:bg-neutral-900"
+        />
+      </div>
+      <p class="mx-auto mt-4 max-w-2xl text-sm text-neutral-500 dark:text-neutral-400">
+        Every template deploys with the Azure Developer CLI (azd). New to azd?
+        <a class="text-brand-violet hover:underline" href="https://aka.ms/azd" target="_blank" rel="noopener">Learn more in the official AZD docs.</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Body: filter sidebar + cards -->
+  <section class="mx-auto max-w-7xl px-6 pb-24 md:flex md:gap-8">
+    <aside class="mb-8 space-y-6 md:mb-0 md:w-[240px] md:shrink-0">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold">Filter by</h2>
+        <button id="clear-filters" class="text-xs text-brand-violet hover:underline">Clear</button>
+      </div>
+
+      <div class="space-y-2">
+        {groups.special.map((id) => (
+          <label class="flex cursor-pointer items-center gap-2 text-sm">
+            <input type="checkbox" class="tag-cb accent-brand-violet" data-tag={id} />
+            <span>{labelFor(id)}</span>
+          </label>
+        ))}
+      </div>
+
+      {FILTER_SECTIONS.map((section) => (
+        <details class="group border-t border-neutral-200 pt-4 dark:border-neutral-800">
+          <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-medium">
+            <span>{section}</span>
+            <svg class="h-4 w-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </summary>
+          <div class="mt-3 max-h-72 space-y-2 overflow-y-auto pr-2">
+            {groups[section].map((id) => (
+              <label class="flex cursor-pointer items-start gap-2 text-sm">
+                <input type="checkbox" class="tag-cb mt-0.5 accent-brand-violet" data-tag={id} />
+                <span class="text-neutral-700 dark:text-neutral-300">{labelFor(id)}</span>
+              </label>
+            ))}
+          </div>
+        </details>
+      ))}
+
+      <details class="group border-t border-neutral-200 pt-4 dark:border-neutral-800">
+        <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-medium">
+          <span>Authors</span>
+          <svg class="h-4 w-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </summary>
+        <div class="mt-3 max-h-72 space-y-2 overflow-y-auto pr-2">
+          {authors.map((a) => (
+            <label class="flex cursor-pointer items-start gap-2 text-sm">
+              <input type="checkbox" class="author-cb mt-0.5 accent-brand-violet" data-author={a} />
+              <span class="text-neutral-700 dark:text-neutral-300">{a}</span>
+            </label>
+          ))}
+        </div>
+      </details>
+    </aside>
+
+    <!-- Card grid -->
+    <div class="min-w-0 flex-1">
+      <div class="mb-4 flex items-center justify-between">
+        <p class="text-sm text-neutral-600 dark:text-neutral-400">
+          <span id="count">{data.length}</span> of {data.length} templates
+        </p>
+        <select id="sort" class="rounded-md border border-neutral-300 bg-white px-2 py-1 text-sm dark:border-neutral-700 dark:bg-neutral-900">
+          <option value="default">Default order</option>
+          <option value="title">Title A→Z</option>
+          <option value="author">Author A→Z</option>
+        </select>
+      </div>
+
+      <div id="empty" class="hidden py-20 text-center text-neutral-500">
+        <p class="mb-2 text-lg font-medium">No templates match those filters.</p>
+        <p class="text-sm">Try clearing some checkboxes or adjusting your search.</p>
+      </div>
+
+      <div id="grid" class="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {data.map((t, i) => {
+          const isMtt = t.tags?.includes("msft");
+          const isMct = t.tags?.includes("mct");
+          const isHot = t.tags?.includes("hot");
+          const isNew = t.tags?.includes("new");
+          const azdCmd = azdInitCommand(t);
+          const visibleTags = (t.tags ?? []).filter((tag) => tagSection(tag) !== null);
+          const shownTags = visibleTags.slice(0, 4);
+          const overflow = visibleTags.length - shownTags.length;
+          const haystack = `${t.title} ${t.description} ${t.author}`.toLowerCase();
+          return (
+            <article
+              class="card group relative flex cursor-pointer flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white p-5 transition-all duration-200 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-xl hover:shadow-brand-violet/20 dark:border-neutral-800 dark:bg-neutral-900"
+              data-tags={(t.tags ?? []).join(",")}
+              data-author={t.author}
+              data-title={t.title}
+              data-haystack={haystack}
+              data-index={i}
+              tabindex="0"
+              role="button"
+              aria-label={`Open details for ${t.title}`}
+            >
+              <div class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${stripes[i % stripes.length]}`}></div>
+
+              <div class="mt-1 mb-3 flex items-center justify-between">
+                <div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+                  {isMtt && (
+                    <span class="inline-flex items-center gap-1.5">
+                      <svg width="14" height="14" viewBox="0 0 23 23">
+                        <rect width="10" height="10" fill="#f25022" />
+                        <rect x="12" width="10" height="10" fill="#7fba00" />
+                        <rect y="12" width="10" height="10" fill="#00a4ef" />
+                        <rect x="12" y="12" width="10" height="10" fill="#ffb900" />
+                      </svg>
+                      MTT Authored
+                    </span>
+                  )}
+                  {isMct && !isMtt && (
+                    <span class="inline-flex items-center gap-1.5 font-medium text-brand-violet">MCT Authored</span>
+                  )}
+                </div>
+                <div class="flex items-center gap-2 text-xs">
+                  {isHot && <span class="inline-flex items-center gap-1 text-brand-magenta">🔥 hot</span>}
+                  {isNew && <span class="inline-flex items-center gap-1 text-brand-teal-expanded">✦ new</span>}
+                </div>
+              </div>
+
+              <h3 class="mb-1 text-base leading-tight font-semibold">
+                <a href={t.source ?? t.website ?? "#"} target="_blank" rel="noopener" class="text-brand-blue hover:underline dark:text-brand-violet-tint">
+                  {t.title}
+                </a>
+              </h3>
+              <p class="mb-3 text-xs text-neutral-500 dark:text-neutral-400">by {t.author}</p>
+
+              <p class="mb-4 line-clamp-3 flex-1 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+                {t.description}
+              </p>
+
+              <div class="mb-4 flex flex-wrap gap-1.5">
+                {shownTags.map((tag) => (
+                  <span
+                    class="inline-flex max-w-[180px] items-center truncate rounded-full border border-brand-magenta/40 px-2 py-0.5 text-[11px] text-brand-magenta dark:border-brand-violet-tint/40 dark:text-brand-violet-tint"
+                    title={labelFor(tag)}
+                  >
+                    {labelFor(tag)}
+                  </span>
+                ))}
+                {overflow > 0 && (
+                  <span class="inline-flex items-center rounded-full bg-brand-magenta px-2 py-0.5 text-[11px] text-white">+ {overflow} more</span>
+                )}
+              </div>
+
+              {azdCmd && (
+                <div class="mt-auto flex items-center gap-2 rounded-md border border-neutral-200 bg-neutral-50 px-2.5 py-1.5 dark:border-neutral-700 dark:bg-neutral-800/60">
+                  <code class="flex-1 truncate font-mono text-[12px] text-neutral-700 dark:text-neutral-300">{azdCmd}</code>
+                  <button class="copy-btn inline-flex h-7 w-7 shrink-0 items-center justify-center rounded bg-brand-blue text-white hover:bg-brand-blue-dark" data-copy={azdCmd} aria-label="Copy command">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const q = document.getElementById('q');
+      const grid = document.getElementById('grid');
+      const empty = document.getElementById('empty');
+      const count = document.getElementById('count');
+      const sort = document.getElementById('sort');
+      const tagCbs = document.querySelectorAll('.tag-cb');
+      const authorCbs = document.querySelectorAll('.author-cb');
+      const cards = Array.from(grid.querySelectorAll('.card'));
+
+      // Shareable URL: mirrors the original site's query params so links
+      // like /gallery/?name=networking, /gallery/?tags=azd&tags=appservice,
+      // and /gallery/?authors=Jane%20Doe deep-link to a filtered view.
+      const SEARCH_PARAM = 'name';
+      const TAGS_PARAM = 'tags';
+      const AUTHORS_PARAM = 'authors';
+
+      function syncUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const term = (q.value || '').trim();
+        if (term) params.set(SEARCH_PARAM, term);
+        else params.delete(SEARCH_PARAM);
+
+        params.delete(TAGS_PARAM);
+        Array.from(tagCbs)
+          .filter((c) => c.checked)
+          .forEach((c) => params.append(TAGS_PARAM, c.dataset.tag));
+
+        params.delete(AUTHORS_PARAM);
+        Array.from(authorCbs)
+          .filter((c) => c.checked)
+          .forEach((c) => params.append(AUTHORS_PARAM, c.dataset.author));
+
+        const qs = params.toString();
+        const next = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
+        window.history.replaceState(null, '', next);
+      }
+
+      function apply() {
+        const term = (q.value || '').trim().toLowerCase();
+        const selectedTags = Array.from(tagCbs).filter((c) => c.checked).map((c) => c.dataset.tag);
+        const selectedAuthors = Array.from(authorCbs).filter((c) => c.checked).map((c) => c.dataset.author);
+
+        let shown = 0;
+        cards.forEach((card) => {
+          const tags = (card.dataset.tags || '').split(',');
+          const author = card.dataset.author || '';
+          const hay = card.dataset.haystack || '';
+          const matchesTerm = !term || hay.includes(term);
+          const matchesTags = selectedTags.length === 0 || selectedTags.every((t) => tags.includes(t));
+          const matchesAuthors = selectedAuthors.length === 0 || selectedAuthors.includes(author);
+          const show = matchesTerm && matchesTags && matchesAuthors;
+          card.style.display = show ? '' : 'none';
+          if (show) shown++;
+        });
+
+        count.textContent = String(shown);
+        empty.classList.toggle('hidden', shown !== 0);
+        grid.classList.toggle('hidden', shown === 0);
+      }
+
+      function applySort() {
+        const mode = sort.value;
+        const sorted = [...cards];
+        if (mode === 'title') sorted.sort((a, b) => (a.dataset.title || '').localeCompare(b.dataset.title || ''));
+        else if (mode === 'author') sorted.sort((a, b) => (a.dataset.author || '').localeCompare(b.dataset.author || ''));
+        else sorted.sort((a, b) => Number(a.dataset.index) - Number(b.dataset.index));
+        sorted.forEach((c) => grid.appendChild(c));
+      }
+
+      q?.addEventListener('input', () => {
+        syncUrl();
+        apply();
+      });
+      tagCbs.forEach((cb) =>
+        cb.addEventListener('change', () => {
+          syncUrl();
+          apply();
+        }),
+      );
+      authorCbs.forEach((cb) =>
+        cb.addEventListener('change', () => {
+          syncUrl();
+          apply();
+        }),
+      );
+      sort?.addEventListener('change', applySort);
+
+      document.getElementById('clear-filters')?.addEventListener('click', () => {
+        q.value = '';
+        tagCbs.forEach((cb) => (cb.checked = false));
+        authorCbs.forEach((cb) => (cb.checked = false));
+        syncUrl();
+        apply();
+      });
+
+      document.querySelectorAll('.copy-btn').forEach((btn) => {
+        btn.addEventListener('click', async (ev) => {
+          ev.stopPropagation();
+          const text = btn.dataset.copy || '';
+          try {
+            await navigator.clipboard.writeText(text);
+            const orig = btn.innerHTML;
+            btn.innerHTML = '✓';
+            btn.classList.add('bg-emerald-600');
+            btn.classList.remove('bg-brand-blue');
+            setTimeout(() => {
+              btn.innerHTML = orig;
+              btn.classList.remove('bg-emerald-600');
+              btn.classList.add('bg-brand-blue');
+            }, 1200);
+          } catch (e) {
+            console.warn('Clipboard write failed', e);
+          }
+        });
+      });
+
+      // Prefill from query string so external shareable URLs deep-link
+      // into a filtered view. Unknown tags/authors in the URL are simply
+      // ignored — the matching checkbox won't be found.
+      const initialParams = new URLSearchParams(window.location.search);
+      const initialName = initialParams.get(SEARCH_PARAM);
+      if (q && initialName) q.value = initialName;
+
+      const initialTags = new Set(initialParams.getAll(TAGS_PARAM));
+      if (initialTags.size) {
+        tagCbs.forEach((cb) => {
+          if (initialTags.has(cb.dataset.tag)) cb.checked = true;
+        });
+      }
+
+      const initialAuthors = new Set(initialParams.getAll(AUTHORS_PARAM));
+      if (initialAuthors.size) {
+        authorCbs.forEach((cb) => {
+          if (initialAuthors.has(cb.dataset.author)) cb.checked = true;
+        });
+      }
+
+      apply();
+    })();
+  </script>
+
+  <!-- ============ SIDE PANEL ============ -->
+  <div
+    id="panel-backdrop"
+    class="pointer-events-none fixed inset-0 z-40 bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-200"
+    aria-hidden="true"
+  ></div>
+
+  <aside
+    id="detail-panel"
+    class="fixed top-0 right-0 z-50 flex h-full w-full translate-x-full flex-col bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-[560px] md:w-[640px] lg:w-[720px] dark:bg-neutral-900"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="panel-title"
+    tabindex="-1"
+  >
+    <div class="flex items-start justify-between gap-4 border-b border-neutral-200 px-6 pt-5 pb-3 dark:border-neutral-800">
+      <div class="min-w-0 flex-1">
+        <div id="panel-badges" class="mb-2 flex items-center gap-3 text-xs"></div>
+        <h2 id="panel-title" class="text-2xl leading-tight font-semibold"></h2>
+        <div class="mt-2 flex flex-wrap items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
+          <span>by</span>
+          <a id="panel-author-link" target="_blank" rel="noopener" class="font-medium text-brand-blue hover:underline dark:text-brand-violet-tint"></a>
+          <span class="text-neutral-300 dark:text-neutral-600">•</span>
+          <a id="panel-source-link" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-brand-blue hover:underline dark:text-brand-violet-tint">
+            View in GitHub
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+      <button id="panel-close" aria-label="Close panel" class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div id="panel-tags" class="flex flex-wrap gap-1.5 border-b border-neutral-200 px-6 py-3 dark:border-neutral-800"></div>
+
+    <div class="border-b border-neutral-200 px-6 dark:border-neutral-800">
+      <div role="tablist" class="-mb-px flex gap-1">
+        <button data-tab="details" class="panel-tab border-b-2 border-brand-violet px-4 py-2.5 text-sm font-medium text-brand-violet" role="tab" aria-selected="true">Template Details</button>
+        <button data-tab="demo" class="panel-tab border-b-2 border-transparent px-4 py-2.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white" role="tab" aria-selected="false">Demo Guide</button>
+        <button data-tab="blueprint" class="panel-tab border-b-2 border-transparent px-4 py-2.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white" role="tab" aria-selected="false">Course Blueprint</button>
+        <button data-tab="legal" class="panel-tab border-b-2 border-transparent px-4 py-2.5 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white" role="tab" aria-selected="false">Legal</button>
+      </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto">
+      <section data-panel="details" class="panel-pane space-y-5 p-6">
+        <p id="panel-description" class="text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300"></p>
+        <hr class="border-neutral-200 dark:border-neutral-800" />
+        <div class="grid grid-cols-1 gap-3 text-sm">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-teal/15 text-brand-teal-expanded">$</span>
+            <div>
+              <div class="font-medium text-neutral-900 dark:text-neutral-100">Cost Estimate</div>
+              <div id="panel-cost" class="text-neutral-600 dark:text-neutral-400"></div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-blue/15 text-brand-blue">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <div>
+              <div class="font-medium text-neutral-900 dark:text-neutral-100">Time Estimate</div>
+              <div id="panel-deploytime" class="text-neutral-600 dark:text-neutral-400"></div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-brand-violet/15 text-brand-violet">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+            </span>
+            <div class="min-w-0">
+              <div class="font-medium text-neutral-900 dark:text-neutral-100">Deployment Prereqs</div>
+              <div id="panel-prereqs" class="text-neutral-600 dark:text-neutral-400"></div>
+            </div>
+          </div>
+        </div>
+        <hr class="border-neutral-200 dark:border-neutral-800" />
+        <div>
+          <div class="mb-2 text-xs font-semibold tracking-wider text-neutral-500 uppercase">Deploy with Azure Developer CLI</div>
+          <div id="panel-commands" class="space-y-2"></div>
+        </div>
+      </section>
+
+      <section data-panel="demo" class="panel-pane hidden p-6">
+        <div id="panel-demo-loading" class="hidden text-sm text-neutral-500">Loading demo guide…</div>
+        <div id="panel-demo-error" class="hidden text-sm text-red-600"></div>
+        <a id="panel-demo-link" target="_blank" rel="noopener" class="mb-4 inline-flex items-center gap-1 text-sm text-brand-blue hover:underline dark:text-brand-violet-tint">
+          Open raw guide
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+        <article id="panel-demo-content" class="prose-spike"></article>
+      </section>
+
+      <section data-panel="blueprint" class="panel-pane hidden p-6 text-sm text-neutral-600 dark:text-neutral-400">
+        <p class="mb-3">Microsoft ILT courses this template maps to:</p>
+        <ul id="panel-courses" class="list-disc space-y-1 pl-5"></ul>
+        <p id="panel-courses-empty" class="hidden italic">No course mapping declared for this template.</p>
+      </section>
+
+      <section data-panel="legal" class="panel-pane hidden space-y-3 p-6 text-sm text-neutral-600 dark:text-neutral-400">
+        <p>These templates are community contributions distributed under the licenses declared in their source repositories. Microsoft makes no representations or warranties about them.</p>
+        <p>See the <a id="panel-legal-source" target="_blank" rel="noopener" class="text-brand-blue hover:underline dark:text-brand-violet-tint">source repository</a> for license, code of conduct, and contribution terms.</p>
+      </section>
+    </div>
+  </aside>
+
+  <script
+    type="application/json"
+    id="catalog-data"
+    set:html={JSON.stringify(
+      data.map((t, i) => ({
+        i,
+        title: t.title,
+        description: t.description,
+        author: t.author,
+        website: t.website,
+        source: t.source,
+        tags: t.tags ?? [],
+        demoguide: t.demoguide,
+        cost: t.cost,
+        deploytime: t.deploytime,
+        prereqs: t.prereqs,
+      })),
+    )}
+  />
+
+  <script
+    type="application/json"
+    id="tag-meta-data"
+    set:html={JSON.stringify(tagMetaForClient)}
+  />
+
+  <script is:inline>
+    (function () {
+      const panel = document.getElementById('detail-panel');
+      const backdrop = document.getElementById('panel-backdrop');
+      const closeBtn = document.getElementById('panel-close');
+      const data = JSON.parse(document.getElementById('catalog-data').textContent || '[]');
+      const tagMeta = JSON.parse(document.getElementById('tag-meta-data').textContent || '{}');
+
+      function labelFor(id) {
+        return tagMeta[id]?.label || id;
+      }
+      function sectionOf(id) {
+        return tagMeta[id]?.section ?? null;
+      }
+      function isSpecial(id) {
+        return sectionOf(id) === null;
+      }
+
+      function azdSlug(source) {
+        if (!source) return '';
+        const m = source.match(/github\.com\/([^/]+)\/([^/?#]+)/i);
+        return m ? `${m[1]}/${m[2].replace(/\.git$/i, '')}` : '';
+      }
+
+      let lastFocus = null;
+      let demoLoadedFor = -1;
+
+      function openPanel(idx) {
+        const t = data[idx];
+        if (!t) return;
+        lastFocus = document.activeElement;
+
+        const isMtt = t.tags.includes('msft');
+        const isMct = t.tags.includes('mct');
+        const isHot = t.tags.includes('hot');
+        const isNew = t.tags.includes('new');
+        const badges = [];
+        if (isMtt) badges.push('<span class="inline-flex items-center gap-1.5 text-neutral-700 dark:text-neutral-300"><svg width="14" height="14" viewBox="0 0 23 23"><rect width="10" height="10" fill="#f25022"/><rect x="12" width="10" height="10" fill="#7fba00"/><rect y="12" width="10" height="10" fill="#00a4ef"/><rect x="12" y="12" width="10" height="10" fill="#ffb900"/></svg>MTT Authored</span>');
+        else if (isMct) badges.push('<span class="inline-flex items-center gap-1.5 text-brand-violet font-medium">MCT Authored</span>');
+        if (isHot) badges.push('<span class="inline-flex items-center gap-1 text-brand-magenta">🔥 hot</span>');
+        if (isNew) badges.push('<span class="inline-flex items-center gap-1 text-brand-teal-expanded">✦ new</span>');
+        document.getElementById('panel-badges').innerHTML = badges.join('');
+
+        document.getElementById('panel-title').textContent = t.title;
+        const authorA = document.getElementById('panel-author-link');
+        authorA.textContent = t.author || 'Unknown';
+        authorA.href = t.website || '#';
+        const sourceA = document.getElementById('panel-source-link');
+        sourceA.href = t.source || '#';
+        document.getElementById('panel-legal-source').href = t.source || '#';
+
+        const visibleTags = t.tags.filter((tag) => !isSpecial(tag));
+        document.getElementById('panel-tags').innerHTML = visibleTags.map((tag) =>
+          `<span class="inline-flex items-center text-xs px-2.5 py-1 rounded-full border border-brand-magenta/40 text-brand-magenta dark:text-brand-violet-tint dark:border-brand-violet-tint/40">${labelFor(tag)}</span>`
+        ).join('');
+
+        document.getElementById('panel-description').textContent = t.description || '';
+        document.getElementById('panel-cost').textContent = t.cost ? `Cost Estimate (per 24h): +/- $${t.cost}` : 'Not specified';
+        document.getElementById('panel-deploytime').textContent = t.deploytime ? `Deploy Time Estimate (in min): +/- ${t.deploytime}` : 'Not specified';
+
+        const prereqsEl = document.getElementById('panel-prereqs');
+        if (t.prereqs) {
+          prereqsEl.innerHTML = `<a href="${t.prereqs}" target="_blank" rel="noopener" class="text-brand-blue dark:text-brand-violet-tint hover:underline">View scenario-specific prereqs</a>`;
+        } else {
+          prereqsEl.textContent = 'No additional prereqs declared.';
+        }
+
+        const slug = azdSlug(t.source);
+        const repoName = slug ? slug.split('/').pop() : '';
+        const cmds = slug
+          ? [`mkdir ${repoName}`, `cd ${repoName}`, `azd init -t ${slug}`, 'azd up', 'azd down --purge --force']
+          : [];
+        document.getElementById('panel-commands').innerHTML = cmds.map((c) => `
+          <div class="flex items-center gap-2 bg-neutral-50 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700 rounded-md px-3 py-1.5">
+            <code class="text-[13px] font-mono text-neutral-700 dark:text-neutral-300 truncate flex-1">${c}</code>
+            <button class="panel-copy shrink-0 inline-flex items-center justify-center w-7 h-7 rounded bg-brand-blue hover:bg-brand-blue-dark text-white" data-copy="${c}" aria-label="Copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+        `).join('');
+
+        const demoA = document.getElementById('panel-demo-link');
+        demoA.href = t.demoguide || '#';
+        demoA.style.display = t.demoguide ? '' : 'none';
+        document.getElementById('panel-demo-content').innerHTML = '';
+        document.getElementById('panel-demo-error').classList.add('hidden');
+        demoLoadedFor = -1;
+
+        const ul = document.getElementById('panel-courses');
+        const courses = t.tags.filter((tag) => sectionOf(tag) === 'ILT Courses');
+        ul.innerHTML = courses.map((c) => `<li><span class="font-mono">${c.toUpperCase()}</span> — ${labelFor(c)}</li>`).join('');
+        document.getElementById('panel-courses-empty').classList.toggle('hidden', courses.length > 0);
+
+        switchTab('details');
+
+        panel.classList.remove('translate-x-full');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => panel.focus(), 50);
+        panel.dataset.currentIdx = String(idx);
+      }
+
+      function closePanel() {
+        panel.classList.add('translate-x-full');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      function switchTab(name) {
+        document.querySelectorAll('.panel-tab').forEach((btn) => {
+          const active = btn.dataset.tab === name;
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          btn.classList.toggle('border-brand-violet', active);
+          btn.classList.toggle('text-brand-violet', active);
+          btn.classList.toggle('border-transparent', !active);
+          btn.classList.toggle('text-neutral-600', !active);
+          btn.classList.toggle('dark:text-neutral-400', !active);
+        });
+        document.querySelectorAll('.panel-pane').forEach((pane) => {
+          pane.classList.toggle('hidden', pane.dataset.panel !== name);
+        });
+
+        if (name === 'demo') {
+          const idx = Number(panel.dataset.currentIdx || -1);
+          const t = data[idx];
+          if (t && t.demoguide && demoLoadedFor !== idx) {
+            loadDemoGuide(t.demoguide, idx);
+          }
+        }
+      }
+
+      async function loadDemoGuide(url, idx) {
+        const loadingEl = document.getElementById('panel-demo-loading');
+        const errEl = document.getElementById('panel-demo-error');
+        const contentEl = document.getElementById('panel-demo-content');
+        loadingEl.classList.remove('hidden');
+        errEl.classList.add('hidden');
+        contentEl.innerHTML = '';
+        try {
+          const [res, mod] = await Promise.all([
+            fetch(url),
+            import('https://esm.sh/marked@12?bundle'),
+          ]);
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const md = await res.text();
+          const marked = mod.marked || mod.default;
+          marked.setOptions({ gfm: true, breaks: false });
+          contentEl.innerHTML = marked.parse(md);
+          const base = url.replace(/[^/]*$/, '');
+          contentEl.querySelectorAll('img').forEach((img) => {
+            const src = img.getAttribute('src') || '';
+            if (src && !/^https?:|^data:|^\//.test(src)) {
+              img.setAttribute('src', base + src);
+            }
+            img.setAttribute('loading', 'lazy');
+          });
+          contentEl.querySelectorAll('a').forEach((a) => {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener');
+          });
+          demoLoadedFor = idx;
+        } catch (e) {
+          errEl.textContent = 'Could not load demo guide: ' + e.message + ' — use the "Open raw guide" link above.';
+          errEl.classList.remove('hidden');
+        } finally {
+          loadingEl.classList.add('hidden');
+        }
+      }
+
+      document.querySelectorAll('.card').forEach((card) => {
+        const openFromCard = (ev) => {
+          if (ev.target.closest('a, button')) return;
+          openPanel(Number(card.dataset.index));
+        };
+        card.addEventListener('click', openFromCard);
+        card.addEventListener('keydown', (ev) => {
+          if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            openPanel(Number(card.dataset.index));
+          }
+        });
+      });
+
+      document.querySelectorAll('.panel-tab').forEach((btn) => {
+        btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+      });
+
+      closeBtn.addEventListener('click', closePanel);
+      backdrop.addEventListener('click', closePanel);
+      document.addEventListener('keydown', (ev) => {
+        if (panel.classList.contains('translate-x-full')) return;
+        if (ev.key === 'Escape') {
+          closePanel();
+          return;
+        }
+        if (ev.key !== 'Tab') return;
+
+        // Focus trap — keep keyboard focus inside the modal panel
+        // while it's open. WCAG 2.4.3 + ARIA dialog pattern.
+        const focusables = panel.querySelectorAll(
+          'a[href], button:not([disabled]):not([tabindex="-1"]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
+        );
+        const visible = Array.from(focusables).filter(
+          (el) => !el.hasAttribute('hidden') && el.offsetParent !== null
+        );
+        if (visible.length === 0) {
+          ev.preventDefault();
+          panel.focus();
+          return;
+        }
+        const first = visible[0];
+        const last = visible[visible.length - 1];
+        const active = document.activeElement;
+        if (ev.shiftKey && (active === first || active === panel)) {
+          ev.preventDefault();
+          last.focus();
+        } else if (!ev.shiftKey && active === last) {
+          ev.preventDefault();
+          first.focus();
+        }
+      });
+
+      document.getElementById('panel-commands').addEventListener('click', async (ev) => {
+        const btn = ev.target.closest('.panel-copy');
+        if (!btn) return;
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy || '');
+          const orig = btn.innerHTML;
+          btn.innerHTML = '✓';
+          btn.classList.add('bg-emerald-600');
+          btn.classList.remove('bg-brand-blue');
+          const status = document.getElementById('a11y-status');
+          if (status) status.textContent = 'Copied to clipboard';
+          setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.classList.remove('bg-emerald-600');
+            btn.classList.add('bg-brand-blue');
+            if (status) status.textContent = '';
+          }, 1200);
+        } catch (e) {
+          console.warn(e);
+        }
+      });
+    })();
+  </script>
+</Base>

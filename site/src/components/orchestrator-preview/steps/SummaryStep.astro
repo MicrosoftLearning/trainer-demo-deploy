@@ -1,0 +1,28 @@
+---
+import { renderInlineMarkdown, renderParagraph } from "../../../lib/markdown";
+
+interface Props {
+  title: string;
+  lead?: string;
+  bullets?: string[];
+}
+const { title, lead, bullets = [] } = Astro.props;
+---
+<div class="rounded-md border border-emerald-700/60 bg-emerald-900/20 px-3 py-2.5">
+  <div class="flex items-start gap-2 text-[12.5px]">
+    <span class="text-emerald-400" aria-hidden="true">✓</span>
+    <div class="min-w-0 flex-1">
+      <div class="font-medium text-emerald-200">{title}</div>
+      {lead && (
+        <div class="mt-1 text-neutral-200" set:html={renderParagraph(lead)} />
+      )}
+      {bullets.length > 0 && (
+        <ul class="mt-1 list-inside list-disc space-y-0.5 text-neutral-300">
+          {bullets.map((b) => (
+            <li set:html={renderInlineMarkdown(b)} />
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+</div>

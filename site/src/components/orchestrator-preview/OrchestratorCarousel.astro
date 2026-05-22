@@ -1,0 +1,170 @@
+---
+/**
+ * Orchestrator carousel — stacks one Transcript per OPX script,
+ * cross-fades between them on `opx:done`, drives pip indicators.
+ */
+import Transcript from "./Transcript.astro";
+import { loadAllScripts } from "../../lib/opx-yaml";
+
+interface Props {
+  pauseBetween?: number;
+  fadeMs?: number;
+  startIndex?: number;
+  scriptIds?: string[];
+}
+const {
+  pauseBetween = 900,
+  fadeMs = 400,
+  startIndex = 0,
+  scriptIds,
+} = Astro.props;
+
+const all = loadAllScripts();
+const scripts = scriptIds
+  ? all.filter((s) => scriptIds.includes(s.meta.id))
+  : all;
+const showPips = scripts.length > 1;
+---
+<div class="relative" data-opx-carousel data-pause-between={pauseBetween} data-fade-ms={fadeMs}>
+  <div class="opx-stack relative">
+    {scripts.length === 0 ? (
+      <div class="rounded-xl border border-dashed border-neutral-300 p-8 text-center text-sm text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+        No OPX scripts found in <code>src/scripts/</code>.
+      </div>
+    ) : (
+      scripts.map((s, i) => (
+        <div
+          data-opx-slide={i}
+          class="opx-slide transition-opacity duration-300"
+          style={`opacity:${i === startIndex ? 1 : 0}; ${i === startIndex ? "" : "pointer-events:none;"}`}
+        >
+          <Transcript script={s} carouselMode={true} />
+        </div>
+      ))
+    )}
+  </div>
+
+  {showPips && (
+    <div
+      class="mt-4 flex justify-center gap-2"
+      role="tablist"
+      aria-label="Scenarios"
+    >
+      {scripts.map((s, i) => (
+        <button
+          type="button"
+          data-opx-pip={i}
+          role="tab"
+          aria-current={i === startIndex ? "true" : "false"}
+          aria-label={`Scenario ${i + 1} of ${scripts.length}: ${s.meta.title}`}
+          class:list={[
+            "h-1.5 rounded-full transition-all",
+            i === startIndex ? "w-8 bg-[#c03bc4]" : "w-3 bg-neutral-300 dark:bg-neutral-700",
+          ]}
+        ></button>
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  /**
+   * Stack all slides in the same grid cell so they overlap without
+   * absolute positioning — preserves natural container height while
+   * letting opacity drive the cross-fade.
+   */
+  .opx-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  .opx-slide {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+</style>
+
+<script define:vars={{ pauseBetween, fadeMs, count: scripts.length, startIndex, ids: scripts.map(s => s.meta.id) }}>
+  if (count > 1) {
+    const carousel = document.querySelector("[data-opx-carousel]");
+    if (carousel) {
+      let active = startIndex;
+      let switching = false;
+
+      function setActive(next) {
+        if (next === active || switching) return;
+        switching = true;
+        const slides = carousel.querySelectorAll("[data-opx-slide]");
+        const pips = carousel.querySelectorAll("[data-opx-pip]");
+        const cur = slides[active];
+        const tgt = slides[next];
+        if (!cur || !tgt) { switching = false; return; }
+        cur.style.opacity = "0";
+        cur.style.pointerEvents = "none";
+        const curTranscript = cur.querySelector("[data-opx-id]");
+        curTranscript?.dispatchEvent(new CustomEvent("opx:cancel"));
+        setTimeout(() => {
+          tgt.style.opacity = "1";
+          tgt.style.pointerEvents = "";
+          pips.forEach((p, i) => {
+            const onPip = i === next;
+            p.setAttribute("aria-current", onPip ? "true" : "false");
+            p.className = onPip
+              ? "h-1.5 w-8 rounded-full bg-[#c03bc4] transition-all"
+              : "h-1.5 w-3 rounded-full bg-neutral-300 dark:bg-neutral-700 transition-all";
+          });
+          const tgtTranscript = tgt.querySelector("[data-opx-id]");
+          tgtTranscript?.dispatchEvent(new CustomEvent("opx:play", { detail: { id: ids[next] } }));
+          active = next;
+          switching = false;
+        }, fadeMs);
+      }
+
+      carousel.addEventListener("opx:done", () => {
+        setTimeout(() => setActive((active + 1) % count), pauseBetween);
+      });
+
+      carousel.querySelectorAll("[data-opx-pip]").forEach((p, i) => {
+        p.addEventListener("click", () => setActive(i));
+      });
+
+      /**
+       * Keyboard support per WAI-ARIA tabs pattern: arrow keys move
+       * between pips, Home/End jump to first/last. Auto-advance keeps
+       * running — keyboard activation just retargets it.
+       */
+      const tablist = carousel.querySelector('[role="tablist"]');
+      if (tablist) {
+        const pipEls = Array.from(carousel.querySelectorAll("[data-opx-pip]"));
+        tablist.addEventListener("keydown", (ev) => {
+          const idx = pipEls.indexOf(document.activeElement);
+          if (idx === -1) return;
+          let next = -1;
+          if (ev.key === "ArrowRight" || ev.key === "ArrowDown") next = (idx + 1) % count;
+          else if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") next = (idx - 1 + count) % count;
+          else if (ev.key === "Home") next = 0;
+          else if (ev.key === "End") next = count - 1;
+          if (next === -1) return;
+          ev.preventDefault();
+          pipEls[next].focus();
+          setActive(next);
+        });
+      }
+
+      /**
+       * Defer the initial kick — the Transcript runtime is a module script
+       * (deferred), so it mounts after `DOMContentLoaded`. We need its
+       * `opx:play` listener attached before we fire.
+       */
+      function kick() {
+        const first = carousel.querySelectorAll("[data-opx-slide]")[startIndex]?.querySelector("[data-opx-id]");
+        first?.dispatchEvent(new CustomEvent("opx:play", { detail: { id: ids[startIndex] } }));
+      }
+      if (document.readyState === "complete") {
+        setTimeout(kick, 0);
+      } else {
+        window.addEventListener("load", () => setTimeout(kick, 0), { once: true });
+      }
+    }
+  }
+</script>

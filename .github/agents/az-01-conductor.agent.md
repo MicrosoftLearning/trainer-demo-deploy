@@ -255,7 +255,7 @@ Use `#runSubagent` for each workflow step:
 | 3    | Bicep        | Run governance discovery, generate Bicep templates and 04-runtime-diagram.png, validate per 02-architecture-assessment.md                                                                                             |
 | 3b   | Development  | Scaffold .NET 10 sample webapp with {industry} seed data, wire into azure.yaml, validate build. **Skip if VM-only or user declined.**                                                                                 |
 | 4    | Deploy       | Run what-if analysis, prompt user, deploy to Azure with `azd up`, generate README.md. **MUST attempt actual deployment. On failure, report back so the Conductor can prompt the user for a decision.**                |
-| 5    | DemoGuide    | Generate audience-aware demo runbook with **Playwright screenshots** of deployed resources. **VERIFY screenshots exist in `demoguide/images/` before marking complete.**                                              |
+| 5    | DemoGuide    | Generate audience-aware demo guide with **Playwright screenshots** of deployed resources. **VERIFY screenshots exist in `demoguide/images/` before marking complete.**                                              |
 | 6    | Contribute   | Validate artifacts, fork repo, create branch, commit scenario, open draft PR, optionally create tracking issue. **User must explicitly opt in — never auto-trigger.**                                                  |
 
 ## Starting a New Project

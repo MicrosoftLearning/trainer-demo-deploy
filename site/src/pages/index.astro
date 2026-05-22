@@ -1,0 +1,103 @@
+---
+import Base from "../layouts/Base.astro";
+import FeatureCard from "../components/shared/FeatureCard.astro";
+import OrchestratorCarousel from "../components/orchestrator-preview/OrchestratorCarousel.astro";
+import { withBase } from "../lib/url";
+
+// Back-compat: the v1 site hosted the catalog at `/` and used `?name=`,
+// `?tags=`, and `?authors=` query params. External links predate the
+// move to /gallery/, so we forward those queries to the new page.
+const galleryHref = withBase("gallery/");
+---
+<Base
+  title="Microsoft Trainer Demo Deploy"
+  description="A trainer-first catalog of azd templates and bring-your-own-demo scaffolds for Microsoft technical training."
+>
+  <script is:inline define:vars={{ galleryHref }}>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('name') || params.has('tags') || params.has('authors')) {
+        window.location.replace(galleryHref + window.location.search + window.location.hash);
+      }
+    })();
+  </script>
+  {/* HERO */}
+  <section class="hero-gradient relative">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 pt-10 pb-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <div>
+        <span class="inline-block rounded-full bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5b2da9] ring-1 ring-[#8661c5]/20 backdrop-blur dark:bg-neutral-900/60 dark:text-[#c8a9ff] dark:ring-[#8661c5]/30">
+          Microsoft Learning · trainer demos
+        </span>
+
+        <h1 class="mt-5 text-5xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
+          <span class="text-neutral-900 dark:text-neutral-50">Demo.</span>
+          <span class="text-[#8661c5]">Deploy.</span>
+        </h1>
+
+        <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
+          A trainer-first catalog of azd templates and bring-your-own-demo
+          scaffolds. Browse curated scenarios, or describe a demo and let the
+          orchestrator scaffold the infra, code, and demo guide for you.
+        </p>
+
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <a
+            href={withBase("gallery")}
+            class="rounded-md bg-[#8661c5] px-5 py-2.5 text-[13.5px] font-semibold text-white shadow-sm hover:bg-[#7551b5]"
+          >
+            Browse the catalog →
+          </a>
+        </div>
+
+        <div class="mt-7 flex flex-wrap items-center gap-2 text-[12px] font-mono text-neutral-700 dark:text-neutral-300">
+          <span class="code-chip"><span class="text-neutral-400">$</span>&nbsp;azd init</span>
+          <span class="code-chip"><span class="text-neutral-400">$</span>&nbsp;azd up</span>
+        </div>
+      </div>
+
+      {/* OPX carousel */}
+      <div class="relative lg:pl-4">
+        <OrchestratorCarousel />
+      </div>
+    </div>
+  </section>
+
+  {/* THREE WAYS IN */}
+  <section class="mx-auto max-w-7xl px-6 pt-6 pb-16">
+    <div class="mb-2 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8661c5] dark:text-[#c5b4e3]">
+      Three ways in
+    </div>
+    <h2 class="mb-3 text-center text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl dark:text-neutral-100">
+      Pick a path
+    </h2>
+    <p class="mx-auto mb-10 max-w-2xl text-center text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+      Start from the curated catalog, or let agents build a brand-new demo with you.
+    </p>
+    <div class="grid gap-6 md:grid-cols-3">
+      <FeatureCard
+        kicker="Pre-built, ready to deploy"
+        title="Catalog"
+        description="Browse curated demo templates aligned to Microsoft Learn courses. Pick one, run azd up, walk into class with a working demo."
+        cta="Browse the catalog"
+        href={withBase("gallery")}
+        accent="violet"
+      />
+      <FeatureCard
+        kicker="Bring your own demo"
+        title="BYOD — Azure"
+        description="An agentic demo builder powered by GitHub Copilot. Describe the Azure workload you want to teach and let the agents scaffold a working azd template for you."
+        cta="Build an Azure demo"
+        href={withBase("byod-azure")}
+        accent="blue"
+      />
+      <FeatureCard
+        kicker="Bring your own demo"
+        title="BYOD — Copilot Studio"
+        description="The same agentic builder, focused on Copilot Studio. Generate ready-to-import agent solutions, topics, and connectors from a plain-English description."
+        cta="Build a Copilot Studio demo"
+        href={withBase("byod-copilot-studio")}
+        accent="teal"
+      />
+    </div>
+  </section>
+</Base>

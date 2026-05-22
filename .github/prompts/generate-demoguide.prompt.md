@@ -20,7 +20,7 @@ argument-hint: Provide the project name to generate a demo guide for
 
 Create a comprehensive, audience-aware demonstration guide for a deployed
 Azure infrastructure project. Includes pre-demo validation, step-by-step
-runbook, talking points, and contingency playbook.
+demo guide, talking points, and contingency playbook.
 
 ## Mission
 
