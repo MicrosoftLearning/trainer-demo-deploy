@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "Linux VM with SSH and NSG",
+  "description": "Foundational IaaS scenario with Ubuntu VM, VNet, NSG SSH inbound rule, Public IP, and Log Analytics for Azure VM deployment and network security.",
+  "preview": "./templates/images/linux-vm-ssh-nsg.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-linux-vm-ssh-nsg",
+  "tags": ["az-104","msft","virtualmachine","vnets","loganalytics"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-linux-vm-ssh-nsg/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "3",
+  "cost": "5.00"
   }
 ]
