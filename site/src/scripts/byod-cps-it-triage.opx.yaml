@@ -1,7 +1,7 @@
 meta:
   id: byod-cps-it-triage
   title: "Trainer Demo Deploy — BYOD Copilot Studio scaffold"
-  agent: orchestrator
+  agent: Conductor
   model: "Claude Opus 4.7"
   context: "BYOD Copilot Studio — MS-4006"
   task:
