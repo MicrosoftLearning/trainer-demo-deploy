@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "Azure AI Foundry Agentic Agent",
+  "description": "Azure AI Foundry environment with a Python multi-tool agentic agent demonstrating Code Interpreter, File Search, and Custom Function Calling via Managed Identity.",
+  "preview": "./templates/images/foundry-agentic-agent.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-foundry-agentic-agent",
+  "tags": ["ai-102","ai-3002","msft","aifoundry","aisearch","cosmosdb","azurestorage","loganalytics","python"],
+  "demoguide": null,
+  "deploytime": "10",
+  "cost": "15.00"
   }
 ]
