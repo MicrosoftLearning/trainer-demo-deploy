@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "Azure Container Hosting Comparison",
+  "description": "Deploys the same container across ACI, Container Apps, AKS, and App Service for Containers from a shared ACR to compare scaling, networking, and management.",
+  "preview": "./templates/images/azure-container-scenarios.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-azure-container-scenarios",
+  "tags": ["az-104","az-305","msft","aca","aci","acr","aks","appservice","kubernetes","loganalytics"],
+  "demoguide": null,
+  "deploytime": "10",
+  "cost": "12.00"
   }
 ]
