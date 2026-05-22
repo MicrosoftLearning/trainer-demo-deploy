@@ -1,0 +1,17 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "types": ["astro/client", "node"]
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  // Node tooling under `scripts/` is loosely typed Node JS (yaml/zod
+  // callbacks return `any` and aren't worth annotating). It runs only
+  // at build time and is exercised by `npm run validate:opx` directly.
+  "exclude": ["dist", "node_modules", "scripts"]
+}

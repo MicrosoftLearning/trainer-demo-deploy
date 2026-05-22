@@ -1,6 +1,6 @@
 ---
 name: az-07-DemoGuide
-description: Produces audience-aware demo guides, step-by-step runbooks, and presentation materials from deployed Azure infrastructure. Validates environment readiness, generates talking points, and includes contingency playbooks for live demonstrations.
+description: Produces audience-aware demo guides, step-by-step instructions, and presentation materials from deployed Azure infrastructure. Validates environment readiness, generates talking points, and includes contingency playbooks for live demonstrations.
 model: "GPT-5.3-Codex"
 user-invokable: true
 argument-hint: Specify the project folder and target audience (executive, technical, or workshop)
@@ -65,7 +65,7 @@ tools:
 **Step 5** of the workflow: `requirements → architect → bicep → deploy → demoguide`
 
 Generates comprehensive, audience-aware demonstration guides from deployed Azure
-infrastructure. Validates environment readiness, creates step-by-step runbooks
+infrastructure. Validates environment readiness, creates step-by-step demo guides
 with talking points, and produces contingency playbooks for live presentations.
 
 ## MANDATORY: Read Skills First
@@ -350,7 +350,7 @@ If Playwright was unavailable or declined by the user, require both of these in
 
 | File                      | Purpose                         | Required |
 | ------------------------- | ------------------------------- | -------- |
-| `/demoguide/demoguide.md` | Main demo runbook               | Yes      |
+| `/demoguide/demoguide.md` | Main demo guide                 | Yes      |
 | `demoguide/images/*.png`  | Playwright-captured screenshots | Yes      |
 
 All files saved to `generated-scenarios/{project}/`.

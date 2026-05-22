@@ -1,0 +1,36 @@
+{
+  "name": "trainer-demo-deploy-v2",
+  "version": "2.0.0-alpha.0",
+  "private": true,
+  "type": "module",
+  "description": "v2 Astro implementation of the Trainer Demo Deploy site (microsoftlearning.github.io/trainer-demo-deploy).",
+  "scripts": {
+    "dev": "astro dev --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --port 4321",
+    "check": "astro check",
+    "validate:opx": "node --experimental-strip-types --no-warnings ./scripts/validate-opx.mjs",
+    "check:links": "node ./scripts/check-links.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write ."
+  },
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.1.1",
+    "yaml": "^2.6.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.10.2",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

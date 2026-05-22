@@ -1,0 +1,239 @@
+---
+import Base from "../layouts/Base.astro";
+import { withBase } from "../lib/url";
+
+const sections = [
+  { id: "what-is-azd",         title: "What is azd?" },
+  { id: "what-is-a-template",  title: "What is an azd-template?" },
+  { id: "how-to-use",          title: "How do I use azd-templates?" },
+  { id: "how-to-discover",     title: "How do I discover one?" },
+  { id: "how-to-create",       title: "How do I create templates?" },
+  { id: "how-to-contribute",   title: "How do I contribute templates?" },
+  { id: "how-rated",           title: "How are templates rated?" },
+  { id: "how-to-request",      title: "How do I request a template?" },
+];
+---
+<Base
+  title="FAQ"
+  description="Frequently asked questions about Azure Developer CLI (azd) templates and how trainers use them."
+>
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[600px] rounded-full opacity-50 dark:opacity-70"
+           style="background: radial-gradient(closest-side, rgba(134,97,197,0.30), transparent 70%);"></div>
+    </div>
+    <div class="max-w-5xl mx-auto px-6 pt-20 pb-10 text-center">
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight mb-4">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#8661C5] to-[#C03BC4]">
+          Frequently asked questions
+        </span>
+      </h1>
+      <p class="text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+        Quick answers about azd, azd-templates, and how this catalog works.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10">
+      <!-- Sticky TOC -->
+      <aside class="md:sticky md:top-24 md:self-start">
+        <nav aria-label="FAQ sections" class="text-sm">
+          <div class="text-xs uppercase tracking-wider text-neutral-500 mb-3">On this page</div>
+          <ul class="space-y-2">
+            {sections.map((s) => (
+              <li>
+                <a href={`#${s.id}`}
+                   class="text-neutral-700 dark:text-neutral-300 hover:text-[#8661C5] dark:hover:text-[#C5B4E3] transition-colors">
+                  {s.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Content -->
+      <div class="space-y-12">
+        <article id="what-is-azd" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">What is <code class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.85em]">azd</code>?</h2>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            The Azure Developer CLI (or <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">azd</code>) is an
+            <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href="https://aka.ms/azd" target="_blank" rel="noopener">open-source tool</a>
+            that provides higher-level, application developer-friendly commands that map to key stages in your developer workflow — so you can focus
+            on writing application code instead of focusing on atomic operations on Azure resources.
+          </p>
+        </article>
+
+        <article id="what-is-a-template" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">What is an <code class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.85em]">azd-template</code>?</h2>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+               href="https://learn.microsoft.com/azure/developer/azure-developer-cli/overview?tabs=nodejs#azure-developer-cli-templates"
+               target="_blank" rel="noopener">Azure Developer CLI templates</a>
+            (<code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">azd-templates</code>) are <em>sample repositories</em>
+            created — using Azure Developer CLI defined conventions — to include the application code, tools, and infrastructure code required to
+            streamline your CI/CD pipelines. This provides a repeatable foundation on which other teams can build, customize, or extend the default solution.
+          </p>
+        </article>
+
+        <article id="how-to-use" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">How do I use <code class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.85em]">azd-templates</code>?</h2>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            With <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">azd-templates</code>, the path from <em>code to cloud</em> is just three steps:
+          </p>
+          <ol class="mt-3 ml-6 list-decimal space-y-1 text-neutral-700 dark:text-neutral-300">
+            <li><strong>Discovery</strong> — find a template</li>
+            <li><strong>Deployment</strong> — <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">azd up</code> to deploy it</li>
+            <li><strong>Customization</strong> — modify app code or config</li>
+          </ol>
+
+          <div class="mt-5 rounded-lg border border-[#0078D4]/30 bg-[#0078D4]/5 dark:bg-[#0078D4]/10 p-4">
+            <div class="font-semibold text-sm mb-1">Read the docs</div>
+            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+              Learn more about <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href="https://aka.ms/azd" target="_blank" rel="noopener">getting started with azd</a>.
+            </p>
+          </div>
+
+          <div class="mt-4 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 p-4">
+            <div class="font-semibold text-sm mb-2">Prerequisites</div>
+            <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-2">To run successful azd deployments, install the following:</p>
+            <ol class="ml-6 list-decimal space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
+              <li>AZD — Azure Developer CLI
+                (<a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+                   href="https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?tabs=winget-windows%2Cbrew-mac%2Cscript-linux&pivots=os-windows"
+                   target="_blank" rel="noopener">install instructions</a>)</li>
+              <li>PWSH — PowerShell latest version
+                (<a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+                   href="https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5"
+                   target="_blank" rel="noopener">install instructions</a>)</li>
+              <li>Application Development SDK for sample apps:
+                <ul class="ml-5 list-disc space-y-0.5 mt-1">
+                  <li>.NET C# SDK (<a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href="https://dotnet.microsoft.com/download" target="_blank" rel="noopener">install</a>)</li>
+                  <li>Java SDK (<a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener">install</a>)</li>
+                  <li>Python SDK (<a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href="https://www.python.org/downloads/" target="_blank" rel="noopener">install</a>)</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <article id="how-to-discover" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">How do I discover one?</h2>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            There are a couple of ways to discover existing <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">azd-template</code>-tagged repositories:
+            traditional search engines, GitHub Search, blog posts… or — what we are trying to solve here — a curated catalog.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-5 mb-2">Using this catalog</h3>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            Each template in the <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href={withBase("gallery")}>catalog</a> is associated with:
+          </p>
+          <ul class="mt-2 ml-6 list-disc space-y-1 text-neutral-700 dark:text-neutral-300">
+            <li>Architecture diagram</li>
+            <li>Template repository</li>
+            <li>Publication date</li>
+            <li>Contributor identity</li>
+            <li>Description</li>
+            <li>Service tags (for architecture components)</li>
+            <li>Language tags (for application code)</li>
+            <li>Demo guide — what a trainer can demo, and what a learner can take away</li>
+          </ul>
+          <p class="mt-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            The catalog provides both <strong>search</strong> (by template name) and <strong>filter</strong> (by criteria — single or combined).
+          </p>
+        </article>
+
+        <article id="how-to-create" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">How do I create templates?</h2>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            There are a few different ways to create azd templates, depending on your starting point. If you want to provide a full
+            demo scenario for Trainer-Demo-Deploy, use the
+            <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+               href="https://github.com/petender/tdd-azd-starter" target="_blank" rel="noopener">tdd-azd-starter</a>
+            template, which contains the following structure:
+          </p>
+<pre class="mt-3 rounded-md bg-neutral-900 text-neutral-100 p-4 overflow-x-auto text-xs leading-relaxed"><code>├── .devcontainer              [ For DevContainer ]
+├── demoguide                  [ demoguide.md + screenshots ]
+│   ├── demoguide.md           [ Step-by-step demo guide ]
+│   └── screenshot1.png        [ Screenshots used in the guide ]
+├── infra                      [ Creates and configures Azure resources ]
+│   ├── main.bicep             [ Resource Group + module deployment ]
+│   ├── main.parameters.json   [ Bicep parameters ]
+│   └── modulename.bicep       [ Bicep modules used by main.bicep ]
+├── src                        [ App code ]
+└── azure.yaml                 [ App + Azure resource description, name & metadata ]</code></pre>
+          <p class="mt-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            Replace the placeholder files with your own template files, then update <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">azure.yaml</code>
+            — especially <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">name</code> and metadata. Keep the naming convention
+            <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">tdd-azd-…</code>; the metadata feeds the azd KPI reports.
+          </p>
+          <p class="mt-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            See the <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href={withBase("contribute")}>Contributor Guide</a> for the full
+            step-by-step PR workflow.
+          </p>
+
+          <div class="mt-5 rounded-lg border border-[#8661C5]/30 bg-[#8661C5]/5 dark:bg-[#8661C5]/10 p-4">
+            <div class="font-semibold text-sm mb-1">azd conventions</div>
+            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+              Want to learn more? Read the product group's
+              <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+                 href="https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create#azd-conventions"
+                 target="_blank" rel="noopener">azd conventions</a>.
+              Not all guidelines are required for Trainer-Demo-Deploy scenarios.
+            </p>
+          </div>
+        </article>
+
+        <article id="how-to-contribute" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">How do I contribute templates?</h2>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">There are several ways to contribute to Trainer-Demo-Deploy:</p>
+          <ul class="mt-3 ml-6 list-disc space-y-2 text-neutral-700 dark:text-neutral-300">
+            <li><strong>Pick up an open issue</strong> — see the
+              <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+                 href="https://github.com/MicrosoftLearning/trainer-demo-deploy/issues" target="_blank" rel="noopener">list of open issues</a>.
+            </li>
+            <li><strong>Add a complete demo scenario</strong> — follow the steps in
+              <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href={withBase("contribute")}>Contribute a template</a>.
+            </li>
+            <li><strong>Improve an existing scenario</strong> — open an issue on the scenario's repo (linked from its catalog card)
+              or on this repo.</li>
+          </ul>
+          <p class="mt-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            An internal team reviews submissions: validates that templates function as designed, accepts and closes the issue,
+            or suggests modifications and leaves the issue open.
+          </p>
+        </article>
+
+        <article id="how-rated" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">How are templates rated?</h2>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            This catalog contains both Microsoft Technical Trainer (MTT)-authored and Microsoft Certified Trainer (MCT)-contributed templates.
+            Creating <strong>and maintaining</strong> templates is not trivial, so we assume your contribution reflects a real classroom need.
+          </p>
+          <p class="mt-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            We don't currently rate templates, except for the <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">new</code>
+            and <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">hot</code> tags, which we refresh monthly. Longer term
+            we may add tags for "recently updated," "most stars," "most forks," and similar criteria.
+          </p>
+        </article>
+
+        <article id="how-to-request" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">How do I request a template?</h2>
+          <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            Have an architecture in mind but can't find an existing azd template to jumpstart it? You can build it yourself and contribute it back —
+            or open an issue asking the community.
+          </p>
+          <p class="mt-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            We're also considering a <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">help wanted</code> tag that lets contributors
+            add an architecture diagram <em>without</em> a backing repository. Community members can then:
+          </p>
+          <ul class="mt-2 ml-6 list-disc space-y-1 text-neutral-700 dark:text-neutral-300">
+            <li>Up-vote the issue to signal priority</li>
+            <li>Build and contribute the template for it</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</Base>

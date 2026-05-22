@@ -1,0 +1,94 @@
+---
+import Base from "../layouts/Base.astro";
+
+const steps = [
+  { n: "01", title: "Describe the demo", desc: "Tell the agent what you want to teach: the service, the scenario, the learner outcome." },
+  { n: "02", title: "Agents draft the template", desc: "Copilot agents scaffold Bicep/Terraform, a sample app, an azd config, and a demo-guide.md." },
+  { n: "03", title: "Review & refine", desc: "Inspect the diff, ask for changes in natural language, regenerate sections that aren’t right yet." },
+  { n: "04", title: "Deploy with azd", desc: "Run azd up locally. If it provisions cleanly, you have a reproducible classroom demo." },
+  { n: "05", title: "Contribute", desc: "Open a PR back to the catalog so other trainers benefit from your work." },
+];
+
+const examples = [
+  {
+    title: "Container Apps + Service Bus",
+    prompt: "Build me a Container Apps demo that shows event-driven scaling triggered by Service Bus queue depth, with a small .NET producer.",
+    outcome: "azd template with ACA env, Service Bus namespace + queue, producer container, scale rule, and a 5-step demo guide.",
+  },
+  {
+    title: "AI Search RAG starter",
+    prompt: "I need a RAG demo for AI-102: blob storage, AI Search with semantic ranker, and a tiny Python chat app calling Azure OpenAI.",
+    outcome: "Storage account, AI Search index + indexer, OpenAI deployment, and a Streamlit chat UI wired end-to-end.",
+  },
+  {
+    title: "Functions + Cosmos DB",
+    prompt: "Serverless API with HTTP trigger, Cosmos DB backend, and managed identity — no keys anywhere.",
+    outcome: "Function App on Flex Consumption, Cosmos DB account, role assignments, and a Postman collection for the demo.",
+  },
+];
+---
+<Base
+  title="BYOD · Azure"
+  description="Describe an Azure workload and let the orchestrator scaffold Bicep, application code, and a trainer demo guide end-to-end."
+>
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[600px] rounded-full opacity-50 dark:opacity-70"
+           style="background: radial-gradient(closest-side, rgba(0,120,212,0.30), transparent 70%);"></div>
+    </div>
+    <div class="max-w-5xl mx-auto px-6 pt-20 pb-12 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-6">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#0078D4]"></span>
+        BYOD — Bring Your Own Demo
+      </div>
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight mb-5">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#0078D4] to-[#49C5B1]">
+          Agentic demo builder
+        </span><br />for Azure
+      </h1>
+      <p class="text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+        Describe the Azure demo you wish existed. GitHub Copilot agents draft the
+        infrastructure, the app, and the demo guide — you review, deploy, and teach.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold mb-6">How it works</h2>
+    <ol class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {steps.map((s) => (
+        <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+          <div class="text-xs font-mono text-[#0078D4] dark:text-[#49C5B1] mb-1">{s.n}</div>
+          <div class="font-semibold mb-1">{s.title}</div>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">{s.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-24">
+    <h2 class="text-2xl font-semibold mb-2">Example prompts</h2>
+    <p class="text-sm text-neutral-600 dark:text-neutral-300 mb-6">
+      These are the kinds of asks the agentic builder is designed to handle.
+    </p>
+    <div class="space-y-4">
+      {examples.map((e) => (
+        <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+          <div class="font-semibold mb-2">{e.title}</div>
+          <div class="text-xs uppercase tracking-wider text-neutral-500 mb-1">Prompt</div>
+          <blockquote class="text-sm italic text-neutral-700 dark:text-neutral-200 border-l-2 border-[#0078D4] pl-3 mb-3">“{e.prompt}”</blockquote>
+          <div class="text-xs uppercase tracking-wider text-neutral-500 mb-1">What you get</div>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300">{e.outcome}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 rounded-xl border border-[#0078D4]/30 bg-[#0078D4]/5 dark:bg-[#0078D4]/10 p-6">
+      <div class="font-semibold mb-1">Status: early access</div>
+      <p class="text-sm text-neutral-700 dark:text-neutral-200">
+        BYOD — Azure is in active development. The catalog still ships today; BYOD is the
+        next leap. Watch this space for the public preview.
+      </p>
+    </div>
+  </section>
+</Base>

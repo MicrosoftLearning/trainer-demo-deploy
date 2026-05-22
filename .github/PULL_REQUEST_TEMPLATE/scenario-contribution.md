@@ -26,7 +26,7 @@ labels: new-scenario
 - [ ] `infra/main.bicep` + modules — Bicep templates
 - [ ] `azure.yaml` — Azure Developer CLI project definition (name: `tdd-azd-{project}`)
 - [ ] `README.md` — Quick-start guide for scenario users
-- [ ] `demoguide/demoguide.md` — Demo runbook with talking points
+- [ ] `demoguide/demoguide.md` — Demo guide with talking points
 - [ ] `demoguide/images/*.png` — Screenshots of deployed resources
 - [ ] `infra/main.bicepparam` — Bicep parameter file
 

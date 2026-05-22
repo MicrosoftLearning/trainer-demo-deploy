@@ -1,0 +1,62 @@
+name: v2 CI (PR)
+
+on:
+  pull_request:
+    branches:
+      - v2
+    paths:
+      - "site/**"
+      - "src/data/**"
+      - "static/**"
+      - ".github/workflows/v2-ci.yml"
+      - ".github/workflows/v2-preview.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: v2-ci-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Validate, test, and build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      # `npm install` (not `npm ci`) because the lockfile is generated on
+      # Windows and is missing the Linux-only optional binaries for rollup
+      # and esbuild. `npm install` reconciles the lockfile to the runner's
+      # platform without aborting on missing OS-specific packages.
+      - name: Install
+        run: npm install --no-audit --no-fund --prefer-offline
+
+      - name: Type-check
+        run: npm run check
+
+      - name: Validate OPX scripts
+        run: npm run validate:opx
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Build
+        env:
+          BASE_PATH: /trainer-demo-deploy/
+          SITE_URL: https://${{ github.repository_owner }}.github.io
+        run: npm run build
+
+      - name: Check internal links
+        env:
+          BASE_PATH: /trainer-demo-deploy/
+        run: npm run check:links

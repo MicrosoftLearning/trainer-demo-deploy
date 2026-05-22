@@ -878,8 +878,8 @@
   "author": "Gitte Vermeiren",
   "website": "https://github.com/vermegi",
   "source": "https://github.com/Azure-Samples/app-service-networking-samples",
-  "tags": ["AZ-204", "az-104", "az-305", "appservice", "vnets", "appgateway", "frontdoor", "msft"],
-  "demoguide": "https://github.com/Azure-Samples/app-service-networking-samples/blob/main/README.md",
+  "tags": ["az-204", "az-104", "az-305", "appservice", "vnets", "appgateway", "frontdoor", "msft"],
+  "demoguide": "https://raw.githubusercontent.com/Azure-Samples/app-service-networking-samples/refs/heads/main/README.md",
   "deploytime": "5",
   "cost": "10.00"
   },

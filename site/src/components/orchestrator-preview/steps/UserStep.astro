@@ -1,0 +1,34 @@
+---
+import { renderParagraph } from "../../../lib/markdown";
+
+interface AvatarShape {
+  initials: string;
+  gradient?: readonly [string, string];
+}
+interface Props {
+  handle: string;
+  avatar: AvatarShape;
+  body: string;
+}
+const { handle, avatar, body } = Astro.props;
+const grad = avatar.gradient ?? ["#8661c5", "#c03bc4"];
+const html = renderParagraph(body);
+---
+<div class="flex items-start gap-3">
+  <div
+    class="grid h-7 w-7 shrink-0 place-items-center rounded-full text-[11px] font-semibold text-white shadow-sm"
+    style={`background: linear-gradient(135deg, ${grad[0]}, ${grad[1]});`}
+    aria-hidden="true"
+  >
+    {avatar.initials}
+  </div>
+  <div class="min-w-0 flex-1">
+    <div class="mb-1 text-[11px] font-semibold uppercase tracking-wide text-neutral-400">
+      {handle}
+    </div>
+    <div
+      class="rounded-md bg-[#2a2c33] px-3 py-2 text-[13px] leading-relaxed text-neutral-100"
+      set:html={html}
+    />
+  </div>
+</div>

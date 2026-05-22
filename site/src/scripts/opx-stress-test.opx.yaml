@@ -1,0 +1,77 @@
+meta:
+  id: opx-stress-test
+  title: "OPX STRESS TEST — every step kind & feature"
+  agent: orchestrator
+  model: "Claude Opus 4.7"
+  context: "Schema smoke test"
+  task:
+    label: "Exercise every step kind, file op, tool kind, and status kind"
+    progress: [12, 12]
+  diff:
+    files:   8
+    added:   160
+    removed: 8
+  mode: player
+  loop: true
+  startDelay: 500
+  loopPause: 2200
+
+steps:
+  - user:
+      handle: tester
+      avatar:
+        initials: te
+        gradient: ["#0078D4", "#49C5B1"]
+      body: |
+        Exercise every step kind, including **bold**, _italic_, `code`, and [a link](https://learn.microsoft.com).
+    timing: { typing: 1800, holdFor: 1400 }
+
+  - agent:
+      body: |
+        A Bicep snippet to verify the `param` / `resource` / `output` keywords and `Microsoft.X/Y@version` types both light up:
+      code:
+        lang: bicep
+        source: |
+          param location string = resourceGroup().location
+
+          resource sb 'Microsoft.ServiceBus/namespaces@2022-10-01' = {
+            name: 'sb-${uniqueString(resourceGroup().id)}'
+            location: location
+            sku: { name: 'Standard' }
+          }
+
+          output connection string = listKeys(sb.id, sb.apiVersion).primaryConnectionString
+    timing: { appearAfter: 250, holdFor: 2400 }
+    advances: { task: 3, files: 2, added: 80 }
+
+  - tool:
+      kind: run
+      title: "ran az deployment what-if"
+      detail: "validating template against subscription `Visual Studio Enterprise`"
+      result: "0 errors · 6 resources to create"
+    timing: { appearAfter: 200, holdFor: 1600 }
+    advances: { task: 2 }
+
+  - files:
+      - { path: "infra/main.bicep",     op: edit,   lines: 40 }
+      - { path: "infra/sb.bicep",       op: add,    lines: 22 }
+      - { path: "infra/legacy/old.json", op: delete, lines: 8 }
+      - { path: "infra/aca.bicep",      op: rename, lines: 0 }
+    timing:   { appearAfter: 250, holdFor: 1800 }
+    advances: { task: 3, files: 4, added: 62, removed: 8 }
+
+  - summary:
+      title: "Every step kind exercised"
+      lead: "Includes:"
+      bullets:
+        - "user + agent + tool + files + summary + status"
+        - "All four file ops (add, edit, delete, rename)"
+        - "Bicep highlighter coverage"
+    timing: { appearAfter: 300, holdFor: 2200 }
+    advances: { task: 3, files: 2, added: 18 }
+
+  - status:
+      kind: done
+      text: "All step kinds rendered ✔"
+    timing: { appearAfter: 200, holdFor: 2200 }
+    advances: { task: 1 }
