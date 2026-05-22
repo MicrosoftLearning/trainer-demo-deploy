@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  },
+  {
+  "title": "Private Foundry + AKS + APIM + Azure Front Door",
+  "description": "Progressive network-security demo showcasing 4 stages of hardening an AI chat workload: from direct AKS access through APIM public/private to full Azure Front Door + Private APIM production architecture.",
+  "preview": "./templates/images/private-foundry-aks-apim-afd.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-private-foundry-aks-apim-afd",
+  "tags": ["az-500", "az-700", "msft", "aks", "apim", "frontdoor", "aifoundry", "acr", "keyvault", "bastion", "vnets", "privateendpoint", "dotnet", "kubernetes"],
+  "demoguide": null,
+  "deploytime": "15",
+  "cost": "25.00"
   }
 ]
