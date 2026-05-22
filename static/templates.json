@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "HA Container Apps Multi-Region (Manufacturing)",
+  "description": "Active-passive multi-region Container Apps with Azure Front Door failover and automotive manufacturing seed data for production line dashboarding.",
+  "preview": "./templates/images/ha-container-apps-multiregion.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-ha-container-apps-multiregion",
+  "tags": ["az-204","az-305","msft","aca","acr","frontdoor","keyvault","vnets","virtualmachine","loganalytics","dotnet"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-ha-container-apps-multiregion/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "12",
+  "cost": "20.00"
   }
 ]
