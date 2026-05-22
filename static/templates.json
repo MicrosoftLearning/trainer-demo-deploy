@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "AI Language Services for Hospitality",
+  "description": "Azure AI Language non-generative capabilities (translation, sentiment, entity extraction, summarization) in a .NET hotel booking app with Cosmos DB on App Service.",
+  "preview": "./templates/images/ai-language-services.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-ai-language-services",
+  "tags": ["ai-102","ai-900","msft","appservice","cosmosdb","keyvault","loganalytics","azureai","dotnet"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-ai-language-services/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "8",
+  "cost": "12.00"
   }
 ]
