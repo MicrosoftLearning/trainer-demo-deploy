@@ -906,5 +906,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
+  }  ,
+  {
+  "title": "Linux VM with Cosmos DB - Logistics",
+  "description": "Ubuntu Linux VM running a .NET web app connected to Cosmos DB (NoSQL API) for shipment tracking and fleet management using Managed Identity.",
+  "preview": "./templates/images/linux-vm-cosmosdb.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-linux-vm-cosmosdb",
+  "tags": ["az-104","msft","virtualmachine","cosmosdb","vnets","loganalytics","dotnet"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-linux-vm-cosmosdb/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "5",
+  "cost": "10.00"
   }
 ]
