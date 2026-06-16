@@ -17,6 +17,7 @@ import {
   type FilterSection,
 } from "../lib/templates";
 import type { TagType } from "../data/tags-shim";
+import scenarioStars from "../../../static/scenario-stars.json";
 
 const data = allTemplates;
 
@@ -237,7 +238,12 @@ const stripes = [
                   {t.title}
                 </a>
               </h3>
-              <p class="mb-3 text-xs text-neutral-500 dark:text-neutral-400">by {t.author}</p>
+              <p class="mb-3 text-xs text-neutral-500 dark:text-neutral-400">
+                by {t.author}
+                {scenarioStars[t.source]?.stars > 0 && (
+                  <span class="ml-2 text-neutral-600 dark:text-neutral-500">★ {scenarioStars[t.source].stars}</span>
+                )}
+              </p>
 
               <p class="mb-4 line-clamp-3 flex-1 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
                 {t.description}
