@@ -1,0 +1,76 @@
+name: v2 - Build & Deploy (manual)
+
+# Deployment is manual only. Run from the Actions tab → "Run workflow".
+# Restore a `push:` trigger later if automatic deploys are desired again.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: v2-deploy-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build v2 site
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      # `npm install` (not `npm ci`) because the lockfile is generated on
+      # Windows and is missing the Linux-only optional binaries for rollup
+      # and esbuild. `npm install` reconciles the lockfile to the runner's
+      # platform without aborting on missing OS-specific packages.
+      - name: Install
+        run: npm install --no-audit --no-fund --prefer-offline
+
+      - name: Type-check
+        run: npm run check
+
+      - name: Validate OPX scripts
+        run: npm run validate:opx
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Build
+        env:
+          BASE_PATH: /trainer-demo-deploy/
+          SITE_URL: https://${{ github.repository_owner }}.github.io
+        run: npm run build
+
+      - name: Check internal links
+        env:
+          BASE_PATH: /trainer-demo-deploy/
+        run: npm run check:links
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

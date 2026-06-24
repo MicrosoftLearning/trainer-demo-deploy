@@ -1,0 +1,23 @@
+---
+import { renderParagraph } from "../../../lib/markdown";
+
+interface Props {
+  kind?: "done" | "running" | "error";
+  text: string;
+}
+const { kind = "done", text } = Astro.props;
+
+const dotColor: Record<string, string> = {
+  done: "bg-emerald-400",
+  running: "bg-amber-400",
+  error: "bg-rose-500",
+};
+const shouldPulse = kind === "done" || kind === "running";
+---
+<div class="flex items-center gap-2 rounded-md bg-neutral-800/40 px-3 py-1.5">
+  <span
+    class={`inline-block h-2 w-2 shrink-0 rounded-full ${dotColor[kind]} ${shouldPulse ? "animate-pulse" : ""}`}
+    aria-hidden="true"
+  ></span>
+  <span class="text-[12px] text-neutral-200" set:html={renderParagraph(text)} />
+</div>

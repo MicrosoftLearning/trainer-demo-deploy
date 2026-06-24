@@ -1,0 +1,88 @@
+meta:
+  id: byod-azure-aca
+  title: "Trainer Demo Deploy — BYOD Azure scaffold"
+  agent: Conductor
+  model: "Claude Opus 4.7"
+  context: "BYOD Azure — AI-200 Container Apps"
+  task:
+    label: "Build BYOD Azure scaffold for AI-200"
+    progress: [12, 12]
+  diff:
+    files:   12
+    added:   481
+    removed: 12
+  mode: player
+  loop: true
+  startDelay: 600
+  loopPause: 2400
+
+steps:
+  - user:
+      handle: trainer
+      avatar:
+        initials: tr
+        gradient: ["#0078D4", "#8661C5"]
+      body: |
+        Build me an Azure Container Apps demo with Service Bus producer and KEDA scaling. Target AI-200.
+    timing: { typing: 2200, holdFor: 1400 }
+
+  - agent:
+      body: |
+        Got it. I'll search the catalog, then scaffold infra + a .NET 8 producer + a demo guide.
+    timing: { appearAfter: 300, typing: 600, holdFor: 1800 }
+
+  - tool:
+      kind: search
+      title: "searched template catalog"
+      detail: "looking for `aca` + `servicebus`"
+      result: "Found 0 matches · using closest for AI-200"
+    timing: { appearAfter: 250, holdFor: 1600 }
+    advances: { task: 2 }
+
+  - agent:
+      body: |
+        Generating Bicep with managed identity, KEDA scaler, and an ACR.
+      code:
+        lang: csharp
+        source: |
+          var builder = WebApplication.CreateBuilder(args);
+          builder.Services.AddAzureClients(c =>
+              c.AddServiceBusClientWithNamespace("<ns>.servicebus.windows.net")
+               .WithCredential(new DefaultAzureCredential()));
+
+          var app = builder.Build();
+          app.MapPost("/orders", async (Order o, ServiceBusSender s) =>
+          {
+              await s.SendMessageAsync(new(BinaryData.FromObjectAsJson(o)));
+              return Results.Accepted();
+          });
+          app.Run();
+    timing: { appearAfter: 300, holdFor: 2400 }
+    advances: { task: 2, files: 4, added: 225 }
+
+  - files:
+      - { path: "infra/main.bicep", op: add,    lines: 92 }
+      - { path: "infra/aca.bicep",  op: add,    lines: 64 }
+      - { path: "infra/sb.bicep",   op: add,    lines: 38 }
+      - { path: "src/Program.cs",   op: edit,   lines: 32 }
+      - { path: "src/Orders.cs",    op: add,    lines: 21 }
+      - { path: "old/legacy.cs",    op: delete, lines: 12 }
+    timing:   { appearAfter: 350, holdFor: 1800 }
+    advances: { task: 4, files: 6, added: 200, removed: 12 }
+
+  - summary:
+      title: "Generated 12 files across infra, app, and demo guide"
+      lead: "Your demo includes:"
+      bullets:
+        - "Container Apps env with KEDA Service Bus scaler"
+        - "Service Bus namespace + queue, managed identity (no keys)"
+        - ".NET 8 minimal API producer container"
+        - "5-step demo guide with screenshot placeholders"
+    timing: { appearAfter: 350, holdFor: 2600 }
+    advances: { task: 3, files: 2, added: 56 }
+
+  - status:
+      kind: done
+      text: "Run `azd up` when you're ready — provisioning takes about 4 minutes."
+    timing: { appearAfter: 200, holdFor: 2400 }
+    advances: { task: 1 }

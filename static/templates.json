@@ -878,8 +878,8 @@
   "author": "Gitte Vermeiren",
   "website": "https://github.com/vermegi",
   "source": "https://github.com/Azure-Samples/app-service-networking-samples",
-  "tags": ["AZ-204", "az-104", "az-305", "appservice", "vnets", "appgateway", "frontdoor", "msft"],
-  "demoguide": "https://github.com/Azure-Samples/app-service-networking-samples/blob/main/README.md",
+  "tags": ["az-204", "az-104", "az-305", "appservice", "vnets", "appgateway", "frontdoor", "msft"],
+  "demoguide": "https://raw.githubusercontent.com/Azure-Samples/app-service-networking-samples/refs/heads/main/README.md",
   "deploytime": "5",
   "cost": "10.00"
   },
@@ -906,5 +906,29 @@
   "tags": ["az-700", "msft", "appgateway", "loadbalancer", "vnets", "privatelink", "firewall", "vpn", "avnm", "afd", "waf", "atm", "flow-logs", "monitoring", "hot"],
   "cost": "25.00",
   "deploytime": "25"
+  },
+  {
+  "title": "Azure AI Foundry Healthcare Agents",
+  "description": "Healthcare-focused AI agent demo deploying Azure AI Foundry Hub, Project, and supporting infrastructure. Showcases patient triage, appointment scheduling, clinical Q&A, and medication info agents powered by GPT-4o.",
+  "preview": "./templates/images/foundry-healthcare-agents.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-foundry-healthcare-agents",
+  "tags": ["ai-102", "msft", "aifoundry", "openai", "dotnet", "appservice", "aisearch", "keyvault", "appinsights"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "8",
+  "cost": "15.00"
+  }  ,
+  {
+  "title": "Linux VM with SSH and NSG",
+  "description": "Foundational IaaS scenario with Ubuntu VM, VNet, NSG SSH inbound rule, Public IP, and Log Analytics for Azure VM deployment and network security.",
+  "preview": "./templates/images/linux-vm-ssh-nsg.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-linux-vm-ssh-nsg",
+  "tags": ["az-104","msft","virtualmachine","vnets","loganalytics"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-linux-vm-ssh-nsg/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "3",
+  "cost": "5.00"
   }
 ]

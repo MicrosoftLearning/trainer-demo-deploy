@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://microsoftlearning.github.io/trainer-demo-deploy/sitemap-index.xml

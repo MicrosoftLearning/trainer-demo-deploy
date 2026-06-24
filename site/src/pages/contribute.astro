@@ -1,0 +1,277 @@
+---
+import Base from "../layouts/Base.astro";
+import { withBase } from "../lib/url";
+
+const steps = [
+  {
+    n: "01",
+    title: "Create your template",
+    body: "Start from this repo so you get the right structure out of the box.",
+    code: "git clone https://github.com/MicrosoftLearning/trainer-demo-deploy",
+    bullets: [
+      "Complete file structure with helpful placeholders",
+      "Example Bicep infrastructure patterns",
+      "README and demo guide templates",
+      "GitHub Copilot instruction files for guidance",
+    ],
+    followup: [
+      ["Update", "azure.yaml", "with your template name"],
+      ["Add Azure resources to", "infra/main.bicep", "and infra/resources.bicep"],
+      ["Fill in the README, prerequisites, and demo guide", "", ""],
+    ],
+  },
+  {
+    n: "02",
+    title: "Test your template",
+    body: "Deploy it a few times to make sure everything works.",
+    code: "azd up",
+    checklist: [
+      "Deployment completes successfully",
+      "Resources are tagged correctly",
+      "Demo steps work as documented",
+      "Cost is reasonable for training scenarios",
+      "Cleanup works: `azd down`",
+    ],
+  },
+  {
+    n: "03",
+    title: "Publish to GitHub",
+    body: "Create a public GitHub repository and push your template. The repo name should match your template name in azure.yaml (e.g., tdd-my-scenario). See publishing instructions in CONTRIBUTING.md.",
+  },
+  {
+    n: "04",
+    title: "Submit to the catalog",
+    body: "Ready to share with the community? Fork this repo and add your template entry to /static/templates.json.",
+  },
+];
+---
+<Base
+  title="Contribute"
+  description="How to contribute an azd template or a bring-your-own-demo scenario to the Microsoft Trainer Demo Deploy catalog."
+>
+  <section class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[600px] rounded-full opacity-50 dark:opacity-70"
+           style="background: radial-gradient(closest-side, rgba(73,197,177,0.30), transparent 70%);"></div>
+    </div>
+    <div class="max-w-5xl mx-auto px-6 pt-20 pb-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-6">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#49C5B1]"></span>
+        We ♥️ contributions
+      </div>
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight mb-5">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#49C5B1] to-[#0078D4]">
+          Contribute a template
+        </span>
+      </h1>
+      <p class="text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+        The Trainer-Demo-Deploy catalog is built by trainers, for trainers.
+        Your scenarios help the entire Microsoft training community deliver better technical instruction.
+      </p>
+    </div>
+  </section>
+
+  <!-- Getting started: agentic workflow -->
+  <section class="max-w-5xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold mb-2">Getting started</h2>
+    <p class="text-sm text-neutral-600 dark:text-neutral-300 mb-6">
+      The fastest path from idea to deployable demo — let the Conductor build it for you.
+    </p>
+    <ol class="space-y-4">
+      <li class="flex items-start gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+        <div class="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-[#8661c5] to-[#0078D4] text-white font-mono text-sm flex items-center justify-center font-semibold">1</div>
+        <div>
+          <div class="font-semibold mb-0.5">Fork the repo</div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300">Fork <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href="https://github.com/MicrosoftLearning/trainer-demo-deploy" target="_blank" rel="noopener">MicrosoftLearning/trainer-demo-deploy</a> to your GitHub account and clone it locally.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+        <div class="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-[#8661c5] to-[#0078D4] text-white font-mono text-sm flex items-center justify-center font-semibold">2</div>
+        <div>
+          <div class="font-semibold mb-0.5">Open in VS Code and start a Chat</div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300">Open the repo folder in VS Code, then open Copilot Chat (<kbd class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.85em] font-mono">Ctrl+Shift+I</kbd>).</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+        <div class="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-[#8661c5] to-[#0078D4] text-white font-mono text-sm flex items-center justify-center font-semibold">3</div>
+        <div>
+          <div class="font-semibold mb-0.5">Select the <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">01-conductor</code> agent</div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300">Pick <strong>01-conductor</strong> from the agent dropdown and describe your demo scenario. The Conductor handles the rest.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 4-step quick start -->
+  <section class="max-w-5xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold mb-2">Quick start: contribute in 4 steps</h2>
+    <p class="text-sm text-neutral-600 dark:text-neutral-300 mb-6">
+      Have a great demo scenario? Adding it to the catalog is easier than you think.
+    </p>
+
+    <ol class="space-y-5">
+      {steps.map((s) => (
+        <li class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6">
+          <div class="flex items-start gap-4">
+            <div class="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-[#49C5B1] to-[#0078D4] text-white font-mono text-sm flex items-center justify-center font-semibold">{s.n}</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-lg mb-1">{s.title}</div>
+              <p class="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">{s.body}</p>
+
+              {s.code && (
+                <pre class="mt-3 rounded-md bg-neutral-900 text-neutral-100 px-4 py-3 overflow-x-auto text-xs font-mono"><code>{s.code}</code></pre>
+              )}
+
+              {s.bullets && (
+                <ul class="mt-3 ml-5 list-disc space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
+                  {s.bullets.map((b) => <li>{b}</li>)}
+                </ul>
+              )}
+
+              {s.followup && (
+                <div class="mt-3 text-sm text-neutral-700 dark:text-neutral-300">
+                  <div class="text-xs uppercase tracking-wider text-neutral-500 mb-1">Customize for your scenario</div>
+                  <ul class="ml-5 list-disc space-y-1">
+                    {s.followup.map(([a, c, b]) => (
+                      <li>{a} {c && <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">{c}</code>} {b}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {s.checklist && (
+                <div class="mt-3 text-sm text-neutral-700 dark:text-neutral-300">
+                  <div class="text-xs uppercase tracking-wider text-neutral-500 mb-1">Confirm that</div>
+                  <ul class="ml-5 list-disc space-y-1">
+                    {s.checklist.map((c) => <li set:html={c.replace(/`([^`]+)`/g, "<code class='px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]'>$1</code>")} />)}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Catalog entry detail -->
+  <section class="max-w-5xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold mb-2">Catalog entry format</h2>
+    <p class="text-sm text-neutral-600 dark:text-neutral-300 mb-4">
+      Fork <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href="https://github.com/MicrosoftLearning/trainer-demo-deploy" target="_blank" rel="noopener">trainer-demo-deploy</a>
+      and add your template entry to <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">/static/templates.json</code>:
+    </p>
+
+<pre class="rounded-md bg-neutral-900 text-neutral-100 p-4 overflow-x-auto text-xs leading-relaxed"><code>{`{
+  "title":       "Your Template Title",
+  "description": "Brief description of what gets deployed and why",
+  "image":       "images/your-architecture.png",
+  "author":      "Your Name",
+  "authorLink":  "https://github.com/yourusername",
+  "repo":        "https://github.com/yourusername/tdd-your-scenario",
+  "tags":        ["AZ-104", "storage", "networking"],
+  "demoGuide":   "https://github.com/yourusername/tdd-your-scenario/blob/main/demoguide/demoguide.md",
+  "deployTime":  "15 minutes",
+  "cost":        "$8-12/day"
+}`}</code></pre>
+
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+        <div class="font-semibold mb-1">Architecture diagram</div>
+        <p class="text-sm text-neutral-700 dark:text-neutral-300">
+          Add a PNG to <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">/static/templates/images/</code> showing your Azure resources.
+        </p>
+      </div>
+      <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+        <div class="font-semibold mb-1">Tags</div>
+        <p class="text-sm text-neutral-700 dark:text-neutral-300">
+          Use at least one
+          <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+             href="https://github.com/MicrosoftLearning/trainer-demo-deploy/blob/main/src/data/tags.tsx" target="_blank" rel="noopener">course tag</a>
+          (e.g., AZ-104) and one or more Azure service tags (e.g., storage, networking).
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-lg border border-[#0078D4]/30 bg-[#0078D4]/5 dark:bg-[#0078D4]/10 p-5">
+      <div class="font-semibold mb-1">Open a pull request</div>
+      <p class="text-sm text-neutral-700 dark:text-neutral-300">
+        Include a link to your template repo in the PR description. We'll review and provide feedback.
+        Tag <code class="px-1 rounded bg-white/60 dark:bg-black/30 text-[0.9em]">msft</code> if you're an MTT,
+        <code class="px-1 rounded bg-white/60 dark:bg-black/30 text-[0.9em]">mct</code> if you're an MCT,
+        and add <code class="px-1 rounded bg-white/60 dark:bg-black/30 text-[0.9em]">new</code> on first submission.
+      </p>
+    </div>
+  </section>
+
+  <!-- Already have a template? -->
+  <section class="max-w-5xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold mb-3">Already have an Azure template?</h2>
+    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+      If you have an existing Bicep or ARM template you can adapt it. The key steps are:
+    </p>
+    <ol class="mt-3 ml-6 list-decimal space-y-1 text-neutral-700 dark:text-neutral-300">
+      <li>Add an <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">azure.yaml</code> file with your template metadata</li>
+      <li>Organize infrastructure files in an <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">infra/</code> folder</li>
+      <li>Add a README and a demo guide following our format</li>
+    </ol>
+    <p class="mt-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+      The <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+             href="https://github.com/MicrosoftLearning/trainer-demo-deploy" target="_blank" rel="noopener">this repo</a>
+      shows the expected structure.
+    </p>
+  </section>
+
+  <!-- Other ways to contribute -->
+  <section class="max-w-5xl mx-auto px-6 pb-24">
+    <h2 class="text-2xl font-semibold mb-3">Other ways to contribute</h2>
+    <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed mb-5">
+      Not ready to create a template? You can still help.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <a class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5 hover:border-[#0078D4] transition-colors"
+         href="https://github.com/MicrosoftLearning/trainer-demo-deploy/issues/new?assignees=petender&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
+         target="_blank" rel="noopener">
+        <div class="font-semibold mb-1">🤔 Request a template</div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-300">Suggest scenarios you'd like to see.</p>
+      </a>
+      <a class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5 hover:border-[#0078D4] transition-colors"
+         href="https://github.com/MicrosoftLearning/trainer-demo-deploy/issues/new?template=bug_report.md"
+         target="_blank" rel="noopener">
+        <div class="font-semibold mb-1">🐛 Report bugs</div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-300">Help us fix issues in the catalog.</p>
+      </a>
+      <a class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5 hover:border-[#0078D4] transition-colors"
+         href="https://github.com/MicrosoftLearning/trainer-demo-deploy/issues/new?template=feature_request.md"
+         target="_blank" rel="noopener">
+        <div class="font-semibold mb-1">✨ Request features</div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-300">Suggest catalog improvements.</p>
+      </a>
+      <a class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5 hover:border-[#0078D4] transition-colors"
+         href="https://github.com/MicrosoftLearning/trainer-demo-deploy/issues/new?assignees=petender&labels=feedback&template=feedback_template.md&title=%5BFeedback%5D"
+         target="_blank" rel="noopener">
+        <div class="font-semibold mb-1">💬 Share feedback</div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-300">Let us know how we're doing.</p>
+      </a>
+    </div>
+
+    <p class="mt-8 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+      We also welcome contributions to improve
+      <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+         href="https://github.com/MicrosoftLearning/trainer-demo-deploy/issues?q=is%3Aopen+is%3Aissue+label%3Arequested-contribution"
+         target="_blank" rel="noopener">requested templates</a>
+      from the community.
+    </p>
+
+    <div class="mt-10 rounded-xl border border-[#49C5B1]/40 bg-[#49C5B1]/5 dark:bg-[#49C5B1]/10 p-6 text-center">
+      <p class="text-neutral-800 dark:text-neutral-100 font-semibold mb-1">Thank you for contributing to the training community! 🎉</p>
+      <p class="text-sm text-neutral-700 dark:text-neutral-300">
+        Questions? Open a
+        <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
+           href="https://github.com/MicrosoftLearning/trainer-demo-deploy/discussions" target="_blank" rel="noopener">discussion</a>
+        or browse the <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href={withBase("faq")}>FAQ</a>.
+      </p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,42 @@
+---
+interface FileRow {
+  path: string;
+  op?: "add" | "edit" | "delete" | "rename";
+  lines?: number;
+}
+interface Props {
+  files: FileRow[];
+}
+const { files } = Astro.props;
+
+const glyphs: Record<string, string> = { add: "+", edit: "~", delete: "−", rename: "→" };
+const colors: Record<string, string> = {
+  add: "text-emerald-300",
+  edit: "text-amber-300",
+  delete: "text-rose-300",
+  rename: "text-sky-300",
+};
+const linesColor: Record<string, string> = {
+  add: "text-emerald-300",
+  edit: "text-amber-300",
+  delete: "text-rose-300",
+  rename: "text-sky-300",
+};
+---
+<ul class="space-y-1">
+  {files.map((f) => {
+    const op = f.op ?? "add";
+    return (
+      <li class="flex items-center gap-2 rounded-md border border-neutral-700/60 bg-neutral-800/40 px-3 py-1.5 text-[12px]">
+        <span class={`font-mono ${colors[op]}`} aria-hidden="true">{glyphs[op]}</span>
+        <span aria-hidden="true">📄</span>
+        <code class="min-w-0 flex-1 truncate font-mono text-neutral-200">{f.path}</code>
+        {f.lines !== undefined && f.lines > 0 && (
+          <span class={`font-mono text-[11px] ${linesColor[op]}`}>
+            {op === "delete" ? `-${f.lines}` : `+${f.lines}`}
+          </span>
+        )}
+      </li>
+    );
+  })}
+</ul>

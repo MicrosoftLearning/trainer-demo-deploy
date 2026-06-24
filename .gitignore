@@ -24,4 +24,12 @@ yarn-error.log*
 # Test folder
 /azd-deployments
 
+#Generated Scenarios
+/generated-scenarios
 
+# v2 dev artifacts
+.playwright-mcp/
+/v1-*.png
+/v2-*.png
+/opx-*.png
+site/check.log
