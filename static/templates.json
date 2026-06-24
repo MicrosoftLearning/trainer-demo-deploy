@@ -896,6 +896,18 @@
   "cost": "4"
   },
   {
+  "title": "AZ-700 All-in-one demo",
+  "description": "This project sets up an Azure environment for AZ-700 course demo purposes.",
+  "preview": "https://raw.githubusercontent.com/SQLtattoo/az700env/main/demoguide/architecture.png",
+  "website": "https://github.com/SQLtattoo",
+  "author": "Vassilis Ioannidis",
+  "source": "https://github.com/SQLtattoo/az700env",
+  "demoguide": "https://raw.githubusercontent.com/SQLtattoo/az700env/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-700", "msft", "appgateway", "loadbalancer", "vnets", "privatelink", "firewall", "vpn", "avnm", "afd", "waf", "atm", "flow-logs", "monitoring", "hot"],
+  "cost": "25.00",
+  "deploytime": "25"
+  },
+  {
   "title": "Azure AI Foundry Healthcare Agents",
   "description": "Healthcare-focused AI agent demo deploying Azure AI Foundry Hub, Project, and supporting infrastructure. Showcases patient triage, appointment scheduling, clinical Q&A, and medication info agents powered by GPT-4o.",
   "preview": "./templates/images/foundry-healthcare-agents.png",
