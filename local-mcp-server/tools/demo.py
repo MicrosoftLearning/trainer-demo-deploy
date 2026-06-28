@@ -5,8 +5,9 @@ def find_template_by_name(template_name: str):
     data = load_templates()
 
     for template in data:
-        title = template.get("title", "")
-        if title.lower() == template_name.lower():
+        title = str(template.get("title", "")).strip()
+
+        if title.casefold() == template_name.strip().casefold():
             return template
 
     return None

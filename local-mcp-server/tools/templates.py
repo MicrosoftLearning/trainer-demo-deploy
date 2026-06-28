@@ -65,9 +65,9 @@ def register_template_tools(mcp):
         matched_template = None
 
         for template in data:
-            title = template.get("title", "")
+            title = str(template.get("title", "")).strip()
 
-            if title.lower() == template_name.lower():
+            if title.casefold() == template_name.strip().casefold():
                 matched_template = template
                 break
 

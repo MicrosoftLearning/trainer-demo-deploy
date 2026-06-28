@@ -38,9 +38,9 @@ def register_catalog_tools(mcp):
         data = load_templates()
 
         for template in data:
-            title = template.get("title", "")
+            title = str(template.get("title", "")).strip()
 
-            if title.lower() == template_name.lower():
+            if title.casefold() == template_name.strip().casefold():
                 return (
                     f"Title: {template.get('title', '')}\n"
                     f"Description: {template.get('description', '')}\n"
@@ -60,9 +60,9 @@ def register_catalog_tools(mcp):
         data = load_templates()
 
         for template in data:
-            title = template.get("title", "")
+            title = str(template.get("title", "")).strip()
 
-            if title.lower() == template_name.lower():
+            if title.casefold() == template_name.strip().casefold():
                 return (
                     f"Deployment guidance for: {title}\n"
                     f"Demo guide: {template.get('demoguide', '')}\n"
