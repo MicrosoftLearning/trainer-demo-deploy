@@ -29,20 +29,25 @@ async function fetchStars(owner, repo) {
     headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
   }
 
-  const response = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}`,
-    { headers }
-  );
-
-  if (!response.ok) {
-    console.log(
-      `Failed: ${owner}/${repo} - ${response.status} ${response.statusText}`
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}`,
+      { headers }
     );
+
+    if (!response.ok) {
+      console.log(
+        `Failed: ${owner}/${repo} - ${response.status} ${response.statusText}`
+      );
+      return null;
+    }
+
+    const data = await response.json();
+    return data.stargazers_count;
+  } catch (error) {
+    console.error(`Error fetching ${owner}/${repo}:`, error);
     return null;
   }
-
-  const data = await response.json();
-  return data.stargazers_count;
 }
 
 async function main() {
@@ -52,7 +57,18 @@ async function main() {
     );
   }
 
-  const result = {};
+  // Read existing star counts (if any) so failed requests don't erase them.
+  let result = {};
+
+  if (fs.existsSync(outputPath)) {
+    try {
+      result = JSON.parse(fs.readFileSync(outputPath, "utf-8"));
+    } catch (error) {
+      console.warn(
+        "Warning: Could not read existing scenario-stars.json. A new file will be created."
+      );
+    }
+  }
 
   for (const template of templates) {
     if (!template.source) continue;
@@ -63,20 +79,14 @@ async function main() {
 
     const stars = await fetchStars(repoInfo.owner, repoInfo.repo);
 
+    // Only overwrite if the fetch succeeded.
     if (stars !== null) {
       result[template.source] = {
         stars,
       };
 
-      console.log(`${repoInfo.owner}/${repoInfo.repo} : ${stars}`);
+      console.log(`${repoInfo.owner}/${repoInfo.repo}: ${stars}`);
     }
-  }
-
-  if (Object.keys(result).length === 0) {
-    console.log(
-      "No stars fetched. Keeping existing scenario-stars.json unchanged."
-    );
-    return;
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(result, null, 2));
