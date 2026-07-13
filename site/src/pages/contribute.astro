@@ -6,8 +6,8 @@ const steps = [
   {
     n: "01",
     title: "Create your template",
-    body: "Start from the starter so you get the right structure out of the box.",
-    code: "azd init -t petender/tdd-azd-starter",
+    body: "Start from this repo so you get the right structure out of the box.",
+    code: "git clone https://github.com/MicrosoftLearning/trainer-demo-deploy",
     bullets: [
       "Complete file structure with helpful placeholders",
       "Example Bicep infrastructure patterns",
@@ -36,7 +36,7 @@ const steps = [
   {
     n: "03",
     title: "Publish to GitHub",
-    body: "Create a public GitHub repository and push your template. The repo name should match your template name in azure.yaml (e.g., tdd-my-scenario). See publishing instructions in the starter's CONTRIBUTING.md.",
+    body: "Create a public GitHub repository and push your template. The repo name should match your template name in azure.yaml (e.g., tdd-my-scenario). See publishing instructions in CONTRIBUTING.md.",
   },
   {
     n: "04",
@@ -69,6 +69,37 @@ const steps = [
         Your scenarios help the entire Microsoft training community deliver better technical instruction.
       </p>
     </div>
+  </section>
+
+  <!-- Getting started: agentic workflow -->
+  <section class="max-w-5xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-semibold mb-2">Getting started</h2>
+    <p class="text-sm text-neutral-600 dark:text-neutral-300 mb-6">
+      The fastest path from idea to deployable demo — let the Conductor build it for you.
+    </p>
+    <ol class="space-y-4">
+      <li class="flex items-start gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+        <div class="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-[#8661c5] to-[#0078D4] text-white font-mono text-sm flex items-center justify-center font-semibold">1</div>
+        <div>
+          <div class="font-semibold mb-0.5">Fork the repo</div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300">Fork <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2" href="https://github.com/MicrosoftLearning/trainer-demo-deploy" target="_blank" rel="noopener">MicrosoftLearning/trainer-demo-deploy</a> to your GitHub account and clone it locally.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+        <div class="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-[#8661c5] to-[#0078D4] text-white font-mono text-sm flex items-center justify-center font-semibold">2</div>
+        <div>
+          <div class="font-semibold mb-0.5">Open in VS Code and start a Chat</div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300">Open the repo folder in VS Code, then open Copilot Chat (<kbd class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.85em] font-mono">Ctrl+Shift+I</kbd>).</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+        <div class="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-[#8661c5] to-[#0078D4] text-white font-mono text-sm flex items-center justify-center font-semibold">3</div>
+        <div>
+          <div class="font-semibold mb-0.5">Select the <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.9em]">01-conductor</code> agent</div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300">Pick <strong>01-conductor</strong> from the agent dropdown and describe your demo scenario. The Conductor handles the rest.</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <!-- 4-step quick start -->
@@ -186,7 +217,7 @@ const steps = [
     </ol>
     <p class="mt-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
       The <a class="text-[#0078D4] dark:text-[#C5B4E3] underline underline-offset-2"
-             href="https://github.com/petender/tdd-azd-starter" target="_blank" rel="noopener">starter template</a>
+             href="https://github.com/MicrosoftLearning/trainer-demo-deploy" target="_blank" rel="noopener">this repo</a>
       shows the expected structure.
     </p>
   </section>

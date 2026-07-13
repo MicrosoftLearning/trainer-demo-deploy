@@ -1,7 +1,7 @@
 meta:
   id: opx-stress-test
   title: "OPX STRESS TEST — every step kind & feature"
-  agent: orchestrator
+  agent: Conductor
   model: "Claude Opus 4.7"
   context: "Schema smoke test"
   task:
