@@ -930,5 +930,17 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-linux-vm-ssh-nsg/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "3",
   "cost": "5.00"
+  },
+  {
+    "title": "Azure VM management MCP server for AI Agent",
+    "description": "This is deploying a  MCP server in a ACI for connecting to a Microsoft Copilot Studio agent",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-azure-vmtool-mcpserver/main/media/screenschot-agent6.jpg",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-azure-vmtool-mcpserver",
+    "tags": ["pl-7008", "ai-3026", "msft", "hot"],
+    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-azure-vmtool-mcpserver/main/docs/demo-guide.md",
+    "cost": "1",
+    "deploytime": "1",
   }
 ]
