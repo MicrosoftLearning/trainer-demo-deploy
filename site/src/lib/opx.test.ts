@@ -33,7 +33,7 @@ describe("parseOpx — happy path", () => {
 
   it("applies defaults for optional meta fields", () => {
     const out = parseOpx(validScript());
-    expect(out.meta.agent).toBe("orchestrator");
+    expect(out.meta.agent).toBe("Conductor");
     expect(out.meta.loop).toBe(true);
     expect(out.meta.startDelay).toBe(400);
   });
