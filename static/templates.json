@@ -896,6 +896,18 @@
   "cost": "4"
   },
   {
+  "title": "AZ-700 All-in-one demo",
+  "description": "This project sets up an Azure environment for AZ-700 course demo purposes.",
+  "preview": "https://raw.githubusercontent.com/SQLtattoo/az700env/main/demoguide/architecture.png",
+  "website": "https://github.com/SQLtattoo",
+  "author": "Vassilis Ioannidis",
+  "source": "https://github.com/SQLtattoo/az700env",
+  "demoguide": "https://raw.githubusercontent.com/SQLtattoo/az700env/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-700", "msft", "appgateway", "loadbalancer", "vnets", "privatelink", "firewall", "vpn", "avnm", "afd", "waf", "atm", "flow-logs", "monitoring", "hot"],
+  "cost": "25.00",
+  "deploytime": "25"
+  },
+  {
   "title": "Azure AI Foundry Healthcare Agents",
   "description": "Healthcare-focused AI agent demo deploying Azure AI Foundry Hub, Project, and supporting infrastructure. Showcases patient triage, appointment scheduling, clinical Q&A, and medication info agents powered by GPT-4o.",
   "preview": "./templates/images/foundry-healthcare-agents.png",
@@ -906,7 +918,55 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-foundry-healthcare-agents/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "15.00"
-  }  ,
+  },
+  {
+  "title": "AI Language Services for Hospitality",
+  "description": "Azure AI Language non-generative capabilities (translation, sentiment, entity extraction, summarization) in a .NET hotel booking app with Cosmos DB on App Service.",
+  "preview": "./templates/images/ai-language-services.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-ai-language-services",
+  "tags": ["ai-102","ai-900","msft","appservice","cosmosdb","keyvault","loganalytics","azureai","dotnet"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-ai-language-services/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "8",
+  "cost": "12.00"
+  },
+  {
+  "title": "Azure Container Hosting Comparison",
+  "description": "Deploys the same container across ACI, Container Apps, AKS, and App Service for Containers from a shared ACR to compare scaling, networking, and management.",
+  "preview": "./templates/images/azure-container-scenarios.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-azure-container-scenarios",
+  "tags": ["az-104","az-305","msft","aca","aci","acr","aks","appservice","kubernetes","loganalytics"],
+  "demoguide": https://raw.githubusercontent.com/petender/tdd-azd-azure-container-scenarios/refs/heads/main/demoguide/demoguide.md,
+  "deploytime": "10",
+  "cost": "12.00"
+  },
+  {
+  "title": "Linux VM with SSH and NSG",
+  "description": "Foundational IaaS scenario with Ubuntu VM, VNet, NSG SSH inbound rule, Public IP, and Log Analytics for Azure VM deployment and network security.",
+  "preview": "./templates/images/linux-vm-ssh-nsg.png",
+  "author": "Peter De Tender",
+  "website": "https://github.com/petender",
+  "source": "https://github.com/petender/tdd-azd-linux-vm-ssh-nsg",
+  "tags": ["az-104","msft","virtualmachine","vnets","loganalytics"],
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-linux-vm-ssh-nsg/refs/heads/main/demoguide/demoguide.md",
+  "deploytime": "3",
+  "cost": "5.00"
+  },
+  {
+    "title": "Azure VM management MCP server for AI Agent",
+    "description": "This is deploying a  MCP server in a ACI for connecting to a Microsoft Copilot Studio agent",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-azure-vmtool-mcpserver/main/media/screenschot-agent6.jpg",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-azure-vmtool-mcpserver",
+    "tags": ["pl-7008", "ai-3026", "msft", "hot"],
+    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-azure-vmtool-mcpserver/main/docs/demo-guide.md",
+    "cost": "1",
+    "deploytime": "1",
+  },
   {
   "title": "Linux VM with Cosmos DB - Logistics",
   "description": "Ubuntu Linux VM running a .NET web app connected to Cosmos DB (NoSQL API) for shipment tracking and fleet management using Managed Identity.",
@@ -920,3 +980,4 @@
   "cost": "10.00"
   }
 ]
+
