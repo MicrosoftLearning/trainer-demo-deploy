@@ -965,7 +965,7 @@
     "tags": ["pl-7008", "ai-3026", "msft", "hot"],
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-azure-vmtool-mcpserver/main/docs/demo-guide.md",
     "cost": "1",
-    "deploytime": "1",
+    "deploytime": "1"
   },
   {
   "title": "Linux VM with Cosmos DB - Logistics",
@@ -980,5 +980,6 @@
   "cost": "10.00"
   }
 ]
+
 
 
