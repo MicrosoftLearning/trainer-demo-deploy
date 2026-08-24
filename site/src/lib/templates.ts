@@ -6,6 +6,8 @@ import templatesJson from "../../../static/templates.json";
 import { Tags } from "../data/tags-shim";
 import type { Tag, TagType } from "../data/tags-shim";
 
+export const GENERAL_INDUSTRY = "General";
+
 export type Template = {
   title: string;
   description: string;
@@ -16,10 +18,22 @@ export type Template = {
   demoguide: string | null;
   courseblueprint?: string | null;
   tags: TagType[];
+  industry: string;
   cost: string;
   deploytime: string;
   prereqs?: string;
 };
+
+type TemplateJson = Omit<Template, "industry"> & {
+  industry?: string | null;
+};
+
+export function normalizeIndustry(industry?: string | null): string {
+  const normalized = industry?.trim();
+  return normalized?.toLowerCase() === GENERAL_INDUSTRY.toLowerCase() || !normalized
+    ? GENERAL_INDUSTRY
+    : normalized;
+}
 
 /** Stable slug for deep-link `?id=<slug>` URLs. */
 export function templateSlug(t: Pick<Template, "title">): string {
@@ -30,7 +44,10 @@ export function templateSlug(t: Pick<Template, "title">): string {
     .replace(/^-+|-+$/g, "");
 }
 
-const all = (templatesJson as Template[]).map((t) => ({ ...t }));
+const all = (templatesJson as TemplateJson[]).map((t) => ({
+  ...t,
+  industry: normalizeIndustry(t.industry),
+}));
 all.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
 
 /** All templates, sorted alphabetically by title (case-insensitive). */
@@ -49,6 +66,15 @@ export function getUniqueAuthors(templates: Template[] = allTemplates): string[]
   return Array.from(set).sort((a, b) => a.localeCompare(b));
 }
 
+export function getUniqueIndustries(templates: Template[] = allTemplates): string[] {
+  const industries = new Set(templates.map((template) => normalizeIndustry(template.industry)));
+  return Array.from(industries).sort((left, right) => {
+    if (left === GENERAL_INDUSTRY) return -1;
+    if (right === GENERAL_INDUSTRY) return 1;
+    return left.localeCompare(right);
+  });
+}
+
 /** Unique tags actually used by the catalog (for the filter rail). */
 export function getUsedTags(templates: Template[] = allTemplates): TagType[] {
   const set = new Set<TagType>();
@@ -65,6 +91,8 @@ export type CatalogFilter = {
   tags?: TagType[];
   /** Authors — OR within the list. */
   authors?: string[];
+  /** Industries — OR within the list. */
+  industries?: string[];
 };
 
 /** Apply filters. Empty/undefined fields are pass-through. */
@@ -75,6 +103,10 @@ export function filterTemplates(
   const search = filter.search?.trim().toLowerCase();
   const tags = filter.tags && filter.tags.length > 0 ? new Set(filter.tags) : null;
   const authors = filter.authors && filter.authors.length > 0 ? new Set(filter.authors) : null;
+  const industries =
+    filter.industries && filter.industries.length > 0
+      ? new Set(filter.industries.map(normalizeIndustry))
+      : null;
 
   return templates.filter((t) => {
     if (search) {
@@ -89,6 +121,7 @@ export function filterTemplates(
       const ta = t.author.split(",").map((a) => a.trim());
       if (!ta.some((x) => authors.has(x))) return false;
     }
+    if (industries && !industries.has(normalizeIndustry(t.industry))) return false;
     return true;
   });
 }
