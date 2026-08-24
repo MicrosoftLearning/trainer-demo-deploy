@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { CatalogCourseTags } from "../data/tags-shim";
 import type { TagType } from "../data/tags-shim";
 import {
   allTemplates,
@@ -215,6 +216,78 @@ describe("getTagsBySection", () => {
         expect(seen.has(entry.tag)).toBe(false);
         seen.add(entry.tag);
       }
+    }
+  });
+});
+
+describe("CatalogCourseTags", () => {
+  it("contains the current course portfolio", () => {
+    expect(CatalogCourseTags).toEqual([
+      "ab-100",
+      "ab-6008",
+      "ab-620",
+      "ab-730",
+      "ab-731",
+      "ai-103",
+      "ai-200",
+      "ai-300",
+      "ai-3003",
+      "ai-3008",
+      "ai-3016",
+      "ai-3025",
+      "ai-3026",
+      "ai-901",
+      "az-104",
+      "az-2007",
+      "az-2008",
+      "az-305",
+      "az-400",
+      "az-500",
+      "az-700",
+      "dp-300",
+      "dp-3011",
+      "dp-3014",
+      "dp-3028",
+      "dp-3029",
+      "dp-600",
+      "dp-601",
+      "dp-602",
+      "dp-603",
+      "dp-604",
+      "dp-605",
+      "dp-700",
+      "dp-750",
+      "dp-800",
+      "dp-900",
+      "gh-100",
+      "gh-200",
+      "gh-300",
+      "gh-500",
+      "gh-600",
+      "gh-900",
+      "md-4011",
+      "ms-4002",
+      "ms-4004",
+      "ms-4014",
+      "ms-4017",
+      "ms-4018",
+      "ms-4019",
+      "ms-4021",
+      "ms-4022",
+      "ms-4023",
+      "pl-300",
+      "pl-7008",
+      "sc-100",
+      "sc-200",
+      "sc-300",
+      "sc-401",
+    ]);
+  });
+
+  it("registers every portfolio course as an ILT course", () => {
+    for (const tag of CatalogCourseTags) {
+      expect(tagMeta(tag), `missing course metadata for '${tag}'`).toBeDefined();
+      expect(tagSection(tag), `${tag} is not an ILT course`).toBe("ILT Courses");
     }
   });
 });
