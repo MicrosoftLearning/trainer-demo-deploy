@@ -903,7 +903,7 @@
   "author": "Vassilis Ioannidis",
   "source": "https://github.com/SQLtattoo/az700env",
   "demoguide": "https://raw.githubusercontent.com/SQLtattoo/az700env/refs/heads/main/demoguide/demoguide.md",
-  "tags": ["az-700", "msft", "appgateway", "loadbalancer", "vnets", "privatelink", "firewall", "vpn", "avnm", "afd", "waf", "atm", "flow-logs", "monitoring", "hot"],
+  "tags": ["appgateway", "az-700", "azurefirewall", "frontdoor", "hot", "loadbalancer", "monitor", "msft", "networkwatcher", "privatelink", "trafficmgr", "virtualnetworkmanager", "vnets", "vpngw", "webapplicationfirewall"],
   "cost": "25.00",
   "deploytime": "25"
   },

@@ -5,9 +5,12 @@ import {
   allTemplates,
   azdInitCommand,
   filterTemplates,
+  GENERAL_INDUSTRY,
   getAuthorsWithCounts,
+  getUniqueIndustries,
   getTagsBySection,
   getUniqueAuthors,
+  normalizeIndustry,
   tagMeta,
   tagSection,
   templateSlug,
@@ -23,9 +26,22 @@ const sample = (over: Partial<Template> = {}): Template => ({
   source: "https://github.com/petender/tdd-azd-starter",
   demoguide: null,
   tags: ["functions"],
+  industry: GENERAL_INDUSTRY,
   cost: "$",
   deploytime: "5 min",
   ...over,
+});
+
+describe("normalizeIndustry", () => {
+  it("treats missing and blank industry values as General", () => {
+    expect(normalizeIndustry()).toBe(GENERAL_INDUSTRY);
+    expect(normalizeIndustry(null)).toBe(GENERAL_INDUSTRY);
+    expect(normalizeIndustry("   ")).toBe(GENERAL_INDUSTRY);
+  });
+
+  it("trims an explicitly assigned industry", () => {
+    expect(normalizeIndustry("  Healthcare ")).toBe("Healthcare");
+  });
 });
 
 describe("templateSlug", () => {
@@ -66,8 +82,8 @@ describe("azdInitCommand", () => {
 describe("filterTemplates", () => {
   const data: Template[] = [
     sample({ title: "Azure Function Hub", description: "serverless", tags: ["openai"], author: "Alice" }),
-    sample({ title: "Static Web App", description: "frontend hosting", tags: ["functions"], author: "Bob, Carol" }),
-    sample({ title: "Kubernetes Cluster", description: "container orchestration", tags: ["aks"], author: "Dan" }),
+    sample({ title: "Static Web App", description: "frontend hosting", tags: ["functions"], author: "Bob, Carol", industry: "Retail" }),
+    sample({ title: "Kubernetes Cluster", description: "container orchestration", tags: ["aks"], author: "Dan", industry: "Healthcare" }),
   ];
 
   it("returns all when filter is empty", () => {
@@ -98,6 +114,13 @@ describe("filterTemplates", () => {
     expect(filterTemplates(data, { authors: ["Carol"] }).map((t) => t.title)).toEqual([
       "Static Web App",
     ]);
+  });
+
+  it("filters by industries using OR-within-list semantics", () => {
+    const out = filterTemplates(data, { industries: ["Retail", "Healthcare"] }).map(
+      (t) => t.title,
+    );
+    expect(out).toEqual(["Static Web App", "Kubernetes Cluster"]);
   });
 
   it("combines filters with AND semantics", () => {
@@ -141,6 +164,19 @@ describe("getUniqueAuthors", () => {
   it("ignores empty author strings", () => {
     const data = [sample({ author: "" }), sample({ author: "Z" })];
     expect(getUniqueAuthors(data)).toEqual(["Z"]);
+  });
+});
+
+describe("getUniqueIndustries", () => {
+  it("returns unique industries with General first and the rest alphabetized", () => {
+    const data = [
+      sample({ industry: "Retail" }),
+      sample({ industry: GENERAL_INDUSTRY }),
+      sample({ industry: "Healthcare" }),
+      sample({ industry: "Retail" }),
+    ];
+
+    expect(getUniqueIndustries(data)).toEqual([GENERAL_INDUSTRY, "Healthcare", "Retail"]);
   });
 });
 
@@ -265,5 +301,18 @@ describe("real catalog data integrity (smoke test)", () => {
     const titles = allTemplates.map((t) => t.title.toLowerCase());
     const sorted = [...titles].sort((a, b) => a.localeCompare(b));
     expect(titles).toEqual(sorted);
+  });
+
+  it("registers every catalog tag and leaves only badges unsectioned", () => {
+    const badgeTags = new Set<TagType>(["hot", "new", "mct", "msft"]);
+
+    for (const template of allTemplates) {
+      for (const tag of template.tags) {
+        expect(tagMeta(tag), `${template.title}: unknown tag '${tag}'`).toBeDefined();
+        if (!badgeTags.has(tag)) {
+          expect(tagSection(tag), `${template.title}: unsectioned tag '${tag}'`).not.toBeNull();
+        }
+      }
+    }
   });
 });

@@ -24,6 +24,7 @@ export type User = {
   demoguide: string | null;
   courseblueprint: string | null;
   tags: TagType[];
+  industry?: string;
   cost: string;
   deploytime: string;
   prereqs: string;
@@ -172,6 +173,9 @@ export type TagType =
   | "cosmosdb"
   | "azuredatafactory"
   | "monitor"
+  | "networkwatcher"
+  | "virtualnetworkmanager"
+  | "webapplicationfirewall"
   | "keyvault"
   | "aca"
   | "aci"
@@ -1260,6 +1264,24 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Monitor Service",
     azureIcon: "./img/Azure-Monitor.svg",
     url: "https://azure.microsoft.com/products/monitor",
+    type: "Service",
+  },
+  networkwatcher: {
+    label: "Azure Network Watcher",
+    description: "Template architecture uses Azure Network Watcher",
+    url: "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview",
+    type: "Service",
+  },
+  virtualnetworkmanager: {
+    label: "Azure Virtual Network Manager",
+    description: "Template architecture uses Azure Virtual Network Manager",
+    url: "https://learn.microsoft.com/azure/virtual-network-manager/overview",
+    type: "Service",
+  },
+  webapplicationfirewall: {
+    label: "Azure Web Application Firewall",
+    description: "Template architecture uses Azure Web Application Firewall",
+    url: "https://learn.microsoft.com/azure/web-application-firewall/overview",
     type: "Service",
   },
   keyvault: {
