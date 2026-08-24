@@ -6,5 +6,5 @@
  * import through this shim so site-side modules use a stable,
  * JSX-free module specifier.
  */
-export { Tags } from "../../../src/data/tags.tsx";
+export { CatalogCourseTags, Tags } from "../../../src/data/tags.tsx";
 export type { Tag, TagType, User } from "../../../src/data/tags.tsx";
