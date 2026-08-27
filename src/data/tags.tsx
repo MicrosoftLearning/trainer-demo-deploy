@@ -30,7 +30,10 @@ export type User = {
   prereqs: string;
 };
 
-// NN: Updated TagType to suit Static Web Apps
+/**
+ * Complete registry of tag IDs accepted by catalog templates and required in `Tags`.
+ * It includes course, service, framework, platform, database, and administrative tags.
+ */
 export type TagType =
 
 // Special Tags
@@ -168,71 +171,78 @@ export type TagType =
 
 
 // Azure Services
-  | "kubernetes"
-  | "appservice"
-  | "cosmosdb"
-  | "azuredatafactory"
-  | "monitor"
-  | "networkwatcher"
-  | "virtualnetworkmanager"
-  | "webapplicationfirewall"
-  | "keyvault"
   | "aca"
   | "aci"
   | "acr"
-  | "mongodb"
-  | "functions"
-  | "blobstorage"
-  | "azuredb-postgreSQL"
-  | "azuresql"
-  | "staticwebapps"
-  | "servicebus"
-  | "vnets"
-  | "appinsights"
-  | "loganalytics"
-  | "aisearch"
-  | "openai"
-  | "azureai"
-  | "apim"
-  | "aks"
-  | "azurecdn"
-  | "frontdoor"
-  | "rediscache"
-  | "azurebot"
-  | "azuredb-mySQL"
-  | "eventhub"
-  | "azurestorage"
-  | "azureappconfig"
   | "aifoundry"
+  | "aisearch"
+  | "aks"
   | "apicenter"
-  | "eventgrid"
-  | "logicapps"
-  | "speechservice"
-  | "azureml"
-  | "virtualmachine"
-  | "sentinel"
-  | "trafficmgr"
-  | "purview"
-  | "vpngw"
-  | "azurearc"
-  | "loadtesting"
-  | "fabric"
-  | "azurefirewall"
-  | "bastion"
-  | "vmsqlserver"
-  | "avset"
+  | "apim"
   | "appgateway"
+  | "appinsights"
+  | "appservice"
+  | "avset"
+  | "azureai"
+  | "azureappconfig"
+  | "azurearc"
+  | "azurebot"
+  | "azurecdn"
+  | "azuredatafactory"
+  | "azuredb-mySQL"
+  | "azuredb-postgreSQL"
+  | "azurefirewall"
+  | "azureml"
+  | "azuresql"
+  | "azurestorage"
+  | "backup"
+  | "bastion"
+  | "blobstorage"
+  | "cosmosdb"
+  | "eventgrid"
+  | "eventhub"
+  | "fabric"
+  | "frontdoor"
+  | "functions"
+  | "keyvault"
+  | "kubernetes"
+  | "loadbalancer"
+  | "loadtesting"
+  | "loganalytics"
+  | "logicapps"
+  | "mongodb"
+  | "monitor"
+  | "networkwatcher"
+  | "openai"
   | "privateendpoint"
   | "privatelink"
-  | "loadbalancer"
-  | "backup"
+  | "purview"
   | "recoveryvault"
+  | "rediscache"
+  | "sentinel"
+  | "servicebus"
+  | "speechservice"
+  | "staticwebapps"
+  | "trafficmgr"
+  | "virtualmachine"
+  | "virtualnetworkmanager"
+  | "vmsqlserver"
+  | "vnets"
+  | "vpngw"
+  | "webapplicationfirewall"
  
 
 
 
 ;
 
+/**
+ * Curated current course portfolio for the Astro gallery filter.
+ *
+ * The gallery merges this list with tags used by templates, so courses listed here stay
+ * visible without a demo and render as disabled options. This is intentionally a subset
+ * of `TagType`; `satisfies` validates membership, not completeness.
+ */
 export const CatalogCourseTags = [
   "ab-100",
   "ab-6008",
@@ -443,23 +453,21 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
-  // TODO: AI-3017 - Course not found on Microsoft Learn - needs research
   "ai-3017": {
-    label: "AI-3017",
-    description: "Course details pending - not currently listed on Microsoft Learn.",
+    label: "AI-3017 AI for business leaders",
+    description: "Explore how business leaders can plan, strategize, and scale responsible AI adoption in their organizations.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
-    url: "",
+    url: "https://learn.microsoft.com/en-us/training/paths/transform-your-business-with-microsoft-ai/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
-  // TODO: AI-3018 - Course not found on Microsoft Learn - needs research
   "ai-3018": {
-    label: "AI-3018",
-    description: "Course details pending - not currently listed on Microsoft Learn.",
+    label: "AI-3018 Copilot Foundations",
+    description: "Explore generative AI fundamentals and how to use copilots with Microsoft Copilot Studio and Microsoft Foundry. This course was retired in favor of MS-4014.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
-    url: "",
+    url: "https://learn.microsoft.com/en-us/training/paths/copilot-foundations/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -589,23 +597,21 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "https://aka.ms/AZ-140Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-140.jpg",
   },
-  // TODO: AZ-2001 - Course not found on Microsoft Learn - needs research
   "az-2001": {
-    label: "AZ-2001",
-    description: "Course details pending - not currently listed on Microsoft Learn.",
+    label: "AZ-2001 Implement security through a pipeline using Azure DevOps",
+    description: "Configure secure access to Azure pipeline resources, validate permissions, protect variables and parameters, and manage identities for projects, pipelines, and agents.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
-    url: "",
+    url: "https://learn.microsoft.com/en-us/training/paths/implement-security-through-pipeline-using-devops/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
-  // TODO: AZ-2002 - Course not found on Microsoft Learn - needs research
   "az-2002": {
-    label: "AZ-2002",
-    description: "Course details pending - not currently listed on Microsoft Learn.",
+    label: "AZ-2002 Develop an ASP.NET Core web app that consumes an API",
+    description: "Develop an ASP.NET Core Blazor web app that consumes an API to retrieve, create, and update data.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
-    url: "",
+    url: "https://learn.microsoft.com/en-us/credentials/applied-skills/develop-an-aspnet-core-web-app-that-consumes-an-api/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -638,9 +644,10 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   "az-2007": {
     label: "AZ-2007 Get started with AI-assisted development",
-    description: "Use AI-assisted development tools to improve software development workflows.",
+    description: "Use GitHub Copilot in Visual Studio Code for code analysis, documentation, app development, unit testing, refactoring, and vibe coding.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/",
   },
   "az-2008": {
     label: "AZ-2008 DevOps Foundations: The Core Principles and Practices",
@@ -758,13 +765,12 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
-  // TODO: DP-3007 - Course not found on Microsoft Learn - needs research
   "dp-3007": {
-    label: "DP-3007",
-    description: "Course details pending - not currently listed on Microsoft Learn.",
+    label: "DP-3007 Train and manage a machine learning model with Azure Machine Learning",
+    description: "Prepare data and compute, train and track models with MLflow, and deploy models to managed online endpoints for real-time predictions.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
-    url: "",
+    url: "https://learn.microsoft.com/en-us/training/paths/train-deploy-machine-learning-model/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -777,13 +783,12 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
-  // TODO: DP-3012 - Course not found on Microsoft Learn - needs research
   "dp-3012": {
-    label: "DP-3012",
-    description: "Course details pending - not currently listed on Microsoft Learn.",
+    label: "DP-3012 Implementing a Data Analytics Solution with Azure Synapse Analytics",
+    description: "Use Azure Synapse Analytics SQL and Spark pools, pipelines, and data integration capabilities to ingest, transform, and analyze data.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
-    url: "",
+    url: "https://learn.microsoft.com/en-us/credentials/certifications/retired-courses",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -1552,7 +1557,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure ARC",
     description: "Template architecture for Azure ARC",
     azureIcon: "./img/Azure-Arc-VM.svg",
-    url: "hhttps://azure.microsoft.com/products/azure-arc",
+    url: "https://azure.microsoft.com/products/azure-arc",
     type: "Service",
   },
 
