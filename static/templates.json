@@ -1065,6 +1065,18 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-sentinel-threat-detection/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "12.00"
+  },
+  {
+  "title": "Linux VM Two-Region Secure HA",
+  "description": "Active-active Linux workload across two Azure regions with private zonal VM scale sets, Azure Firewall-secured ingress, Traffic Manager health routing, Bastion administration, and centralized monitoring.",
+  "preview": "./templates/images/test.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/tdd-azd-linux-vm-two-region-secure-ha",
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-linux-vm-two-region-secure-ha/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["az-104","az-305","az-500","az-700","azurefirewall","bastion","loadbalancer","loganalytics","monitor","msft","trafficmgr","virtualmachine","vnets"],
+  "cost": "2100.00",
+  "deploytime": "35"
   }
 ]
 
