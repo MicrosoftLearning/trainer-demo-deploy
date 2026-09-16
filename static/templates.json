@@ -1065,6 +1065,19 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-sentinel-threat-detection/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "12.00"
+  },
+  {
+    "title": "App Service and Cosmos DB Healthcare Demo",
+    "description": "A healthcare operations application on Azure App Service with Cosmos DB for NoSQL, Microsoft Entra authentication, managed identity, private connectivity, and Azure Monitor observability.",
+    "preview": "https://raw.githubusercontent.com/petender/tdd-azd-app-service-cosmos-db/refs/heads/main/demoguide/images/resource-group-overview.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/tdd-azd-app-service-cosmos-db",
+    "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-app-service-cosmos-db/refs/heads/main/demoguide/demoguide.md",
+    "tags": ["appinsights", "appservice", "az-204", "cosmosdb", "dotnet", "keyvault", "loganalytics", "monitor", "msft", "privateendpoint", "privatelink"],
+    "industry": "Healthcare",
+    "cost": "190.00",
+    "deploytime": "15"
   }
 ]
 
