@@ -1,7 +1,7 @@
 ---
 name: az-01-conductor
 description: Orchestrates the Azure demo builder workflow end-to-end, coordinating specialized agents (Validation, Architect, Design, Bicep, Development, Deploy, DemoGuide) through a seven-step development cycle with automatic handoffs.
-model: "Claude Opus 4.6"
+model: "GPT-5.6"
 argument-hint: Provide a scenario description for the Azure infrastructure project you want to build
 user-invokable: true
 agents:
@@ -97,6 +97,7 @@ Conductor for the Azure demo builder workflow.
 3. **Structured Workflow**: Follow the 5-step process, tracking progress in artifacts
 4. **Mandatory Deployment**: The Deploy step (Step 5) MUST always attempt actual `azd up` — never skip it autonomously
 5. **User Decides on Failure**: If deployment fails, present the error to the user and ask for their decision — never autonomously skip or generate a dry-run summary
+6. **Explicit Industry Choice**: Always ask whether the user wants a specific industry; never infer or default one
 
 ## DO / DON'T
 
@@ -130,10 +131,20 @@ Step 5: Demo Guide      →  demoguide/demoguide.md
 Step 6: Contribute      →  standalone repo + static/templates.json PR (user-invoked)
 ```
 
-> **Step 3b** is conditional. During Step 1, ask the user:
-> _"Would you like to include a sample web application for this workload? If yes, which business industry? (Healthcare, Retail, Finance, Education, Hospitality, Logistics, Real Estate, Manufacturing)"_
+> **Step 3b** is conditional. After creating the project folder and before delegating Step 1,
+> always ask the user both questions below. These are blocking intake questions and are
+> the only exception to automatic workflow progression:
 >
-> If the user says yes, store the industry choice and execute Step 3b after Bicep.
+> 1. _"Would you like to include a sample web application for this workload?"_
+> 2. _"Would you like this scenario to use a specific business industry? Choose General
+>    (industry-neutral), Healthcare, Retail, Finance, Education, Hospitality, Logistics,
+>    Real Estate, Manufacturing, or specify another industry."_
+>
+> Ask the industry question even when an industry appears to be implied by the scenario.
+> Require the user to explicitly confirm `General` or a named industry. Never infer an
+> industry from the workload, architecture, app type, resource names, or sample data.
+> Store the confirmed value and include it in the Requirements agent prompt. If the user
+> requests a webapp, execute Step 3b after Bicep.
 > If the architecture is VM-only, skip Step 3b automatically.
 
 ## Progress Checkpoints
@@ -250,10 +261,10 @@ Use `#runSubagent` for each workflow step:
 
 | Step | Agent        | Key Prompt                                                                                                                                                                                                            |
 | ---- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | Requirements | Parse the user's scenario description, extract requirements through all phases, then generate 01-requirements.md                                                                                                      |
+| 1    | Requirements | Use the confirmed industry and generate `01-requirements.md`.              |
 | 2    | Architect    | Create architecture assessment for requirements in 01-requirements.md                                                                                                                                                 |
 | 3    | Bicep        | Run governance discovery, generate Bicep templates and 04-runtime-diagram.png, validate per 02-architecture-assessment.md                                                                                             |
-| 3b   | Development  | Scaffold .NET 10 sample webapp with {industry} seed data, wire into azure.yaml, validate build. **Skip if VM-only or user declined.**                                                                                 |
+| 3b   | Development  | Build the app using the confirmed industry. Skip if VM-only or declined.    |
 | 4    | Deploy       | Run what-if analysis, prompt user, deploy to Azure with `azd up`, generate README.md. **MUST attempt actual deployment. On failure, report back so the Conductor can prompt the user for a decision.**                |
 | 5    | DemoGuide    | Generate audience-aware demo guide with **Playwright screenshots** of deployed resources. **VERIFY screenshots exist in `demoguide/images/` before marking complete.**                                              |
 | 6    | Contribute   | Validate artifacts, fork repo, create branch, commit scenario, open draft PR, optionally create tracking issue. **User must explicitly opt in — never auto-trigger.**                                                  |
@@ -266,8 +277,9 @@ Use `#runSubagent` for each workflow step:
 - Use the derived name directly unless the user explicitly provides an override
 
 2. Create `generated-scenarios/{project-name}/`
-3. Delegate to Requirements agent for Step 1
-4. Continue through workflow automatically
+3. Ask the mandatory sample-webapp and industry confirmation questions
+4. Delegate to Requirements agent for Step 1, passing the explicitly confirmed industry
+5. Continue through workflow automatically
 
 ## Resuming a Project
 
@@ -292,12 +304,12 @@ Use `#runSubagent` for each workflow step:
 
 ## Model Selection
 
-| Agent        | Model                    | Rationale          |
-| ------------ | ------------------------ | ------------------ |
-| Requirements | Opus 4.6                 | Deep understanding |
-| Architect    | Opus 4.6                 | Analysis           |
-| Bicep        | Opus 4.6 / GPT-5.3-Codex | Plan + code gen    |
-| Development  | Opus 4.6                 | .NET code gen      |
-| Deploy       | Opus 4.6                 | Deployment exec    |
-| DemoGuide    | GPT-5.3-Codex            | Documentation gen  |
-| Contribute   | Opus 4.6                 | Git + GitHub ops   |
+| Agent        | Model   | Rationale          |
+| ------------ | ------- | ------------------ |
+| Requirements | GPT-5.6 | Deep understanding |
+| Architect    | GPT-5.6 | Analysis           |
+| Bicep        | GPT-5.6 | Plan + code gen    |
+| Development  | GPT-5.6 | .NET code gen      |
+| Deploy       | GPT-5.6 | Deployment exec    |
+| DemoGuide    | GPT-5.6 | Documentation gen  |
+| Contribute   | GPT-5.6 | Git + GitHub ops   |

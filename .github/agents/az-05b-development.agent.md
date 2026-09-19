@@ -1,7 +1,7 @@
 ---
 name: az-05b-Development
 description: Scaffolds and generates a .NET 10 C# sample web application tailored to the project's business industry. Uses Azure data services (Storage Table, SQL, Cosmos DB, etc.) when present in the architecture, falling back to local JSON seed data only when no data endpoint exists. Supports App Service, Container Apps, ACI, and AKS deployment targets. Skips VM-only scenarios.
-model: "Claude Opus 4.6"
+model: "GPT-5.6"
 user-invokable: true
 argument-hint: Provide the project folder name and business industry for the sample web app (e.g., healthcare, retail, finance)
 agents: []
@@ -100,12 +100,20 @@ Azure App Service, Container Apps, ACI, or AKS — never on VM-only scenarios.
 | AKS            | Deploy as container     | Yes                 |
 | VM (any)       | **SKIP — not eligible** | N/A                 |
 
+### Industry Confirmation Gate
+
+Before scaffolding, verify `01-requirements.md` records an explicitly confirmed
+industry or `General`. If it is missing or described as inferred/defaulted, stop and
+report `INDUSTRY CONFIRMATION REQUIRED`. Do not select an industry from the project
+description, architecture, resource names, or intended sample data.
+
 ## Core Principles
 
 1. **Always .NET 10**: Use `dotnet new webapp` with `--framework net10.0`
 2. **Data Backend First**: If the architecture includes a data service (Storage Table, SQL Database, Cosmos DB, Event Hub, Service Bus, Redis, etc.), use that service as the app's data store via the appropriate SDK. Seed the service with sample data on first run.
 3. **Local JSON Fallback**: Only use in-memory data with static JSON seed files when the architecture has **no** data endpoint
-4. **Industry-Aware**: Generate domain models and seed data matching the project's business industry
+4. **Confirmed Context**: Generate domain models and seed data for the confirmed industry,
+   or industry-neutral data for `General`
 5. **Container-Ready**: For container targets, include a multi-stage `Dockerfile`
 6. **azd-Integrated**: Wire the app as a service in `azure.yaml` so `azd deploy` picks it up
 
@@ -114,6 +122,7 @@ Azure App Service, Container Apps, ACI, or AKS — never on VM-only scenarios.
 ### DO
 
 - ✅ Read architecture assessment to determine compute target and eligibility
+- ✅ Verify the requirements contain an explicitly confirmed industry or `General`
 - ✅ Scaffold using `dotnet new webapp --framework net10.0 --name {ProjectName}.Web`
 - ✅ Place the app under `generated-scenarios/{project}/src/{ProjectName}.Web/`
 - ✅ Generate industry-specific models, seed data, and Razor pages
@@ -127,6 +136,7 @@ Azure App Service, Container Apps, ACI, or AKS — never on VM-only scenarios.
 ### DON'T
 
 - ❌ Generate a webapp for VM-only scenarios
+- ❌ Infer or default an industry when the requirements lack explicit confirmation
 - ❌ Use local JSON when the architecture already includes a data service — always prefer the real backend
 - ❌ Use a framework other than .NET 10 C#
 - ❌ Create overly complex architectures — this is a demo/sample app
@@ -150,7 +160,8 @@ Before starting, validate these artifacts exist in `generated-scenarios/{project
 
 ### Phase 1: Context Extraction
 
-1. Read `01-requirements.md` — extract **business industry** and **project description**
+1. Read `01-requirements.md` — extract the explicitly confirmed **business industry**
+  or `General`, plus the **project description**
 2. Read `02-architecture-assessment.md` — identify **compute target** (App Service, Container Apps, ACI, AKS, or VM) and **data endpoints**; note the App Service or container resource names
 3. If VM-only → SKIP with message and return
 4. Scan `infra/` to confirm resource names and connection point details
@@ -210,7 +221,9 @@ Based on the business industry from requirements and the data strategy from Phas
 | Real Estate   | `Property`, `Agent`, `Listing`       | Property listings and agent directory |
 | Manufacturing | `Product`, `WorkOrder`, `Machine`    | Factory floor tracking                |
 
-If the industry doesn't match a known template, derive 2-4 sensible entities from the project description.
+For `General`, create industry-neutral entities appropriate to a generic sample app.
+If the user confirmed an industry that does not match a known template, derive 2-4
+sensible entities from the project description without substituting another industry.
 
 ### Phase 4: Container Support (Conditional)
 

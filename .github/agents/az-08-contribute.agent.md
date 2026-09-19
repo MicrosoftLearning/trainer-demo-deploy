@@ -1,7 +1,7 @@
 ---
 name: az-08-Contribute
 description: Publishes a completed scenario to a standalone repo in the contributor's GitHub account and registers it in the upstream project's template gallery (static/templates.json) via a cross-fork PR.
-model: "Claude Opus 4.6"
+model: "GPT-5.6"
 user-invokable: true
 argument-hint: Provide the scenario project folder name to contribute (e.g., sentinel-threat-detection)
 agents: []

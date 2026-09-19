@@ -1,7 +1,7 @@
 ---
 name: az-07-DemoGuide
 description: Produces audience-aware demo guides, step-by-step instructions, and presentation materials from deployed Azure infrastructure. Validates environment readiness, generates talking points, and includes contingency playbooks for live demonstrations.
-model: "GPT-5.3-Codex"
+model: "GPT-5.6"
 user-invokable: true
 argument-hint: Specify the project folder and target audience (executive, technical, or workshop)
 agents: []

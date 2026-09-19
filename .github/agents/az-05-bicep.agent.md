@@ -1,7 +1,7 @@
 ---
 name: az-05-Bicep
 description: Plans governance-aware Azure implementations and generates near-production-ready Bicep templates using Azure Verified Modules. Covers the full lifecycle from governance discovery and implementation planning through code generation and validation.
-model: "Claude Opus 4.6"
+model: "GPT-5.6"
 user-invokable: true
 argument-hint: Provide the path to an architecture assessment or describe the infrastructure to implement in Bicep
 agents: []

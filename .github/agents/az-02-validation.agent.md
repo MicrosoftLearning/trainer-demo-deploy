@@ -1,6 +1,6 @@
 ---
 name: az-02-Validations
-model: "Claude Opus 4.6"
+model: "GPT-5.6"
 description: Gathers and validates Azure infrastructure project requirements by parsing the user's scenario description into a structured requirements document covering business context, workload patterns, service recommendations, and security constraints.
 argument-hint: Describe the Azure workload, including industry, scale, and key objectives
 target: vscode
@@ -83,6 +83,12 @@ Extract from the user's scenario description: Project name / industry / Company 
 System type or project description. Apply defaults from the Must-Have Information
 table below for anything not explicitly stated.
 
+Industry is the exception to defaulting and inference. It MUST be supplied as an explicit
+user-confirmed value from the Conductor: `General` or a named industry. If the handoff does
+not contain that confirmation, stop and report `INDUSTRY CONFIRMATION REQUIRED`; do not
+generate artifacts. An industry mentioned or implied in the original scenario is not a
+substitute for explicit confirmation.
+
 All rounds in Phase 1 are MANDATORY. Even if the user's initial prompt provides
 partial answers, apply sensible defaults for missing items. If ambiguity remains,
 document assumptions and continue.
@@ -111,7 +117,8 @@ for anything not mentioned.
 
 Extract or default: Workload pattern (inferred from scenario), Daily users (default
 by company size), Monthly budget (default by company size using Company Size Heuristics
-from azure-defaults skill), Data sensitivity (infer from industry vertical).
+from azure-defaults skill), Data sensitivity (infer from the confirmed industry vertical;
+use Internal business data for `General`).
 
 **Conditional capacity items** (add when detected workload warrants it):
 
@@ -148,7 +155,8 @@ This phase is MANDATORY. Infer compliance, security controls, authentication,
 and region from the scenario description.
 
 Pre-select compliance frameworks using Industry Compliance Pre-Selection from azure-defaults.
-Apply security baselines appropriate to the industry vertical and data sensitivity.
+Apply security baselines appropriate to the confirmed industry vertical and data sensitivity.
+For `General`, apply the standard security baseline without industry-specific compliance.
 
 Derive: Compliance frameworks (based on industry from Phase 1),
 Security measures (default: Managed Identity + Key Vault + TLS 1.2+),
@@ -194,6 +202,7 @@ These skills are your single source of truth. Do NOT use hardcoded values.
 
 - ✅ **Parse the scenario description as your FIRST action** — before reading skills, before ANY file I/O
 - ✅ Extract business context from the user's upfront scenario description (Phases 1-4)
+- ✅ Require the Conductor's explicit `General` or named-industry confirmation before generating artifacts
 - ✅ **Cover EVERY phase (1-4)** — no phase may be skipped or collapsed
 - ✅ Apply sensible defaults from azure-defaults skill for any information not in the scenario
 - ✅ Adapt follow-up depth within each phase based on user's technical fluency
@@ -212,6 +221,7 @@ These skills are your single source of truth. Do NOT use hardcoded values.
 - ❌ Modify existing Bicep code or implement infrastructure
 - ❌ Show Bicep code blocks — describe requirements, not implementation
 - ❌ Skip Phase 1 business discovery
+- ❌ Infer or default an industry from the workload, architecture, app type, resource names, or sample data
 - ❌ Use technical jargon without business-friendly explanation
 - ❌ Add H2 headings not in the template (use H3 inside nearest H2)
 - ❌ Skip any phase — even if the user's initial prompt seems detailed
@@ -224,7 +234,7 @@ These skills are your single source of truth. Do NOT use hardcoded values.
 | ------------------- | ----------- | ---------------------------- |
 | Project name        | Phase 1     | (required)                   |
 | Project description | Phase 1     | (required, 1-2 sentences)    |
-| Industry/vertical   | Phase 1     | Technology / SaaS            |
+| Industry/vertical   | Phase 1     | Explicit confirmation required |
 | Company size        | Phase 1     | Mid-Market                   |
 | System description  | Phase 1     | (required)                   |
 | Scenario            | Phase 1     | Greenfield                   |

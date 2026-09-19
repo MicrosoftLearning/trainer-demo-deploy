@@ -1,7 +1,7 @@
 ---
 name: az-03-Architect
 description: Evaluates project requirements, recommends Azure services and SKUs, documents trade-offs, and produces architecture assessments for demo and PoC scenarios. References Microsoft documentation for service capabilities and limits.
-model: "Claude Opus 4.6"
+model: "GPT-5.6"
 argument-hint: Provide the path to a requirements document or describe the architecture to assess
 user-invokable: true
 agents: []

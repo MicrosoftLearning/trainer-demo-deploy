@@ -1,7 +1,7 @@
 ---
 name: az-06-Deploy
 description: Deploys Azure infrastructure using azd, runs what-if analysis, validates deployment, and produces a deployment summary. Bridges the gap between Bicep code generation and demo guide creation.
-model: "Claude Opus 4.6"
+model: "GPT-5.6"
 user-invokable: true
 argument-hint: Provide the project folder name to deploy (e.g., azure-func-servicebus-webapp)
 agents: []

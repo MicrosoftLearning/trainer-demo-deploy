@@ -665,8 +665,16 @@ For full details, see `.github/skills/az-webapp-development/SKILL.md`.
 
 ### Industry Data Models
 
+> [!IMPORTANT]
+> Industry has no default. Before requirements generation, the Conductor MUST ask the
+> user to explicitly choose `General` (industry-neutral) or confirm a named industry.
+> Agents MUST NOT infer an industry from workload details, architecture, app type,
+> resource names, or sample data. Requirements and Development agents must stop and
+> report `INDUSTRY CONFIRMATION REQUIRED` when this value is absent.
+
 | Industry      | Entities                       |
 | ------------- | ------------------------------ |
+| General       | Item, Activity, Contact        |
 | Healthcare    | Doctor, Patient, Appointment   |
 | Retail        | Product, Category, Order       |
 | Finance       | Customer, Account, Transaction |

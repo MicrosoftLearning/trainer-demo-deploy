@@ -1,6 +1,6 @@
 ---
 name: az-04-Diagrammer
-model: "GPT-5.3-Codex"
+model: "GPT-5.6"
 description: "RETIRED FROM MAIN WORKFLOW. Architecture diagrams are now generated inline by the Bicep agent (04-runtime-diagram.png). This agent is kept for standalone/ad-hoc diagram generation only and is not invoked by the Conductor."
 user-invokable: true
 argument-hint: Specify whether to generate a diagram, an ADR, or both for the current project
