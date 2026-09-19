@@ -1065,6 +1065,32 @@
   "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-sentinel-threat-detection/refs/heads/main/demoguide/demoguide.md",
   "deploytime": "8",
   "cost": "12.00"
+  },
+  {
+  "title": "App Service and Cosmos DB Healthcare Demo",
+  "description": "A healthcare operations application on Azure App Service with Cosmos DB for NoSQL, Microsoft Entra authentication, managed identity, private connectivity, and Azure Monitor observability.",
+  "preview": "https://raw.githubusercontent.com/petender/tdd-azd-app-service-cosmos-db/refs/heads/main/demoguide/images/resource-group-overview.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/tdd-azd-app-service-cosmos-db",
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-app-service-cosmos-db/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["appinsights", "appservice", "az-204", "cosmosdb", "dotnet", "keyvault", "loganalytics", "monitor", "msft", "privateendpoint", "privatelink"],
+  "industry": "Healthcare",
+  "cost": "190.00",
+  "deploytime": "15"
+  },
+  {
+  "title": "Oil and Gas Operations on Azure Container Apps",
+  "description": "A secure .NET 10 operations dashboard on Azure Container Apps with fictional well data, managed identity, private Key Vault and registry access, and Azure Monitor observability.",
+  "preview": "./templates/images/oil-gas-container-apps.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/tdd-azd-oil-gas-container-apps",
+  "demoguide": "https://raw.githubusercontent.com/petender/tdd-azd-oil-gas-container-apps/refs/heads/main/demoguide/demoguide.md",
+  "tags": ["aca","acr","appinsights","az-204","az-305","dotnet","keyvault","loganalytics","monitor","privateendpoint","privatelink","vnets"],
+  "industry": "Oil and Gas",
+  "cost": "3.50",
+  "deploytime": "5"
   }
 ]
 
