@@ -1079,6 +1079,7 @@
   "cost": "190.00",
   "deploytime": "15"
   },
+  {
   "title": "Oil and Gas Operations on Azure Container Apps",
   "description": "A secure .NET 10 operations dashboard on Azure Container Apps with fictional well data, managed identity, private Key Vault and registry access, and Azure Monitor observability.",
   "preview": "./templates/images/oil-gas-container-apps.png",
