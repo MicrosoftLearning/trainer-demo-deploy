@@ -1091,6 +1091,18 @@
   "industry": "Oil and Gas",
   "cost": "3.50",
   "deploytime": "5"
+  },
+    {
+    "title": "Disposable Odoo CRM AI MCP demo on Azure",
+    "description": "This project deploys a ready-to-use Odoo business demo in a single temporary Azure environment, complete with realistic sample data and an MCP connection for AI agent interaction, and provides all access links and sign-in details once deployment is complete",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-erp-crm-odoo-mcp-demo/main/media/odooscreenshot.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-erp-crm-odoo-mcp-demo",
+    "tags": ["pl-7008", "ai-3026", "msft", "hot"],
+    "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-erp-crm-odoo-mcp-demo/main/demo-guide.md",
+    "cost": "3.50",
+    "deploytime": "7"
   }
 ]
 
