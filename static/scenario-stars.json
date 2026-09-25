@@ -1,0 +1,182 @@
+{
+  "https://github.com/petender/ConferenceAPI": {
+    "stars": 2
+  },
+  "https://github.com/petender/azd-apimwithconfAPI": {
+    "stars": 1
+  },
+  "https://github.com/petender/OpenAIMultiModel": {
+    "stars": 1
+  },
+  "https://github.com/rob-foulkrod/TollBooth": {
+    "stars": 3
+  },
+  "https://github.com/rob-foulkrod/BadgeMaker": {
+    "stars": 4
+  },
+  "https://github.com/rob-foulkrod/MachineLearningAZD": {
+    "stars": 4
+  },
+  "https://github.com/rob-foulkrod/IAAS2019": {
+    "stars": 2
+  },
+  "https://github.com/maartenvandiemen/AZD-ACI-Demo": {
+    "stars": 1
+  },
+  "https://github.com/maartenvandiemen/AZD-ACA-Demo": {
+    "stars": 3
+  },
+  "https://github.com/maartenvandiemen/AZD-AKS-Demo": {
+    "stars": 1
+  },
+  "https://github.com/petender/azd-fdcdn": {
+    "stars": 2
+  },
+  "https://github.com/maartenvandiemen/AZD-PaaS-Demo": {
+    "stars": 3
+  },
+  "https://github.com/true-while/event-hub-azd": {
+    "stars": 1
+  },
+  "https://github.com/petender/azd-hubspoke": {
+    "stars": 1
+  },
+  "https://github.com/petender/azd-site2sitevpn/": {
+    "stars": 1
+  },
+  "https://github.com/maartenvandiemen/AZD-WatermarkFunction": {
+    "stars": 2
+  },
+  "https://github.com/petender/azd-sentinel": {
+    "stars": 1
+  },
+  "https://github.com/petender/azd-trafficmgr": {
+    "stars": 0
+  },
+  "https://github.com/rob-foulkrod/purviewEnvironment-azd": {
+    "stars": 2
+  },
+  "https://github.com/sarahallali/azd-Privatelink-Pendpoint": {
+    "stars": 3
+  },
+  "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr": {
+    "stars": 2
+  },
+  "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER": {
+    "stars": 1
+  },
+  "https://github.com/koenraadhaedens/azd-infra-dev-containers": {
+    "stars": 6
+  },
+  "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs": {
+    "stars": 2
+  },
+  "https://github.com/true-while/owasp-azd/": {
+    "stars": 0
+  },
+  "https://github.com/maartenvandiemen/azd-loadtest/": {
+    "stars": 1
+  },
+  "https://github.com/true-while/secure-data-solutions/": {
+    "stars": 0
+  },
+  "https://github.com/ronaldbosma/azure-integration-services-quickstart": {
+    "stars": 8
+  },
+  "https://github.com/petender/azd-storaccnt": {
+    "stars": 1
+  },
+  "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps": {
+    "stars": 2
+  },
+  "https://github.com/petender/azd-youtubesummarizer-openai": {
+    "stars": 0
+  },
+  "https://github.com/petender/issdata": {
+    "stars": 2
+  },
+  "https://github.com/daverendon/azd-baseline-webapp": {
+    "stars": 1
+  },
+  "https://github.com/daverendon/azd-firewall": {
+    "stars": 1
+  },
+  "https://github.com/vincentk16/azd-vision-face": {
+    "stars": 0
+  },
+  "https://github.com/petender/azd-addsvm": {
+    "stars": 0
+  },
+  "https://github.com/petender/azd-sqlao": {
+    "stars": 0
+  },
+  "https://github.com/trainerkrunal/azd-vmwithlb": {
+    "stars": 0
+  },
+  "https://github.com/daverendon/azd-service-endpoints-and-securing-storage": {
+    "stars": 1
+  },
+  "https://github.com/daverendon/azd-intersite-connectivity": {
+    "stars": 1
+  },
+  "https://github.com/michelmsft/GoodFood/": {
+    "stars": 2
+  },
+  "https://github.com/maartenvandiemen/AZD-AppConfiguration": {
+    "stars": 1
+  },
+  "https://github.com/daverendon/azd-private-link": {
+    "stars": 1
+  },
+  "https://github.com/koenraadhaedens/azd-sqlworloadsim": {
+    "stars": 0
+  },
+  "https://github.com/SQLtattoo/azd-az104-all-in-one": {
+    "stars": 6
+  },
+  "https://github.com/petender/azd-ai-agent-service": {
+    "stars": 1
+  },
+  "https://github.com/petender/azd-foundrysora": {
+    "stars": 0
+  },
+  "https://github.com/kareldewinter/tdd-azd-monitor": {
+    "stars": 3
+  },
+  "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth": {
+    "stars": 0
+  },
+  "https://github.com/daverendon/azd-microsoft-sentinel": {
+    "stars": 2
+  },
+  "https://github.com/true-while/pg-ai-azd": {
+    "stars": 0
+  },
+  "https://github.com/ronaldbosma/protect-apim-with-oauth": {
+    "stars": 0
+  },
+  "https://github.com/ronaldbosma/call-apim-backend-with-oauth": {
+    "stars": 2
+  },
+  "https://github.com/ronaldbosma/call-apim-with-managed-identity": {
+    "stars": 0
+  },
+  "https://github.com/daverendon/azd-hardened-webapp": {
+    "stars": 1
+  },
+  "https://github.com/petender/azd-researcher": {
+    "stars": 2
+  },
+  "https://github.com/daverendon/azd-multiagent": {
+    "stars": 4
+  },
+  "https://github.com/passadis/azure-a2a-translation": {
+    "stars": 0
+  },
+  "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages": {
+    "stars": 0
+  },
+  "https://github.com/petender/demo-mcp-productcatalog": {
+    "stars": 3
+  }
+}
