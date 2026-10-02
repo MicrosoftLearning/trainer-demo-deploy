@@ -1103,6 +1103,19 @@
     "demoguide": "https://raw.githubusercontent.com/koenraadhaedens/azd-erp-crm-odoo-mcp-demo/main/demo-guide.md",
     "cost": "3.50",
     "deploytime": "7"
+  },
+  {
+    "title": "DB Semantic Search on Azure with Foundry and PostgreSQL",
+    "description": "Deploy a .NET 10 Blazor Server app and Azure Functions API for semantic text search. The API generates embeddings with Microsoft Foundry model and stores and searches them in Azure Database for PostgreSQL with pgvector, using managed identities and Bicep through Azure Developer CLI.",
+    "image": "https://github.com/massimobonanni/DBSemanticSearch/blob/main/docs/azure-vector-search-architecture.png",
+    "author": "Massimo Bonanni",
+    "authorLink": "https://github.com/massimobonanni",
+    "repo": "https://github.com/massimobonanni/DBSemanticSearch",
+    "tags": ["ai-103","ai-200","ai-3016","appservice","functions","aifoundry","azuredb-postgreSQL","blazor","appinsights","dotnet"],
+    "demoGuide": "https://github.com/massimobonanni/DBSemanticSearch/blob/main/README.md",
+    "deployTime": "8",
+    "cost": "3",
+    "prereqs": "https://github.com/massimobonanni/DBSemanticSearch/blob/main/Prerequisites.md"
   }
 ]
 
