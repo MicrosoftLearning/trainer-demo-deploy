@@ -1112,7 +1112,7 @@
     "website": "https://github.com/massimobonanni",
     "source": "https://github.com/massimobonanni/DBSemanticSearch",
     "tags": ["ai-103","ai-200","ai-3016","appservice","functions","aifoundry","azuredb-postgreSQL","blazor","appinsights","dotnet"],
-    "demoguide": "https://github.com/massimobonanni/DBSemanticSearch/blob/main/README.md",
+    "demoguide": "https://github.com/massimobonanni/DBSemanticSearch/blob/main/demoguide/demoguide.md",
     "deploytime": "8",
     "cost": "3",
     "prereqs": "https://github.com/massimobonanni/DBSemanticSearch/blob/main/Prerequisites.md"
