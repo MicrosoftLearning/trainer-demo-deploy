@@ -891,7 +891,7 @@
   "authorlink": "https://github.com/massimobonanni",
   "repo": "https://github.com/massimobonanni/AZD-ToDoList",
   "tags": ["AZ-204","AZ-104", "dotnet", "appservice","functions","azurestorage"],
-  "demoguide": "https://github.com/massimobonanni/AZD-ToDoList/blob/main/README.md",
+  "demoguide": "https://github.com/massimobonanni/AZD-ToDoList/blob/main/demoguide/demoguide.md",
   "deployTime": "15",
   "cost": "1"
   }
