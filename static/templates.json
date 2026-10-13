@@ -1093,8 +1093,8 @@
   "deploytime": "5"
   },
   {
-  "title": "Disposable Odoo CRM AI MCP demo on Azure",
-  "description": "This project deploys a ready-to-use Odoo business demo in a single temporary Azure environment, complete with realistic sample data and an MCP connection for AI agent interaction, and provides all access links and sign-in details once deployment is complete",
+  "title": "Disposable Odoo CRM AI MCP demo",
+  "description": "Deploy a complete Odoo business demo in a temporary Azure environment, preloaded with realistic sample data and MCP connectivity. It’s ready to use with Copilot Studio or Microsoft Foundry, with all access links and sign-in details provided automatically",
   "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-erp-crm-odoo-mcp-demo/main/media/odooscreenshot.png",
   "website": "https://github.com/koenraadhaedens",
   "author": "Koenraad Haedens",
