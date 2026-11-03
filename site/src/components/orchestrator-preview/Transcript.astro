@@ -1,0 +1,209 @@
+---
+/**
+ * OPX Transcript island — the dark chat panel shell + scheduler.
+ *
+ * Server-renders every step beat in its "pending" state inside a
+ * scrollable stream. The inline script at the bottom imports the
+ * runtime and drives the playback.
+ */
+import type { OpxScript } from "../../lib/opx";
+import Icon from "./Icon.astro";
+import UserStep from "./steps/UserStep.astro";
+import AgentStep from "./steps/AgentStep.astro";
+import ToolStep from "./steps/ToolStep.astro";
+import FilesStep from "./steps/FilesStep.astro";
+import SummaryStep from "./steps/SummaryStep.astro";
+import StatusStep from "./steps/StatusStep.astro";
+
+interface Props {
+  script: OpxScript;
+  carouselMode?: boolean;
+}
+const { script, carouselMode = false } = Astro.props;
+const { meta, steps } = script;
+const placeholder = "Describe what to build";
+---
+{/*
+  Opacity is controlled by the parent slide wrapper in carousel mode so the
+  carousel can cross-fade across instances. Standalone transcripts inherit
+  the parent's natural opacity (1).
+*/}
+<div
+  data-opx-id={meta.id}
+  data-opx-carousel-mode={carouselMode ? "1" : "0"}
+  class="opx-transcript relative flex h-[600px] flex-col overflow-hidden rounded-xl border border-neutral-800 bg-[#1b1c20] text-neutral-100 shadow-2xl"
+  role="region"
+  aria-label={`Conductor preview: ${meta.title}`}
+>
+  {/* Tab strip — VS Code-style "CHAT" tab with thin accent underline + window controls. */}
+  <div class="flex items-center px-3 pt-2 pb-0">
+    <div class="relative">
+      <span class="text-[11px] font-semibold uppercase tracking-wider text-neutral-200">Chat</span>
+      <span class="absolute -bottom-[6px] left-0 right-0 h-[2px] bg-[#e8762d]"></span>
+    </div>
+    <div class="ml-auto flex items-center gap-2 text-neutral-300">
+      <span class="flex items-center gap-0.5">
+        <Icon name="plus" size={16} />
+        <Icon name="caretDown" size={10} />
+      </span>
+      <Icon name="gear" size={15} />
+      <Icon name="ellipsis" size={16} />
+      <span class="mx-0.5 inline-block h-4 w-px bg-neutral-700"></span>
+      <Icon name="expand" size={14} />
+      <Icon name="close" size={14} />
+    </div>
+  </div>
+
+  {/* Sub-header — back arrow + breadcrumb + split-pane control. */}
+  <div class="flex items-center gap-2 border-b border-neutral-800 px-3 pt-3 pb-2">
+    <Icon name="back" size={14} />
+    <span class="truncate text-[12px] font-semibold uppercase tracking-wide text-neutral-300">{meta.title}</span>
+    <span class="ml-auto flex items-center text-neutral-300">
+      <Icon name="splitPane" size={15} />
+    </span>
+  </div>
+
+  {/* Transcript stream */}
+  <div
+    data-opx-stream
+    aria-live="polite"
+    class="opx-stream flex-1 space-y-3 overflow-y-auto px-3 py-3 text-[13px]"
+  >
+    {steps.map((step, idx) => (
+      <div
+        data-opx-step={idx}
+        data-opx-state="pending"
+        style="opacity:0; transform:translateY(8px); transition:opacity 280ms ease-out, transform 280ms ease-out"
+      >
+        {step.user && <UserStep handle={step.user.handle} avatar={step.user.avatar} body={step.user.body} />}
+        {step.agent && <AgentStep body={step.agent.body} code={step.agent.code} />}
+        {step.tool && <ToolStep kind={step.tool.kind} title={step.tool.title} detail={step.tool.detail} result={step.tool.result} />}
+        {step.files && <FilesStep files={step.files} />}
+        {step.summary && <SummaryStep title={step.summary.title} lead={step.summary.lead} bullets={step.summary.bullets} />}
+        {step.status && <StatusStep kind={step.status.kind} text={step.status.text} />}
+      </div>
+    ))}
+  </div>
+
+  {/* Task counter row */}
+  <div class="flex items-center gap-2 border-t border-neutral-800 px-3 py-2 text-[12px] text-neutral-300">
+    <Icon name="caretRight" size={10} />
+    <span class="relative inline-flex h-4 w-4 shrink-0 items-center justify-center">
+      <span class="absolute inset-0 rounded-full border-2 border-[#3794ff]"></span>
+      <span class="h-1.5 w-1.5 rounded-full bg-[#3794ff]"></span>
+    </span>
+    <span class="truncate">
+      {meta.task.label} (<span data-opx-counter="task-done">0</span>/<span data-opx-counter="task-total">{meta.task.progress[1]}</span>)
+    </span>
+    <span class="ml-auto text-neutral-400">
+      <Icon name="collapseAll" size={16} />
+    </span>
+  </div>
+
+  {/* Diff row */}
+  <div class="flex items-center gap-2 border-t border-neutral-800 px-3 py-2 text-[12px] text-neutral-300">
+    <Icon name="caretRight" size={10} />
+    <span><span data-opx-counter="files">0</span> files changed</span>
+    <span class="font-mono text-[#3fb950]" data-opx-counter="added">+0</span>
+    <span class="font-mono text-[#f85149]" data-opx-counter="removed">-0</span>
+    <div class="ml-auto flex items-center gap-1.5">
+      {/* Decorative VS Code-style action buttons — part of the fancy
+          graphic, not real controls. Remove from tab order and the
+          accessibility tree. */}
+      <button type="button" tabindex="-1" aria-hidden="true" class="rounded bg-[#0e639c] px-2.5 py-0.5 text-[11.5px] font-medium text-white">Keep</button>
+      <button type="button" tabindex="-1" aria-hidden="true" class="rounded border border-[#3c3c3c] bg-[#3a3d41] px-2.5 py-0.5 text-[11.5px] font-medium text-neutral-200">Undo</button>
+      <span class="text-neutral-400">
+        <Icon name="clipboard" size={15} />
+      </span>
+    </div>
+  </div>
+
+  {/* Composer */}
+  <div class="border-t border-neutral-800 bg-[#16171a]">
+    {/* Context chip row */}
+    <div class="flex items-center gap-2 px-3 py-2 text-[12px] text-neutral-400">
+      <span class="inline-flex items-center gap-1.5 rounded border border-[#3c3c3c] px-2 py-1 text-[12px] text-neutral-300">
+        <Icon name="plus" size={12} />
+        <Icon name="globe" size={12} />
+        <span class="max-w-[180px] truncate italic text-neutral-500">Trainer Demo Deploy — Demos, …</span>
+      </span>
+    </div>
+    <div
+      data-opx-composer-body
+      class="min-h-[44px] whitespace-pre-wrap px-3 py-2 text-[13px] text-neutral-300"
+    >{placeholder}</div>
+    {/* Bottom toolbar */}
+    <div class="flex items-center gap-2 border-t border-neutral-800/60 px-3 py-1.5 text-[11.5px] text-neutral-300">
+      <Icon name="plus" size={16} />
+      <span>{meta.agent}</span>
+      <span class="inline-block h-4 w-px bg-[#3c3c3c]"></span>
+      <span>{meta.model}</span>
+      <span class="inline-block h-4 w-px bg-[#3c3c3c]"></span>
+      <Icon name="sliders" size={16} />
+      <div class="ml-auto flex items-center gap-2 text-neutral-300">
+        <Icon name="mic" size={15} />
+        <span class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-neutral-300">
+          <span class="h-2 w-2 bg-neutral-300"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Hide the native scrollbar — the stream auto-scrolls programmatically. */
+  .opx-stream {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+  .opx-stream::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+{/* Embed the parsed script as JSON so the mount code below can read
+    it from the DOM without a fetch. Keep this above the type=module
+    block so document.querySelector finds it on first run. */}
+<script
+  type="application/json"
+  data-opx-script-for={meta.id}
+  set:html={JSON.stringify(script)}
+/>
+
+<script>
+  import { mountTranscript } from "./runtime";
+
+  /**
+   * Mount every transcript on the page exactly once. The carousel
+   * controls playback by dispatching `opx:play` events on the
+   * matching root element; standalone transcripts auto-play.
+   */
+  const mounted = new WeakSet<Element>();
+  function mountAll() {
+    const roots = document.querySelectorAll<HTMLElement>("[data-opx-id]");
+    roots.forEach((root) => {
+      if (mounted.has(root)) return;
+      mounted.add(root);
+      const id = root.getAttribute("data-opx-id");
+      const carouselMode = root.getAttribute("data-opx-carousel-mode") === "1";
+      const json = document.querySelector<HTMLScriptElement>(
+        `script[type="application/json"][data-opx-script-for="${id}"]`,
+      );
+      if (!json) return;
+      try {
+        const script = JSON.parse(json.textContent ?? "");
+        const ctl = mountTranscript(root, script, { carouselMode });
+        if (!carouselMode) ctl.play();
+      } catch (err) {
+        console.error("[opx] failed to mount transcript", id, err);
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", mountAll, { once: true });
+  } else {
+    mountAll();
+  }
+</script>

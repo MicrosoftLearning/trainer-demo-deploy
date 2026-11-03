@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  kicker?: string;
+  cta?: string;
+  accent?: "violet" | "blue" | "teal";
+}
+const { title, description, href, kicker, cta = "Learn more", accent = "violet" } = Astro.props;
+
+/**
+ * Each accent variant ships three matched styles: a gradient stripe,
+ * a kicker color, and a CTA color (with hover + dark-mode shifts).
+ * Keep these grouped per-accent so adding a new variant means editing
+ * one block instead of three parallel maps.
+ */
+const accents = {
+  violet: {
+    stripe: "from-[#8661c5] to-[#c03bc4]",
+    kicker: "text-[#8661c5]",
+    cta: "text-[#8661c5] hover:text-[#7551b5] dark:text-[#c5b4e3]",
+  },
+  blue: {
+    stripe: "from-[#0078d4] to-[#389a91]",
+    kicker: "text-[#0078d4]",
+    cta: "text-[#0078d4] hover:text-[#005a9e] dark:text-[#7cc5ff]",
+  },
+  teal: {
+    stripe: "from-[#49c5b1] to-[#389a91]",
+    kicker: "text-[#389a91]",
+    cta: "text-[#389a91] hover:text-[#2a7770] dark:text-[#7fd9cf]",
+  },
+} as const;
+const a = accents[accent];
+---
+<a
+  href={href}
+  class="group relative flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm
+         transition-all duration-200 ease-out
+         hover:-translate-y-1 hover:shadow-xl
+         dark:border-neutral-800 dark:bg-neutral-900"
+>
+  <div class={`h-1.5 w-full bg-gradient-to-r ${a.stripe}`} aria-hidden="true"></div>
+  <div class="flex flex-1 flex-col p-6">
+    {kicker && (
+      <div class={`mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] ${a.kicker}`}>
+        {kicker}
+      </div>
+    )}
+    <h3 class="mb-2 text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+      {title}
+    </h3>
+    <p class="mb-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">{description}</p>
+    <span class={`mt-auto inline-flex items-center gap-1 text-sm font-semibold ${a.cta}`}>
+      {cta}
+      <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+    </span>
+  </div>
+</a>

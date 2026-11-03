@@ -1,0 +1,32 @@
+---
+import { renderParagraph } from "../../../lib/markdown";
+
+interface Props {
+  kind?: "search" | "run" | "read" | "edit";
+  title: string;
+  detail?: string;
+  result?: string;
+}
+const { kind = "search", title, detail, result } = Astro.props;
+
+const icons: Record<string, string> = {
+  search: "🔍",
+  run: "▶",
+  read: "📖",
+  edit: "✏️",
+};
+---
+<div class="rounded-md border border-neutral-700/60 bg-neutral-800/50 px-3 py-2">
+  <div class="flex items-start gap-2">
+    <span class="text-sm leading-none" aria-hidden="true">{icons[kind]}</span>
+    <div class="min-w-0 flex-1">
+      <div class="text-[12px] font-medium text-neutral-200">{title}</div>
+      {detail && (
+        <div class="mt-0.5 text-[12px] text-neutral-400" set:html={renderParagraph(detail)} />
+      )}
+      {result && (
+        <div class="mt-1 text-[12px] text-emerald-300" set:html={renderParagraph(result)} />
+      )}
+    </div>
+  </div>
+</div>

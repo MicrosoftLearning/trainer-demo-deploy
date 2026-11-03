@@ -1,0 +1,43 @@
+---
+import { withBase } from "../../lib/url";
+const year = new Date().getFullYear();
+---
+<footer class="mt-16 border-t border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+  <div class="mx-auto grid max-w-7xl gap-10 px-6 py-12 md:grid-cols-3">
+    <div>
+      <div class="mb-2 flex items-center gap-2 font-semibold">
+        <span
+          class="inline-block h-5 w-5 rounded-md"
+          style="background: linear-gradient(135deg, #8661c5, #c03bc4);"
+          aria-hidden="true"
+        ></span>
+        Trainer Demo Deploy
+      </div>
+      <p class="text-sm text-neutral-600 dark:text-neutral-400">
+        Discover, create, and contribute azd templates and bring-your-own-demo
+        scaffolds for Microsoft technical training.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="mb-2 text-sm font-semibold text-neutral-900 dark:text-neutral-100">Resources</h2>
+      <ul class="space-y-1.5 text-sm text-neutral-600 dark:text-neutral-400">
+        <li><a class="hover:text-brand-violet hover:underline" href={withBase("faq")}>FAQ</a></li>
+        <li><a class="hover:text-brand-violet hover:underline" href={withBase("contribute")}>Contribute</a></li>
+        <li><a class="hover:text-brand-violet hover:underline" href="https://github.com/MicrosoftLearning/trainer-demo-deploy" rel="noopener" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="mb-2 text-sm font-semibold text-neutral-900 dark:text-neutral-100">Microsoft Learn</h2>
+      <ul class="space-y-1.5 text-sm text-neutral-600 dark:text-neutral-400">
+        <li><a class="hover:text-brand-violet hover:underline" href="https://learn.microsoft.com/training" rel="noopener" target="_blank">Trainings</a></li>
+        <li><a class="hover:text-brand-violet hover:underline" href="https://learn.microsoft.com/credentials/certifications" rel="noopener" target="_blank">Certifications</a></li>
+        <li><a class="hover:text-brand-violet hover:underline" href="https://aka.ms/azd" rel="noopener" target="_blank">Azure Developer CLI</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-neutral-200 px-6 py-4 text-center text-xs text-neutral-500 dark:border-neutral-800 dark:text-neutral-500">
+    © {year} Microsoft
+  </div>
+</footer>

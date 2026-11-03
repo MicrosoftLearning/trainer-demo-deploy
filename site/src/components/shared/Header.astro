@@ -1,0 +1,145 @@
+---
+import { withBase } from "../../lib/url";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navItems = [
+  { label: "Catalog", href: withBase("gallery") },
+  { label: "BYOD · Azure", href: withBase("byod-azure") },
+  { label: "BYOD · Copilot Studio", href: withBase("byod-copilot-studio") },
+  { label: "FAQ", href: withBase("faq") },
+  { label: "Contribute", href: withBase("contribute") },
+];
+
+/** GitHub issue template used by the in-page "Share feedback" button. */
+const FEEDBACK_URL =
+  "https://github.com/MicrosoftLearning/trainer-demo-deploy/issues/new?assignees=petender&labels=feedback&template=feedback_template.md&title=%5BFeedback%5D";
+
+const path = Astro.url.pathname;
+const homePath = withBase("");
+const isActive = (href: string) => {
+  if (href === homePath) return path === href || path === "/";
+  return path === href || path === `${href}/`;
+};
+---
+<header class="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur
+               dark:border-neutral-800 dark:bg-neutral-950/95">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+    <a
+      href={withBase("")}
+      class="flex items-center gap-2.5 font-semibold tracking-tight"
+      aria-label="Trainer Demo Deploy — home"
+    >
+      <span
+        class="inline-block h-6 w-6 rounded-md bg-gradient-to-br from-brand-violet to-brand-magenta"
+        aria-hidden="true"
+      ></span>
+      <span class="text-[15px] text-neutral-900 dark:text-neutral-100">Trainer Demo Deploy</span>
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          aria-current={isActive(item.href) ? "page" : undefined}
+          class:list={[
+            "text-[13.5px] font-medium",
+            isActive(item.href)
+              ? "text-neutral-900 dark:text-neutral-100"
+              : "text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200",
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={FEEDBACK_URL}
+        target="_blank"
+        rel="noopener"
+        class="hidden items-center gap-1.5 rounded-md border border-brand-violet/40 px-3 py-1.5 text-[12.5px] font-medium text-brand-violet transition-colors hover:bg-brand-violet/10 md:inline-flex"
+        title="Share feedback on GitHub"
+      >
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        Share feedback
+      </a>
+      <ThemeToggle />
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-700 hover:bg-neutral-100 md:hidden dark:text-neutral-200 dark:hover:bg-neutral-800"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile menu — collapsed by default, toggled via inline script below */}
+  <nav
+    id="mobile-menu"
+    aria-label="Mobile primary"
+    hidden
+    class="border-t border-neutral-200 bg-white px-6 py-3 md:hidden dark:border-neutral-800 dark:bg-neutral-950"
+  >
+    <ul class="space-y-2">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+            class:list={[
+              "block rounded-md px-3 py-2 text-sm font-medium",
+              isActive(item.href)
+                ? "bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100"
+                : "text-neutral-700 hover:bg-neutral-50 dark:text-neutral-300 dark:hover:bg-neutral-900",
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href={FEEDBACK_URL}
+          target="_blank"
+          rel="noopener"
+          class="block rounded-md px-3 py-2 text-sm font-medium text-brand-violet hover:bg-brand-violet/10"
+        >
+          Share feedback ↗
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      const open = menu.hasAttribute("hidden");
+      if (open) {
+        menu.removeAttribute("hidden");
+        toggle.setAttribute("aria-expanded", "true");
+      } else {
+        menu.setAttribute("hidden", "");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+    // Collapse when a link is tapped so the user lands on the new page cleanly.
+    menu.addEventListener("click", (ev) => {
+      if ((ev.target as HTMLElement).closest("a")) {
+        menu.setAttribute("hidden", "");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+</script>

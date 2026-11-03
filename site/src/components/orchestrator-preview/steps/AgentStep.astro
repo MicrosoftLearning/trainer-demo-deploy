@@ -1,0 +1,38 @@
+---
+import { renderParagraph } from "../../../lib/markdown";
+import { highlightCode } from "../code-highlight";
+
+interface Props {
+  body: string;
+  code?: { lang?: string; source: string };
+}
+const { body, code } = Astro.props;
+const bodyHtml = renderParagraph(body);
+const codeHtml = code ? highlightCode(code.source, code.lang) : null;
+---
+<div class="flex items-start gap-3">
+  <div
+    class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#444] text-[10px] font-semibold text-white"
+    aria-hidden="true"
+  >
+    AI
+  </div>
+  <div class="min-w-0 flex-1">
+    <div class="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-neutral-400">
+      GitHub Copilot
+      <span
+        data-opx-typing-indicator
+        class="inline-flex gap-[2px] opacity-0 transition-opacity"
+        aria-hidden="true"
+      >
+        <span class="h-1 w-1 animate-pulse rounded-full bg-neutral-400"></span>
+        <span class="h-1 w-1 animate-pulse rounded-full bg-neutral-400" style="animation-delay:120ms"></span>
+        <span class="h-1 w-1 animate-pulse rounded-full bg-neutral-400" style="animation-delay:240ms"></span>
+      </span>
+    </div>
+    <div class="text-[13px] leading-relaxed text-neutral-100" set:html={bodyHtml} />
+    {code && (
+      <pre class="opx-code mt-2"><code set:html={codeHtml ?? ""} /></pre>
+    )}
+  </div>
+</div>

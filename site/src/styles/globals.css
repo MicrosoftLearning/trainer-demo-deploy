@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+/* ---- Hero radial gradient (light + dark) ---- */
+.hero-gradient {
+  background:
+    radial-gradient(circle at 70% 18%, rgba(192, 132, 252, 0.22), transparent 55%),
+    radial-gradient(circle at 92% 65%, rgba(73, 197, 177, 0.10), transparent 55%),
+    #fff;
+}
+.dark .hero-gradient {
+  background:
+    radial-gradient(circle at 70% 18%, rgba(134, 97, 197, 0.40), transparent 55%),
+    radial-gradient(circle at 92% 65%, rgba(192, 38, 211, 0.20), transparent 55%),
+    #0a0a0a;
+}
+
+/* ---- Inline code pill used in CTA strip ---- */
+.code-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  background: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+}
+.dark .code-chip {
+  background: #1f2024;
+  color: #d4d4d8;
+  border-color: #2a2c33;
+}
+
+/* Tailwind v4 dark-mode variant: an ancestor (typically <html>) with `.dark`. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+ * Brand tokens
+ * -------------------------------------------------------------------------*/
+@theme {
+  --color-brand-violet: #8661c5;
+  --color-brand-magenta: #c03bc4;
+  --color-brand-violet-tint: #c5b4e3;
+  --color-brand-teal-expanded: #389a91;
+  --color-brand-teal: #49c5b1;
+  --color-brand-blue: #0078d4;
+  --color-brand-blue-dark: #106ebe;
+  --color-brand-ink: #242424;
+
+  /* Hero gradients consumed via CSS, not utilities. */
+  --gradient-hero: linear-gradient(90deg, #8661c5 0%, #c03bc4 100%);
+  --gradient-cool: linear-gradient(135deg, #0078d4 0%, #389a91 100%);
+  --gradient-warm: linear-gradient(135deg, #8661c5 0%, #0078d4 100%);
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Dark-mode override for the violet accent (preserves the swap from
+ * the legacy custom.css). */
+.dark {
+  --color-brand-violet: #c5b4e3;
+}
+
+/* ---------------------------------------------------------------------------
+ * Base element styles
+ * -------------------------------------------------------------------------*/
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid #8661c5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+ * OPX code highlighter token classes
+ * -------------------------------------------------------------------------*/
+.opx-code {
+  @apply rounded-md bg-neutral-900 px-4 py-3 text-sm leading-relaxed text-neutral-100 overflow-x-auto;
+}
+.opx-tok-keyword     { @apply text-fuchsia-300; }
+.opx-tok-string      { @apply text-amber-200; }
+.opx-tok-number      { @apply text-emerald-300; }
+.opx-tok-comment     { @apply text-neutral-400 italic; }
+.opx-tok-punctuation { @apply text-neutral-300; }
+.opx-tok-type        { @apply text-sky-300; }
+
+/* OPX inline elements used by markdown.ts */
+.opx-mention {
+  @apply rounded-sm bg-sky-50 px-1 text-sky-700 dark:bg-sky-950 dark:text-sky-300;
+}
+.opx-inline-code {
+  @apply rounded-sm bg-neutral-100 px-1 font-mono text-[0.9em] text-neutral-800
+         dark:bg-neutral-800 dark:text-neutral-100;
+}
+
+/* ---------------------------------------------------------------------------
+ * Demo-guide markdown prose styles (rendered into the catalog side panel)
+ * -------------------------------------------------------------------------*/
+.prose-spike {
+  color: rgb(64 64 64); /* neutral-700 */
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+.dark .prose-spike {
+  color: rgb(212 212 216); /* neutral-300 */
+}
+.prose-spike > * + * {
+  margin-top: 0.9em;
+}
+.prose-spike h1,
+.prose-spike h2,
+.prose-spike h3,
+.prose-spike h4 {
+  font-weight: 600;
+  color: rgb(23 23 23); /* neutral-900 */
+  line-height: 1.25;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+}
+.dark .prose-spike h1,
+.dark .prose-spike h2,
+.dark .prose-spike h3,
+.dark .prose-spike h4 {
+  color: rgb(245 245 245); /* neutral-100 */
+}
+.prose-spike h1 { font-size: 1.5rem; }
+.prose-spike h2 { font-size: 1.25rem; padding-bottom: 0.25rem; border-bottom: 1px solid rgb(229 229 229); }
+.dark .prose-spike h2 { border-color: rgb(38 38 38); }
+.prose-spike h3 { font-size: 1.075rem; }
+.prose-spike h4 { font-size: 0.95rem; }
+
+.prose-spike p { margin: 0; }
+.prose-spike a {
+  color: #0078d4;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.dark .prose-spike a {
+  color: #c5b4e3;
+}
+.prose-spike a:hover { text-decoration: none; }
+
+.prose-spike ul,
+.prose-spike ol {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+.prose-spike ul { list-style: disc; }
+.prose-spike ol { list-style: decimal; }
+.prose-spike li + li { margin-top: 0.35em; }
+.prose-spike li > ul,
+.prose-spike li > ol {
+  margin-top: 0.35em;
+}
+
+.prose-spike code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: rgb(245 245 245);
+  color: rgb(38 38 38);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.dark .prose-spike code {
+  background: rgb(38 38 38);
+  color: rgb(245 245 245);
+}
+.prose-spike pre {
+  background: #0b0d12;
+  color: #e6e6e6;
+  padding: 14px 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.prose-spike pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+.prose-spike img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0.5em 0;
+  border: 1px solid rgb(229 229 229);
+}
+.dark .prose-spike img {
+  border-color: rgb(38 38 38);
+}
+
+.prose-spike blockquote {
+  border-left: 3px solid #8661c5;
+  padding-left: 12px;
+  color: rgb(82 82 82);
+  font-style: italic;
+}
+.dark .prose-spike blockquote {
+  color: rgb(163 163 163);
+}
+
+.prose-spike table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.prose-spike th,
+.prose-spike td {
+  border: 1px solid rgb(229 229 229);
+  padding: 6px 10px;
+  text-align: left;
+}
+.dark .prose-spike th,
+.dark .prose-spike td {
+  border-color: rgb(38 38 38);
+}
+.prose-spike th {
+  background: rgb(250 250 250);
+  font-weight: 600;
+}
+.dark .prose-spike th {
+  background: rgb(23 23 23);
+}
+
+.prose-spike hr {
+  border: 0;
+  border-top: 1px solid rgb(229 229 229);
+  margin: 1.5em 0;
+}
+.dark .prose-spike hr {
+  border-top-color: rgb(38 38 38);
+}
+
+/* ---------------------------------------------------------------------------
+ * Motion preferences
+ * -------------------------------------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

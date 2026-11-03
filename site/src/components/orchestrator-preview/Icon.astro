@@ -1,0 +1,23 @@
+---
+import { icons } from "./icons";
+type Props = { name: keyof typeof icons; size?: number; class?: string };
+const { name, size = 14, class: cls = "" } = Astro.props;
+const i = icons[name];
+const viewBox = i.v ?? "0 0 16 16";
+const fill = i.fill ?? "none";
+const stroke = i.stroke ?? "none";
+const strokeWidth = i.strokeWidth ?? 1.2;
+---
+<svg
+  width={size}
+  height={size}
+  viewBox={viewBox}
+  fill={fill}
+  stroke={stroke}
+  stroke-width={strokeWidth}
+  class={cls}
+  aria-hidden="true"
+>
+  {i.shapes && <Fragment set:html={i.shapes} />}
+  {i.paths.map((d) => <path d={d} />)}
+</svg>

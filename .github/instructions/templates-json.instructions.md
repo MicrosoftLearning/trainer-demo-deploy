@@ -23,6 +23,7 @@ Fields and types:
 - source (string, required) — GitHub repo URL
 - demoguide (string, optional) — raw markdown URL
 - tags (string[], required) — each value must be in TagType
+- industry (string, optional) — business vertical; omit for general-purpose templates
 - cost (string, required) — decimal as string (e.g., "3.00")
 - deploytime (string, required) — minutes as string (e.g., "5")
 - prereqs (string, optional) — raw markdown URL
@@ -30,6 +31,7 @@ Fields and types:
 Conventions:
 - Keep keys in the order listed above
 - All fields are JSON strings except `tags` (array of strings)
+- Missing `industry` values are normalized to `General` by the catalog
 - Deduplicate and sort `tags` lexicographically for stable diffs
 - No trailing commas; entire file must be a single valid JSON array
 
@@ -49,6 +51,7 @@ When a user provides a GitHub repository URL, populate fields as follows:
    - demoguide: README raw URL if it serves as the demo guide, or search for demoguide/*.md, docs/*guide*.md; use raw URL
    - prereqs: search for prereqs.md or similar; use raw URL if present
    - preview: look for images referenced in README (png/svg/jpg/webp). Prefer a repo `static/templates/images/` asset if already in our repo, else the first readable image in the repo via raw URL. If none, set `./templates/images/test.png`.
+   - industry: use a business vertical explicitly named in the README; otherwise omit it so the entry defaults to `General`
 
 2. Infer tags (best-effort, then human-confirm)
    - Map keywords in README and repo topics to TagType values (e.g., aks → "aks", functions → "functions", apim → "apim", dotnet → "dotnet")
@@ -109,6 +112,7 @@ When a user provides a GitHub repository URL, populate fields as follows:
         "items": {"type": "string"},
         "uniqueItems": true
       },
+         "industry": {"type": "string", "minLength": 1},
       "cost": {"type": "string", "pattern": "^\\d+(\\.\\d{1,2})?$"},
       "deploytime": {"type": "string", "pattern": "^\\d+$"},
       "prereqs": {"type": "string", "format": "uri", "pattern": "^https://"}
@@ -122,6 +126,7 @@ When a user provides a GitHub repository URL, populate fields as follows:
 - [ ] JSON parses; array only, no stray objects or trailing commas
 - [ ] Required fields present and non-empty
 - [ ] Tags are valid TagType, unique, sorted, Include at least 1 ILT course from tags
+- [ ] Industry is non-empty when present; omitted entries are treated as `General`
 - [ ] cost and deploytime are strings and match patterns
 - [ ] preview is repo image or local asset path
 - [ ] demoguide/prereqs raw URLs when present

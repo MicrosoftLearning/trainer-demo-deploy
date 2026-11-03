@@ -24,12 +24,16 @@ export type User = {
   demoguide: string | null;
   courseblueprint: string | null;
   tags: TagType[];
+  industry?: string;
   cost: string;
   deploytime: string;
   prereqs: string;
 };
 
-// NN: Updated TagType to suit Static Web Apps
+/**
+ * Complete registry of tag IDs accepted by catalog templates and required in `Tags`.
+ * It includes course, service, framework, platform, database, and administrative tags.
+ */
 export type TagType =
 
 // Special Tags
@@ -38,17 +42,34 @@ export type TagType =
   | "new"
   | "hot"
 
-
 // ILT Courses
+// Business Applications
+  | "ab-100"
+  | "ab-6008"
+  | "ab-620"
+  | "ab-730"
+  | "ab-731"
+
+// AI
   | "ai-102"
+  | "ai-103"
+  | "ai-200"
+  | "ai-300"
   | "ai-3002"
   | "ai-3003"
   | "ai-3004"
+  | "ai-3008"
   | "ai-3016"
+  | "ai-3017"
+  | "ai-3018"
   | "ai-3019"
   | "ai-3022"
+  | "ai-3025"
   | "ai-3026"
   | "ai-900"
+  | "ai-901"
+
+// Azure
   | "az-104"
   | "az-1002"
   | "az-1003"
@@ -57,9 +78,13 @@ export type TagType =
   | "az-1008"
   | "az-1010"
   | "az-140"
+  | "az-2001"
+  | "az-2002"
   | "az-2003"
   | "az-2005"
   | "az-2006"
+  | "az-2007"
+  | "az-2008"
   | "az-204"
   | "az-305"
   | "az-400"
@@ -68,11 +93,15 @@ export type TagType =
   | "az-800"
   | "az-801"
   | "az-900"
+
+// Data
   | "dp-100"
   | "dp-203"
   | "dp-300"
   | "dp-3001"
+  | "dp-3007"
   | "dp-3011"
+  | "dp-3012"
   | "dp-3014"
   | "dp-3015"
   | "dp-3020"
@@ -85,11 +114,40 @@ export type TagType =
   | "dp-602"
   | "dp-603"
   | "dp-604"
+  | "dp-605"
   | "dp-700"
+  | "dp-750"
+  | "dp-800"
   | "dp-900"
+
+// GitHub
+  | "gh-100"
+  | "gh-200"
+  | "gh-300"
+  | "gh-500"
+  | "gh-600"
+  | "gh-900"
+
+// Endpoint
+  | "md-4011"
+
+// Microsoft 365
+  | "ms-4002"
+  | "ms-4004"
+  | "ms-4014"
+  | "ms-4017"
+  | "ms-4018"
+  | "ms-4019"
+  | "ms-4021"
+  | "ms-4022"
+  | "ms-4023"
+
+// Security
   | "sc-100"
   | "sc-200"
   | "sc-300"
+  | "sc-401"
+  | "sc-500"
   | "sc-5001"
   | "sc-5002"
   | "sc-5003"
@@ -98,7 +156,11 @@ export type TagType =
   | "sc-5007"
   | "sc-5008"
   | "sc-900"
-  
+
+// Power Platform
+  | "pl-300"
+  | "pl-7008"
+  // end ILT
 
   // Frameworks
   | "dotnet"
@@ -109,67 +171,138 @@ export type TagType =
 
 
 // Azure Services
-  | "kubernetes"
-  | "appservice"
-  | "cosmosdb"
-  | "azuredatafactory"
-  | "monitor"
-  | "keyvault"
   | "aca"
   | "aci"
   | "acr"
-  | "mongodb"
-  | "functions"
-  | "blobstorage"
-  | "azuredb-postgreSQL"
-  | "azuresql"
-  | "staticwebapps"
-  | "servicebus"
-  | "vnets"
-  | "appinsights"
-  | "loganalytics"
-  | "aisearch"
-  | "openai"
-  | "azureai"
-  | "apim"
-  | "aks"
-  | "azurecdn"
-  | "frontdoor"
-  | "rediscache"
-  | "azurebot"
-  | "azuredb-mySQL"
-  | "eventhub"
-  | "azurestorage"
-  | "azureappconfig"
   | "aifoundry"
+  | "aisearch"
+  | "aks"
   | "apicenter"
-  | "eventgrid"
-  | "logicapps"
-  | "speechservice"
-  | "azureml"
-  | "virtualmachine"
-  | "sentinel"
-  | "trafficmgr"
-  | "purview"
-  | "vpngw"
-  | "azurearc"
-  | "loadtesting"
-  | "fabric"
-  | "azurefirewall"
-  | "bastion"
-  | "vmsqlserver"
-  | "avset"
+  | "apim"
   | "appgateway"
+  | "appinsights"
+  | "appservice"
+  | "avset"
+  | "azureai"
+  | "azureappconfig"
+  | "azurearc"
+  | "azurebot"
+  | "azurecdn"
+  | "azuredatafactory"
+  | "azuredb-mySQL"
+  | "azuredb-postgreSQL"
+  | "azurefirewall"
+  | "azureml"
+  | "azuresql"
+  | "azurestorage"
+  | "backup"
+  | "bastion"
+  | "blobstorage"
+  | "cosmosdb"
+  | "eventgrid"
+  | "eventhub"
+  | "fabric"
+  | "frontdoor"
+  | "functions"
+  | "keyvault"
+  | "kubernetes"
+  | "loadbalancer"
+  | "loadtesting"
+  | "loganalytics"
+  | "logicapps"
+  | "mongodb"
+  | "monitor"
+  | "networkwatcher"
+  | "openai"
   | "privateendpoint"
   | "privatelink"
-  | "loadbalancer"
-  | "backup"
+  | "purview"
   | "recoveryvault"
+  | "rediscache"
+  | "sentinel"
+  | "servicebus"
+  | "speechservice"
+  | "staticwebapps"
+  | "trafficmgr"
+  | "virtualmachine"
+  | "virtualnetworkmanager"
+  | "vmsqlserver"
+  | "vnets"
+  | "vpngw"
+  | "webapplicationfirewall"
  
 
 
 
 ;
+
+/**
+ * Curated current course portfolio for the Astro gallery filter.
+ *
+ * The gallery merges this list with tags used by templates, so courses listed here stay
+ * visible without a demo and render as disabled options. This is intentionally a subset
+ * of `TagType`; `satisfies` validates membership, not completeness.
+ */
+export const CatalogCourseTags = [
+  "ab-100",
+  "ab-6008",
+  "ab-620",
+  "ab-730",
+  "ab-731",
+  "ai-103",
+  "ai-200",
+  "ai-300",
+  "ai-3003",
+  "ai-3008",
+  "ai-3016",
+  "ai-3025",
+  "ai-3026",
+  "ai-901",
+  "az-104",
+  "az-2007",
+  "az-2008",
+  "az-305",
+  "az-400",
+  "az-500",
+  "az-700",
+  "dp-300",
+  "dp-3011",
+  "dp-3014",
+  "dp-3028",
+  "dp-3029",
+  "dp-600",
+  "dp-601",
+  "dp-602",
+  "dp-603",
+  "dp-604",
+  "dp-605",
+  "dp-700",
+  "dp-750",
+  "dp-800",
+  "dp-900",
+  "gh-100",
+  "gh-200",
+  "gh-300",
+  "gh-500",
+  "gh-600",
+  "gh-900",
+  "md-4011",
+  "ms-4002",
+  "ms-4004",
+  "ms-4014",
+  "ms-4017",
+  "ms-4018",
+  "ms-4019",
+  "ms-4021",
+  "ms-4022",
+  "ms-4023",
+  "pl-300",
+  "pl-7008",
+  "sc-100",
+  "sc-200",
+  "sc-300",
+  "sc-401",
+] as const satisfies readonly TagType[];
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -204,6 +337,42 @@ export const Tags: { [type in TagType]: Tag } = {
  
 
   // ---- ILT Courses
+
+  "ab-100": {
+    label: "AB-100 Architecting agentic AI business solutions",
+    description: "Plan, design, and govern agentic AI business solutions built on Microsoft platforms.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ab-100t00",
+  },
+  "ab-6008": {
+    label: "AB-6008 Delegate work with AI",
+    description: "Use Copilot Cowork and Scout to delegate larger work outcomes and automate repeatable workflows.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ab-6008",
+  },
+  "ab-620": {
+    label: "AB-620 Design and build integrated AI agent solutions in Copilot Studio",
+    description: "Design, extend, and integrate production-ready Copilot Studio agents and multi-agent solutions.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ab-620t00",
+  },
+  "ab-730": {
+    label: "AB-730 Transform business workflows with generative AI",
+    description: "Apply generative AI and Microsoft 365 Copilot to streamline workflows and improve business outcomes.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ab-730t00",
+  },
+  "ab-731": {
+    label: "AB-731 Drive AI transformation in your organization",
+    description: "Lead organizational AI transformation by identifying opportunities, aligning investments, and applying responsible AI practices.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ab-731t00",
+  },
   
   "ai-102": {
     label: "AI-102 Azure AI Engineer Associate",
@@ -211,6 +380,31 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-associate-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "ai-103": {
+    label: "AI-103 Develop AI apps and agents on Azure",
+    description: "Build generative AI apps and agents with Microsoft Foundry, including multimodal solutions, knowledge connections, and tools.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-103t00",
+  },
+  "ai-200": {
+    label: "AI-200 Develop AI cloud solutions on Microsoft Azure",
+    description: "Learn how to create, monitor, and troubleshoot AI solutions on Azure including compute, containerization, serverless APIs, event-driven architectures, and data services that support AI workloads.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-200t00",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "ai-300": {
+    label: "AI-300 Operationalize machine learning and generative AI solutions",
+    description: "Design, implement, and operate MLOps and GenAIOps solutions on Azure. Covers building secure AI infrastructure, managing the full lifecycle of ML models with Azure Machine Learning, and deploying generative AI applications using Microsoft Foundry.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-300t00",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -241,12 +435,39 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "ai-3008": {
+    label: "AI-3008 Extract insights from visual data on Azure",
+    description: "Build intelligent applications that see, interpret, and reason over images and documents using multimodal models and agent-based tools. Learn practical patterns for extracting information, orchestrating tools, and grounding model responses in visual data.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-3008",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "ai-3016": {
     label: "AI-3016 Develop generative AI apps in Azure",
     description: "Generative Artificial Intelligence (AI) is becoming more accessible through comprehensive development platforms like Azure AI Foundry. Learn how to build generative AI applications that use language models to chat with your users.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
     url: "https://learn.microsoft.com/en-us/training/paths/create-custom-copilots-ai-studio/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "ai-3017": {
+    label: "AI-3017 AI for business leaders",
+    description: "Explore how business leaders can plan, strategize, and scale responsible AI adoption in their organizations.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/paths/transform-your-business-with-microsoft-ai/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "ai-3018": {
+    label: "AI-3018 Copilot Foundations",
+    description: "Explore generative AI fundamentals and how to use copilots with Microsoft Copilot Studio and Microsoft Foundry. This course was retired in favor of MS-4014.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/paths/copilot-foundations/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -268,6 +489,15 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "ai-3025": {
+    label: "AI-3025 Work smarter with AI",
+    description: "Introduction to Microsoft Copilot and Microsoft 365 Copilot. Learn about their capabilities, identify tasks they can support, understand how they work, and gain practical skills in writing effective prompts to generate useful, relevant results.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ai-3025",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "ai-3026": {
     label: "AI-3026 Develop AI agents on Azure",
     description: "This learning path will help you understand the AI agents, including when to use them and how to build them, using Azure AI Foundry Agent Service and Microsoft Agent Framework.",
@@ -283,6 +513,15 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/azure-ai-fundamentals/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "ai-901": {
+    label: "AI-901 Azure AI Fundamentals",
+    description: "Validates conceptual knowledge and practical understanding needed to work with AI solutions on Azure, including using Microsoft Foundry to deploy models and implement single-agent solutions.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
+    url: "https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-901/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -358,6 +597,24 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "https://aka.ms/AZ-140Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/img/AZ-140.jpg",
   },
+  "az-2001": {
+    label: "AZ-2001 Implement security through a pipeline using Azure DevOps",
+    description: "Configure secure access to Azure pipeline resources, validate permissions, protect variables and parameters, and manage identities for projects, pipelines, and agents.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/paths/implement-security-through-pipeline-using-devops/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "az-2002": {
+    label: "AZ-2002 Develop an ASP.NET Core web app that consumes an API",
+    description: "Develop an ASP.NET Core Blazor web app that consumes an API to retrieve, create, and update data.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/credentials/applied-skills/develop-an-aspnet-core-web-app-that-consumes-an-api/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "az-2003": {
     label: "AZ-2003 Deploy cloud-native apps using Azure Container Apps",
     description: "Develop the skills necessary to configure a secure deployment solution for cloud-native apps. Learn how to build, deploy, scale, and manage containerized cloud-native apps using Azure Container Apps, Azure Container Registry, and Azure Pipelines.",
@@ -384,6 +641,20 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://learn.microsoft.com/en-us/training/paths/automate-azure-load-testing-github/",
     courseblueprint: "",
     courseblueprintdiag: "",
+  },
+  "az-2007": {
+    label: "AZ-2007 Get started with AI-assisted development",
+    description: "Use GitHub Copilot in Visual Studio Code for code analysis, documentation, app development, unit testing, refactoring, and vibe coding.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/",
+  },
+  "az-2008": {
+    label: "AZ-2008 DevOps Foundations: The Core Principles and Practices",
+    description: "Learn fundamental DevOps culture and practices across planning, source control, delivery, observability, security, and platform engineering.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/az-2008",
   },
   "az-204": {
     label: "AZ-204 Azure Developer Associate",
@@ -494,12 +765,30 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "dp-3007": {
+    label: "DP-3007 Train and manage a machine learning model with Azure Machine Learning",
+    description: "Prepare data and compute, train and track models with MLflow, and deploy models to managed online endpoints for real-time predictions.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/paths/train-deploy-machine-learning-model/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "dp-3011": {
     label: "DP-3011 Implement a Data Analytics Solution with Azure Databricks",
     description: "By the end of this learning path, you'll have built solid intermediate to advanced skills in both Databricks and Spark on Azure. You're able to ingest, transform, and analyze large-scale datasets using Spark DataFrames, Spark SQL, and PySpark, giving you confidence in working with distributed data processing.",
     type: "ILT Courses",
     azureIcon: "./img/applied-skill.svg",
     url: "https://learn.microsoft.com/en-us/training/paths/data-engineer-azure-databricks/",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+  "dp-3012": {
+    label: "DP-3012 Implementing a Data Analytics Solution with Azure Synapse Analytics",
+    description: "Use Azure Synapse Analytics SQL and Spark pools, pipelines, and data integration capabilities to ingest, transform, and analyze data.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/credentials/certifications/retired-courses",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -611,6 +900,15 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: "",
   },
+  "dp-605": {
+    label: "DP-605 Prepare and visualize data with Microsoft Power BI",
+    description: "Introduction to Power BI for data analysis and reporting. Learn to connect to data, perform data preparation with Power Query, design report pages for optimal user experience, and explore how Copilot in Power BI aids the report development process.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/dp-605t00",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
   "dp-700": {
     label: "DP-700 Fabric Data Engineer Associate",
     description: "As a Fabric Data Engineer, you should have subject matter expertise with data loading patterns, data architectures, and orchestration processes.",
@@ -620,6 +918,20 @@ export const Tags: { [type in TagType]: Tag } = {
     courseblueprint: "",
     courseblueprintdiag: ""
   },
+  "dp-750": {
+    label: "DP-750 Implement data engineering solutions using Azure Databricks",
+    description: "Build, secure, deploy, and maintain scalable lakehouse and data pipeline solutions with Azure Databricks and Unity Catalog.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/dp-750t00",
+  },
+  "dp-800": {
+    label: "DP-800 Develop AI-enabled database solutions",
+    description: "Design and develop AI-enabled database solutions across SQL Server, Azure SQL, and SQL databases in Microsoft Fabric.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/dp-800t00",
+  },
   "dp-900": {
     label: "DP-900 Azure Data Fundamentals",
     description: "Demonstrate foundational knowledge of core data concepts related to Microsoft Azure data services.",
@@ -628,6 +940,118 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://learn.microsoft.com/credentials/certifications/azure-data-fundamentals/?practice-assessment-type=certification",
     courseblueprint: "",
     courseblueprintdiag: "",
+  },
+  "gh-100": {
+    label: "GH-100 GitHub fundamentals - Administration basics and product features",
+    description: "Learn GitHub administration basics, repository management, collaboration, and secure repository practices.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/gh-100t00",
+  },
+  "gh-200": {
+    label: "GH-200 Automate your workflow with GitHub Actions",
+    description: "Automate software development workflows, application builds, and GitHub API interactions with GitHub Actions.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/gh-200t00",
+  },
+  "gh-300": {
+    label: "GH-300 GitHub Copilot",
+    description: "Use GitHub Copilot effectively while understanding responsible AI practices and operational risks.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/gh-300t00",
+  },
+  "gh-500": {
+    label: "GH-500 GitHub Advanced Security",
+    description: "Use GitHub Advanced Security to identify and address vulnerabilities throughout the software development lifecycle.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/gh-500t00",
+  },
+  "gh-600": {
+    label: "GH-600 Developing in Agentic AI Systems",
+    description: "Develop, deploy, operate, and govern agentic AI systems in GitHub-based software development workflows.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/gh-600t00",
+  },
+  "gh-900": {
+    label: "GH-900 GitHub Foundations",
+    description: "Learn GitHub fundamentals, including repositories, commits, branches, merging, and collaboration workflows.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/gh-900t00",
+  },
+  "md-4011": {
+    label: "MD-4011 Enhance endpoint security with Microsoft Intune and Microsoft Security Copilot",
+    description: "Use Microsoft Intune and Microsoft Security Copilot to improve device management and endpoint security operations.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/md-4011",
+  },
+  "ms-4002": {
+    label: "MS-4002 Prepare security and compliance to support Microsoft 365 Copilot",
+    description: "Prepare Microsoft 365 security and compliance capabilities for a successful Microsoft 365 Copilot implementation.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4002",
+  },
+  "ms-4004": {
+    label: "MS-4004 Empower your workforce with Microsoft 365 Copilot Use Cases",
+    description: "Apply Microsoft 365 Copilot across common business roles and use cases through hands-on exercises.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4004",
+  },
+  "ms-4014": {
+    label: "MS-4014 Introduction to building AI agents",
+    description: "Explore AI agent concepts, Microsoft's agent platform, and how to plan an end-to-end agent solution.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4014",
+  },
+  "ms-4017": {
+    label: "MS-4017 Manage and extend Microsoft 365 Copilot",
+    description: "Implement, administer, and extend Microsoft 365 Copilot to meet organizational needs.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4017",
+  },
+  "ms-4018": {
+    label: "MS-4018 Draft, analyze, and present with Microsoft 365 Copilot",
+    description: "Use Microsoft 365 Copilot and agents to draft content, analyze data, prepare presentations, and manage communications.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4018",
+  },
+  "ms-4019": {
+    label: "MS-4019 Transform your everyday business processes with agents",
+    description: "Use prebuilt agents and create agents in Microsoft 365 Copilot Chat and SharePoint to improve everyday workflows.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4019",
+  },
+  "ms-4021": {
+    label: "MS-4021 Copilot Immersion Experience",
+    description: "Use contextual prompting and role-based exercises to apply Microsoft 365 Copilot across business functions.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4021",
+  },
+  "ms-4022": {
+    label: "MS-4022 Extend Microsoft 365 Copilot in Copilot Studio",
+    description: "Build and publish Copilot Studio agents with custom knowledge, instructions, tools, and connectors.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4022",
+  },
+  "ms-4023": {
+    label: "MS-4023 Transform Ideas into Action with Copilot Chat (Basic)",
+    description: "Get started with Microsoft 365 Copilot Chat, effective prompting, and secure AI-assisted collaboration.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/ms-4023",
   },
   "sc-100":{
     label: "SC-100 Cybersecurity Architect Expert",
@@ -655,6 +1079,22 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://learn.microsoft.com/credentials/certifications/identity-and-access-administrator/?practice-assessment-type=certification",
     courseblueprint: "https://aka.ms/SC-300Blueprint",
     courseblueprintdiag: "https://courseblueprints.blob.core.windows.net/blueprints/SC-300_Blueprint.pdf?sp=r&st=2024-10-10T16:20:37Z&se=2025-07-02T00:20:37Z&spr=https&sv=2022-11-02&sr=b&sig=Q8NZNEY0oa96Olaeyuu8Wf1DeTJ77TJbUmesb6uSjZw%3D",
+  },
+  "sc-401": {
+    label: "SC-401 Protect sensitive information with Microsoft Purview in the AI era",
+    description: "Plan and implement information protection, data loss prevention, retention, insider risk management, and controls for AI data.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/sc-401t00",
+  },
+  "sc-500": {
+    label: "SC-500 Implement end-to-end security controls for cloud and AI workloads",
+    description: "Design, implement, and manage end-to-end security controls across Microsoft Azure and Microsoft 365 environments, including the emerging landscape of AI workloads and autonomous agents. Covers identity security, cloud infrastructure protection, threat detection, and posture management.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/sc-500t00",
+    courseblueprint: "",
+    courseblueprintdiag: "",
   },
   "sc-5001": {
     label: "SC-5001 Configure SIEM security operations using Microsoft Sentinel",
@@ -725,6 +1165,23 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "ILT Courses",
     azureIcon: "./img/microsoft-certified-fundamentals-badge.svg",
     url: "https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals/?practice-assessment-type=certification",
+    courseblueprint: "",
+    courseblueprintdiag: "",
+  },
+
+  "pl-300": {
+    label: "PL-300 Design and manage analytics solutions using Power BI",
+    description: "Model, visualize, analyze, manage, and deploy data solutions with Microsoft Power BI.",
+    type: "ILT Courses",
+    azureIcon: "./img/microsoft-certified-associate-badge.svg",
+    url: "https://learn.microsoft.com/en-us/training/courses/pl-300t00",
+  },
+  "pl-7008": {
+    label: "PL-7008 Create agents in Microsoft Copilot Studio",
+    description: "Create and extend custom agents by using Microsoft Copilot Studio.",
+    type: "ILT Courses",
+    azureIcon: "./img/applied-skill.svg",
+    url: "https://learn.microsoft.com/en-us/training/paths/create-extend-custom-copilots-microsoft-copilot-studio/",
     courseblueprint: "",
     courseblueprintdiag: "",
   },
@@ -812,6 +1269,24 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Monitor Service",
     azureIcon: "./img/Azure-Monitor.svg",
     url: "https://azure.microsoft.com/products/monitor",
+    type: "Service",
+  },
+  networkwatcher: {
+    label: "Azure Network Watcher",
+    description: "Template architecture uses Azure Network Watcher",
+    url: "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview",
+    type: "Service",
+  },
+  virtualnetworkmanager: {
+    label: "Azure Virtual Network Manager",
+    description: "Template architecture uses Azure Virtual Network Manager",
+    url: "https://learn.microsoft.com/azure/virtual-network-manager/overview",
+    type: "Service",
+  },
+  webapplicationfirewall: {
+    label: "Azure Web Application Firewall",
+    description: "Template architecture uses Azure Web Application Firewall",
+    url: "https://learn.microsoft.com/azure/web-application-firewall/overview",
     type: "Service",
   },
   keyvault: {
@@ -1082,7 +1557,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure ARC",
     description: "Template architecture for Azure ARC",
     azureIcon: "./img/Azure-Arc-VM.svg",
-    url: "hhttps://azure.microsoft.com/products/azure-arc",
+    url: "https://azure.microsoft.com/products/azure-arc",
     type: "Service",
   },
 

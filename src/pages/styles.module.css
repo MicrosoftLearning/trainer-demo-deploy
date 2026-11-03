@@ -15,7 +15,6 @@
 
 .checkboxListItem {
   user-select: none;
-  white-space: nowrap;
 }
 
 .checkboxListItem:last-child {
@@ -103,6 +102,7 @@
   flex: 2;
   margin: 0px 25px;
   max-width: 256px;
+  overflow: hidden;
 }
 
 .card {
