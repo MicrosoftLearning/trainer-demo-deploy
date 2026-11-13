@@ -1049,7 +1049,7 @@
   "author": "Massimo Bonanni",
   "website": "https://github.com/massimobonanni",
   "source": "https://github.com/massimobonanni/AZD-ToDoList",
-  "tags": ["AZ-204","AZ-104", "dotnet", "appservice","functions","azurestorage"],
+  "tags": ["appservice", "az-104", "az-204", "azurestorage", "dotnet", "functions"],
   "demoguide": "https://github.com/massimobonanni/AZD-ToDoList/blob/main/demoguide/demoguide.md",
   "deploytime": "15",
   "cost": "2-3"

@@ -17,9 +17,8 @@ export default defineConfig({
   // SITE_URL; dev does not, so the integration silently no-ops).
   integrations: [sitemap()],
   vite: {
-    // @ts-expect-error - @tailwindcss/vite ships a Plugin<any>[] that
-    // is structurally compatible with Astro's PluginOption but trips
-    // a nominal type mismatch across Vite versions.
+    // Shared catalog sources must use the site's config, not Docusaurus's root config.
+    tsconfig: "./tsconfig.json",
     plugins: [tailwindcss()],
   },
 });
